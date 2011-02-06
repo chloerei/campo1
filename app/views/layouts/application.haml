@@ -1,0 +1,84 @@
+!!! 5
+%html
+  %head
+    %link{:href => "/style.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
+    %title= @page_title
+    = stylesheet_link_tag 'style'
+    = yield :head
+  %body
+    #header
+      .center-wraper
+        #logo
+          GEEKER
+        #search
+          %input{:type => :text}
+          %input{:type => :submit, :value => 'Search'}
+        #top-menu
+          %ul
+            %li
+              %a One
+            %li.last
+              %a Two
+        .clear
+    #content
+      .center-wraper
+        #mainbar
+          #subheader
+            #mascot
+              %img{:src => 'images/mascot.png'}
+            #tabs
+              %ul
+                %li.current
+                  Newest
+                %li.tagged-interesting
+                  %a{:href => '#'} Interesting
+                %li.own-topic
+                  %a{:href => '#'} Own
+                %li.collect-topic
+                  %a{:href => '#'} Collect
+                %li
+                  %a{:href => '#'} Week
+                %li
+                  %a{:href => '#'} Month
+            .clear
+          = yield
+        #sidebar
+          .section.profile
+            .avatar
+              %img{:src => 'images/avatar.jpg'}
+            .nickname
+              Rei
+            .clear
+            .brief
+              0 follower
+          .section.favor-tags
+            .title Favor Tags
+            .content
+              %ul
+                - 5.times do |n|
+                  %li
+                    %a.tag{:href => '#'}= "Tags#{n}"
+              .clear
+          .section.recent-tags
+            .title Recent Tags
+            .content
+              %ul
+                - 5.times do |n|
+                  %li
+                    %a.tag{:href => '#'}= "Tags#{n}"
+                    = "x #{n}"
+        .clear
+    #footer
+      .center-wraper
+        #bottom-menu
+          %ul
+            %li
+              %a{:href => '#'} One
+            %li
+              %a{:href => '#'} Two
+            %li.last 
+              %a{:href => '#top'} Top
+        #copyright
+          @ Copyright YourWebSite | Layout by
+          %a{:href => 'http://chloerei.com'} Rei
+        .clear
