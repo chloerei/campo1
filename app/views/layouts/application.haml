@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %link{:href => "/style.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
+    %meta{ "charset" => "utf-8" }
     %title= @page_title
     = stylesheet_link_tag 'style'
     = yield :head
@@ -23,6 +23,12 @@
     #content
       .center-wraper
         #mainbar
+          - if flash[:success]
+            .success= flash[:success]
+          - if flash[:error]
+            .success= flash[:error]
+          - if flash[:notice]
+            .success= flash[:notice]
           #subheader
             #mascot
               %img{:src => 'images/mascot.png'}
@@ -45,7 +51,6 @@
         #sidebar
           .section.profile
             .avatar
-              %img{:src => 'images/avatar.jpg'}
             .nickname
               Rei
             .clear
