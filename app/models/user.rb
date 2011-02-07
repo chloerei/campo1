@@ -61,7 +61,7 @@ class User
   end
 
   def require_current_password?
-    !new_record? and !password.blank?
+    !new_record? and password.present?
   end
 
   def prepare_password

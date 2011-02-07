@@ -10,6 +10,14 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  
+  def login_as(user)
+    @controller.send 'login_as', user
+  end
+
+  def current_user
+    @controller.send :current_user
+  end
 
   # Drop all columns after each test case.
   def teardown
