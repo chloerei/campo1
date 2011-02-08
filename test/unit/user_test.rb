@@ -6,6 +6,13 @@ class UserTest < ActiveSupport::TestCase
     @user.save
   end
 
+  def test_login_sensitive
+    user = User.new :username => 'Name', :email => 'test2@test.com', :password => '12345678', :password_confirmation => '12345678'
+    assert !user.valid?, user.errors.to_s
+    assert_equal @user, User.authenticate(@user.username.upcase, '12345678')
+    assert_equal @user, User.authenticate(@user.email.upcase, '12345678')
+  end
+
   def test_create_user
     assert_not_nil @user.crypted_password
     assert_not_nil @user.password_salt

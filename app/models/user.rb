@@ -28,7 +28,7 @@ class User
   validate :check_password, :check_current_password
   
   def self.authenticate(login, password)
-    user = first(:conditions => {:username => login}) || first(:conditions => {:email => login})
+    user = first(:conditions => {:username => /^#{login}$/i}) || first(:conditions => {:email => /^#{login}$/i})
     return user if user && user.matching_password?(password)
   end
   
