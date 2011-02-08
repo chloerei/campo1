@@ -17,7 +17,6 @@ class User
   DomainHeadRegex = '(?:[A-Z0-9\-]+\.)+'
   DomainTldRegex  = '(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|jobs|museum)'
   EmailRegex       = /\A#{EmailNameRegex}@#{DomainHeadRegex}#{DomainTldRegex}\z/i
-  EmailInvalidMessage = I18n.t(:it_dont_look_lick_a_email)
   validates_format_of :email, :with => EmailRegex
   validates_length_of :email, :maximum => 100
 

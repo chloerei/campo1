@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user=(user)
-    @current_user = user || nil
+    @current_user = user || false
     session[:user_id] = user ? user.id : nil
   end
 

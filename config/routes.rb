@@ -2,7 +2,7 @@ Campo::Application.routes.draw do
   root :to => "home#index"
 
   get '/login', :controller => 'user_session', :action => 'new', :as => :login
-  delete '/logout', :controller => 'user_session', :action => 'destroy', :as => :logout
+  match '/logout', :controller => 'user_session', :action => 'destroy', :as => :logout
   resource :user_session, :controller => 'user_session', :only => [:create]
 
   # The priority is based upon order of creation:
