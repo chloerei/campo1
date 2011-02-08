@@ -5,6 +5,9 @@ Campo::Application.routes.draw do
   match '/logout', :controller => 'user_session', :action => 'destroy', :as => :logout
   resource :user_session, :controller => 'user_session', :only => [:create]
 
+  get '/signup', :controller => 'users', :action => 'new'
+  resources :users, :only => [:create]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

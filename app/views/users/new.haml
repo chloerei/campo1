@@ -1,0 +1,31 @@
+.section
+  .section-title
+    %h2 Signup
+  .section-content
+    = form_for @user do |f|
+      %table.form-table
+        %tr
+          %th
+            %label Username
+          %td
+            = f.text_field :username, :class => 'text'
+            .meta Letters only, 3-20 chars long, require
+        %tr
+          %th
+            %label Email
+          %td
+            = f.text_field :email, :class => 'text'
+            .meta Never be published, require
+        %tr
+          %th
+            %label Password
+          %td
+            = f.password_field :password, :class => 'text'
+            .meta At least 6 chars long
+        %tr
+          %th
+            %label Password Again
+          %td= f.password_field :password_confirmation, :class => 'text'
+        %tr
+          %th
+          %td= f.submit 'Signup', :class => 'button'

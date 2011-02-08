@@ -3,13 +3,18 @@
     %h2 Login
   .section-content
     = form_for :user, :url => user_session_url do |f|
-      .field
-        %label Username or Email
-        %br/
-        = f.text_field :login, :class => 'text'
-      .field
-        %label Password
-        %br/
-        = f.password_field :password, :class => 'text'
-      .field
-        = f.submit :Login, :class => 'button'
+      %table.form-table
+        %tr
+          %th
+            %label Login
+          %td
+            = f.text_field :login, :class => 'text'
+            .meta username or email
+        %tr
+          %th
+            %label Password
+          %td
+            = f.password_field :password, :class => 'text'
+        %tr
+          %th
+          %td= f.submit :Login, :class => 'button'
