@@ -6,11 +6,24 @@ class ApplicationController < ActionController::Base
   protected
 
   def require_logined
-    redirect_to login_url unless current_logined?
+    if !current_logined?
+      flash[:notice] = "require login"
+      store_location
+      redirect_to login_url
+    end
   end
 
   def require_not_logined
     redirect_to account_url if current_logined?
+  end
+
+  def store_location
+    session[:return_to] = request.fullpath
+  end
+
+  def redirect_back_or_default(default)
+    redirect_to(session[:redirect_to] || default)
+    session[:return_to] = nil
   end
 
   def current_logined?
