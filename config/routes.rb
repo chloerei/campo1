@@ -7,6 +7,8 @@ Campo::Application.routes.draw do
 
   get '/signup', :controller => 'users', :action => 'new'
   resources :users, :only => [:create]
-  resource :account, :controller => 'users', :only => [:show, :update]
+  scope '/settings' do
+    resource :account, :controller => 'users', :only => [:show, :update]
+  end
 
 end
