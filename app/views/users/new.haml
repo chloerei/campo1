@@ -7,26 +7,22 @@
         .error= @user.errors.full_messages
       %table.form-table
         %tr
-          %th
-            %label Username
+          %th= f.label :username
           %td
             = f.text_field :username, :class => 'text'
             .meta Letters only, 3-20 chars long, require
         %tr
-          %th
-            %label Email
+          %th= f.label :email
           %td
             = f.text_field :email, :class => 'text'
             .meta Never be published, require
         %tr
-          %th
-            %label Password
+          %th= f.label :password
           %td
             = f.password_field :password, :class => 'text'
             .meta At least 6 chars long
         %tr
-          %th
-            %label Password Again
+          %th= f.label :password_confirmation, 'Password Again'
           %td
             = f.password_field :password_confirmation, :class => 'text'
         %tr

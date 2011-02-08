@@ -2,8 +2,30 @@
   .section-title
     Account Info
   .section-content
-    username:
-    = @user.username
-    %br/
-    email:
-    = @user.email
+    = form_for @user, :url => account_url, :method => :put do |f|
+      - if !@user.errors.blank?
+        .error= @user.errors.full_messages
+      %table.form-table
+        %tr
+          %th= f.label :username
+          %td= f.text_field :username, :class => 'text'
+        %tr
+          %th= f.label :email
+          %td
+            = f.text_field :email, :class => 'text'
+        %tr
+          %th= f.label :password
+          %td
+            = f.password_field :password, :class => 'text'
+            %span.meta If no change, leave blank
+        %tr
+          %th= f.label :password_confirmation, 'Password Again'
+          %td
+            = f.password_field :password_confirmation, :class => 'text'
+        %tr
+          %th= f.label :current_password
+          %td
+            = f.password_field :current_password, :class => 'text'
+        %tr
+          %th
+          %td= f.submit 'Save', :class => 'button'

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def require_logined
-    
+    redirect_to login_url unless current_logined?
   end
 
   def require_not_logined

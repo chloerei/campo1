@@ -26,4 +26,23 @@ class UsersControllerTest < ActionController::TestCase
     end
     assert_redirected_to account_url
   end
+
+  def test_show
+    get :show
+    assert_redirected_to login_url
+
+    login_as @user
+    get :show
+    assert_response :success, @response.body
+  end
+
+  def test_update
+    post :update, :user => {:username => 'Rei'}
+    assert_redirected_to login_url
+    
+    login_as @user
+
+    post :update, :user => {:username => 'Rei'}
+    assert_equal 'Rei', current_user.username
+  end
 end
