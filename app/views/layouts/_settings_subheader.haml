@@ -1,0 +1,17 @@
+- current ||= :none
+#subheader
+  #mascot
+    %img{:src => '/images/mascot.png'}
+  #tabs
+    %ul
+      - if current == :account
+        %li.current Account
+      - else
+        %li
+          = link_to 'Account', account_url
+      - if current == :password
+        %li.current Password
+      - else
+        %li
+          = link_to 'Password', '#'
+  .clear

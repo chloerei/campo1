@@ -24,24 +24,6 @@
             .error= flash[:error]
           - if flash[:notice]
             .notice= flash[:notice]
-          #subheader
-            #mascot
-              %img{:src => '/images/mascot.png'}
-            #tabs
-              %ul
-                %li.current
-                  Newest
-                %li.tagged-interesting
-                  %a{:href => '#'} Interesting
-                %li.own-topic
-                  %a{:href => '#'} Own
-                %li.collect-topic
-                  %a{:href => '#'} Collect
-                %li
-                  %a{:href => '#'} Week
-                %li
-                  %a{:href => '#'} Month
-            .clear
           = yield
         #sidebar
           = yield :sidebar

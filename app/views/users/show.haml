@@ -1,6 +1,6 @@
+= render :partial => 'layouts/settings_subheader', :locals => {:current => :account}
+
 .section
-  .section-title
-    Account Info
   .section-content
     = form_for @user, :url => account_url, :method => :put do |f|
       - if !@user.errors.blank?
