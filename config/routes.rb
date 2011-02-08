@@ -7,6 +7,7 @@ Campo::Application.routes.draw do
 
   get '/signup', :controller => 'users', :action => 'new'
   resources :users, :only => [:create]
+  resource :account, :controller => 'users', :only => [:show, :edit, :update]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
