@@ -3,6 +3,8 @@
     %h2 Signup
   .section-content
     = form_for @user do |f|
+      - if !@user.errors.blank?
+        .error= @user.errors.full_messages
       %table.form-table
         %tr
           %th
@@ -25,7 +27,8 @@
         %tr
           %th
             %label Password Again
-          %td= f.password_field :password_confirmation, :class => 'text'
+          %td
+            = f.password_field :password_confirmation, :class => 'text'
         %tr
           %th
           %td= f.submit 'Signup', :class => 'button'

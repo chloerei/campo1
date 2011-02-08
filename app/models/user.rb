@@ -49,7 +49,7 @@ class User
 
   def check_password_format
     errors.add(:password_confirmation, "Password and confirmation does not match") unless self.password == self.password_confirmation
-    errors.add(:password, "Password must be at least 4 chars long") if self.password.size < 6
+    errors.add(:password, "Password must be at least 6 chars long") if self.password.to_s.size < 6
   end
 
   def check_current_password
