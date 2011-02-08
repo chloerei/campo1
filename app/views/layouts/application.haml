@@ -13,12 +13,7 @@
         #search
           %input{:type => :text}
           %input{:type => :submit, :value => 'Search'}
-        #top-menu
-          %ul
-            %li
-              %a One
-            %li.last
-              %a Two
+        = render :partial => 'layouts/top_menu'
         .clear
     #content
       .center-wraper
@@ -49,29 +44,7 @@
             .clear
           = yield
         #sidebar
-          .section.profile
-            .avatar
-            .nickname
-              Rei
-            .clear
-            .brief
-              0 follower
-          .section.favor-tags
-            .title Favor Tags
-            .content
-              %ul
-                - 5.times do |n|
-                  %li
-                    %a.tag{:href => '#'}= "Tags#{n}"
-              .clear
-          .section.recent-tags
-            .title Recent Tags
-            .content
-              %ul
-                - 5.times do |n|
-                  %li
-                    %a.tag{:href => '#'}= "Tags#{n}"
-                    = "x #{n}"
+          = yield :sidebar
         .clear
     #footer
       .center-wraper
