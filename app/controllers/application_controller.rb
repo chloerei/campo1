@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
   
   protected
 
+  def require_logined
+    
+  end
+
+  def require_not_logined
+    redirect_to account_url if current_logined?
+  end
+
   def current_logined?
     !!current_user
   end
