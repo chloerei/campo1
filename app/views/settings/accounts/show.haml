@@ -14,5 +14,10 @@
           %td
             = f.text_field :email, :class => 'text'
         %tr
+          %th= f.label :current_password
+          %td
+            = f.password_field :current_password, :class => 'text'
+            .meta for secure
+        %tr
           %th
           %td= f.submit 'Save', :class => 'button'

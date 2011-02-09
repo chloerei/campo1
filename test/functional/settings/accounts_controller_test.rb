@@ -15,12 +15,15 @@ class Settings::AccountsControllerTest < ActionController::TestCase
   end
 
   def test_update
-    post :update, :user => {:username => 'Rei'}
+    post :update, :user => {:username => 'Rei', :current_password => '12345678'}
     assert_redirected_to login_url
     
     login_as @user
 
     post :update, :user => {:username => 'Rei'}
+    assert_template :show
+
+    post :update, :user => {:username => 'Rei', :current_password => '12345678'}
     assert_redirected_to :action => :show
     assert_not_nil User.authenticate('Rei', '12345678')
 
