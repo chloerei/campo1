@@ -3,15 +3,14 @@ class User
 
   field :username
   field :email
-  field :nickname
   field :crypted_password
   field :password_salt
+  embeds_one :profile
 
   validates_presence_of :username, :email
   validates_uniqueness_of :username, :email, :case_sensitive => false
   validates_format_of :username, :with => /\A[A-Za-z0-9_]+\z/
   validates_length_of :username, :in => 3..20
-  validates_length_of :nickname, :in => 3..20, :allow_blank => true
 
   EmailNameRegex  = '[\w\.%\+\-]+'
   DomainHeadRegex = '(?:[A-Z0-9\-]+\.)+'
@@ -21,9 +20,10 @@ class User
   validates_length_of :email, :maximum => 100
 
   attr_accessor :password, :password_confirmation, :current_password
-  attr_accessible :login, :username, :nickname, :email, :password, :password_confirmation, :current_password
+  attr_accessible :login, :username, :email, :password, :password_confirmation, :current_password
 
   before_save :prepare_password
+  after_create :init_profile
 
   validate :check_password, :check_current_password
   
@@ -37,6 +37,10 @@ class User
   end
 
   protected
+
+  def init_profile
+    self.create_profile :name => self.username
+  end
 
   def check_password
     if new_record?

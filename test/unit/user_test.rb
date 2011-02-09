@@ -6,6 +6,11 @@ class UserTest < ActiveSupport::TestCase
     @user.save
   end
 
+  def test_auto_create_profile
+    assert_not_nil @user.profile
+    assert_equal @user.username, @user.profile.name
+  end
+
   def test_login_sensitive
     user = User.new :username => 'Name', :email => 'test2@test.com', :password => '12345678', :password_confirmation => '12345678'
     assert !user.valid?, user.errors.to_s
