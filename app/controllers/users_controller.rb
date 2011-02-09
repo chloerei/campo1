@@ -22,6 +22,9 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
+    params[:user].delete(:password)
+    params[:user].delete(:password_confirmation)
+    params[:user].delete(:current_password)
     if @user.update_attributes params[:user]
       flash[:success] = "Successful update account"
       redirect_to account_url

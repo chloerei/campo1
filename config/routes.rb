@@ -9,6 +9,7 @@ Campo::Application.routes.draw do
   resources :users, :only => [:create]
   scope '/settings' do
     resource :account, :controller => 'users', :only => [:show, :update]
+    resource :password, :only => [:show, :update]
   end
 
 end
