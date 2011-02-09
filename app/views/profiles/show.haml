@@ -1,0 +1,26 @@
+= render :partial => 'layouts/settings_subheader', :locals => {:current => :profile}
+
+.section
+  .section-content
+    = form_for @profile, :url => profile_url, :method => :put do |f|
+      - if !@profile.errors.blank?
+        .error= @profile.errors.full_messages
+      %table.form-table
+        %tr
+          %th= f.label :name
+          %td= f.text_field :name, :class => 'text'
+        %tr
+          %th= f.label :url
+          %td
+            = f.text_field :url, :class => 'text'
+        %tr
+          %th= f.label :twitter
+          %td
+            = f.text_field :twitter, :class => 'text'
+        %tr
+          %th= f.label :description
+          %td
+            = f.text_area :description
+        %tr
+          %th
+          %td= f.submit 'Save', :class => 'button'

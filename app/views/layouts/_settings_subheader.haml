@@ -9,9 +9,16 @@
       - else
         %li
           = link_to 'Account', account_url
+
       - if current == :password
         %li.current Password
       - else
         %li
           = link_to 'Password', password_url
+
+      - if current == :profile
+        %li.current Profile
+      - else
+        %li
+          = link_to 'Profile', profile_url
   .clear
