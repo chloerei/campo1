@@ -8,17 +8,17 @@
         %li.current Account
       - else
         %li
-          = link_to 'Account', account_url
+          = link_to 'Account', settings_account_url
 
       - if current == :password
         %li.current Password
       - else
         %li
-          = link_to 'Password', password_url
+          = link_to 'Password', settings_password_url
 
       - if current == :profile
         %li.current Profile
       - else
         %li
-          = link_to 'Profile', profile_url
+          = link_to 'Profile', settings_profile_url
   .clear

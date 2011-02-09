@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PasswordsControllerTest < ActionController::TestCase
+class Settings::AccountsControllerTest < ActionController::TestCase
   def setup
     @user = User.create :username => 'test', :email => 'test@test.com', :password => '12345678', :password_confirmation => '12345678'
   end
@@ -15,22 +15,17 @@ class PasswordsControllerTest < ActionController::TestCase
   end
 
   def test_update
-    post :update, :user => {:password => '87654321', :password_confirmation => '87654321', :current_password => '12345678'}
+    post :update, :user => {:username => 'Rei'}
     assert_redirected_to login_url
     
     login_as @user
 
-    # ignore params no password relate
     post :update, :user => {:username => 'Rei'}
     assert_redirected_to :action => :show
-    assert_nil User.authenticate('Rei', 12345678)
+    assert_not_nil User.authenticate('Rei', '12345678')
 
-    post :update, :user => {:password => '87654321', :password_confirmation => '87654321'}
-    assert_template :show
-    assert_equal @user, User.authenticate(@user.username, '12345678')
-
+    # ignore password relate
     post :update, :user => {:password => '87654321', :password_confirmation => '87654321', :current_password => '12345678'}
-    assert_equal @user, User.authenticate(@user.username, '87654321')
-    assert_redirected_to :action => :show
+    assert_equal @user, User.authenticate(@user.email, '12345678')
   end
 end

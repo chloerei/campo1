@@ -1,4 +1,4 @@
-class PasswordsController < ApplicationController
+class Settings::PasswordsController < ApplicationController
   before_filter :require_logined
 
   def show
@@ -11,7 +11,7 @@ class PasswordsController < ApplicationController
                                :password_confirmation => params[:user][:password_confirmation],
                                :current_password => params[:user][:current_password]
       flash[:success] = "Successful update password"
-      redirect_to password_url
+      redirect_to :action => :show
     else
       render :show
     end

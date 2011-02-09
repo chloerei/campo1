@@ -1,0 +1,2 @@
+module Settings::AccountsHelper
+end

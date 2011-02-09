@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_not_logined
-    redirect_to account_url if current_logined?
+    redirect_to root_url if current_logined? # TODO redirect to public profile page
   end
 
   def store_location

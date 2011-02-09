@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_not_logined, :only => [:new, :create]
-  before_filter :require_logined, :except => [:new, :create]
+  before_filter :require_not_logined
   def new
     @user = User.new
   end
@@ -10,26 +9,10 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Successful Signup"
       login_as @user
-      redirect_to account_url
+      redirect_to root_url
     else
       render :new
     end
   end
 
-  def show
-    @user = current_user
-  end
-
-  def update
-    @user = current_user
-    params[:user].delete(:password)
-    params[:user].delete(:password_confirmation)
-    params[:user].delete(:current_password)
-    if @user.update_attributes params[:user]
-      flash[:success] = "Successful update account"
-      redirect_to account_url
-    else
-      render :show
-    end
-  end
 end

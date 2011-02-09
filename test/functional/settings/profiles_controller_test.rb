@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ProfilesControllerTest < ActionController::TestCase
+class Settings::ProfilesControllerTest < ActionController::TestCase
   def setup
     @user = User.create :username => 'test', :email => 'test@test.com', :password => '12345678', :password_confirmation => '12345678'
   end
