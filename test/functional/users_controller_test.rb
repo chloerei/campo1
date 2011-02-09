@@ -43,7 +43,8 @@ class UsersControllerTest < ActionController::TestCase
     login_as @user
 
     post :update, :user => {:username => 'Rei'}
-    assert_equal 'Rei', current_user.username
+    assert_redirected_to account_url
+    assert_not_nil User.authenticate('Rei', '12345678')
 
     # ignore password relate
     post :update, :user => {:password => '87654321', :password_confirmation => '87654321', :current_password => '12345678'}

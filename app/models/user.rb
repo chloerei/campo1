@@ -67,6 +67,7 @@ class User
     unless password.blank?
       self.password_salt = Digest::SHA1.hexdigest([Time.now, rand].join)
       self.crypted_password = encrypt_password(self.password) 
+      self.password = self.password_confirmation = nil
     end
   end
 

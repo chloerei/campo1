@@ -1,0 +1,24 @@
+= render :partial => 'layouts/settings_subheader', :locals => {:current => :password}
+
+.section
+  .section-content
+    = form_for @user, :url => password_url, :method => :put do |f|
+      - if !@user.errors.blank?
+        .error= @user.errors.full_messages
+      %table.form-table
+        %tr
+          %th= f.label :password
+          %td
+            = f.password_field :password, :class => 'text'
+        %tr
+          %th= f.label :password_confirmation, 'Password Again'
+          %td
+            = f.password_field :password_confirmation, :class => 'text'
+        %tr
+          %th= f.label :current_password
+          %td
+            = f.password_field :current_password, :class => 'text'
+            .meta for secure
+        %tr
+          %th
+          %td= f.submit 'Save', :class => 'button'
