@@ -1,5 +1,7 @@
 class User
   include Mongoid::Document
+  include Gravtastic
+  gravtastic
 
   field :username
   field :email

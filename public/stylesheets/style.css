@@ -111,6 +111,14 @@ textarea {
 
 /* common */
 
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+ } 
+
 .center-wraper {
     width: 960px;
     margin: 0 auto;
@@ -244,7 +252,7 @@ textarea {
     padding: 20px 0;
 }
 
-#mainbar .meta {
+#mainbar .meta, #mainbar .tips {
     color: #AAA;
     font-size: 0.9em;
     font-weight: bold;

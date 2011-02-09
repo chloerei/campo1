@@ -7,6 +7,20 @@
         .error= @profile.errors.full_messages
       %table.form-table
         %tr
+          %th
+            %label Avatar
+          %td
+            = image_tag @profile.user.gravatar_url(:size => 128)
+            .tips
+              %p
+                We use Gravatar.(
+                = link_to "What's Gravatar?", 'http://www.gravatar.com/'
+                )
+                %br/
+                = link_to 'Change Emai', settings_account_url
+                = '/'
+                = link_to 'Go to Gravatar', 'http://www.gravatar.com/'
+        %tr
           %th= f.label :name
           %td= f.text_field :name, :class => 'text'
         %tr
