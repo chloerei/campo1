@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserSessionControllerTest < ActionController::TestCase
+class UserSessionsControllerTest < ActionController::TestCase
   def setup
     @user = User.create :username => 'test', :email => 'test@test.com', :password => '12345678', :password_confirmation => '12345678'
   end
