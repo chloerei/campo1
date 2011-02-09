@@ -90,9 +90,10 @@ table.form-table td {
 }
 
 table.form-table th {
-    text-align: right;
+    text-align: left;
     padding: 11px 10px 0 0;
     vertical-align: top;
+    width: 150px;
 }
 
 input.text { width: 200px; }
@@ -292,7 +293,7 @@ textarea {
 
 #mainbar #tabs ul {
     list-style: none;
-    margin: 0;
+    margin: 0 10px 0 0;
     padding: 0;
 }
 
