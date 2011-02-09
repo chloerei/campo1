@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
     if @user
       flash[:success] = "Success login"
       login_as @user
-      redirect_to root_url
+      redirect_back_or_default root_url
     else
       flash[:error] = "Wrong login name or password"
       redirect_to login_url

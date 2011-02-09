@@ -8,11 +8,11 @@
       %table.form-table
         %tr
           %th= f.label :username
-          %td= f.text_field :username, :class => 'text'
+          %td= f.text_field :username, :class => 'text', :maxlength => 20
         %tr
           %th= f.label :email
           %td
-            = f.text_field :email, :class => 'text'
+            = f.text_field :email, :class => 'text', :maxlength => 100
         %tr
           %th= f.label :current_password
           %td

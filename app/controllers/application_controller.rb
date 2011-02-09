@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_back_or_default(default)
-    redirect_to(session[:redirect_to] || default)
+    redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
 

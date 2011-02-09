@@ -10,27 +10,28 @@
           %th
             %label Avatar
           %td
-            = image_tag @profile.user.gravatar_url(:size => 128)
+            = image_tag @profile.user.gravatar_url(:size => 128), :alt => 'gravatar'
             .tips
               %p
                 We use Gravatar.(
                 = link_to "What's Gravatar?", 'http://www.gravatar.com/'
                 )
                 %br/
-                = link_to 'Change Emai', settings_account_url
+                = link_to 'Change Email', settings_account_url
                 = '/'
                 = link_to 'Go to Gravatar', 'http://www.gravatar.com/'
         %tr
           %th= f.label :name
-          %td= f.text_field :name, :class => 'text'
+          %td= f.text_field :name, :class => 'text', :maxlength => 20
         %tr
           %th= f.label :url
           %td
-            = f.text_field :url, :class => 'text'
+            = f.text_field :url, :class => 'text', :maxlength => 100
         %tr
           %th= f.label :twitter
           %td
-            = f.text_field :twitter, :class => 'text'
+            = f.text_field :twitter, :class => 'text', :maxlength => 15
+
         %tr
           %th= f.label :description
           %td
