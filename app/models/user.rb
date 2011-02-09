@@ -7,6 +7,8 @@ class User
   field :email
   field :crypted_password
   field :password_salt
+  field :remember_token
+  field :remember_token_expires_at, :type => Time
   embeds_one :profile
 
   validates_presence_of :username, :email
@@ -38,7 +40,35 @@ class User
     self.crypted_password == encrypt_password(password)
   end
 
+  def remember_me
+    remember_me_for 4.weeks
+  end
+
+  def remember_token?
+    remember_token and remember_token_expires_at and Time.now < remember_token_expires_at
+  end
+
+  def forget_me
+    self.remember_token = nil
+    self.remember_token_expires_at = nil
+    save
+  end
+
   protected
+
+  def self.make_token
+    User.digest(Time.now, 1, (1..10).map{ rand.to_s })
+  end
+
+  def remember_me_for(time)
+    remember_me_until time.from_now.utc
+  end
+
+  def remember_me_until(time)
+    self.remember_token            = self.class.make_token
+    self.remember_token_expires_at = time
+    save
+  end
 
   def init_profile
     self.create_profile :name => self.username

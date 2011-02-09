@@ -17,4 +17,14 @@ class UserSessionsControllerTest < ActionController::TestCase
     assert_redirected_to root_url
     assert_equal false, current_user
   end
+
+  def test_remember_me
+    post :create, :user => {:login => 'test', :password => '12345678'}
+    assert_equal @user, current_user
+    assert_nil cookies['auth_token']
+
+    post :create, :user => {:login => 'test', :password => '12345678', :remember_me => 1}
+    assert_equal @user, current_user
+    assert_not_nil cookies['auth_token']
+  end
 end

@@ -7,6 +7,7 @@ class UserSessionsController < ApplicationController
     if @user
       flash[:success] = "Success login"
       login_as @user
+      set_remember_cookie if params[:user][:remember_me]
       redirect_back_or_default root_url
     else
       flash[:error] = "Wrong login name or password"

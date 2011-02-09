@@ -6,6 +6,27 @@ class UserTest < ActiveSupport::TestCase
     @user.save
   end
 
+  def test_remember_token
+    assert_nil @user.remember_token
+    assert_nil @user.remember_token_expires_at
+    @user.remember_me
+    assert_not_nil @user.remember_token
+    assert_not_nil @user.remember_token_expires_at
+
+    old_token = @user.remember_token
+    @user.remember_me
+    assert_not_equal old_token, @user.remember_token
+
+    assert @user.remember_token?
+    @user.remember_token_expires_at = Time.now - 1
+    @user.save
+    assert !@user.remember_token?
+
+    @user.forget_me
+    assert_nil @user.remember_token
+    assert_nil @user.remember_token_expires_at
+  end
+
   def test_auto_create_profile
     assert_not_nil @user.profile
     assert_equal @user.username, @user.profile.name

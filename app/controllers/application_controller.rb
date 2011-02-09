@@ -31,12 +31,12 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= login_form_session || false if @current_user != false
+    @current_user ||= login_form_session || login_from_cookies || false if @current_user != false
     @current_user
   end
 
   def current_user=(user)
-    @current_user = user || false
+    @current_user = user
     session[:user_id] = user ? user.id : nil
   end
 
@@ -45,12 +45,37 @@ class ApplicationController < ActionController::Base
   end
 
   def logout
+    current_user.forget_me
     self.current_user = nil
+    kill_remember_cookie
   end
 
   def login_form_session
     User.find session[:user_id] if session[:user_id]
   rescue
     nil
+  end
+
+  def login_from_cookies
+    user = User.first :conditions => {:remember_token => cookies[:auth_token]} if cookies[:auth_token]
+    if user and user.remember_token?
+      user
+    else
+      kill_remember_cookie if cookies[:auth_token]
+      nil
+    end
+  end
+
+  def kill_remember_cookie
+    cookies.delete :auth_token
+  end
+
+  def set_remember_cookie
+    return if !current_logined?
+
+    current_user.remember_me
+    cookies[:auth_token] = {
+      :value   => current_user.remember_token,
+      :expires => current_user.remember_token_expires_at }
   end
 end
