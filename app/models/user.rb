@@ -10,6 +10,8 @@ class User
   field :remember_token
   field :remember_token_expires_at, :type => Time
   embeds_one :profile
+  
+  references_many :topics
 
   validates_presence_of :username, :email
   validates_uniqueness_of :username, :email, :case_sensitive => false
