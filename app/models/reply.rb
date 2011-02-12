@@ -7,4 +7,6 @@ class Reply
   referenced_in :user
 
   validates_presence_of :content
+
+  attr_accessible :content
 end

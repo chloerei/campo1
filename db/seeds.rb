@@ -6,4 +6,8 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-User.create :username => 'test', :email => 'test@test.com', :password => '12345678', :password_confirmation => '12345678'
+user = User.create :username => 'test', :email => 'test@test.com', :password => '12345678', :password_confirmation => '12345678'
+
+5.times do |n|
+  user.topics.create :title => "Topic #{n}", :content => "content", :tags => "tag tag2"
+end

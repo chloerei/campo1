@@ -13,4 +13,6 @@ Campo::Application.routes.draw do
     resource :profile, :only => [:show, :update]
   end
 
+  resources :topics
+
 end

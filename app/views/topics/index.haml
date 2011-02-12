@@ -1,0 +1,20 @@
+#topics
+  %ul.item-list
+    - @topics.each do |topic|
+      %li
+        .left-column.avatar
+          = image_tag topic.user.gravatar_url(:size => 48)
+        .right-column
+          .title= link_to topic.title, '#'
+          .reply-count
+          .clear
+          .meta
+            Create by
+            = link_to topic.user.profile.name, '#'
+            Reply by
+            = link_to 'todo', '#'
+            - if topic.tags
+              Tags:
+              - topic.tags.each do |tag|
+                = link_to tag, '#'
+        .clear

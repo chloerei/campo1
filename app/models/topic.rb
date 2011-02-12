@@ -12,6 +12,8 @@ class Topic
   validates_length_of :title, :maximum => 100
   validates_length_of :tags, :maximum => 5
 
+  attr_accessible :title, :content, :tags
+
   def tags=(str)
     write_attribute :tags, str.split
   end
