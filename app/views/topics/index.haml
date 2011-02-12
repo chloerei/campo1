@@ -5,7 +5,7 @@
         .left-column.avatar
           = image_tag topic.user.gravatar_url(:size => 48)
         .right-column
-          .title= link_to topic.title, '#'
+          .title= link_to topic.title, topic
           .reply-count
           .clear
           .meta

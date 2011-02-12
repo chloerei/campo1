@@ -3,6 +3,7 @@ require 'test_helper'
 class TopicsControllerTest < ActionController::TestCase
   def setup
     @user = create_user
+    @topic = @user.topics.create :title => 'title', :content => 'content'
     
   end
 
@@ -12,5 +13,7 @@ class TopicsControllerTest < ActionController::TestCase
   end
 
   def test_show
+    get :show, :id => @topic.to_param
+    assert_response :success, @response.body
   end
 end

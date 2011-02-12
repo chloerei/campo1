@@ -4,6 +4,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    
+    @topic = Topic.find params[:id]
+    @replies = @topic.replies.skip(params[:skip]).limit(20)
   end
 end

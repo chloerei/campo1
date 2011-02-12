@@ -1,0 +1,28 @@
+#topic
+  .header
+    %h1= @topic.title
+    .meta
+      Create by
+      = link_to @topic.user.profile.name, '#'
+      - if @topic.tags
+        Tags:
+        - @topic.tags.each do |tag|
+          = link_to tag, '#'
+  .avatar
+    = image_tag @topic.user.gravatar_url(:size => 64)
+  .clear
+  .content= @topic.content
+#replies
+  %ul.item-list
+    - if @replies.blank?
+      Not Reply Yet
+    - @replies.each do |reply|
+      %li
+        .left-column.avatar
+          = image_tag reply.user.gravatar_url(:size => 48)
+        .right-column
+          .meta
+            %span.author= link_to reply.user.profile.name, '#'
+            %span.time= 'todo'
+          .content= reply.content
+        .clear
