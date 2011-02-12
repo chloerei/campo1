@@ -2,20 +2,20 @@
   .header
     %h1= @topic.title
     .meta
-      Create by
-      = link_to @topic.user.profile.name, '#'
       - if @topic.tags
         Tags:
         - @topic.tags.each do |tag|
           = link_to tag, '#'
+      Create by
+      = link_to @topic.user.profile.name, '#'
+      = time_ago_in_words @topic.created_at
+      ago.
   .avatar
     = image_tag @topic.user.gravatar_url(:size => 64)
   .clear
   .content= @topic.content
 #replies
   %ul.item-list
-    - if @replies.blank?
-      Not Reply Yet
     - @replies.each do |reply|
       %li
         .left-column.avatar
@@ -23,6 +23,8 @@
         .right-column
           .meta
             %span.author= link_to reply.user.profile.name, '#'
-            %span.time= 'todo'
+            %span.time
+              = time_ago_in_words reply.created_at
+              ago
           .content= reply.content
         .clear

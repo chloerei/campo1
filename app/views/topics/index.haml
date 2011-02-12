@@ -9,12 +9,14 @@
           .reply-count
           .clear
           .meta
-            Create by
-            = link_to topic.user.profile.name, '#'
-            Reply by
-            = link_to 'todo', '#'
             - if topic.tags
               Tags:
               - topic.tags.each do |tag|
                 = link_to tag, '#'
+            Create by
+            = link_to topic.user.profile.name, '#'
+            Reply by
+            = link_to 'todo', '#'
+            = time_ago_in_words topic.created_at
+            ago.
         .clear
