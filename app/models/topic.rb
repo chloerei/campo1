@@ -27,6 +27,6 @@ class Topic
   end
 
   def tags_string
-    return tags.joni(' ') unless tags.blank?
+    return tags.join(' ') unless tags.blank?
   end
 end

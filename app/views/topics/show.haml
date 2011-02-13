@@ -12,6 +12,8 @@
       = link_to @user_hash[@topic.user_id].profile.name, '#'
       = time_ago_in_words @topic.created_at
       ago.
+      - if current_logined? and @topic.user == current_user
+        = link_to 'Edit', edit_topic_url(@topic)
   .avatar
     = image_tag @user_hash[@topic.user_id].gravatar_url(:size => 64)
   .clear

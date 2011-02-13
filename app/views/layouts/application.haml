@@ -13,7 +13,7 @@
         #search
           %input{:type => :text}
           %input{:type => :submit, :value => 'Search'}
-        = render :partial => 'layouts/top_menu'
+        = render :partial => 'share/top_menu'
         .clear
     #content
       .center-wraper
@@ -26,6 +26,7 @@
             .notice= flash[:notice]
           = yield
         #sidebar
+          = render :partial => 'share/sidebar_profile'
           = yield :sidebar
         .clear
     #footer

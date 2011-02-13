@@ -1,0 +1,6 @@
+- if current_logined?
+  .section.profile
+    .section-content
+      .avatar= image_tag current_user.gravatar_url(:size => 48)
+      .name= link_to current_user.profile.name, '#TODO'
+      .clear

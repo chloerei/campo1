@@ -27,3 +27,9 @@
             ago
         .clear
   = paginate_for @topics
+
+- content_for :sidebar do
+  - if current_logined?
+    .section
+      .section-content
+        = link_to 'Create Topic', new_topic_url, :class => 'button'
