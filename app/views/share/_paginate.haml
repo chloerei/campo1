@@ -1,0 +1,9 @@
+- total = collection.count
+- skip  = collection.options[:skip]
+- limit = collection.options[:limit]
+.paginate
+  - if skip > 0
+    - prev_skip = (skip - 20) > 0 ? skip - 20 : nil
+    = link_to 'Prev', url_for(:skip => prev_skip), :class => 'prev button'
+  - if skip + 20 < total
+    = link_to 'Next', url_for(:skip => skip + 20), :class => 'next button'

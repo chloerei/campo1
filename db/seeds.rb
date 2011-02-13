@@ -8,9 +8,9 @@
 
 user = User.create :username => 'test', :email => 'test@test.com', :password => '12345678', :password_confirmation => '12345678'
 
-5.times do |n|
+50.times do |n|
   t = user.topics.create :title => "Topic #{n}", :content => "content", :tags => "tag tag2"
-  3.times do
+  50.times do
     r = Reply.new :content => 'content'
     r.user = user
     r.topic = t
