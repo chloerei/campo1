@@ -28,8 +28,31 @@
           .meta
             %span.author= link_to @user_hash[reply.user_id].profile.name, '#'
             %span.time
+              - if current_logined? and reply.user == current_user
+                = link_to 'Edit', edit_reply_url(reply)
               = time_ago_in_words reply.created_at
               ago
           .content= reply.content
         .clear
   = paginate_for @replies
+
+#reply-form.section
+  .section-title
+    %h2 Leave a reply
+  .section-content
+    - if current_logined?
+      .meta
+        Login as
+        = link_to current_user.profile.name, '#TODO'
+      .left-column.avatar
+        = image_tag current_user.gravatar_url(:size => 48)
+      .right-column
+        = form_for @reply do |f|
+          = render :partial => 'replies/form', :object => f
+          .field
+            = f.submit 'Post', :class => 'button'
+      .clear
+    - else
+      .meta
+        = link_to 'Login', login_url, :class => 'button'
+        for reply.

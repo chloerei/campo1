@@ -16,6 +16,10 @@ class TopicsController < ApplicationController
     users = User.where(:_id.in => user_ids)
     @user_hash = {}
     users.each{|user| @user_hash[user.id] = user}
+
+    if current_logined?
+      @reply = @topic.replies.new
+    end
   end
 
   def new

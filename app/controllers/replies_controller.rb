@@ -13,12 +13,13 @@ class RepliesController < ApplicationController
     if @reply.save
       redirect_to topic_url(@topic, :skip => @topic.replies_count / 20 * 20)
     else
-      render :new
+      render :new, :topic_id => @topic.id
     end
   end
 
   def edit
     @reply = current_user.replies.find params[:id]
+    @topic = @reply.topic
   end
 
   def update

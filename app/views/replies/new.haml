@@ -1,0 +1,16 @@
+= render :partial => 'topics/subheader'
+
+#reply-form.section
+  .section-title
+    %h2 New Reply
+  .section-content
+    .meta
+      for
+      = @topic.title
+    .left-column.avatar
+      = image_tag current_user.gravatar_url(:size => 48)
+    .right-column
+      = form_for @reply do |f|
+        = render :partial => 'form', :object => f
+        .field
+          = f.submit 'Post', :class => 'button'
