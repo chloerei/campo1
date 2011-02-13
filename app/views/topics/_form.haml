@@ -6,4 +6,4 @@
   = form.text_area :content, :class => 'editor'
 .field
   = form.label :tags
-  = form.text_field :tags, :class => 'text tags'
+  = form.text_field :tags, :value => form.object.tags_string, :class => 'text tags'

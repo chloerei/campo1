@@ -25,4 +25,8 @@ class Topic
       write_attribute :tags, value if !value.empty?
     end
   end
+
+  def tags_string
+    return tags.joni(' ') unless tags.blank?
+  end
 end

@@ -30,4 +30,17 @@ class TopicsController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @topic = current_user.topics.find params[:id]
+  end
+
+  def update
+    @topic = current_user.topics.find params[:id]
+    if @topic.update_attributes params[:topic]
+      redirect_to @topic
+    else
+      render :edit
+    end
+  end
 end
