@@ -11,7 +11,7 @@ class RepliesController < ApplicationController
     @reply = @topic.replies.new params[:reply]
     @reply.user = current_user
     if @reply.save
-      redirect_to topic_url(@topic, :skip => @topic.replies_count / 20 * 20)
+      redirect_to topic_url(@topic, :skip => @topic.replies_count / 20 * 20, :anchor => "reply-#{@reply.id}")
     else
       render :new, :topic_id => @topic.id
     end
@@ -26,7 +26,7 @@ class RepliesController < ApplicationController
     @reply = current_user.replies.find params[:id]
     @topic = @reply.topic
     if @reply.update_attributes params[:reply]
-      redirect_to @topic
+      redirect_to params[:return_to].blank? ? @topic : "#{params[:return_to]}##{@reply.id}"
     else
       render :edit
     end

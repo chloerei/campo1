@@ -21,11 +21,12 @@
 #replies
   %ul.item-list
     - @replies.each do |reply|
-      %li
+      %li{:id => "reply-#{reply.id}"}
         .left-column.avatar
           = image_tag @user_hash[reply.user_id].gravatar_url(:size => 48)
         .right-column
           .meta
+            %a{:name => "#{reply.id}"}
             %span.author= link_to @user_hash[reply.user_id].profile.name, '#'
             %span.time
               - if current_logined? and reply.user == current_user

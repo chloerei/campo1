@@ -10,7 +10,7 @@
     .left-column.avatar
       = image_tag current_user.gravatar_url(:size => 48)
     .right-column
-      = form_for @reply do |f|
+      = form_for @reply, :url => reply_url(@reply, :return_to => request.referer) do |f|
         = render :partial => 'form', :object => f
         .field
           = f.submit 'Post', :class => 'button'
