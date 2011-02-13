@@ -1,0 +1,36 @@
+- current ||= :none
+#subheader
+  #mascot
+    %img{:src => '/images/mascot.png'}
+  #tabs
+    %ul
+      - if current == :active
+        %li.current Active
+      - else
+        %li
+          = link_to 'Active', topics_url
+
+      - if current == :interesting
+        %li.tagged-interesting.current Interesting
+      - else
+        %li.tagged-interesting
+          = link_to 'Interesting', topics_url
+
+      - if current == :own
+        %li.own-topic.current Own
+      - else
+        %li.own-topic
+          = link_to 'Own', topics_url
+
+      - if current == :newest
+        %li Newest
+      - else
+        %li
+          = link_to 'Newest', topics_url
+
+      - if current == :collect
+        %li Collect
+      - else
+        %li
+          = link_to 'Collect', topics_url
+  .clear
