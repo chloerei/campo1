@@ -13,6 +13,7 @@ Campo::Application.routes.draw do
     resource :profile, :only => [:show, :update]
   end
 
-  resources :topics
+  resources :topics, :except => [:destroy]
+  resources :replies, :only => [:new, :create, :edit, :update]
 
 end

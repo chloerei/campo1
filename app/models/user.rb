@@ -14,6 +14,7 @@ class User
   embeds_one :profile
   
   references_many :topics
+  references_many :replies
 
   validates_presence_of :username, :email
   validates_uniqueness_of :username, :email, :case_sensitive => false
