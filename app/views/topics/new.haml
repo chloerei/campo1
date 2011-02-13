@@ -1,0 +1,12 @@
+= render :partial => 'subheader'
+
+#new-topic-form.section
+  .section-title
+    %h2 New Topic
+  .section-content
+    = form_for @topic do |f|
+      - if !@topic.errors.blank?
+        .error= @topic.errors.full_messages
+      = render :partial => 'form', :object => f
+      .field
+        = f.submit 'Create', :class => 'button'

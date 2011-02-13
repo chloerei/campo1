@@ -128,7 +128,7 @@ textarea {
     clear: both;
 }
 
-.paginate .button, .tag {
+a.button, .tag {
     -moz-border-radius: 12px;
     border-radius: 12px;
     -moz-box-shadow: 1px 1px 3px #AAA;
@@ -139,7 +139,7 @@ textarea {
     padding: 3px 9px;
 }
 
-.paginate .button:hover, .tag:hover {
+a.button:hover, .tag:hover {
     background-color: #CC2A2A;
     text-decoration: none;
 }
@@ -507,7 +507,7 @@ textarea {
     margin: 0 0 20px;
 }
 
-#sidebar .section .title {
+#sidebar .section-title {
     font-size: 1.2em;
 }
 
@@ -518,7 +518,7 @@ textarea {
     margin: 0 10px 10px 0;
 }
 
-#sidebar .profile .nickname{
+#sidebar .profile .name{
     float: left;
     font-size: 1.2em;
 }

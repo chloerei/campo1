@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  before_filter :require_logined, :except => [:index, :show]
+
   def index
     @topics = Topic.skip(params[:skip].to_i).limit(20).cache
     user_ids = @topics.map{|topic| [topic.user_id, topic.last_replied_by_id]}.flatten.compact.uniq
@@ -14,5 +16,18 @@ class TopicsController < ApplicationController
     users = User.where(:_id.in => user_ids)
     @user_hash = {}
     users.each{|user| @user_hash[user.id] = user}
+  end
+
+  def new
+    @topic = Topic.new
+  end
+
+  def create
+    @topic = current_user.topics.new params[:topic]
+    if @topic.save
+      redirect_to @topic
+    else
+      render :new
+    end
   end
 end

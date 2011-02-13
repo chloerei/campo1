@@ -18,7 +18,11 @@ class Topic
 
   attr_accessible :title, :content, :tags
 
-  def tags=(str)
-    write_attribute :tags, str.split
+  def tags=(value)
+    if value.is_a? String
+      write_attribute :tags, value.split if !value.empty?
+    elsif value.is_a? Array
+      write_attribute :tags, value if !value.empty?
+    end
   end
 end

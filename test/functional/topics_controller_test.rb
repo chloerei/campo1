@@ -16,4 +16,24 @@ class TopicsControllerTest < ActionController::TestCase
     get :show, :id => @topic.to_param
     assert_response :success, @response.body
   end
+
+  def test_new
+    get :new
+    assert_redirected_to login_url
+
+    login_as @user
+    get :new
+    assert_response :success, @response.body
+  end
+
+  def test_create
+    post :create, :topic => {:title => 'title', :content => 'content', :tags => 'tag1, tag2'}
+    assert_redirected_to login_url
+
+    login_as @user
+    assert_difference "Topic.count" do
+      post :create, :topic => {:title => 'title', :content => 'content', :tags => 'tag1, tag2'}
+    end
+    assert_response :redirect, @response.body
+  end
 end
