@@ -9,7 +9,7 @@
         .right-column
           .title= link_to topic.title, topic
           .reply-count
-            = link_to topic.replies_count.to_i, topic
+            = link_to topic.replies_count, topic
           .clear
           .meta
             - if topic.tags

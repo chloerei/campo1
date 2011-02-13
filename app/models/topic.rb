@@ -10,7 +10,7 @@ class Topic
   referenced_in :user
   referenced_in :last_replied_by, :class_name => 'User'
   field :last_replied_at, :type => Time
-  field :replies_count, :type => Integer
+  field :replies_count, :type => Integer, :default => 0
 
   validates_presence_of :title, :content
   validates_length_of :title, :maximum => 100

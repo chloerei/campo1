@@ -21,8 +21,5 @@ class ReplyTest < ActiveSupport::TestCase
     assert_difference "@topic.replies_count.to_i", -1 do
       reply.destroy
     end
-    assert_nil @topic.last_replied_by
-    assert_nil @topic.last_replied_at
-    assert_nil @topic.replies_count
   end
 end
