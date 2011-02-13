@@ -9,11 +9,11 @@
         - @topic.tags.each do |tag|
           = link_to tag, '#'
       Create by
-      = link_to @topic.user.profile.name, '#'
+      = link_to @user_hash[@topic.user_id].profile.name, '#'
       = time_ago_in_words @topic.created_at
       ago.
   .avatar
-    = image_tag @topic.user.gravatar_url(:size => 64)
+    = image_tag @user_hash[@topic.user_id].gravatar_url(:size => 64)
   .clear
   .content= @topic.content
 #replies
@@ -21,10 +21,10 @@
     - @replies.each do |reply|
       %li
         .left-column.avatar
-          = image_tag reply.user.gravatar_url(:size => 48)
+          = image_tag @user_hash[reply.user_id].gravatar_url(:size => 48)
         .right-column
           .meta
-            %span.author= link_to reply.user.profile.name, '#'
+            %span.author= link_to @user_hash[reply.user_id].profile.name, '#'
             %span.time
               = time_ago_in_words reply.created_at
               ago

@@ -3,6 +3,7 @@ class User
   include Mongoid::Timestamps
   include Gravtastic
   gravtastic
+  cache
 
   field :username
   field :email
