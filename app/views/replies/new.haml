@@ -1,3 +1,7 @@
+- content_for :head do
+  = javascript_include_tag 'showdown', 'wmd'
+  = stylesheet_link_tag 'wmd'
+
 = render :partial => 'topics/subheader'
 
 #reply-form.section

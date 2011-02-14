@@ -3,7 +3,15 @@
   = form.text_field :title, :class => 'text title', :maxlength => 100
 .field
   = form.label :content
-  = form.text_area :content, :class => 'editor'
+  #editor-button-bar
+  = form.text_area :content, :class => 'editor', :id => 'editor-input'
+  #editor-preview
+  :javascript
+    setup_wmd({
+                input: "editor-input",
+                button_bar: "editor-button-bar",
+                preview: "editor-preview",
+              });
 .field
   = form.label :tags
   = form.text_field :tags, :value => form.object.tags_string, :class => 'text tags'

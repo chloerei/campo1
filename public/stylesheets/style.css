@@ -491,6 +491,12 @@ a.button:hover, .tag:hover {
     height: 300px;
 }
 
+#editor-preview {
+    border: 2px dotted #CCCCCC;
+    margin-top: 10px;
+    padding: 5px;
+}
+
 .paginate {
     margin: 10px;
     width: 700px;

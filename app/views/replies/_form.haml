@@ -1,3 +1,11 @@
 .field
   = form.hidden_field :topic_id
-  = form.text_area :content
+  #editor-button-bar
+  = form.text_area :content, :id => 'editor-input'
+  #editor-preview
+  :javascript
+    setup_wmd({
+                input: "editor-input",
+                button_bar: "editor-button-bar",
+                preview: "editor-preview",
+              });

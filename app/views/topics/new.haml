@@ -1,3 +1,7 @@
+- content_for :head do
+  = javascript_include_tag 'showdown', 'wmd'
+  = stylesheet_link_tag 'wmd'
+
 = render :partial => 'subheader'
 
 #new-topic-form.section
@@ -10,3 +14,4 @@
       = render :partial => 'form', :object => f
       .field
         = f.submit 'Create', :class => 'button'
+
