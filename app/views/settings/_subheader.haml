@@ -5,19 +5,22 @@
   #tabs
     %ul
       - if current == :account
-        %li.current Account
+        %li.current
+          = link_to 'Account', settings_account_url
       - else
         %li
           = link_to 'Account', settings_account_url
 
       - if current == :password
-        %li.current Password
+        %li.current
+          = link_to 'Password', settings_password_url
       - else
         %li
           = link_to 'Password', settings_password_url
 
       - if current == :profile
-        %li.current Profile
+        %li.current
+          = link_to 'Profile', settings_profile_url
       - else
         %li
           = link_to 'Profile', settings_profile_url

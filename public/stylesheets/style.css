@@ -260,6 +260,7 @@ a.button:hover, .tag:hover {
 
 #mainbar .section {
     margin-bottom: 20px;
+    margin-top: 10px;
     padding: 0 10px;
 }
 
