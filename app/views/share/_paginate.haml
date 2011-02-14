@@ -1,30 +1,31 @@
 - total_page = collection.total_pages
 - current_page = collection.current_page
 - per_page = collection.per_page
-%table.paginate
-  %tr
-    %td.prev
-      - if current_page != 1
-        - prev_page = (current_page == 2) ? nil : current_page - 1
-        = link_to 'Prev', url_for(:page => prev_page), :class => 'prev button'
+- if total_page > 1
+  %table.paginate
+    %tr
+      %td.prev
+        - if current_page != 1
+          - prev_page = (current_page == 2) ? nil : current_page - 1
+          = link_to 'Prev', url_for(:page => prev_page), :class => 'prev button'
 
-    %td.pages
-      - unless defined? hide_page and hide_page
-        - pages = [1, current_page, total_page]
-        - 3.times {|n| pages << current_page - n if current_page - n > 1} 
-        - 3.times {|n| pages << current_page + n if current_page + n < total_page} 
-        - pages = pages.sort.uniq
-        - pages.inject(0) do |prev, page|
-          - if page - prev > 1
-            %span.dot ...
-          - if page != current_page
-            = link_to page, url_for(:page => (page == 1) ? nil : page), :class => 'button'
-          - else
-            %span.current_page.button-like= page
-          - page
-        
+      %td.pages
+        - unless defined? hide_page and hide_page
+          - pages = [1, current_page, total_page]
+          - 3.times {|n| pages << current_page - n if current_page - n > 1} 
+          - 3.times {|n| pages << current_page + n if current_page + n < total_page} 
+          - pages = pages.sort.uniq
+          - pages.inject(0) do |prev, page|
+            - if page - prev > 1
+              %span.dot ...
+            - if page != current_page
+              = link_to page, url_for(:page => (page == 1) ? nil : page), :class => 'button'
+            - else
+              %span.current_page.button-like= page
+            - page
+          
 
-    %td.next
-      - if current_page < total_page
-        = link_to 'Next', url_for(:page => current_page + 1), :class => 'next button'
-.clear
+      %td.next
+        - if current_page < total_page
+          = link_to 'Next', url_for(:page => current_page + 1), :class => 'next button'
+  .clear
