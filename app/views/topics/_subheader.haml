@@ -5,31 +5,36 @@
   #tabs
     %ul
       - if current == :active
-        %li.current Active
+        %li.current
+          = link_to 'Active', topics_url
       - else
         %li
           = link_to 'Active', topics_url
 
       - if current == :interesting
-        %li.tagged-interesting.current Interesting
+        %li.tagged-interesting.current
+          = link_to 'Interesting', topics_url
       - else
         %li.tagged-interesting
           = link_to 'Interesting', topics_url
 
       - if current == :own
-        %li.own-topic.current Own
+        %li.own-topic.current
+          = link_to 'Own', topics_url
       - else
         %li.own-topic
           = link_to 'Own', topics_url
 
       - if current == :newest
-        %li Newest
+        %li
+          = link_to 'Newest', topics_url
       - else
         %li
           = link_to 'Newest', topics_url
 
       - if current == :collect
-        %li Collect
+        %li
+          = link_to 'Collect', topics_url
       - else
         %li
           = link_to 'Collect', topics_url

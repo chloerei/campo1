@@ -307,34 +307,41 @@ a.button:hover, .tag:hover {
 
 #mainbar #tabs li {
     float: left;
-    padding: 4px 10px;
+    margin: 0 0 -1px;
+    padding: 0 0 0 4px;
 }
 
 #mainbar #tabs a {
     text-decoration: none;
     font-weight: bold;
     color: #AAA;
+    padding: 4px 10px;
+    display: block;
+    border-color: #FFF #FFF #CCC;
+    border-style: solid;
+    border-width: 1px;
 }
 
-#mainbar #tabs .tagged-interesting a, #mainbar #tabs .tagged-interesting {
+#mainbar #tabs .current a,
+#mainbar #tabs a:hover
+{
+    border-color: #CCC #CCC #FFF;
+    border-style: solid;
+    border-width: 1px;
+    color: #292929;
+    font-weight: bold;
+}
+
+#mainbar #tabs .tagged-interesting a,
+#mainbar #tabs .tagged-interesting a:hover,
+#mainbar #tabs .tagged-interesting.current a:hover {
     color: #0079CE;
 }
 
-#mainbar #tabs .own-topic a, #mainbar #tabs .own-topic {
+#mainbar #tabs .own-topic a,
+#mainbar #tabs .own-topic a:hover,
+#mainbar #tabs .own-topic.current a:hover {
     color: #CC2A2A;
-}
-
-#mainbar #tabs a:hover {
-    color: #292929;
-}
-
-#mainbar #tabs li.current {
-    border-color: #CCCCCC #CCCCCC #FFFFFF;
-    border-style: solid;
-    border-width: 1px;
-    margin-bottom: -1px;
-    color: #292929;
-    font-weight: bold;
 }
 
 #mainbar #topics ul {
