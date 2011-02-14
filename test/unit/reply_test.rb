@@ -16,7 +16,7 @@ class ReplyTest < ActiveSupport::TestCase
       assert reply.valid?
     end
     assert_equal @user, @topic.last_replied_by
-    assert_equal reply.created_at, @topic.last_replied_at
+    assert_equal reply.created_at, @topic.actived_at
 
     assert_difference "@topic.replies_count.to_i", -1 do
       reply.destroy

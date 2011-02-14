@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
   before_filter :require_logined, :except => [:index, :show]
 
   def index
-    @topics = Topic.paginate :per_page => 20, :page => params[:page]
+    @topics = Topic.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     user_ids = @topics.map{|topic| [topic.user_id, topic.last_replied_by_id]}.flatten.compact.uniq
     users = User.where(:_id.in => user_ids)
     @user_hash = {}

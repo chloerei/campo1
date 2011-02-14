@@ -15,4 +15,10 @@ class TopicTest < ActiveSupport::TestCase
     t.tags = "tag1 tag2 tag3 tag4 tag5 tag6"
     assert !t.valid?
   end
+
+  def test_set_actived_at_before_create
+    t = Topic.new :title => 'title', :content => 'content'
+    t.save
+    assert_not_nil t.actived_at
+  end
 end

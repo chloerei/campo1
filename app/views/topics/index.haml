@@ -23,7 +23,7 @@
               %br/
               Reply by
               = link_to @user_hash[topic.last_replied_by_id].profile.name, '#TODO'
-              = time_ago_in_words topic.last_replied_at
+              = time_ago_in_words topic.actived_at
             ago
         .clear
   = paginate_for @topics, :hide_page => true

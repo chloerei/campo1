@@ -16,7 +16,7 @@ class Reply
 
   def increment_topic_reply_cache
     topic.last_replied_by = user
-    topic.last_replied_at = created_at
+    topic.actived_at = created_at
     topic.save
     topic.inc :replies_count, 1
   end

@@ -9,7 +9,7 @@ class Topic
   references_many :replies
   referenced_in :user
   referenced_in :last_replied_by, :class_name => 'User'
-  field :last_replied_at, :type => Time
+  field :actived_at, :type => Time
   field :replies_count, :type => Integer, :default => 0
 
   validates_presence_of :title, :content
@@ -17,6 +17,8 @@ class Topic
   validates_length_of :tags, :maximum => 5
 
   attr_accessible :title, :content, :tags
+
+  before_create :set_actived_at
 
   def tags=(value)
     if value.is_a? String
@@ -28,5 +30,9 @@ class Topic
 
   def tags_string
     return tags.join(' ') unless tags.blank?
+  end
+
+  def set_actived_at
+    self.actived_at = Time.now.utc
   end
 end
