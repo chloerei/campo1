@@ -1,0 +1,34 @@
+.section
+  .section-content
+    .avatar
+      = image_tag @person.gravatar_url(:size => 128)
+    .clear
+
+.section
+  .section-title
+    %h2 Profile
+  .section-content
+    %table
+      %tr
+        %td name
+        %td= @person.profile.name
+      %tr
+        %td signup at
+        %td
+          = time_ago_in_words @person.created_at
+          ago
+      - if @person.profile.url
+        %tr
+          %td url
+          %td= link_to @person.profile.url, @person.profile.url
+      - if @person.profile.twitter
+        %tr
+          %td twitter
+          %td= link_to @person.profile.twitter, "https://twitter.com/#{@person.profile.twitter}"
+    .description
+      = @person.profile.description
+
+.section
+  .section-title
+    %h2 Topics
+  .section-content

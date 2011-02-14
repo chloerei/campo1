@@ -16,4 +16,5 @@ Campo::Application.routes.draw do
   resources :topics, :except => [:destroy]
   resources :replies, :only => [:new, :create, :edit, :update]
 
+  get '~:username' => 'people#show', :as => :person
 end
