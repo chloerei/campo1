@@ -3,7 +3,8 @@ class RepliesController < ApplicationController
   
   def new
     @topic = Topic.find params[:topic_id]
-    @reply = @topic.replies.new
+    @reply = Reply.new
+    @reply.topic_id = @topic.id
   end
 
   def create

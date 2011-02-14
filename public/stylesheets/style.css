@@ -128,7 +128,7 @@ textarea {
     clear: both;
 }
 
-a.button, .tag {
+a.button, .button-like {
     -moz-border-radius: 12px;
     border-radius: 12px;
     -moz-box-shadow: 1px 1px 3px #AAA;
@@ -486,14 +486,30 @@ a.button:hover, .tag:hover {
 
 .paginate {
     margin: 10px;
+    width: 700px;
+    font-size: 0.9em;
+    font-weight: bold;
 }
 
-.paginate a.prev{
-    float: left;
+.paginate td.prev{
+    text-align: left;
+    width: 150px;
 }
 
-.paginate a.next{
-    float: right;
+.paginate td.next{
+    text-align: right;
+    width: 150px;
+}
+
+.paginate .pages {
+    text-align: center;
+}
+
+.paginate span.dot{
+}
+
+.paginate span.current_page {
+    background-color: #CC2A2A;
 }
 
 /* sidebar */

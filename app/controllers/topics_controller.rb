@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
   before_filter :require_logined, :except => [:index, :show]
 
   def index
-    @topics = Topic.skip(params[:skip].to_i).limit(20).cache
+    @topics = Topic.paginate :per_page => 20, :page => params[:page]
     user_ids = @topics.map{|topic| [topic.user_id, topic.last_replied_by_id]}.flatten.compact.uniq
     users = User.where(:_id.in => user_ids)
     @user_hash = {}
@@ -11,14 +11,15 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find params[:id]
-    @replies = @topic.replies.skip(params[:skip].to_i).limit(20).cache
+    @replies = @topic.replies.paginate :per_page => 20, :page => params[:page]
     user_ids = @replies.map{|reply| reply.user_id}.push(@topic.user_id).flatten.compact.uniq
     users = User.where(:_id.in => user_ids)
     @user_hash = {}
     users.each{|user| @user_hash[user.id] = user}
 
     if current_logined?
-      @reply = @topic.replies.new
+      @reply = Reply.new
+      @reply.topic_id = @topic.id
     end
   end
 

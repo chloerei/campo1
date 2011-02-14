@@ -26,7 +26,7 @@
               = time_ago_in_words topic.last_replied_at
             ago
         .clear
-  = paginate_for @topics
+  = paginate_for @topics, :hide_page => true
 
 - content_for :sidebar do
   - if current_logined?

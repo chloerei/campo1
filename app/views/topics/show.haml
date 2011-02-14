@@ -12,7 +12,7 @@
       = link_to @user_hash[@topic.user_id].profile.name, '#'
       = time_ago_in_words @topic.created_at
       ago.
-      - if current_logined? and @topic.user == current_user
+      - if current_logined? and @topic.user_id == current_user.id
         = link_to 'Edit', edit_topic_url(@topic)
   .avatar
     = image_tag @user_hash[@topic.user_id].gravatar_url(:size => 64)
@@ -29,7 +29,7 @@
             %a{:name => "#{reply.id}"}
             %span.author= link_to @user_hash[reply.user_id].profile.name, '#'
             %span.time
-              - if current_logined? and reply.user == current_user
+              - if current_logined? and reply.user_id == current_user.id
                 = link_to 'Edit', edit_reply_url(reply)
               = time_ago_in_words reply.created_at
               ago
