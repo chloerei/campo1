@@ -6,7 +6,7 @@ class Topic
   field :content
   field :tags, :type => Array
 
-  references_many :replies
+  references_many :replies, :validate => false
   referenced_in :user
   referenced_in :last_replied_by, :class_name => 'User'
   field :actived_at, :type => Time

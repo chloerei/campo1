@@ -2,7 +2,7 @@
   .section-title
     %h2 Login
   .section-content
-    = form_for :user, :url => user_session_url do |f|
+    = form_for :user, :url => user_session_url(:return_to => params[:return_to]) do |f|
       %table.form-table
         %tr
           %th
