@@ -1,0 +1,14 @@
+#profile
+  .left.avatar= image_tag @person.gravatar_url(:size => 48)
+  .left
+    %h1
+      = link_to @person.profile.name, person_url(:username => @person.username)
+      's topics'"
+  .clear
+
+- if !@topics.empty?
+  #topics.section
+    .section-content
+      = render :partial => 'topics'
+      = paginate_for @topics
+      .clear

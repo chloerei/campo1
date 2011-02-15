@@ -8,22 +8,9 @@
     = @person.profile.description
   .clear
 
-#topics.section
-  .section-content
-    %ul.item-list
-      - @topics.each do |topic|
-        %li
-          .title= link_to topic.title, topic
-          .reply-count= link_to topic.replies_count, topic
-          .clear
-          .meta
-            - if topic.tags
-              - topic.tags.each do |tag|
-                = link_to tag, '#TODO'
-            - if topic.last_replied_by_id
-              Replied by
-              = link_to @user_hash[topic.last_replied_by_id].profile.name, person_url(:username => @user_hash[topic.last_replied_by_id].username)
-            = time_ago_in_words topic.created_at
-          .clear
-    .right= link_to 'Read More...', '#TODO', :class => 'button'
-    .clear
+- if !@topics.empty?
+  #topics.section
+    .section-content
+      = render :partial => 'topics'
+      .right= link_to 'Read More...', person_topics_url(:username => @person.username), :class => 'button'
+      .clear

@@ -17,4 +17,6 @@ Campo::Application.routes.draw do
   resources :replies, :only => [:new, :create, :edit, :update]
 
   get '~:username' => 'people#show', :as => :person
+  get '~:username/topics' => 'people#topics', :as => :person_topics
+
 end

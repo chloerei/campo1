@@ -9,4 +9,9 @@ class PeopleControllerTest < ActionController::TestCase
     get :show, :username => @user.username
     assert_response :success, @response.body
   end
+
+  def test_topics
+    get :topics, :username => @user.username
+    assert_response :success, @response.body
+  end
 end

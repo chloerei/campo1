@@ -1,0 +1,15 @@
+%ul.item-list
+  - @topics.each do |topic|
+    %li
+      .title= link_to topic.title, topic
+      .reply-count= link_to topic.replies_count, topic
+      .clear
+      .meta
+        - if topic.tags
+          - topic.tags.each do |tag|
+            = link_to tag, '#TODO'
+        - if topic.last_replied_by_id
+          Replied by
+          = link_to @user_hash[topic.last_replied_by_id].profile.name, person_url(:username => @user_hash[topic.last_replied_by_id].username)
+        = time_ago_in_words topic.created_at
+      .clear

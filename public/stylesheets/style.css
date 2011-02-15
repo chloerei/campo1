@@ -515,6 +515,10 @@ a.button:hover, .tag:hover {
     font-weight: bold;
 }
 
+.section .paginate {
+    width: 680px;
+}
+
 .paginate td.prev{
     text-align: left;
     width: 150px;
