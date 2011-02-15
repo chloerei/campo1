@@ -12,7 +12,7 @@
           .meta
             - if topic.tags
               - topic.tags.each do |tag|
-                = link_to tag, '#'
+                = link_to tag, tagged_topics_url(:tag => tag)
             Create by
             = link_to_person @user_hash[topic.user_id]
             - if topic.last_replied_by_id

@@ -8,7 +8,7 @@
     .section-content
       %ul
         - current_user.favorite_tags.each do |tag|
-          %li= link_to tag, '#TODO', :class => 'button'
+          %li= link_to tag, tagged_topics_url(:tag => tag), :class => 'button'
       .clear
       .actions= link_to 'manage tags', settings_favorite_tags_url
   - if @recent_tags
@@ -19,7 +19,7 @@
         %ul
           - @recent_tags.each do |tag, count|
             %li
-              = link_to tag, '#TODO', :class => 'button'
+              = link_to tag, tagged_topics_url(:tag => tag), :class => 'button'
               %span.meta
                 x
                 = count

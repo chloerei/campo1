@@ -7,7 +7,7 @@
       .meta
         - if topic.tags
           - topic.tags.each do |tag|
-            = link_to tag, '#TODO'
+            = link_to tag, tagged_topics_url(:tag => tag)
         - if topic.last_replied_by_id
           Replied by
           = link_to_person @user_hash[topic.last_replied_by_id]
