@@ -278,7 +278,7 @@ a.button:hover, .tag:hover {
     padding: 20px 0;
 }
 
-#mainbar .meta, #mainbar .tips {
+#mainbar .meta, #mainbar .tips, #sidebar .meta {
     color: #999;
     font-size: 0.9em;
     font-weight: bold;
@@ -603,7 +603,7 @@ a.button:hover, .tag:hover {
     padding: 6px 6px 6px 0;
 }
 
-.favor-tags li {
+.favorite-tags li {
     float: left;
 }
 

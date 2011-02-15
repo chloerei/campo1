@@ -5,6 +5,7 @@ class TopicsController < ApplicationController
     @topics = Topic.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     user_ids = @topics.map{|topic| [topic.user_id, topic.last_replied_by_id]}.flatten.compact.uniq
     @user_hash = User.create_user_hash(user_ids)
+    @recent_tags = get_recent_tags @topics
   end
 
   def show
@@ -43,5 +44,19 @@ class TopicsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  private
+
+  def get_recent_tags(topics)
+    recent_tags = {}
+    topics.each do |topic|
+      if !topic.tags.blank?
+        topic.tags.each do |tag|
+          recent_tags[tag] = recent_tags[tag].to_i + 1
+        end
+      end
+    end
+    recent_tags
   end
 end

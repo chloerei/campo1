@@ -31,3 +31,24 @@
     .section
       .section-content
         = link_to 'Create Topic', new_topic_url, :class => 'button'
+    .section.favorite-tags
+      .section-title
+        Favorite Tags
+      .section-content
+        %ul
+          - current_user.favorite_tags.each do |tag|
+            %li= link_to tag, '#TODO', :class => 'button'
+        .clear
+        .actions= link_to 'manage tags', settings_favorite_tags_url
+    .section.recent-tags
+      .section-title
+        Recent Tags
+      .section-content
+        %ul
+          - @recent_tags.each do |tag, count|
+            %li
+              = link_to tag, '#TODO', :class => 'button'
+              %span.meta
+                x
+                = count
+        .clear
