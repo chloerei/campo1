@@ -12,7 +12,7 @@
       for
       = @topic.title
     .left-column.avatar
-      = image_tag current_user.gravatar_url(:size => 48)
+      = link_gravatar_to_person current_user
     .right-column
       = form_for @reply do |f|
         = render :partial => 'form', :object => f

@@ -16,6 +16,11 @@ a:hover {
     text-decoration: underline;
 }
 
+a img {
+    border: none;
+    color: #FFF;
+}
+
 p {
     margin: 0 0 0.9em;
 }
@@ -284,7 +289,7 @@ a.button:hover, .tag:hover {
 
 #mainbar ul.item-list li {
     border-bottom: 1px dashed #CCC;
-    padding: 13px 10px;
+    padding: 15px 10px;
 }
 
 
@@ -375,7 +380,7 @@ a.button:hover, .tag:hover {
     background-color: #AAA;
 }
 
-#mainbar #topics .avatar img {
+#mainbar #topics .avatar {
     width: 48px;
     height: 48px;
 }
@@ -456,7 +461,7 @@ a.button:hover, .tag:hover {
     margin-top: 20px;
 }
 
-#mainbar #replies .avatar img {
+#mainbar #replies .avatar {
     height: 48px;
     width: 48px;
 }
@@ -466,7 +471,7 @@ a.button:hover, .tag:hover {
     color: #AAA;
 }
 
-#mainbar #reply-form .avatar img {
+#mainbar #reply-form .avatar {
     height: 48px;
     width: 48px;
 }
@@ -555,7 +560,7 @@ a.button:hover, .tag:hover {
     font-size: 1.2em;
 }
 
-#sidebar .profile .avatar img{
+#sidebar .profile .avatar {
     width: 48px;
     height: 48px;
     float: left;

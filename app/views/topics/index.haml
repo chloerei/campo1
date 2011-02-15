@@ -5,7 +5,7 @@
     - @topics.each do |topic|
       %li
         .left-column.avatar
-          = image_tag @user_hash[topic.user_id].gravatar_url(:size => 48)
+          = link_gravatar_to_person @user_hash[topic.user_id]
         .right-column
           .title= link_to topic.title, topic
           .reply-count

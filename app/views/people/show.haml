@@ -1,5 +1,5 @@
 #profile
-  .left.avatar= image_tag @person.gravatar_url(:size => 128)
+  .left.avatar= link_gravatar_to_person @person, :size => 128
   .left
     %h1= @person.profile.name
     .detail
