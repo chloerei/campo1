@@ -14,7 +14,7 @@
         - @topic.tags.each do |tag|
           = link_to tag, '#'
       Create by
-      = link_to @user_hash[@topic.user_id].profile.name, '#'
+      = link_to_person @user_hash[@topic.user_id]
       = time_ago_in_words @topic.created_at
       ago.
       - if current_logined? and @topic.user_id == current_user.id
@@ -32,7 +32,7 @@
         .right-column
           .meta
             %a{:name => "#{reply.id}"}
-            %span.author= link_to @user_hash[reply.user_id].profile.name, '#'
+            %span.author= link_to_person @user_hash[reply.user_id]
             %span.time
               - if current_logined? and reply.user_id == current_user.id
                 = link_to 'Edit', edit_reply_url(reply)
@@ -50,7 +50,7 @@
     - if current_logined?
       .meta
         Login as
-        = link_to current_user.profile.name, '#TODO'
+        = link_to_person current_user
       .left-column.avatar
         = image_tag current_user.gravatar_url(:size => 48)
       .right-column

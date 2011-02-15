@@ -10,6 +10,6 @@
             = link_to tag, '#TODO'
         - if topic.last_replied_by_id
           Replied by
-          = link_to @user_hash[topic.last_replied_by_id].profile.name, person_url(:username => @user_hash[topic.last_replied_by_id].username)
+          = link_to_person @user_hash[topic.last_replied_by_id]
         = time_ago_in_words topic.created_at
       .clear

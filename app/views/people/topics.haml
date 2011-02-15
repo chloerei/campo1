@@ -2,7 +2,7 @@
   .left.avatar= image_tag @person.gravatar_url(:size => 48)
   .left
     %h1
-      = link_to @person.profile.name, person_url(:username => @person.username)
+      = link_to_person @person
       's topics'"
   .clear
 
