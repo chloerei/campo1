@@ -264,6 +264,12 @@ a.button:hover, .tag:hover {
     padding: 0 10px;
 }
 
+#mainbar ul.item-list {
+    list-style: none;
+    margin: 0 0 10px;
+    padding: 0;
+}
+
 #mainbar .section .left-column,
 #mainbar .item-list .left-column {
     float: left;
@@ -343,12 +349,6 @@ a.button:hover, .tag:hover {
 #mainbar #tabs .own-topic a:hover,
 #mainbar #tabs .own-topic.current a:hover {
     color: #CC2A2A;
-}
-
-#mainbar #topics ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
 #mainbar #topics li.tagged-interesting .reply-count a {
@@ -456,12 +456,6 @@ a.button:hover, .tag:hover {
     margin-top: 20px;
 }
 
-#mainbar #replies ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
 #mainbar #replies .avatar img {
     height: 48px;
     width: 48px;
@@ -498,8 +492,24 @@ a.button:hover, .tag:hover {
     padding: 5px;
 }
 
+#profile {
+    margin: 0 10px 20px;
+}
+
+#profile .avatar {
+    margin-right: 20px;
+}
+
+#profile .detail {
+    margin-bottom: 10px;
+}
+
+#profile h1 {
+    margin: 0 0 10px;
+}
+
 .paginate {
-    margin: 10px;
+    margin: 0 10px 10px;
     width: 700px;
     font-size: 0.9em;
     font-weight: bold;

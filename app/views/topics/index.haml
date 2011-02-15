@@ -17,13 +17,10 @@
                 = link_to tag, '#'
             Create by
             = link_to @user_hash[topic.user_id].profile.name, '#TODO'
-            = time_ago_in_words topic.created_at
-            ago
             - if topic.last_replied_by_id
-              %br/
               Reply by
               = link_to @user_hash[topic.last_replied_by_id].profile.name, '#TODO'
-              = time_ago_in_words topic.actived_at
+            = time_ago_in_words topic.actived_at
             ago
         .clear
   = paginate_for @topics, :hide_page => true
