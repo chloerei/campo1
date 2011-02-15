@@ -76,4 +76,20 @@ class UserTest < ActiveSupport::TestCase
     assert_equal @user, User.authenticate('test', '11111111')
   end
 
+  def test_add_favorite_tags_and_remove_tags
+    assert_nil @user.favorite_tags
+    @user.add_favorite_tags "tag1 tag2"
+    assert_equal ["tag1", "tag2"].sort, @user.favorite_tags.sort
+    @user.add_favorite_tags "tag1"
+    assert_equal ["tag1", "tag2"].sort, @user.favorite_tags.sort
+    @user.add_favorite_tags "tag3"
+    assert_equal ["tag1", "tag2", "tag3"].sort, @user.favorite_tags.sort
+
+    @user.remove_favorite_tags "tag1"
+    assert_equal ["tag2", "tag3"].sort, @user.favorite_tags.sort
+    @user.remove_favorite_tags "tag0"
+    assert_equal ["tag2", "tag3"].sort, @user.favorite_tags.sort
+    @user.remove_favorite_tags "tag2 tag3"
+    assert_equal nil, @user.favorite_tags
+  end
 end

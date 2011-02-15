@@ -10,6 +10,7 @@ class User
   field :password_salt
   field :remember_token
   field :remember_token_expires_at, :type => Time
+  field :favorite_tags, :type => Array
   embeds_one :profile
   
   references_many :topics, :validate => false
@@ -63,6 +64,18 @@ class User
     users = User.where(:_id.in => user_ids)
     users.each{|user| user_hash[user.id] = user}
     user_hash
+  end
+
+  def add_favorite_tags(tags_string)
+    self.favorite_tags ||= []
+    self.favorite_tags += tags_string.split(" ")
+    self.favorite_tags = self.favorite_tags.uniq
+  end
+
+  def remove_favorite_tags(tags_string)
+    return if self.favorite_tags.nil?
+    self.favorite_tags -= tags_string.split(" ")
+    self.favorite_tags = nil if self.favorite_tags.empty?
   end
 
   protected
