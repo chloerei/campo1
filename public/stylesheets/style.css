@@ -149,6 +149,21 @@ a.button:hover, .tag:hover {
     text-decoration: none;
 }
 
+.actions {
+  color: #999;
+  font-size: 0.9em;
+}
+
+.actions a {
+  color: #999;
+}
+
+.actions a:hover {
+  background-color: #999;
+  color: #FFF;
+  text-decoration: none;
+}
+
 .error, .notice, .success {
 	border: 1px solid #DDD;
 	margin-bottom: 1em;
@@ -451,8 +466,9 @@ a.button:hover, .tag:hover {
     width: 64px;
 }
 
-#mainbar #topic .content {
-    margin-top: 0.5em;
+#mainbar #topic .content,
+#mainbar #replies, .content {
+    margin: 0 0 10px;
 }
 
 #mainbar #replies {
