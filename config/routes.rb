@@ -11,6 +11,7 @@ Campo::Application.routes.draw do
     resource :account, :only => [:show, :update]
     resource :password, :only => [:show, :update]
     resource :profile, :only => [:show, :update]
+    resource :favorite_tags, :only => [:show, :create, :destroy]
   end
 
   resources :topics, :except => [:destroy]

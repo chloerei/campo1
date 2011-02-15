@@ -1,0 +1,20 @@
+= render :partial => 'settings/subheader', :locals => {:current => :favorite_tags}
+
+.section
+  .section-title
+    %h2 Favorite Tags
+  .section-content
+    = form_tag nil, :action => settings_favorite_tags_url do
+      .field
+        = text_field_tag :tags, nil, :class => 'text long-text'
+        = submit_tag :Add, :class => 'button'
+
+- if !@favorite_tags.blank?
+  .section
+    .section-content
+      %table.tags-table
+        - @favorite_tags.in_groups_of(4) do |group_tags|
+          %tr
+            - group_tags.each do |tag|
+              %td
+                = link_to(tag, '#TODO', :class => 'button') if tag

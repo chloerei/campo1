@@ -24,4 +24,11 @@
       - else
         %li
           = link_to 'Profile', settings_profile_url
+
+      - if current == :favorite_tags
+        %li.current
+          = link_to 'Favorite Tags', settings_favorite_tags_url
+      - else
+        %li
+          = link_to 'Favorite Tags', settings_favorite_tags_url
   .clear

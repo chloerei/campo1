@@ -20,6 +20,7 @@ class User
   validates_uniqueness_of :username, :email, :case_sensitive => false
   validates_format_of :username, :with => /\A[A-Za-z0-9_]+\z/
   validates_length_of :username, :in => 3..20
+  validates_length_of :favorite_tags, :maximum => 50
 
   EmailNameRegex  = '[\w\.%\+\-]+'
   DomainHeadRegex = '(?:[A-Z0-9\-]+\.)+'
