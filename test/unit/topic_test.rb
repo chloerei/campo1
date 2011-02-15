@@ -14,6 +14,9 @@ class TopicTest < ActiveSupport::TestCase
     assert t.valid?
     t.tags = "tag1 tag2 tag3 tag4 tag5 tag6"
     assert !t.valid?
+
+    t.tags = "a" * 21
+    assert_equal [], t.tags
   end
 
   def test_set_actived_at_before_create

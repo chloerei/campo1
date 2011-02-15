@@ -22,9 +22,10 @@ class Topic
 
   def tags=(value)
     if value.is_a? String
-      write_attribute :tags, value.split if !value.empty?
-    elsif value.is_a? Array
-      write_attribute :tags, value if !value.empty?
+      tags = value.downcase.split.delete_if {|tag| tag.size > 20}
+      write_attribute :tags, tags.uniq
+    else
+      write_attribute :tags, value.uniq
     end
   end
 
