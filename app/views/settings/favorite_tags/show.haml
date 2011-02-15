@@ -17,4 +17,6 @@
           %tr
             - group_tags.each do |tag|
               %td
-                = link_to(tag, '#TODO', :class => 'button') if tag
+                - if tag
+                  = link_to(tag, '#TODO', :class => 'button')
+                  %span.actions= link_to 'X', settings_favorite_tags_url(:tags => tag), :method => :delete, :title => "remove tag '#{tag}'"
