@@ -53,4 +53,9 @@ class TopicsControllerTest < ActionController::TestCase
     put :update, :id => @topic.id, :topic => {:title => 'title', :content => 'content', :tags => 'tag1, tag2'}
     assert_response :redirect, @response.body
   end
+
+  def test_tagged
+    get :tagged, :tag => 'test'
+    assert_response :success, @response.body
+  end
 end

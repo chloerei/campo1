@@ -1,0 +1,26 @@
+#topics
+  %ul.item-list
+    - @topics.each do |topic|
+      %li
+        .left-column.avatar
+          = link_gravatar_to_person @user_hash[topic.user_id]
+        .right-column
+          .title= link_to topic.title, topic
+          .reply-count
+            = link_to topic.replies_count, topic
+          .clear
+          .meta
+            - if topic.tags
+              - topic.tags.each do |tag|
+                = link_to tag, '#'
+            Create by
+            = link_to_person @user_hash[topic.user_id]
+            - if topic.last_replied_by_id
+              Reply by
+              = link_to_person @user_hash[topic.last_replied_by_id]
+
+            = time_ago_in_words topic.actived_at
+            ago
+        .clear
+  = paginate_for @topics, :hide_page => true
+

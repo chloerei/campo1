@@ -14,7 +14,11 @@ Campo::Application.routes.draw do
     resource :favorite_tags, :only => [:show, :create, :destroy]
   end
 
-  resources :topics, :except => [:destroy]
+  resources :topics, :except => [:destroy] do
+    collection do
+      get 'tagged/:tag', :action => 'tagged', :as => :tagged
+    end
+  end
   resources :replies, :only => [:new, :create, :edit, :update]
 
   get '~:username' => 'people#show', :as => :person

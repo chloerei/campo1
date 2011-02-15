@@ -1,0 +1,23 @@
+#subheader
+  #mascot
+    %img{:src => '/images/mascot.png'}
+  #tabs
+    %ul
+      %li
+        = link_to 'Active', topics_url
+      %li.tagged-interesting
+        = link_to 'Interesting', topics_url
+      %li.own-topic
+        = link_to 'Own', topics_url
+      %li
+        = link_to 'Newest', topics_url
+      %li
+        = link_to 'Collect', topics_url
+      %li.current
+        = link_to @tag, tagged_topics_url(:tag => @tag)
+  .clear
+
+= render :partial => 'topics'
+
+- content_for :sidebar do
+  = render :partial => 'sidebar'
