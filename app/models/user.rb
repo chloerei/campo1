@@ -58,6 +58,13 @@ class User
     save
   end
 
+  def self.create_user_hash(user_ids)
+    user_hash = {}
+    users = User.where(:_id.in => user_ids)
+    users.each{|user| user_hash[user.id] = user}
+    user_hash
+  end
+
   protected
 
   def self.make_token
