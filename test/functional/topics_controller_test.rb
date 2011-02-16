@@ -58,4 +58,13 @@ class TopicsControllerTest < ActionController::TestCase
     get :tagged, :tag => 'test'
     assert_response :success, @response.body
   end
+  
+  def test_interesting
+    get :interesting
+    assert_template :interesting_help
+
+    login_as @user
+    get :interesting
+    assert_template :index
+  end
 end

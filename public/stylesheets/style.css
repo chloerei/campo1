@@ -282,6 +282,7 @@ a.button:hover, .tag:hover {
 #mainbar {
     float: left;
     width: 720px;
+    min-height: 600px;
     border-right: 1px solid #CCC;
     padding: 20px 0;
 }

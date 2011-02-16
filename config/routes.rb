@@ -17,6 +17,7 @@ Campo::Application.routes.draw do
   resources :topics, :except => [:destroy] do
     collection do
       get 'tagged/:tag', :action => 'tagged', :as => :tagged
+      get :interesting
     end
   end
   resources :replies, :only => [:new, :create, :edit, :update]

@@ -1,11 +1,25 @@
 class TopicsController < ApplicationController
-  before_filter :require_logined, :except => [:index, :show, :tagged]
+  before_filter :require_logined, :except => [:index, :show, :tagged, :interesting]
 
   def index
+    @current = :active
     @topics = Topic.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     user_ids = @topics.map{|topic| [topic.user_id, topic.last_replied_by_id]}.flatten.compact.uniq
     @user_hash = User.create_user_hash(user_ids)
     @recent_tags = get_recent_tags @topics
+  end
+
+  def interesting
+    if current_logined?
+      @topics = Topic.where(:tags.in => current_user.favorite_tags.to_a).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
+      user_ids = @topics.map{|topic| [topic.user_id, topic.last_replied_by_id]}.flatten.compact.uniq
+      @user_hash = User.create_user_hash(user_ids)
+      @recent_tags = get_recent_tags @topics
+      @current = :interesting
+      render :index
+    else
+      render :interesting_help
+    end
   end
 
   def tagged

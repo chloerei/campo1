@@ -13,10 +13,10 @@
 
       - if current == :interesting
         %li.tagged-interesting.current
-          = link_to 'Interesting', topics_url
+          = link_to 'Interesting', interesting_topics_url
       - else
         %li.tagged-interesting
-          = link_to 'Interesting', topics_url
+          = link_to 'Interesting', interesting_topics_url
 
       - if current == :own
         %li.own-topic.current
