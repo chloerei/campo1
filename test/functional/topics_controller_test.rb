@@ -76,4 +76,9 @@ class TopicsControllerTest < ActionController::TestCase
     get :own
     assert_template :index
   end
+
+  def test_newest
+    get :newest
+    assert_template :index
+  end
 end

@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_filter :require_logined, :except => [:index, :show, :tagged, :interesting]
+  before_filter :require_logined, :except => [:index, :show, :tagged, :interesting, :newest]
 
   def index
     @current = :active
@@ -28,6 +28,15 @@ class TopicsController < ApplicationController
     @user_hash = User.create_user_hash(user_ids)
     @recent_tags = get_recent_tags @topics
     @current = :own
+    render :index
+  end
+
+  def newest
+    @current = :newest
+    @topics = Topic.desc(:created_at).paginate :per_page => 20, :page => params[:page]
+    user_ids = @topics.map{|topic| [topic.user_id, topic.last_replied_by_id]}.flatten.compact.uniq
+    @user_hash = User.create_user_hash(user_ids)
+    @recent_tags = get_recent_tags @topics
     render :index
   end
 

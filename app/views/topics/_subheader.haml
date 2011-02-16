@@ -27,15 +27,15 @@
             = link_to 'Own', own_topics_url
 
       - if current == :newest
-        %li
-          = link_to 'Newest', topics_url
+        %li.current
+          = link_to 'Newest', newest_topics_url
       - else
         %li
-          = link_to 'Newest', topics_url
+          = link_to 'Newest', newest_topics_url
 
       - if current_logined?
         - if current == :collect
-          %li
+          %li.current
             = link_to 'Collect', topics_url
         - else
           %li
