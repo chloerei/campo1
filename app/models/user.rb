@@ -68,6 +68,7 @@ class User
   end
 
   def add_favorite_tags(tags_string)
+    return if tags_string.nil?
     self.favorite_tags ||= []
     self.favorite_tags += tags_string.downcase.split.delete_if {|tag| tag.size > 20}
     self.favorite_tags = self.favorite_tags.uniq

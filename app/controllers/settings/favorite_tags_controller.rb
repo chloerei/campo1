@@ -7,11 +7,11 @@ class Settings::FavoriteTagsController < ApplicationController
 
   def create
     current_user.add_favorite_tags params[:tags]
-    redirect_to :action => :show
+    redirect_to params[:return_to] || {:action => :show}
   end
 
   def destroy
     current_user.remove_favorite_tags params[:tags]
-    redirect_to :action => :show
+    redirect_to params[:return_to] || {:action => :show}
   end
 end

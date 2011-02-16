@@ -21,6 +21,10 @@ class Settings::FavoriteTagsControllerTest < ActionController::TestCase
     login_as @user
     post :create, :tags => "tag1 tag2"
     assert_equal 2, @user.favorite_tags.count
+    assert_redirected_to :action => :show
+
+    post :create, :tags => "tag1 tag2", :return_to => root_url
+    assert_redirected_to root_url
   end
 
   def test_destroy
@@ -32,5 +36,9 @@ class Settings::FavoriteTagsControllerTest < ActionController::TestCase
     login_as @user
     delete :destroy, :tags => "tag1 tag2"
     assert_equal ["tag3"], @user.favorite_tags
+    assert_redirected_to :action => :show
+
+    delete :destroy, :tags => "tag1 tag2", :return_to => root_url
+    assert_redirected_to root_url
   end
 end

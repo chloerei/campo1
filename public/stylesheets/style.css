@@ -81,6 +81,14 @@ input.button:hover {
     background-color: #0079CE;
 }
 
+input.button.reverse {
+    background-color: #0079CE;
+}
+
+input.button.reverse:hover {
+    background-color: #CC2A2A;
+}
+
 input.button::-moz-focus-inner {
     border: none;
 }
@@ -579,6 +587,7 @@ a.button:hover, .tag:hover {
 
 #sidebar .section-title {
     font-size: 1.2em;
+    margin-bottom: 10px;
 }
 
 #sidebar .profile .avatar {
