@@ -18,12 +18,13 @@
         %li.tagged-interesting
           = link_to 'Interesting', interesting_topics_url
 
-      - if current == :own
-        %li.own-topic.current
-          = link_to 'Own', topics_url
-      - else
-        %li.own-topic
-          = link_to 'Own', topics_url
+      - if current_logined?
+        - if current == :own
+          %li.own-topic.current
+            = link_to 'Own', own_topics_url
+        - else
+          %li.own-topic
+            = link_to 'Own', own_topics_url
 
       - if current == :newest
         %li
@@ -32,10 +33,11 @@
         %li
           = link_to 'Newest', topics_url
 
-      - if current == :collect
-        %li
-          = link_to 'Collect', topics_url
-      - else
-        %li
-          = link_to 'Collect', topics_url
+      - if current_logined?
+        - if current == :collect
+          %li
+            = link_to 'Collect', topics_url
+        - else
+          %li
+            = link_to 'Collect', topics_url
   .clear

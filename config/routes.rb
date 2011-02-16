@@ -18,6 +18,7 @@ Campo::Application.routes.draw do
     collection do
       get 'tagged/:tag', :action => 'tagged', :as => :tagged
       get :interesting
+      get :own
     end
   end
   resources :replies, :only => [:new, :create, :edit, :update]

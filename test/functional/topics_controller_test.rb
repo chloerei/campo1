@@ -67,4 +67,13 @@ class TopicsControllerTest < ActionController::TestCase
     get :interesting
     assert_template :index
   end
+
+  def test_own
+    get :own
+    assert_redirected_to login_url
+
+    login_as @user
+    get :own
+    assert_template :index
+  end
 end

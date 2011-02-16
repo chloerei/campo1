@@ -22,6 +22,15 @@ class TopicsController < ApplicationController
     end
   end
 
+  def own
+    @topics = current_user.topics.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
+    user_ids = @topics.map{|topic| [topic.user_id, topic.last_replied_by_id]}.flatten.compact.uniq
+    @user_hash = User.create_user_hash(user_ids)
+    @recent_tags = get_recent_tags @topics
+    @current = :own
+    render :index
+  end
+
   def tagged
     @tag = params[:tag]
     @topics = Topic.where(:tags => @tag).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
