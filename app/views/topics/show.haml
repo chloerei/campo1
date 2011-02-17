@@ -74,3 +74,16 @@
       .meta
         = link_to 'Login', login_url(:return_to => topic_url(@topic, :anchor => "reply-form")), :class => 'button'
         for reply.
+
+- content_for :sidebar do
+  - if current_logined?
+    .section
+      .section-title
+        Collect Topic
+      .section-content
+        - if @topic.marker_ids.to_a.include? current_user.id
+          = button_to 'unmark', mark_topic_url(@topic), :method => :delete, :class => 'button reverse'
+        - else
+          = button_to 'mark', mark_topic_url(@topic), :method => :post, :class => 'button'
+        .meta
+          = "#{@topic.marker_ids.count} marker"

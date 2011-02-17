@@ -81,4 +81,26 @@ class TopicsControllerTest < ActionController::TestCase
     get :newest
     assert_template :index
   end
+
+  def test_mark
+    post :mark, :id => @topic.id
+    assert_redirected_to login_url
+
+    login_as @user
+    post :mark, :id => @topic.id
+    assert_redirected_to @topic
+    assert_equal [@user.id], @topic.reload.marker_ids
+  end
+
+  def test_unmark
+    @topic.mark_by @user
+    assert_equal [@user.id], @topic.reload.marker_ids
+    delete :unmark, :id => @topic.id
+    assert_redirected_to login_url
+
+    login_as @user
+    delete :unmark, :id => @topic.id
+    assert_redirected_to @topic
+    assert_equal [], @topic.reload.marker_ids
+  end
 end

@@ -21,6 +21,11 @@ Campo::Application.routes.draw do
       get :own
       get :newest
     end
+
+    member do
+      post :mark
+      delete :mark, :action => 'unmark'
+    end
   end
   resources :replies, :only => [:new, :create, :edit, :update]
 

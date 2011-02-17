@@ -85,6 +85,18 @@ class TopicsController < ApplicationController
     end
   end
 
+  def mark
+    @topic = Topic.find params[:id]
+    @topic.mark_by current_user
+    redirect_to @topic
+  end
+
+  def unmark
+    @topic = Topic.find params[:id]
+    @topic.unmark_by current_user
+    redirect_to @topic
+  end
+
   private
 
   def get_recent_tags(topics)
