@@ -40,4 +40,7 @@
         - else
           %li
             = link_to 'Collection', collection_topics_url
+      - if current == :tagged
+        %li.current
+          = link_to @tag, tagged_topics_url(:tag => @tag)
   .clear

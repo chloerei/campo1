@@ -33,9 +33,11 @@ class TopicsController < ApplicationController
   end
 
   def tagged
+    @current = :tagged
     @tag = params[:tag]
     @topics = Topic.where(:tags => @tag).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
+    render :index
   end
 
   def collection
