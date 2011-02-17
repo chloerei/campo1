@@ -86,4 +86,4 @@
         - else
           = button_to 'mark', mark_topic_url(@topic), :method => :post, :class => 'button'
         .meta
-          = "#{@topic.marker_ids.count} marker"
+          = "#{@topic.marker_ids.to_a.count} marker"

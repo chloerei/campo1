@@ -34,10 +34,10 @@
           = link_to 'Newest', newest_topics_url
 
       - if current_logined?
-        - if current == :collect
+        - if current == :collection
           %li.current
-            = link_to 'Collect', topics_url
+            = link_to 'Collection', collection_topics_url
         - else
           %li
-            = link_to 'Collect', topics_url
+            = link_to 'Collection', collection_topics_url
   .clear

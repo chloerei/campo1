@@ -7,6 +7,8 @@ class Topic
   field :tags, :type => Array
   field :marker_ids, :type => Array
 
+  scope :marked_by, lambda { |user| where(:marker_ids => user.id) }
+
   references_many :replies, :validate => false
   referenced_in :user
   referenced_in :last_replied_by, :class_name => 'User'

@@ -36,6 +36,9 @@ class TopicTest < ActiveSupport::TestCase
     t.mark_by @user
     assert_equal [@user.id], t.reload.marker_ids
 
+    # query
+    assert Topic.marked_by(@user).include? t
+
     t.unmark_by @user
     assert_equal [], t.reload.marker_ids
     t.unmark_by @user

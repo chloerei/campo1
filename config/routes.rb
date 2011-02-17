@@ -20,6 +20,7 @@ Campo::Application.routes.draw do
       get :interesting
       get :own
       get :newest
+      get :collection
     end
 
     member do

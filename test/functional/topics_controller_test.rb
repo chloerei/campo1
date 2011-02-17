@@ -82,6 +82,15 @@ class TopicsControllerTest < ActionController::TestCase
     assert_template :index
   end
 
+  def test_collection
+    get :collection
+    assert_redirected_to login_url
+
+    login_as @user
+    get :collection
+    assert_response :success, @response.body
+  end
+
   def test_mark
     post :mark, :id => @topic.id
     assert_redirected_to login_url

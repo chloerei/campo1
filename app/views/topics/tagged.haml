@@ -9,12 +9,12 @@
         = link_to 'Interesting', interesting_topics_url
       - if current_logined?
         %li.own-topic
-          = link_to 'Own', topics_url
+          = link_to 'Own', own_topics_url
       %li
-        = link_to 'Newest', topics_url
+        = link_to 'Newest', newest_topics_url
       - if current_logined?
         %li
-          = link_to 'Collect', topics_url
+          = link_to 'Collection', collection_topics_url
       %li.current
         = link_to @tag, tagged_topics_url(:tag => @tag)
   .clear
