@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class TopicTest < ActiveSupport::TestCase
+  def setup
+    @user = create_user
+  end
   def test_tags
     t = Topic.new :title => 'title', :content => 'content'
     t.tags = "tag1 tag2 tag3"
@@ -23,5 +26,19 @@ class TopicTest < ActiveSupport::TestCase
     t = Topic.new :title => 'title', :content => 'content'
     t.save
     assert_not_nil t.actived_at
+  end
+
+  def test_marker
+    t = Topic.create :title => 'title', :content => 'content'
+    assert_nil t.marker_ids
+    t.mark_by @user
+    assert_equal [@user.id], t.reload.marker_ids
+    t.mark_by @user
+    assert_equal [@user.id], t.reload.marker_ids
+
+    t.unmark_by @user
+    assert_equal [], t.reload.marker_ids
+    t.unmark_by @user
+    assert_equal [], t.reload.marker_ids
   end
 end

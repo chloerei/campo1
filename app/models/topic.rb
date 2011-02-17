@@ -5,6 +5,7 @@ class Topic
   field :title
   field :content
   field :tags, :type => Array
+  field :marker_ids, :type => Array
 
   references_many :replies, :validate => false
   referenced_in :user
@@ -35,5 +36,15 @@ class Topic
 
   def set_actived_at
     self.actived_at = Time.now.utc
+  end
+
+  def mark_by(user)
+    collection.update({:_id => self.id, :marker_ids => {"$ne" => user.id}},
+                      {"$push" => {:marker_ids => user.id}})
+  end
+
+  def unmark_by(user)
+    collection.update({:_id => self.id},
+                      {"$pull" => {:marker_ids => user.id}})
   end
 end
