@@ -62,6 +62,10 @@ zh-CN:
   settings_favorite_tags: 设置喜好标签
   
   tips:
+    topic:
+      tags: 最多五个，用空格间隔，词组用 '-' 号连接，例如： ruby-on-rails 编程。自动转换为小写。
+    favorite_tags: 最多五十个，用空格间隔，词组用 '-' 号连接，例如： ruby-on-rails 编程。自动转换为小写。
+
     login:
       login_name: 用户名 或 Email
       remember_me: 记住我（1个月）

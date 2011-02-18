@@ -8,6 +8,7 @@
       .field
         = text_field_tag :tags, nil, :class => 'text long-text'
         = submit_tag t(:add), :class => 'button'
+        .meta= t 'tips.favorite_tags'
 
 - if !@favorite_tags.blank?
   .section
