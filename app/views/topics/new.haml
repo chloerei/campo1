@@ -9,8 +9,6 @@
     %h2= t :new_topic
   .section-content
     = form_for @topic do |f|
-      - if !@topic.errors.blank?
-        .error= @topic.errors.full_messages
       = render :partial => 'form', :object => f
       .field
         = f.submit t(:create), :class => 'button'

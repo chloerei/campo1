@@ -6,7 +6,7 @@ class Settings::AccountsController < ApplicationController
   end
 
   def update
-    @user = current_user
+    @user = User.find current_user.id
     params[:user].delete(:password)
     params[:user].delete(:password_confirmation)
     if @user.update_attributes params[:user]

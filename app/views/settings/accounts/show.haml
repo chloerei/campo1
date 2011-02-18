@@ -3,8 +3,8 @@
 .section
   .section-content
     = form_for @user, :url => settings_account_url, :method => :put do |f|
-      - if !@user.errors.blank?
-        .error= @user.errors.full_messages
+      - if !f.object.errors.blank?
+        = render :partial => 'share/error_messages', :locals => {:object => f.object}
       %table.form-table
         %tr
           %th= f.label :username

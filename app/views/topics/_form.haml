@@ -1,8 +1,9 @@
+- if !form.object.errors.blank?
+  = render :partial => 'share/error_messages', :locals => {:object => form.object}
 .field
   = form.label :title
   = form.text_field :title, :class => 'text title', :maxlength => 100
 .field
-  = form.label :content
   #editor-button-bar
   = form.text_area :content, :class => 'editor', :id => 'editor-input'
   #editor-preview

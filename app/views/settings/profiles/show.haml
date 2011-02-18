@@ -3,8 +3,8 @@
 .section
   .section-content
     = form_for @profile, :url => settings_profile_url, :method => :put do |f|
-      - if !@profile.errors.blank?
-        .error= @profile.errors.full_messages
+      - if !f.object.errors.blank?
+        = render :partial => 'share/error_messages', :locals => {:object => f.object}
       %table.form-table
         %tr
           %th

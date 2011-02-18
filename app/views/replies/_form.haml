@@ -1,3 +1,5 @@
+- if !form.object.errors.blank?
+  = render :partial => 'share/error_messages', :locals => {:object => form.object}
 .field
   = form.hidden_field :topic_id
   #editor-button-bar
