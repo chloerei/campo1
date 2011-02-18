@@ -17,7 +17,7 @@
           %th= f.label :current_password
           %td
             = f.password_field :current_password, :class => 'text'
-            .meta for secure
+            .meta= t 'tips.user.current_password'
         %tr
           %th
-          %td= f.submit 'Save', :class => 'button'
+          %td= f.submit t(:save), :class => 'button'

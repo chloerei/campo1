@@ -8,18 +8,19 @@
       %table.form-table
         %tr
           %th
-            %label Avatar
+            %label= t :avatar
           %td
             = image_tag @profile.user.gravatar_url(:size => 128), :alt => 'gravatar'
             .tips
               %p
-                We use Gravatar.(
-                = link_to "What's Gravatar?", 'http://www.gravatar.com/'
+                = t 'tips.profile.gravatar'
+                (
+                = link_to t(:what_is_gravatar), 'http://www.gravatar.com/'
                 )
                 %br/
-                = link_to 'Change Email', settings_account_url
+                = link_to t(:change_email), settings_account_url
                 = '/'
-                = link_to 'Go to Gravatar', 'http://www.gravatar.com/'
+                = link_to t(:go_to_gravatar), 'http://www.gravatar.com/'
         %tr
           %th= f.label :name
           %td= f.text_field :name, :class => 'text', :maxlength => 20
@@ -38,4 +39,4 @@
             = f.text_area :description
         %tr
           %th
-          %td= f.submit 'Save', :class => 'button'
+          %td= f.submit t(:save), :class => 'button'

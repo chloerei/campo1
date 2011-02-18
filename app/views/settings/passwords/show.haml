@@ -11,14 +11,14 @@
           %td
             = f.password_field :password, :class => 'text'
         %tr
-          %th= f.label :password_confirmation, 'Password Again'
+          %th= f.label :password_confirmation
           %td
             = f.password_field :password_confirmation, :class => 'text'
         %tr
           %th= f.label :current_password
           %td
             = f.password_field :current_password, :class => 'text'
-            .meta for secure
+            .meta= t 'tips.user.current_password'
         %tr
           %th
-          %td= f.submit 'Save', :class => 'button'
+          %td= f.submit t(:save), :class => 'button'

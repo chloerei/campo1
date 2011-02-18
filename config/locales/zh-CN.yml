@@ -2,7 +2,12 @@
 # by tsechingho (http://github.com/tsechingho)
 
 zh-CN:
-  
+  home: 主页
+  profile: 个人页面
+  settings: 设置
+  logout: 退出
+  login: 登录
+  signup: 注册
   ago: 前
   creator: 创建者
   last_replyer: 最后回复者
@@ -33,6 +38,24 @@ zh-CN:
   create_topic: 创建主题
   prev_page: 上一页
   next_page: 下一页
+  read_more: 查看更多...
+  avatar: 头像
+  save: 保存
+  add: 添加
+
+  what_is_gravatar: 什么是 Gravatar？
+  change_email: 修改 Email
+  go_to_gravatar: 去 Gravatar
+
+  account: 账户
+  password: 密码
+  profile: 资料
+  
+  tips:
+    user:
+      current_password: 更改需要提供当前密码
+    profile:
+      gravatar: 头像使用 Gravatar 服务
 
   mongoid:
     attributes:
@@ -40,6 +63,16 @@ zh-CN:
         title: 标题
         content: 内容
         tags: 标签
+      user:
+        username: 用户名
+        email: Email
+        current_password: 当前密码
+        password: 密码
+        password_confirmation: 密码确认
+      profile:
+        name: 名字
+        url: 网站url
+        description: 描述
   date:
     formats:
       default: "%Y-%m-%d"

@@ -2,12 +2,12 @@
 
 .section
   .section-title
-    %h2 Favorite Tags
+    %h2= t :favorite_tags
   .section-content
     = form_tag nil, :action => settings_favorite_tags_url do
       .field
         = text_field_tag :tags, nil, :class => 'text long-text'
-        = submit_tag :Add, :class => 'button'
+        = submit_tag t(:add), :class => 'button'
 
 - if !@favorite_tags.blank?
   .section

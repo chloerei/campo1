@@ -12,5 +12,5 @@
   #topics.section
     .section-content
       = render :partial => 'topics'
-      .right= link_to 'Read More...', person_topics_url(:username => @person.username), :class => 'button'
+      .right= link_to t(:read_more), person_topics_url(:username => @person.username), :class => 'button'
       .clear

@@ -6,29 +6,29 @@
     %ul
       - if current == :account
         %li.current
-          = link_to 'Account', settings_account_url
+          = link_to t(:account), settings_account_url
       - else
         %li
-          = link_to 'Account', settings_account_url
+          = link_to t(:account), settings_account_url
 
       - if current == :password
         %li.current
-          = link_to 'Password', settings_password_url
+          = link_to t(:password), settings_password_url
       - else
         %li
-          = link_to 'Password', settings_password_url
+          = link_to t(:password), settings_password_url
 
       - if current == :profile
         %li.current
-          = link_to 'Profile', settings_profile_url
+          = link_to t(:profile), settings_profile_url
       - else
         %li
-          = link_to 'Profile', settings_profile_url
+          = link_to t(:profile), settings_profile_url
 
       - if current == :favorite_tags
         %li.current
-          = link_to 'Favorite Tags', settings_favorite_tags_url
+          = link_to t(:favorite_tags), settings_favorite_tags_url
       - else
         %li
-          = link_to 'Favorite Tags', settings_favorite_tags_url
+          = link_to t(:favorite_tags), settings_favorite_tags_url
   .clear
