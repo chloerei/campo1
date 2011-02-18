@@ -15,7 +15,7 @@
     #header
       .center-wraper
         #logo
-          = APP_CONFIG['site_name']
+          = link_to APP_CONFIG['site_name'], '/'
         #search
           %input{:type => :text}
           %input{:type => :submit, :value => 'Search'}

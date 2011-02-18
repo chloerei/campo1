@@ -242,6 +242,10 @@ a.button:hover, .tag:hover {
     font-size: 2em;
 }
 
+#logo a {
+    text-decoration: none;
+}
+
 #search {
     float: left;
     margin-top: 6px;
