@@ -19,7 +19,7 @@
   .avatar
     = link_gravatar_to_person @user_hash[@topic.user_id], :size => 64
   .clear
-  .content= @topic.content
+  .content= rich_content @topic.content
   - if @topic.created_at != @topic.updated_at
     .meta
       edited at
@@ -41,7 +41,7 @@
             %span.time
               = time_ago_in_words reply.created_at
               ago
-          .content= reply.content
+          .content= rich_content reply.content
           - if reply.created_at != reply.updated_at
             .meta
               edited at

@@ -73,6 +73,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
+    rdiscount (1.6.8)
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
@@ -89,3 +90,4 @@ DEPENDENCIES
   jquery-rails
   mongoid (= 2.0.0.rc.7)
   rails (= 3.0.4)
+  rdiscount

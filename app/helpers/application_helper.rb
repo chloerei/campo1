@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def rich_content(content)
+    sanitize RDiscount.new(content).to_html
+  end
+
   def paginate_for(collection, options = {})
     locals = options.merge :collection => collection
     render :partial => 'share/paginate', :locals => locals
