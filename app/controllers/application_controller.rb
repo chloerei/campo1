@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :current_logined?
   
   protected
+  def set_page_title(value)
+    @page_title = value
+  end
 
   def require_logined
     if !current_logined?

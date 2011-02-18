@@ -3,6 +3,7 @@ class Settings::FavoriteTagsController < ApplicationController
 
   def show
     @favorite_tags = current_user.favorite_tags
+    set_page_title I18n.t :settings_favorite_tags
   end
 
   def create

@@ -1,1 +1,1 @@
-APP_CONFIG = YAML.load_file("#{RAILS_ROOT}/config/campo.yml")
+APP_CONFIG = YAML.load_file("#{Rails.root}/config/campo.yml")

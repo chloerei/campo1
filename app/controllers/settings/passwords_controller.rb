@@ -2,6 +2,7 @@ class Settings::PasswordsController < ApplicationController
   before_filter :require_logined
 
   def show
+    set_page_title I18n.t :settings_password
     @user = current_user
   end
   
@@ -13,6 +14,7 @@ class Settings::PasswordsController < ApplicationController
       flash[:success] = I18n.t :successful_update
       redirect_to :action => :show
     else
+      set_page_title I18n.t :settings_password
       render :show
     end
   end

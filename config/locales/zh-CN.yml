@@ -3,7 +3,7 @@
 
 zh-CN:
   home: 主页
-  profile: 个人页面
+  profile_page: 个人页面
   settings: 设置
   logout: 退出
   login: 登录
@@ -56,6 +56,10 @@ zh-CN:
   account: 账户
   password: 密码
   profile: 资料
+  settings_account: 设置账户
+  settings_password: 设置密码
+  settings_profile: 设置资料
+  settings_favorite_tags: 设置喜好标签
   
   tips:
     login:

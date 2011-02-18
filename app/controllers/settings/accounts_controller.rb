@@ -3,6 +3,7 @@ class Settings::AccountsController < ApplicationController
 
   def show
     @user = current_user
+    set_page_title I18n.t :settings_account
   end
 
   def update
@@ -13,6 +14,7 @@ class Settings::AccountsController < ApplicationController
       flash[:success] = I18n.t :successful_update
       redirect_to :action => :show
     else
+      set_page_title I18n.t :settings_account
       render :show
     end
   end
