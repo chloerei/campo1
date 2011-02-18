@@ -104,7 +104,7 @@ class User
 
   def check_password
     if new_record?
-      errors.add(:password, "Password can't be blank") if self.password.blank?
+      errors.add(:base, I18n.t('user.errors.password_blank')) if self.password.blank?
       check_password_format
     elsif !self.password.blank?
       check_password_format
@@ -112,14 +112,14 @@ class User
   end
 
   def check_password_format
-    errors.add(:password_confirmation, "Password and confirmation does not match") unless self.password == self.password_confirmation
-    errors.add(:password, "Password must be at least 6 chars long") if self.password.to_s.size < 6
+    errors.add(:base, I18n.t('user.errors.password_confirmation_not_match')) unless self.password == self.password_confirmation
+    errors.add(:base, I18n.t('user.errors.password_too_short')) if self.password.to_s.size < 6
   end
 
   def check_current_password
     if require_current_password?
-      errors.add(:current_password, "Please fill in Current Password") if self.current_password.blank?
-      errors.add(:current_password, "Current Password not match") unless self.matching_password?(self.current_password)
+      errors.add(:base, I18n.t('user.errors.need_current_password')) if self.current_password.blank?
+      errors.add(:base, I18n.t('user.errors.current_password_not_match')) unless self.matching_password?(self.current_password)
     end
   end
 
