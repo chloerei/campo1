@@ -6,11 +6,11 @@
 
 #new-topic-form.section
   .section-title
-    %h2 Edit Topic
+    %h2= t :edit_topic
   .section-content
     = form_for @topic do |f|
       - if !@topic.errors.blank?
         .error= @topic.errors.full_messages
       = render :partial => 'form', :object => f
       .field
-        = f.submit 'Update', :class => 'button'
+        = f.submit t(:update), :class => 'button'

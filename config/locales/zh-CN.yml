@@ -14,8 +14,32 @@ zh-CN:
   collect_topic: 收藏主题
   marker_count: 已有%{count}人收藏
   mark: 马克
+  edit: 编辑
+  edit_topic: 编辑主题
+  update: 更新
+  new_topic: 新主题
+  create: 创建
+  new_reply: 新回复
+  edit_reply: 编辑回复
+  topic_title: 主题标题
   unmark: 取消马克
+  active: 活跃主题
+  interesting: 有趣
+  own: 自有
+  newest: 最新
+  collection: 收藏
+  favorite_tags: 喜好标签
+  recent_tags: 最近标签
+  create_topic: 创建主题
+  prev_page: 上一页
+  next_page: 下一页
 
+  mongoid:
+    attributes:
+      topic:
+        title: 标题
+        content: 内容
+        tags: 标签
   date:
     formats:
       default: "%Y-%m-%d"

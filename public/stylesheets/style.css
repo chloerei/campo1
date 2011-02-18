@@ -338,6 +338,7 @@ a.button:hover, .tag:hover {
     position: absolute;
     bottom: 0px;
     right: 0px;
+    line-height: 20px;
 }
 
 #mainbar #tabs ul {

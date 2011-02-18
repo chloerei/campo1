@@ -6,10 +6,10 @@
 
 #reply-form.section
   .section-title
-    %h2 Edit Reply
+    %h2= t :edit_reply
   .section-content
     .meta
-      for
+      = t :topic_title
       = @topic.title
     .left-column.avatar
       = link_gravatar_to_person current_user
@@ -17,4 +17,4 @@
       = form_for @reply, :url => reply_url(@reply, :return_to => request.referer) do |f|
         = render :partial => 'form', :object => f
         .field
-          = f.submit 'Post', :class => 'button'
+          = f.submit t(:post), :class => 'button'

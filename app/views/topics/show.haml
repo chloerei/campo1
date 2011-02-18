@@ -27,7 +27,7 @@
       = t :ago
   - if current_logined? and @topic.user_id == current_user.id
     .actions
-      = link_to 'Edit', edit_topic_url(@topic)
+      = link_to t(:edit), edit_topic_url(@topic)
 #replies
   %ul.item-list
     - @replies.each do |reply|
@@ -49,7 +49,7 @@
               = t :ago
           - if current_logined? and reply.user_id == current_user.id
             .actions
-              = link_to 'Edit', edit_reply_url(reply)
+              = link_to t(:edit), edit_reply_url(reply)
         .clear
   = paginate_for @replies
 

@@ -1,7 +1,7 @@
 - if current_logined?
   .section.favorite-tags
     .section-title
-      Favorite Tags
+      = t :favorite_tags
     .section-content
       - if current_user.favorite_tags
         %ul
@@ -12,7 +12,7 @@
   - if @recent_tags
     .section.recent-tags
       .section-title
-        Recent Tags
+        = t :recent_tags
       .section-content
         %ul
           - @recent_tags.each do |tag, count|

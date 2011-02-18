@@ -6,40 +6,40 @@
     %ul
       - if current == :active
         %li.current
-          = link_to 'Active', root_url
+          = link_to t(:active), root_url
       - else
         %li
-          = link_to 'Active', root_url
+          = link_to t(:active), root_url
 
       - if current == :interesting
         %li.tagged-interesting.current
-          = link_to 'Interesting', interesting_topics_url
+          = link_to t(:interesting), interesting_topics_url
       - else
         %li.tagged-interesting
-          = link_to 'Interesting', interesting_topics_url
+          = link_to t(:interesting), interesting_topics_url
 
       - if current_logined?
         - if current == :own
           %li.own-topic.current
-            = link_to 'Own', own_topics_url
+            = link_to t(:own), own_topics_url
         - else
           %li.own-topic
-            = link_to 'Own', own_topics_url
+            = link_to t(:own), own_topics_url
 
       - if current == :newest
         %li.current
-          = link_to 'Newest', newest_topics_url
+          = link_to t(:newest), newest_topics_url
       - else
         %li
-          = link_to 'Newest', newest_topics_url
+          = link_to t(:newest), newest_topics_url
 
       - if current_logined?
         - if current == :collection
           %li.current
-            = link_to 'Collection', collection_topics_url
+            = link_to t(:collection), collection_topics_url
         - else
           %li
-            = link_to 'Collection', collection_topics_url
+            = link_to t(:collection), collection_topics_url
       - if current == :tagged
         %li.current
           = link_to @tag, tagged_topics_url(:tag => @tag)
