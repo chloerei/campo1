@@ -42,6 +42,10 @@ zh-CN:
   avatar: 头像
   save: 保存
   add: 添加
+  require_login: 需要登录
+  successful_update: 更新成功
+  login_fail: 登录失败，错误的用户名或密码
+  successful_signup: 注册成功！您可以到‘设置’中添加个人信息和喜好标签
 
   what_is_gravatar: 什么是 Gravatar？
   change_email: 修改 Email

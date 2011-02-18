@@ -8,7 +8,7 @@ class Settings::ProfilesController < ApplicationController
   def update
     @profile = current_user.profile
     if @profile.update_attributes params[:profile]
-      flash[:success] = "Successful update profile"
+      flash[:success] = I18n.t :successful_update
       redirect_to :action => :show
     else
       render :show

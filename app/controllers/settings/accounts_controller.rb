@@ -10,7 +10,7 @@ class Settings::AccountsController < ApplicationController
     params[:user].delete(:password)
     params[:user].delete(:password_confirmation)
     if @user.update_attributes params[:user]
-      flash[:success] = "Successful update account"
+      flash[:success] = I18n.t :successful_update
       redirect_to :action => :show
     else
       render :show

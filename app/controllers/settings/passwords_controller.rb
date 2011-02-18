@@ -10,7 +10,7 @@ class Settings::PasswordsController < ApplicationController
     if @user.update_attributes :password => params[:user][:password],
                                :password_confirmation => params[:user][:password_confirmation],
                                :current_password => params[:user][:current_password]
-      flash[:success] = "Successful update password"
+      flash[:success] = I18n.t :successful_update
       redirect_to :action => :show
     else
       render :show

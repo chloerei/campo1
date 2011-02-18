@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def require_logined
     if !current_logined?
-      flash[:notice] = "require login"
+      flash[:notice] = I18n.t :require_login
       store_location
       redirect_to login_url
     end
