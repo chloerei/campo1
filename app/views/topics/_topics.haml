@@ -20,14 +20,14 @@
             - if topic.tags
               - topic.tags.each do |tag|
                 = link_to tag, tagged_topics_url(:tag => tag)
-            Create by
+            = t :creator
             = link_to_person @user_hash[topic.user_id]
             - if topic.last_replied_by_id
-              Reply by
+              = t :last_replyer
               = link_to_person @user_hash[topic.last_replied_by_id]
 
             = time_ago_in_words topic.actived_at
-            ago
+            = t :ago
         .clear
   = paginate_for @topics, :hide_page => true
 

@@ -12,19 +12,19 @@
       - if @topic.tags
         - @topic.tags.each do |tag|
           = link_to tag, tagged_topics_url(:tag => tag)
-      Create by
+      = t :creator
       = link_to_person @user_hash[@topic.user_id]
       = time_ago_in_words @topic.created_at
-      ago.
+      = t :ago
   .avatar
     = link_gravatar_to_person @user_hash[@topic.user_id], :size => 64
   .clear
   .content~ rich_content @topic.content
   - if @topic.created_at != @topic.updated_at
     .meta
-      edited at
+      = t :edited_at
       = time_ago_in_words @topic.updated_at
-      ago
+      = t :ago
   - if current_logined? and @topic.user_id == current_user.id
     .actions
       = link_to 'Edit', edit_topic_url(@topic)
@@ -40,13 +40,13 @@
             %span.author= link_to_person @user_hash[reply.user_id]
             %span.time
               = time_ago_in_words reply.created_at
-              ago
+              = t :ago
           .content~ rich_content reply.content
           - if reply.created_at != reply.updated_at
             .meta
-              edited at
+              = t :edited_at
               = time_ago_in_words reply.updated_at
-              ago
+              = t :ago
           - if current_logined? and reply.user_id == current_user.id
             .actions
               = link_to 'Edit', edit_reply_url(reply)
@@ -55,12 +55,12 @@
 
 #reply-form.section
   .section-title
-    %h2 Leave a reply
+    %h2= t :leave_a_reply
     %a{:name => '#reply-form'}
   .section-content
     - if current_logined?
       .meta
-        Login as
+        = t :you_are
         = link_to_person current_user
       .left-column.avatar
         = link_gravatar_to_person current_user
@@ -68,22 +68,22 @@
         = form_for @reply do |f|
           = render :partial => 'replies/form', :object => f
           .field
-            = f.submit 'Post', :class => 'button'
+            = f.submit t(:post), :class => 'button'
       .clear
     - else
       .meta
+        = t :please
         = link_to 'Login', login_url(:return_to => topic_url(@topic, :anchor => "reply-form")), :class => 'button'
-        for reply.
 
 - content_for :sidebar do
   - if current_logined?
     .section
       .section-title
-        Collect Topic
+        = t :collect_topic
       .section-content
         - if @topic.marker_ids.to_a.include? current_user.id
-          = button_to 'unmark', mark_topic_url(@topic), :method => :delete, :class => 'button reverse'
+          = button_to t(:unmark), mark_topic_url(@topic), :method => :delete, :class => 'button reverse'
         - else
-          = button_to 'mark', mark_topic_url(@topic), :method => :post, :class => 'button'
+          = button_to t(:mark), mark_topic_url(@topic), :method => :post, :class => 'button'
         .meta
-          = "#{@topic.marker_ids.to_a.count} marker"
+          = t :marker_count, :count => @topic.marker_ids.to_a.count
