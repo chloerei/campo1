@@ -57,23 +57,6 @@ zh-CN:
     profile:
       gravatar: 头像使用 Gravatar 服务
 
-  mongoid:
-    attributes:
-      topic:
-        title: 标题
-        content: 内容
-        tags: 标签
-      user:
-        username: 用户名
-        email: Email
-        current_password: 当前密码
-        password: 密码
-        password_confirmation: 密码确认
-      profile:
-        name: 名字
-        url: 网站url
-        description: 描述
-
   user:
     errors:
       password_blank: 密码不能为空
@@ -215,7 +198,22 @@ zh-CN:
     select:
       prompt: "请选择"
 
-  activerecord:
+  mongoid:
+    attributes:
+      topic:
+        title: 标题
+        content: 内容
+        tags: 标签
+      user:
+        username: 用户名
+        email: Email
+        current_password: 当前密码
+        password: 密码
+        password_confirmation: 密码确认
+      profile:
+        name: 名字
+        url: 网站url
+        description: 描述
     errors:
       template: # ~ 2.3.5 backward compatible
         header:
