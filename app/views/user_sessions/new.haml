@@ -1,23 +1,23 @@
 .section
   .section-title
-    %h2 Login
+    %h2= t :login
   .section-content
     = form_for :user, :url => user_session_url(:return_to => params[:return_to]) do |f|
       %table.form-table
         %tr
           %th
-            %label Login
+            %label= t :login_name
           %td
             = f.text_field :login, :class => 'text'
-            .meta username or email
+            .meta= t 'tips.login.login_name'
         %tr
           %th
-            %label Password
+            %label= t :password
           %td
             = f.password_field :password, :class => 'text'
         %tr
           %th
           %td
-            = f.submit :Login, :class => 'button'
+            = f.submit t(:login), :class => 'button'
             = f.check_box :remember_me
-            %span.tips= f.label :remember_me
+            %span.tips= f.label :remember_me, t('tips.login.remember_me')

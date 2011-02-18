@@ -1,6 +1,6 @@
 .section
   .section-title
-    %h2 Signup
+    %h2= t :signup
   .section-content
     = form_for @user do |f|
       - if !@user.errors.blank?
@@ -10,21 +10,21 @@
           %th= f.label :username
           %td
             = f.text_field :username, :class => 'text'
-            .meta Letters only, 3-20 chars long, require
+            .meta= t 'tips.signup.username'
         %tr
           %th= f.label :email
           %td
             = f.text_field :email, :class => 'text'
-            .meta Never be published, require
+            .meta= t 'tips.signup.email'
         %tr
           %th= f.label :password
           %td
             = f.password_field :password, :class => 'text'
-            .meta At least 6 chars long
+            .meta= t 'tips.signup.password'
         %tr
-          %th= f.label :password_confirmation, 'Password Again'
+          %th= f.label :password_confirmation
           %td
             = f.password_field :password_confirmation, :class => 'text'
         %tr
           %th
-          %td= f.submit 'Signup', :class => 'button'
+          %td= f.submit t(:signup), :class => 'button'

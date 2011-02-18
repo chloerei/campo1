@@ -8,6 +8,7 @@ zh-CN:
   logout: 退出
   login: 登录
   signup: 注册
+  login_name: 登录名
   ago: 前
   creator: 创建者
   last_replyer: 最后回复者
@@ -56,6 +57,13 @@ zh-CN:
   profile: 资料
   
   tips:
+    login:
+      login_name: 用户名 或 Email
+      remember_me: 记住我（1个月）
+    signup:
+      username: 仅限英文字符和数字，3-20字符，稍后可更改
+      email: 不会公开
+      password: 至少6字符
     user:
       current_password: 更改需要提供当前密码
     profile:
