@@ -6,14 +6,14 @@
   - if current_logined?
     .section
       .section-content
-        = link_to 'Create Topic', new_topic_url, :class => 'button'
+        = link_to t(:create_topic), new_topic_url, :class => 'button'
     .section
       .section-title
         Tag:
         = @tag
       .section-content
         - if current_user.favorite_tags.to_a.include? @tag
-          = button_to 'remove from favorites', settings_favorite_tags_url(:tags => @tag, :return_to => tagged_topics_url(:tag => @tag)), :method => :delete, :class => 'button reverse'
+          = button_to t(:remove_from_favorite_tags), settings_favorite_tags_url(:tags => @tag, :return_to => tagged_topics_url(:tag => @tag)), :method => :delete, :class => 'button reverse'
         - else
-          = button_to 'add to favorite', settings_favorite_tags_url(:tags => @tag, :return_to => tagged_topics_url(:tag => @tag)), :method => :post, :class => 'button'
+          = button_to t(:add_to_favorite_tags), settings_favorite_tags_url(:tags => @tag, :return_to => tagged_topics_url(:tag => @tag)), :method => :post, :class => 'button'
   = render :partial => 'sidebar'

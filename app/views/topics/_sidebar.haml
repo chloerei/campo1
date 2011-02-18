@@ -8,7 +8,7 @@
           - current_user.favorite_tags.each do |tag|
             %li= link_to tag, tagged_topics_url(:tag => tag), :class => 'button'
         .clear
-      .actions= link_to 'manage tags', settings_favorite_tags_url
+      .actions= link_to t(:manage_tags), settings_favorite_tags_url
   - if @recent_tags
     .section.recent-tags
       .section-title

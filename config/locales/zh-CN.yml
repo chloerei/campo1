@@ -60,6 +60,9 @@ zh-CN:
   settings_password: 设置密码
   settings_profile: 设置资料
   settings_favorite_tags: 设置喜好标签
+  add_to_favorite_tags: 添加到喜好标签
+  remove_from_favorite_tags: 从喜好标签移除
+  manage_tags: 管理标签
   
   tips:
     topic:
