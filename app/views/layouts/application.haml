@@ -11,7 +11,7 @@
     #header
       .center-wraper
         #logo
-          GEEKER
+          = APP_CONFIG['site_name']
         #search
           %input{:type => :text}
           %input{:type => :submit, :value => 'Search'}
@@ -35,13 +35,10 @@
       .center-wraper
         #bottom-menu
           %ul
-            %li
-              %a{:href => '#'} One
-            %li
-              %a{:href => '#'} Two
-            %li.last 
-              %a{:href => '#top'} Top
         #copyright
-          @ Copyright YourWebSite | Layout by
-          %a{:href => 'http://chloerei.com'} Rei
+          @ Copyright
+          = link_to APP_CONFIG['organize_name'], APP_CONFIG['organize_url']
+          |
+          Power by Campo
+          / #TODO link to project page
         .clear
