@@ -158,7 +158,7 @@ a.button, .button-like {
     display: inline-block;
 }
 
-a.button:hover, .tag:hover {
+a.button:hover {
     background-color: #CC2A2A;
     text-decoration: none;
 }
@@ -458,6 +458,18 @@ a.button:hover, .tag:hover {
 #mainbar #topics .meta a {
     color: #999;
     font-weight: bold;
+}
+
+#mainbar .meta .tag a {
+    background-color: #EEE;
+    padding: 0 6px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#mainbar .meta .tag a:hover {
+    text-decoration: none;
 }
 
 #mainbar #topic {
