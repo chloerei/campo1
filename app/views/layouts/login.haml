@@ -1,0 +1,20 @@
+!!! 5
+%html
+  %head
+    %meta{ "charset" => "utf-8" }
+    %title
+      - if defined? @page_title
+        = "#{APP_CONFIG['site_name']} › #{@page_title}"
+      - else
+        = APP_CONFIG['site_name']
+    = stylesheet_link_tag 'login'
+    = yield :head
+  %body
+    #header
+      .center-wraper
+        #logo
+          = link_to APP_CONFIG['site_name'], '/'
+        = render :partial => 'share/top_menu'
+        .clear
+    #content
+      = yield

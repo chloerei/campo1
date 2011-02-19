@@ -1,4 +1,8 @@
 class UserSessionsController < ApplicationController
+  before_filter :require_not_logined, :expect => :destroy
+  before_filter :require_logined, :only => :destroy
+  layout 'login'
+
   def new
     set_page_title I18n.t :login
   end

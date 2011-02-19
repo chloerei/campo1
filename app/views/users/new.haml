@@ -1,30 +1,30 @@
-.section
-  .section-title
-    %h2= t :signup
-  .section-content
-    = form_for @user do |f|
-      - if !@user.errors.blank?
-        .error= @user.errors.full_messages
-      %table.form-table
-        %tr
-          %th= f.label :username
-          %td
-            = f.text_field :username, :class => 'text'
-            .meta= t 'tips.signup.username'
-        %tr
-          %th= f.label :email
-          %td
-            = f.text_field :email, :class => 'text'
-            .meta= t 'tips.signup.email'
-        %tr
-          %th= f.label :password
-          %td
-            = f.password_field :password, :class => 'text'
-            .meta= t 'tips.signup.password'
-        %tr
-          %th= f.label :password_confirmation
-          %td
-            = f.password_field :password_confirmation, :class => 'text'
-        %tr
-          %th
-          %td= f.submit t(:signup), :class => 'button'
+.dialog
+  = form_for @user do |f|
+    - if !@user.errors.blank?
+      = render :partial => 'share/error_messages', :locals => {:object => f.object}
+    .field
+      = f.label :username
+      %br/
+      = f.text_field :username, :class => 'text'
+      .tips= t 'tips.signup.username'
+    .field
+      = f.label :email
+      %br/
+      = f.text_field :email, :class => 'text'
+      .tips= t 'tips.signup.email'
+    .field
+      = f.label :password
+      %br/
+      = f.password_field :password, :class => 'text'
+      .tips= t 'tips.signup.password'
+    .field
+      = f.label :password_confirmation
+      %br/
+      = f.password_field :password_confirmation, :class => 'text'
+    .field
+      = f.submit t(:signup), :class => 'button'
+
+.message
+  .tips
+    = t :already_have_account
+    = link_to t(:login), login_url
