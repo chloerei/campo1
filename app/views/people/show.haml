@@ -5,7 +5,7 @@
     .detail
       - if @person.profile.url
         = link_to @person.profile.url, @person.profile.url, :target => '_blank'
-    = @person.profile.description
+    = sanitize simple_format(auto_link(@person.profile.description))
   .clear
 
 - if !@topics.empty?
