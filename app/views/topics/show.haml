@@ -29,9 +29,9 @@
     .actions
       = link_to t(:edit), edit_topic_url(@topic)
 #replies
-  %ul.item-list
+  .item-list
     - @replies.each do |reply|
-      %li{:id => "reply-#{reply.id}"}
+      .item{:id => "reply-#{reply.id}"}
         .left-column.avatar
           = link_gravatar_to_person @user_hash[reply.user_id]
         .right-column

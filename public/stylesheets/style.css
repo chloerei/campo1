@@ -303,8 +303,7 @@ a.button:hover, .tag:hover {
     padding: 0 10px;
 }
 
-#mainbar ul.item-list {
-    list-style: none;
+#mainbar .item-list {
     margin: 0 0 10px;
     padding: 0;
 }
@@ -321,7 +320,7 @@ a.button:hover, .tag:hover {
     width: 642px;
 }
 
-#mainbar ul.item-list li {
+#mainbar .item-list .item {
     border-bottom: 1px dashed #CCC;
     padding: 15px 10px;
 }
@@ -489,6 +488,11 @@ a.button:hover, .tag:hover {
 #mainbar #topic .content,
 #mainbar #replies, .content {
     margin: 0 0 10px;
+    line-height: 1.6em;
+}
+
+#mainbar #topic .content {
+    margin-top: 10px;
 }
 
 #mainbar #replies {

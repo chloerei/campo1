@@ -1,5 +1,5 @@
 #topics
-  %ul.item-list
+  .item-list
     - @topics.each do |topic|
       - topic_style = []
       - if current_logined?
@@ -7,7 +7,7 @@
           - topic_style << "tagged-interesting"
         - if topic.user_id == current_user.id
           - topic_style << "own-topic"
-      %li{:class => topic_style}
+      .item{:class => topic_style}
         .left-column.avatar
           = link_gravatar_to_person @user_hash[topic.user_id]
         .right-column

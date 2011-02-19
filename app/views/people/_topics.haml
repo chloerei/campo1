@@ -1,6 +1,6 @@
-%ul.item-list
+.item-list
   - @topics.each do |topic|
-    %li
+    .item
       .title= link_to topic.title, topic
       .reply-count= link_to topic.replies_count, topic
       .clear
