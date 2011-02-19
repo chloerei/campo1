@@ -26,7 +26,11 @@ p {
 }
 
 blockquote {
+    background-color: #FFF8D0;
     font-style: italic;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 10px 10px 5px;
 }
 
 pre, code {
@@ -452,6 +456,7 @@ a.button:hover {
 }
 
 #mainbar #topics .meta {
+    margin: 5px 0;
     font-weight: normal;
 }
 
@@ -464,7 +469,6 @@ a.button:hover {
     background-color: #EEE;
     padding: 0 6px;
     -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
     border-radius: 5px;
 }
 
