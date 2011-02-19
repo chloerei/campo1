@@ -2,10 +2,16 @@
   .left.avatar= link_gravatar_to_person @person, :size => 128
   .left
     %h1= @person.profile.name
-    .detail
+    .detail.meta
       - if @person.profile.url
-        = link_to @person.profile.url, @person.profile.url, :target => '_blank'
-    = sanitize simple_format(auto_link(@person.profile.description))
+        %p
+          = image_tag "/images/icons/home.png", :align => 'top'
+          = link_to @person.profile.url, @person.profile.url, :target => '_blank'
+      - if @person.profile.twitter
+        %p
+          = image_tag "/images/icons/twitter.png", :align => 'top'
+          = link_to "@#{@person.profile.twitter}", "https://twitter.com/#{@person.profile.twitter}", :target => '_blank'
+    .description= sanitize simple_format(auto_link(@person.profile.description))
   .clear
 
 - if !@topics.empty?
