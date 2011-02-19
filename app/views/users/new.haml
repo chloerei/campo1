@@ -23,6 +23,8 @@
       = f.password_field :password_confirmation, :class => 'text'
     .field
       = f.submit t(:signup), :class => 'button'
+      = f.check_box :remember_me
+      %span.tips= f.label :remember_me, t('tips.login.remember_me')
 
 .message
   .tips

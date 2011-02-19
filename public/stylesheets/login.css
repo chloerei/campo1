@@ -184,6 +184,11 @@ a.button:hover, .tag:hover {
     text-decoration: none;
 }
 
+.center-wraper {
+    width: 960px;
+    margin: 0 auto;
+}
+
 /* header */
 #header {
     height: 40px;

@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = I18n.t :successful_signup
       login_as @user
+      set_remember_cookie if params[:user][:remember_me] == "1"
       redirect_to root_url
     else
       set_page_title I18n.t :signup
