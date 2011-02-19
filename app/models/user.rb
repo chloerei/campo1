@@ -33,7 +33,7 @@ class User
   attr_accessible :login, :username, :email, :password, :password_confirmation, :current_password
 
   before_save :prepare_password
-  after_create :init_profile
+  before_create :init_profile
 
   validate :check_password, :check_current_password
   
@@ -99,7 +99,7 @@ class User
   end
 
   def init_profile
-    self.create_profile :name => self.username
+    self.build_profile :name => self.username
   end
 
   def check_password
