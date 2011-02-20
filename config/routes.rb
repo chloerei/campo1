@@ -33,4 +33,5 @@ Campo::Application.routes.draw do
   get '~:username' => 'people#show', :as => :person
   get '~:username/topics' => 'people#topics', :as => :person_topics
 
+  match '*path', :to => 'errors#routing'
 end
