@@ -65,6 +65,13 @@ zh-CN:
   add_to_favorite_tags: 添加到喜好标签
   remove_from_favorite_tags: 从喜好标签移除
   manage_tags: 管理标签
+
+  404_title: 404 未找到页面
+  404_tips: "页面不存在或者已经被移除 : ("
+  422_title: 422 操作被拒绝
+  422_tips: "可能你企图修改不属于你的资源 : ("
+  500_title: 500 服务器错误
+  500_tips: "啊呀！服务器出错啦 : ("
   
   tips:
     topic:
