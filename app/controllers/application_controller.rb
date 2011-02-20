@@ -9,15 +9,30 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def render_404
+  def render_404(exception = nil)
+    if exception
+        logger.info "Rendering 404: #{exception.message}"
+    end
+
+    set_page_title "404"
     render 'errors/404', :layout => 'login', :status => 404
   end
 
-  def render_422
+  def render_422(exception = nil)
+    if exception
+        logger.info "Rendering 422: #{exception.message}"
+    end
+
+    set_page_title "422"
     render 'errors/422', :layout => 'login', :status => 422
   end
 
-  def render_500
+  def render_500(exception = nil)
+    if exception
+        logger.info "Rendering 500: #{exception.message}"
+    end
+
+    set_page_title "500"
     render 'errors/500', :layout => 'login', :status => 500
   end
 
