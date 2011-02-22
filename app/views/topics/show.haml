@@ -20,7 +20,7 @@
     = link_gravatar_to_person @user_hash[@topic.user_id], :size => 64
   .clear
   .content~ rich_content @topic.content
-  - if @topic.created_at != @topic.updated_at
+  - if @topic.edited_at
     .meta
       = t :edited_at
       = time_ago_in_words @topic.updated_at

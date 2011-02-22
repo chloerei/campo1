@@ -4,6 +4,16 @@ class TopicTest < ActiveSupport::TestCase
   def setup
     @user = create_user
   end
+
+  def test_edited_at
+    t = Topic.new :title => 'title', :content => 'content'
+    t.save
+    assert_nil t.edited_at
+    t.content = 'edited'
+    t.save
+    assert_not_nil t.edited_at
+  end
+
   def test_tags
     t = Topic.new :title => 'title', :content => 'content'
     t.tags = "tag1 tag2 tag3"

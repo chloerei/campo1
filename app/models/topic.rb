@@ -14,6 +14,7 @@ class Topic
   referenced_in :last_replied_by, :class_name => 'User'
   field :actived_at, :type => Time
   field :replies_count, :type => Integer, :default => 0
+  field :edited_at, :type => Time
 
   validates_presence_of :title, :content
   validates_length_of :title, :maximum => 100
@@ -22,6 +23,13 @@ class Topic
   attr_accessible :title, :content, :tags
 
   before_create :set_actived_at
+  before_save :set_edited_at, :if => Proc.new { |topic| 
+    topic.title_changed? || topic.content_changed? || topic.tags_changed?
+  }
+
+  def set_edited_at
+    self.edited_at = Time.now.utc
+  end
 
   def tags=(value)
     if value.is_a? String
