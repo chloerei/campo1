@@ -51,3 +51,9 @@ Change production params.
 http://codecampo.com is the main website running Campo with develop branch.
 
 Feedback in codecampo.com or github issues(https://github.com/chloerei/campo).
+
+## LICENSE 
+
+Copyright (c) 2011 Rei http://chloerei.com.
+
+Release under MIT-LICENSE
