@@ -1,3 +1,17 @@
 = render :partial => 'subheader', :locals => {:current => :interesting}
 
-/ #TODO tutorial here
+.section
+  .section-content
+    .left.tips
+      :markdown
+        登录系统定制你的有趣话题列表
+
+        1. 登录或注册
+        2. 添加喜好 Tag
+        3. 阅读为你定制的有趣话题列表
+    .right
+      = image_tag '/images/plugin.png'
+    .clear
+    = link_to t(:login), login_url, :class => 'button'
+    = t :or
+    = link_to t(:signup), signup_url, :class => 'button'
