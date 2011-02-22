@@ -1,52 +1,52 @@
-= Campo
+# Campo
 
 A lightweight BBS.
 
 Author: Rei(chloerei@gmail.com)
 
-== Dependencies
+## Dependencies
 
 - Ruby 1.9.2 (1.8.6+ maybe work, but not test yet)
 - mongodb 1.6.5+
 - Ruby on Rails 3.0.4
 
-== Getting Started
+## Getting Started
 
-1. Download the sources:
+### 1. Download the sources:
 
     git clone git://github.com/chloerei/campo.git
 
     cd campo/
 
-2. Configure the application
+### 2. Configure the application
 
     edit config/campo.yml
 
 It will used in layout.
 
-3. Make sure mongodb is running
+### 3. Make sure mongodb is running
 
-4. Start the server
+### 4. Start the server
 
     rails s
 
-== For production environment
+## For production environment
 
 This project is low degree of completion, db schema is changed and not well migration support. not suggest used in production environment. But if you want, there are some more notes.
 
-1. Reset secret token (importance for security)
+### 1. Reset secret token (importance for security)
 
     rake secret
 
-Copy the output string to config/initializers/secret_token.rb, and replace secret_token value.
+Copy the output string to config/initializers/secret\_token.rb, and replace secret\_token value.
 
-2. Config mongo connection.
+### 2. Config mongo connection.
 
     edit config/mongoid.yml
 
 Change production params.
 
-== Community
+## Community
 
 http://codecampo.com is the main website running Campo with develop branch.
 
