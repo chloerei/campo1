@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_not_logined
-    redirect_to root_url if current_logined? # TODO redirect to public profile page
+    redirect_to root_url if current_logined?
   end
 
   def store_location
