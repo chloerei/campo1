@@ -1,8 +1,9 @@
 .item-list
   - @topics.each do |topic|
     .item
-      .title= link_to topic.title, topic
-      .reply-count= link_to topic.replies_count, topic
+      - anchor = (topic.replies_count == 0 ? nil : "replies-#{topic.replies_count}")
+      .title= link_to topic.title, topic_url(topic, :anchor => anchor)
+      .reply-count= link_to topic.replies_count, topic_url(topic, :anchor => anchor)
       .clear
       .meta
         - if topic.tags

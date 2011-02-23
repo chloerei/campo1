@@ -32,7 +32,7 @@ It will used in layout.
 
 ## For production environment
 
-This project is low degree of completion, db schema is changed and not well migration support. not suggest used in production environment. But if you want, there are some more notes.
+This project is low degree of completion, db schema is changing and not well migration support. not suggest used in production environment. But if you want, there are some more notes.
 
 ### 1. Reset secret token (importance for security)
 
