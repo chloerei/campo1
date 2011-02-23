@@ -23,7 +23,7 @@
   - if @topic.edited_at
     .meta
       = t :edited_at
-      = time_ago_in_words @topic.updated_at
+      = time_ago_in_words @topic.edited_at
       = t :ago
   - if current_logined? and @topic.user_id == current_user.id
     .actions
