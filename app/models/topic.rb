@@ -23,7 +23,7 @@ class Topic
   attr_accessible :title, :content, :tags
 
   before_create :set_actived_at
-  before_save :set_edited_at, :if => Proc.new { |topic| 
+  before_update :set_edited_at, :if => Proc.new { |topic| 
     topic.title_changed? || topic.content_changed? || topic.tags_changed?
   }
 

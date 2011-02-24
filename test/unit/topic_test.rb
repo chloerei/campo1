@@ -6,7 +6,7 @@ class TopicTest < ActiveSupport::TestCase
   end
 
   def test_edited_at
-    t = Topic.new :title => 'title', :content => 'content'
+    t = @user.topics.new :title => 'title', :content => 'content', :tags => 'tag1 tag2'
     t.save
     assert_nil t.edited_at
     t.content = 'edited'
