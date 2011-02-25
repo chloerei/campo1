@@ -8,6 +8,10 @@ class ActiveSupport::TestCase
   def create_user
     User.create :username => 'test', :email => 'test@test.com', :password => '12345678', :password_confirmation => '12345678'
   end
+
+  def create_admin
+    User.create :username => 'admin', :email => 'admin@codecampo.com', :password => '12345678', :password_confirmation => '12345678'
+  end
   
   def login_as(user)
     @controller.send 'login_as', user
