@@ -1,4 +1,5 @@
 class Admin::BaseController < ApplicationController
+  layout 'admin'
   before_filter :require_logined, :require_admin
 
   protected
