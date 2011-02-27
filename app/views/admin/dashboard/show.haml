@@ -1,0 +1,35 @@
+#nav
+  = link_to 'Dashboard', '#', :class => 'button'
+  = link_to 'Topics', '#', :class => 'button'
+  = link_to 'Replies', '#', :class => 'button'
+  = link_to 'Users', '#', :class => 'button'
+
+.section
+  .section-title
+    %h3 Today New
+  .section-content
+    %table.data-table.tips
+      %tr
+        %th Topics
+        %td= @today_topics_count
+      %tr
+        %th Replies
+        %td= @today_replies_count
+      %tr
+        %th Users
+        %td= @today_users_count
+
+.section
+  .section-title
+    %h3 Total
+  .section-content
+    %table.data-table.tips
+      %tr
+        %th Topics
+        %td= Topic.count
+      %tr
+        %th Replies
+        %td= Reply.count
+      %tr
+        %th Users
+        %td= User.count

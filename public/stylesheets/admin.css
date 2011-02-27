@@ -233,7 +233,7 @@ a.button:hover, .tag:hover {
 
 /* content */
 #content {
-    padding-top: 100px;
+    padding-top: 30px;
 }
 
 .tips {
@@ -242,20 +242,37 @@ a.button:hover, .tag:hover {
     font-weight: bold;
 }
 
-.dialog, .message {
+.content-box {
     background-color: #FFF;
     margin: 0 auto 20px;
-    width: 340px;
+    width: 720px;
     border: 1px solid #CCC;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
+    padding: 20px;
 }
 
-.dialog {
-    padding: 30px 30px 20px;
+#nav {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #CCC;
 }
 
-.message {
-    padding: 15px 30px;
+#nav .button {
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.section {
+    margin: 20px 0;
+}
+
+.data-table th,
+.data-table td {
+    padding: 5px 20px 5px 0;
+}
+
+.data-table th {
+    font-weight: bold;
+    text-align: left;
 }
