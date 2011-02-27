@@ -236,7 +236,7 @@ a.button:hover, .tag:hover {
     padding-top: 30px;
 }
 
-.tips {
+.meta, .tips {
     color: #999;
     font-size: 0.9em;
     font-weight: bold;
@@ -286,6 +286,9 @@ a.button:hover, .tag:hover {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #999;
 }
 
 .data-table th,
@@ -332,4 +335,12 @@ a.button:hover, .tag:hover {
 
 .paginate span.current_page {
     background-color: #CC2A2A;
+}
+
+#topic {
+    margin: 10px 0 20px;
+    background-color: #F2FBEF;
+    padding: 10px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }

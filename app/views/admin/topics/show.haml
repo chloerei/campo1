@@ -1,0 +1,13 @@
+= render :partial => 'admin/nav'
+
+#topic
+  = link_to topic_url(@topic), topic_url(@topic), :target => '_blank'
+  %h3 Title
+  = @topic.title
+  %h3 Content
+  = simple_format @topic.content
+  %h3 Tags
+  = @topic.tags_string
+  %h3 Author
+  = image_tag @topic.user.gravatar_url(:size => 48)
+  = link_to @topic.user.profile.name

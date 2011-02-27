@@ -4,7 +4,7 @@
   %table.data-table
     - @topics.each do |topic|
       %tr{:class => cycle("even", "odd")}
-        %td.title= topic.title
+        %td.title= link_to topic.title, admin_topic_url(topic)
         %td= @user_hash[topic.user_id].profile.name
         %td.time= l topic.created_at, :format => :short
   = paginate_for @topics
