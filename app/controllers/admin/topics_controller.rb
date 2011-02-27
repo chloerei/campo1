@@ -8,4 +8,10 @@ class Admin::TopicsController < Admin::BaseController
   def show
     @topic = Topic.find params[:id]
   end
+
+  def destroy
+    @topic = Topic.find params[:id]
+    @topic.destroy
+    redirect_to :action => :index
+  end
 end

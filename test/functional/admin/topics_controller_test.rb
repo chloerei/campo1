@@ -32,4 +32,17 @@ class Admin::TopicsControllerTest < ActionController::TestCase
     get :show, :id => @topic.id
     assert_template 'show'
   end
+
+  def test_destroy
+    delete :destroy, :id => @topic.id
+    assert_redirected_to login_url
+
+    login_as @user
+    get :destroy, :id => @topic.id
+    assert_template 'errors/422'
+    
+    login_as @admin
+    get :destroy, :id => @topic.id
+    assert_redirected_to :action => :index
+  end
 end
