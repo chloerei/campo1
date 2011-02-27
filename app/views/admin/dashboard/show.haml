@@ -1,14 +1,10 @@
-#nav
-  = link_to 'Dashboard', '#', :class => 'button'
-  = link_to 'Topics', '#', :class => 'button'
-  = link_to 'Replies', '#', :class => 'button'
-  = link_to 'Users', '#', :class => 'button'
+= render :partial => 'admin/nav'
 
 .section
   .section-title
     %h3 Today New
   .section-content
-    %table.data-table.tips
+    %table.statistic-table
       %tr
         %th Topics
         %td= @today_topics_count
@@ -23,7 +19,7 @@
   .section-title
     %h3 Total
   .section-content
-    %table.data-table.tips
+    %table.statistic-table
       %tr
         %th Topics
         %td= Topic.count

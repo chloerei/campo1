@@ -502,7 +502,7 @@ a.button:hover {
 }
 
 #mainbar #topic .content,
-#mainbar #replies, .content {
+#mainbar #replies .content {
     margin: 0 0 10px;
     line-height: 1.6em;
 }
@@ -569,14 +569,11 @@ a.button:hover {
 }
 
 .paginate {
-    margin: 0 10px 10px;
-    width: 700px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    width: 100%;
     font-size: 0.9em;
     font-weight: bold;
-}
-
-.section .paginate {
-    width: 680px;
 }
 
 .paginate td.prev{

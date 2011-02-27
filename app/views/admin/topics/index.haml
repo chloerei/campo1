@@ -1,0 +1,10 @@
+= render :partial => 'admin/nav'
+
+#topics
+  %table.data-table
+    - @topics.each do |topic|
+      %tr{:class => cycle("even", "odd")}
+        %td.title= topic.title
+        %td= @user_hash[topic.user_id].profile.name
+        %td.time= l topic.created_at, :format => :short
+  = paginate_for @topics

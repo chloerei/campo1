@@ -267,12 +267,69 @@ a.button:hover, .tag:hover {
     margin: 20px 0;
 }
 
-.data-table th,
-.data-table td {
+.statistic-table th,
+.statistic-table td {
     padding: 5px 20px 5px 0;
 }
 
-.data-table th {
+.statistic-table {
     font-weight: bold;
+    font-size: 0.9em;
+    color: #999;
+}
+
+.statistic-table th {
     text-align: left;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.data-table th,
+.data-table td {
+    padding: 10px;
+}
+
+.data-table .odd {
+    background-color: #EEE;
+}
+
+.data-table .time {
+    text-align: right;
+}
+
+.data-table .title {
+    width: 70%;
+}
+
+.paginate {
+    margin-bottom: 10px;
+    padding: 0 10px;
+    width: 100%;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.paginate td.prev{
+    text-align: left;
+    width: 150px;
+}
+
+.paginate td.next{
+    text-align: right;
+    width: 150px;
+}
+
+.paginate .pages {
+    text-align: center;
+}
+
+.paginate span.dot{
+}
+
+.paginate span.current_page {
+    background-color: #CC2A2A;
 }
