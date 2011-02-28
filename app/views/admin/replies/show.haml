@@ -11,4 +11,5 @@
   = link_to @reply.user.profile.name, admin_user_url(@reply.user)
 
 #manage
-  = button_to 'Delete', admin_reply_url(@reply), :method => :delete, :confirm => 'Sure?', :class => 'button'
+  .right= button_to 'Delete', admin_reply_url(@reply), :method => :delete, :confirm => 'Sure?', :class => 'button'
+  .clear

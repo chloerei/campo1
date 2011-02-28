@@ -3,6 +3,14 @@ require 'test_helper'
 class TopicTest < ActiveSupport::TestCase
   def setup
     @user = create_user
+    @topic = @user.topics.create :title => 'title', :content => 'content', :tags => 'tag1 tag2'
+  end
+
+  def test_close_and_open
+    @topic.close!
+    assert @topic.closed?
+    @topic.open!
+    assert !@topic.closed?
   end
 
   def test_edited_at

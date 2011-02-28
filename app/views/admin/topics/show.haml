@@ -13,4 +13,5 @@
   = link_to @topic.user.profile.name, admin_user_url(@topic.user)
 
 #manage
-  = button_to 'Delete', admin_topic_url(@topic), :method => :delete, :confirm => 'Sure?', :class => 'button'
+  .right= button_to 'Delete', admin_topic_url(@topic), :method => :delete, :confirm => 'Sure?', :class => 'button'
+  .clear

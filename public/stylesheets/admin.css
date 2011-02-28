@@ -345,3 +345,7 @@ a.button:hover, .tag:hover {
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
+
+#manage .left {
+    margin-right: 10px;
+}

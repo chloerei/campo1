@@ -6,6 +6,7 @@ class Topic
   field :content
   field :tags, :type => Array
   field :marker_ids, :type => Array
+  field :closed, :type => Boolean
 
   scope :marked_by, lambda { |user| where(:marker_ids => user.id) }
 
@@ -26,6 +27,16 @@ class Topic
   before_update :set_edited_at, :if => Proc.new { |topic| 
     topic.title_changed? || topic.content_changed? || topic.tags_changed?
   }
+
+  def close!
+    self.closed = true
+    save
+  end
+
+  def open!
+    self.closed = false
+    save
+  end
 
   def set_edited_at
     self.edited_at = Time.now.utc

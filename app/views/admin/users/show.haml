@@ -21,6 +21,22 @@
     %tr
       %th description
       %td= sanitize simple_format(auto_link(@user.profile.description))
+    %tr
+      %th banned
+      %td= @user.banned?
+    %tr
+      %th topics
+      %td= @user.topics.count
+    %tr
+      %th replies
+      %td= @user.replies.count
 
 #manage
-  = button_to 'Delete', admin_user_url(@user), :method => :delete, :confirm => 'Sure?', :class => 'button'
+  - if @user.banned?
+    .left= button_to 'Unban', ban_admin_user_url(@user), :method => :delete, :class => 'button'
+  - else
+    .left= button_to 'Ban', ban_admin_user_url(@user), :method => :post, :class => 'button'
+    .left= button_to 'Ban and Clean', ban_and_clean_admin_user_url(@user), :method => :post, :confirm => 'Sure?', :class => 'button'
+  .right
+    = button_to 'Delete', admin_user_url(@user), :method => :delete, :confirm => 'Sure?', :class => 'button'
+  .clear
