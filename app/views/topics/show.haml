@@ -1,7 +1,12 @@
-- if current_logined?
-  - content_for :head do
+- content_for :head do
+  - if current_logined?
     = javascript_include_tag 'showdown', 'wmd'
     = stylesheet_link_tag 'wmd'
+  = javascript_include_tag 'jquery.ae.image.resize.min'
+  :javascript
+    $(function() {
+      $( ".content img" ).aeImageResize({ width: 600 });
+    });
 
 = render :partial => 'subheader'
 
