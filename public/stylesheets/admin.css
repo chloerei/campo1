@@ -267,19 +267,20 @@ a.button:hover, .tag:hover {
     margin: 20px 0;
 }
 
-.statistic-table th,
-.statistic-table td {
+.nice-table th,
+.nice-table td {
     padding: 5px 20px 5px 0;
 }
 
-.statistic-table {
+.nice-table {
     font-weight: bold;
     font-size: 0.9em;
     color: #999;
 }
 
-.statistic-table th {
+.nice-table th {
     text-align: left;
+    vertical-align: top;
 }
 
 .data-table {
@@ -337,7 +338,7 @@ a.button:hover, .tag:hover {
     background-color: #CC2A2A;
 }
 
-#topic {
+#topic, #reply, #user {
     margin: 10px 0 20px;
     background-color: #F2FBEF;
     padding: 10px;

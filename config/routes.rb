@@ -37,6 +37,7 @@ Campo::Application.routes.draw do
     get '/' => 'dashboard#show', :as => :dashboard
     resources :topics, :only => [:index, :show, :destroy]
     resources :replies, :only => [:index, :show, :destroy]
+    resources :users, :only => [:index, :show, :destroy]
   end
 
   match '*path', :to => 'errors#routing'

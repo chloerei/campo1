@@ -1,0 +1,26 @@
+= render :partial => 'admin/nav'
+
+#user
+  = link_to person_url(:username => @user.username), person_url(:username => @user.username), :target => '_blank'
+  %table.nice-table
+    %tr
+      %th username
+      %td= @user.username
+    %tr
+      %th email
+      %td= @user.email
+    %tr
+      %th gravatar
+      %td= image_tag @user.gravatar_url(:size => 48)
+    %tr
+      %th url
+      %td= @user.profile.url
+    %tr
+      %th twitter
+      %td= @user.profile.twitter
+    %tr
+      %th description
+      %td= sanitize simple_format(auto_link(@user.profile.description))
+
+#manage
+  = button_to 'Delete', admin_user_url(@user), :method => :delete, :confirm => 'Sure?', :class => 'button'
