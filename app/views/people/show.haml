@@ -3,7 +3,7 @@
   .left
     %h1= @person.profile.name
     - if @person.banned?
-      This user has been banned.
+      = t :this_user_had_been_ban
     - else
       .detail.meta
         - if @person.profile.url

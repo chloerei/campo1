@@ -65,9 +65,9 @@
         = t :or
         = link_to t(:signup), login_url(:return_to => topic_url(@topic, :anchor => "reply-form")), :class => 'button'
     - elsif current_user.banned?
-      .meta You have been banned.
+      .meta= t :you_had_been_ban
     - elsif @topic.closed?
-      .meta Topic has been close.
+      .meta= t :topic_had_been_close
     - else
       .meta
         = t :you_are

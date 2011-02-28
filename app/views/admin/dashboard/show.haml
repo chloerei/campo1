@@ -2,30 +2,30 @@
 
 .section
   .section-title
-    %h3 Today New
+    %h3= t :today_news
   .section-content
     %table.nice-table
       %tr
-        %th Topics
+        %th= t :topics
         %td= @today_topics_count
       %tr
-        %th Replies
+        %th= t :replies
         %td= @today_replies_count
       %tr
-        %th Users
+        %th= t :users
         %td= @today_users_count
 
 .section
   .section-title
-    %h3 Total
+    %h3= t :total
   .section-content
     %table.nice-table
       %tr
-        %th Topics
+        %th= t :topics
         %td= Topic.count
       %tr
-        %th Replies
+        %th= t :replies
         %td= Reply.count
       %tr
-        %th Users
+        %th= t :users
         %td= User.count
