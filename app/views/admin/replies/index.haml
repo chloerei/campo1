@@ -4,7 +4,7 @@
   %table.data-table
     - @replies.each do |reply|
       %tr{:class => cycle("even", "odd")}
-        %td.title= link_to truncate(reply.content), admin_reply_url(reply)
+        %td= link_to truncate(reply.content), admin_reply_url(reply)
         %td= link_to @user_hash[reply.user_id].profile.name, admin_user_url(@user_hash[reply.user_id])
         %td.time= l reply.created_at, :format => :short
   = paginate_for @replies

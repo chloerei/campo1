@@ -305,10 +305,6 @@ a.button:hover, .tag:hover {
     text-align: right;
 }
 
-.data-table .title {
-    width: 70%;
-}
-
 .paginate {
     margin-bottom: 10px;
     padding: 0 10px;
