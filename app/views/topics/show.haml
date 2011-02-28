@@ -2,10 +2,22 @@
   - if current_logined?
     = javascript_include_tag 'showdown', 'wmd'
     = stylesheet_link_tag 'wmd'
-  = javascript_include_tag 'jquery.ae.image.resize.min'
+  = javascript_include_tag 'jquery.ae.image.resize.min', 'fancybox/jquery.fancybox-1.3.4.pack'
+  = stylesheet_link_tag '/javascripts/fancybox/jquery.fancybox-1.3.4.css'
   :javascript
     $(function() {
-      $( ".content img" ).aeImageResize({ width: 600 });
+      $(".content img").aeImageResize({width: 600});
+      $(".content img").each(function() {
+        if ($(this).parent('a').length == 0) {
+          var src = $(this).attr('src');
+          var a = $('<a/>').attr('href', src).attr('target', '_blank').attr('class', 'fancybox');
+          $(this).wrap(a);
+        }
+      });
+      $(".content .fancybox").fancybox({
+        'speedIn'            : 100,
+        'speedOut'           : 100
+      });
     });
 
 = render :partial => 'subheader'
