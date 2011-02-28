@@ -10,7 +10,7 @@
   = @topic.tags_string
   %h3 Author
   = image_tag @topic.user.gravatar_url(:size => 48)
-  = link_to @topic.user.profile.name
+  = link_to @topic.user.profile.name, admin_user_url(@topic.user)
 
 #manage
   = button_to 'Delete', admin_topic_url(@topic), :method => :delete, :confirm => 'Sure?', :class => 'button'

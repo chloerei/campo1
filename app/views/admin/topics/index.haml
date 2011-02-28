@@ -5,6 +5,6 @@
     - @topics.each do |topic|
       %tr{:class => cycle("even", "odd")}
         %td.title= link_to truncate(topic.title), admin_topic_url(topic)
-        %td= @user_hash[topic.user_id].profile.name
+        %td= link_to @user_hash[topic.user_id].profile.name, admin_user_url(@user_hash[topic.user_id])
         %td.time= l topic.created_at, :format => :short
   = paginate_for @topics
