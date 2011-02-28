@@ -28,6 +28,8 @@
 
             = time_ago_in_words topic.actived_at
             = t :ago
+            - if topic.closed?
+              %span.red closed
         .clear
   = paginate_for @topics, :hide_page => true
 

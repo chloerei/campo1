@@ -45,4 +45,32 @@ class RepliesControllerTest < ActionController::TestCase
     put :update, :id => @reply.id, :reply => {:content => 'hi'}
     assert_response :redirect, @response.body
   end
+
+  def test_require_user_not_banned
+    @user.ban!
+    login_as @user
+    
+    get :new, :topic_id => @topic.id
+    assert_template 'errors/422'
+
+    post :create, :reply => {:topic_id => @topic.id, :content => 'hi'}
+    assert_template 'errors/422'
+
+    get :edit, :id => @reply.id
+    assert_template 'errors/422'
+
+    put :update, :id => @reply.id, :reply => {:content => 'hi'}
+    assert_template 'errors/422'
+  end
+
+  def test_require_topic_not_close
+    @topic.close!
+    login_as @user
+    
+    get :new, :topic_id => @topic.id
+    assert_template 'errors/422'
+
+    post :create, :reply => {:topic_id => @topic.id, :content => 'hi'}
+    assert_template 'errors/422'
+  end
 end

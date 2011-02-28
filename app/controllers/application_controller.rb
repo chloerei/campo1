@@ -40,6 +40,12 @@ class ApplicationController < ActionController::Base
     @page_title = value
   end
 
+  def require_user_not_banned
+    if current_logined? and current_user.banned?
+      render_422
+    end
+  end
+
   def require_logined
     if !current_logined?
       flash[:notice] = I18n.t :require_login

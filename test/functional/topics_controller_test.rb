@@ -45,7 +45,7 @@ class TopicsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
-  def test_create
+  def test_update
     put :update, :id => @topic.id, :topic => {:title => 'title', :content => 'content', :tags => 'tag1, tag2'}
     assert_redirected_to login_url
 
@@ -111,5 +111,28 @@ class TopicsControllerTest < ActionController::TestCase
     delete :unmark, :id => @topic.id
     assert_redirected_to @topic
     assert_equal [], @topic.reload.marker_ids
+  end
+
+  def test_require_user_not_banned?
+    @user.ban!
+    login_as @user
+
+    get :new
+    assert_template 'errors/422'
+
+    post :create, :topic => {:title => 'title', :content => 'content', :tags => 'tag1, tag2'}
+    assert_template 'errors/422'
+
+    get :edit, :id => @topic.id
+    assert_template 'errors/422'
+
+    put :update, :id => @topic.id, :topic => {:title => 'title', :content => 'content', :tags => 'tag1, tag2'}
+    assert_template 'errors/422'
+
+    post :mark, :id => @topic.id
+    assert_template 'errors/422'
+
+    delete :unmark, :id => @topic.id
+    assert_template 'errors/422'
   end
 end

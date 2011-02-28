@@ -58,7 +58,17 @@
     %h2= t :leave_a_reply
     %a{:name => '#reply-form'}
   .section-content
-    - if current_logined?
+    - if !current_logined?
+      .meta
+        = t :please
+        = link_to t(:login), login_url(:return_to => topic_url(@topic, :anchor => "reply-form")), :class => 'button'
+        = t :or
+        = link_to t(:signup), login_url(:return_to => topic_url(@topic, :anchor => "reply-form")), :class => 'button'
+    - elsif current_user.banned?
+      .meta You have been banned.
+    - elsif @topic.closed?
+      .meta Topic has been close.
+    - else
       .meta
         = t :you_are
         = link_to_person current_user
@@ -70,15 +80,9 @@
           .field
             = f.submit t(:post), :class => 'button'
       .clear
-    - else
-      .meta
-        = t :please
-        = link_to t(:login), login_url(:return_to => topic_url(@topic, :anchor => "reply-form")), :class => 'button'
-        = t :or
-        = link_to t(:signup), login_url(:return_to => topic_url(@topic, :anchor => "reply-form")), :class => 'button'
 
 - content_for :sidebar do
-  - if current_logined?
+  - if current_logined? and !current_user.banned?
     .section
       .section-title
         = t :collect_topic

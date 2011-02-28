@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_filter :require_logined, :except => [:index, :show, :tagged, :interesting, :newest]
+  before_filter :require_logined, :require_user_not_banned, :except => [:index, :show, :tagged, :interesting, :newest]
 
   def index
     @current = :active

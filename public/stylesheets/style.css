@@ -167,6 +167,16 @@ a.button:hover {
     text-decoration: none;
 }
 
+span.red {
+    font-weight: bold;
+    background: #FBE3E4;
+    color: #8A1F11;
+    border-color: #FBC2C4;
+    padding: 0 6px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
 .actions {
   color: #999;
   font-size: 0.9em;
