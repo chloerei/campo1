@@ -4,6 +4,8 @@
     - if current_logined?
       %li= link_to t(:profile_page), person_url(:username => current_user.username)
       %li= link_to t(:settings), settings_profile_url
+      - if current_user.admin?
+        %li= link_to t(:admin_dashboard), admin_dashboard_url
       %li.last= link_to t(:logout), logout_url
     - else
       %li= link_to t(:login), login_url

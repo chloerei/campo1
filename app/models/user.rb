@@ -39,6 +39,10 @@ class User
 
   validate :check_password, :check_current_password
 
+  def admin?
+    APP_CONFIG['admin_emails'].include? self.email
+  end
+
   def ban!
     self.banned = true
     save

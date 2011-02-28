@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_user, :current_logined?
+  helper_method :current_user, :current_logined?, :current_admin?
 
-  rescue_from Exception, :with => :render_500
   rescue_from Mongoid::Errors::DocumentNotFound, :with => :render_404
   rescue_from BSON::InvalidObjectId, :with => :render_404
 
@@ -34,6 +33,10 @@ class ApplicationController < ActionController::Base
 
     set_page_title "500"
     render 'errors/500', :layout => 'login', :status => 500
+  end
+
+  def current_admin?
+    current_logined? and current_user.admin?
   end
 
   def set_page_title(value)

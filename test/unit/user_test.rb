@@ -3,6 +3,12 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   def setup
     @user = create_user
+    @admin = create_admin
+  end
+
+  def test_admin
+    assert !@user.admin?
+    assert @admin.admin?
   end
 
   def test_ban
@@ -31,18 +37,17 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def make_content
-    @user_two = create_admin
     t = @user.topics.create :title => 'title', :content => 'content', :tags => 'tag1 tag2'
     r = t.replies.new :content => 'content'
-    r.user = @user_two
+    r.user = @admin
     r.save
     r = t.replies.new :content => 'content'
     r.user = @user
     r.save
 
-    t = @user_two.topics.create :title => 'title', :content => 'content', :tags => 'tag1 tag2'
+    t = @admin.topics.create :title => 'title', :content => 'content', :tags => 'tag1 tag2'
     r = t.replies.new :content => 'content'
-    r.user = @user_two
+    r.user = @admin
     r.save
     r = t.replies.new :content => 'content'
     r.user = @user

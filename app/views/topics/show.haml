@@ -25,9 +25,12 @@
       = t :edited_at
       = time_ago_in_words @topic.edited_at
       = t :ago
-  - if current_logined? and @topic.user_id == current_user.id
+  - if current_logined? and @topic.user_id == current_user.id and !@user_hash[@topic.user_id].banned?
     .actions
       = link_to t(:edit), edit_topic_url(@topic)
+  - if show_admin_link?
+    .actions
+      = link_to t(:manage), admin_topic_url(@topic), :target => '_blank'
 #replies
   .item-list
     - @replies.each do |reply|
@@ -47,9 +50,12 @@
               = t :edited_at
               = time_ago_in_words reply.updated_at
               = t :ago
-          - if current_logined? and reply.user_id == current_user.id
+          - if current_logined? and reply.user_id == current_user.id and !@user_hash[reply.user_id].banned?
             .actions
               = link_to t(:edit), edit_reply_url(reply)
+          - if show_admin_link?
+            .actions
+              = link_to t(:manage), admin_reply_url(reply), :target => '_blank'
         .clear
   = paginate_for @replies
 
@@ -80,6 +86,11 @@
           .field
             = f.submit t(:post), :class => 'button'
       .clear
+
+- if current_admin?
+  .section
+    .section-content
+      .actions= switch_admin_mode
 
 - content_for :sidebar do
   - if current_logined? and !current_user.banned?

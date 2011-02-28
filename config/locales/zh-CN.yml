@@ -73,6 +73,7 @@ zh-CN:
   500_title: 500 服务器错误
   500_tips: "啊呀！服务器出错啦 : ("
 
+  admin_dashboard: 管理面板
   dashboard: 面板
   topics: 主题
   replies: 回复
@@ -106,7 +107,9 @@ zh-CN:
   you_had_been_ban: 你已经被封禁了
   topic_had_been_close: 主题已经被关闭了
   this_user_had_been_ban: 该用户已经被封禁了
-  
+  manage: 管理
+  admin_mode: 管理模式
+  normal_mode: 普通模式
   
   tips:
     topic:

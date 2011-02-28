@@ -5,6 +5,6 @@ class Admin::BaseController < ApplicationController
   protected
 
   def require_admin
-    render_422 unless APP_CONFIG['admin_emails'].include? current_user.email
+    render_422 unless current_user.admin?
   end
 end
