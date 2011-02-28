@@ -1,0 +1,14 @@
+= render :partial => 'admin/nav'
+
+#topic
+  = link_to topic_url(@reply.topic), topic_url(@reply.topic), :target => '_blank'
+  %h3 Reply to
+  = @reply.topic.title
+  %h3 Content
+  = simple_format @reply.content
+  %h3 Author
+  = image_tag @reply.user.gravatar_url(:size => 48)
+  = link_to @reply.user.profile.name
+
+#manage
+  = button_to 'Delete', admin_reply_url(@reply), :method => :delete, :confirm => 'Sure?', :class => 'button'
