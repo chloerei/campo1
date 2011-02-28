@@ -11,6 +11,7 @@ class User
   field :remember_token
   field :remember_token_expires_at, :type => Time
   field :favorite_tags, :type => Array
+  field :banned, :type => Boolean
   embeds_one :profile
   
   references_many :topics, :validate => false
@@ -37,6 +38,16 @@ class User
   before_destroy :clean!
 
   validate :check_password, :check_current_password
+
+  def ban!
+    self.banned = true
+    save
+  end
+
+  def unban!
+    self.banned = false
+    save
+  end
 
   def clean!
     self.replies.delete_all

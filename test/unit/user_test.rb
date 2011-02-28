@@ -5,6 +5,13 @@ class UserTest < ActiveSupport::TestCase
     @user = create_user
   end
 
+  def test_ban
+    @user.ban!
+    assert @user.banned?
+    @user.unban!
+    assert !@user.banned?
+  end
+
   def test_clean
     make_content
     assert_difference "Topic.count", -1 do
