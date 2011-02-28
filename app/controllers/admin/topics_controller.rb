@@ -14,4 +14,16 @@ class Admin::TopicsController < Admin::BaseController
     @topic.destroy
     redirect_to :action => :index
   end
+
+  def close
+    @topic = Topic.find params[:id]
+    @topic.close!
+    redirect_to :action => :show, :id => @topic.id
+  end
+
+  def open
+    @topic = Topic.find params[:id]
+    @topic.open!
+    redirect_to :action => :show, :id => @topic.id
+  end
 end

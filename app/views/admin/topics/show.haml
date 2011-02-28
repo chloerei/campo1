@@ -11,7 +11,14 @@
   %h3 Author
   = image_tag @topic.user.gravatar_url(:size => 48)
   = link_to @topic.user.profile.name, admin_user_url(@topic.user)
+  %h3 Status
+  = @topic.closed? ? 'closed' : 'open'
 
 #manage
+  .left
+    - if @topic.closed?
+      = button_to 'Open', open_admin_topic_url(@topic), :method => :post, :class => 'button'
+    - else
+      = button_to 'Close', close_admin_topic_url(@topic), :method => :post, :class => 'button'
   .right= button_to 'Delete', admin_topic_url(@topic), :method => :delete, :confirm => 'Sure?', :class => 'button'
   .clear

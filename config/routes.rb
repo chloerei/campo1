@@ -35,7 +35,12 @@ Campo::Application.routes.draw do
 
   namespace :admin do
     get '/' => 'dashboard#show', :as => :dashboard
-    resources :topics, :only => [:index, :show, :destroy]
+    resources :topics, :only => [:index, :show, :destroy] do
+      member do
+        post :close
+        post :open
+      end
+    end
     resources :replies, :only => [:index, :show, :destroy]
     resources :users, :only => [:index, :show, :destroy] do
       member do
