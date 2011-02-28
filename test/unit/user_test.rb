@@ -5,6 +5,43 @@ class UserTest < ActiveSupport::TestCase
     @user = create_user
   end
 
+  def test_clean
+    make_content
+    assert_difference "Topic.count", -1 do
+      assert_difference "Reply.count", -3 do
+        @user.clean!
+      end
+    end
+  end
+
+  def test_destroy
+    make_content
+    assert_difference "Topic.count", -1 do
+      assert_difference "Reply.count", -3 do
+        @user.destroy
+      end
+    end
+  end
+
+  def make_content
+    @user_two = create_admin
+    t = @user.topics.create :title => 'title', :content => 'content', :tags => 'tag1 tag2'
+    r = t.replies.new :content => 'content'
+    r.user = @user_two
+    r.save
+    r = t.replies.new :content => 'content'
+    r.user = @user
+    r.save
+
+    t = @user_two.topics.create :title => 'title', :content => 'content', :tags => 'tag1 tag2'
+    r = t.replies.new :content => 'content'
+    r.user = @user_two
+    r.save
+    r = t.replies.new :content => 'content'
+    r.user = @user
+    r.save
+  end
+
   def test_remember_token
     assert_nil @user.remember_token
     assert_nil @user.remember_token_expires_at

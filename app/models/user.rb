@@ -34,8 +34,16 @@ class User
 
   before_save :prepare_password
   before_create :init_profile
+  before_destroy :clean!
 
   validate :check_password, :check_current_password
+
+  def clean!
+    self.replies.delete_all
+    topic_ids = self.topics.only(:id).to_a.map{|topic| topic.id}
+    Reply.delete_all :conditions => {:topic_id => {"$in" => topic_ids}}
+    self.topics.delete_all
+  end
   
   def self.authenticate(login, password)
     user = first(:conditions => {:username => /^#{login}$/i}) || first(:conditions => {:email => /^#{login}$/i})
