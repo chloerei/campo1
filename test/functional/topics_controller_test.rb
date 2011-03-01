@@ -57,6 +57,8 @@ class TopicsControllerTest < ActionController::TestCase
   def test_tagged
     get :tagged, :tag => 'test'
     assert_response :success, @response.body
+
+    assert_routing '/topics/tagged/min.us', { :controller => "topics", :action => "tagged", :tag => "min.us" }
   end
   
   def test_interesting

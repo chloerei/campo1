@@ -16,7 +16,7 @@ Campo::Application.routes.draw do
 
   resources :topics, :except => [:destroy] do
     collection do
-      get 'tagged/:tag', :action => 'tagged', :as => :tagged
+      get 'tagged/:tag', :action => 'tagged', :as => :tagged, :constraints  => { :tag => /\S+/ }
       get :interesting
       get :own
       get :newest
