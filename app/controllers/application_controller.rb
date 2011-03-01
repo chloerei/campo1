@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :current_logined?, :current_admin?
 
+  rescue_from Exception, :with => :render_500
   rescue_from Mongoid::Errors::DocumentNotFound, :with => :render_404
   rescue_from BSON::InvalidObjectId, :with => :render_404
 
