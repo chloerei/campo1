@@ -7,6 +7,7 @@
         = "#{APP_CONFIG['site_name']} › #{@page_title}"
       - else
         = APP_CONFIG['site_name']
+    %link{:rel => "shortcut icon", :href => "/favicon.ico"}
     = stylesheet_link_tag 'login'
     = yield :head
   %body
