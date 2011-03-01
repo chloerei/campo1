@@ -1,6 +1,6 @@
 module ApplicationHelper
   def rich_content(content)
-    sanitize RDiscount.new(content).to_html
+    sanitize auto_link(RDiscount.new(content).to_html)
   end
 
   def paginate_for(collection, options = {})
