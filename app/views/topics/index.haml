@@ -2,6 +2,8 @@
 
 = render :partial => 'topics'
 
+= link_to 'test', tagged_topics_url(:tag => 'test', :foramt => 'xml')
+
 - content_for :sidebar do
   - if current_logined?
     .section

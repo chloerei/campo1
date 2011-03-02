@@ -1,6 +1,7 @@
 class Topic
   include Mongoid::Document
   include Mongoid::Timestamps
+  include TagParser
 
   field :title
   field :content
@@ -44,8 +45,7 @@ class Topic
 
   def tags=(value)
     if value.is_a? String
-      tags = value.downcase.split.delete_if {|tag| tag.size > 20}
-      write_attribute :tags, tags.uniq
+      write_attribute :tags, parse_tags_from_string(value)
     else
       write_attribute :tags, value.uniq
     end

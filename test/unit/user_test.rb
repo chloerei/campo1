@@ -134,15 +134,24 @@ class UserTest < ActiveSupport::TestCase
     @user.add_favorite_tags "tag3"
     assert_equal ["tag1", "tag2", "tag3"].sort, @user.favorite_tags.sort
 
-    # ignore size > 20
-    @user.add_favorite_tags "a" * 21
-    assert_equal ["tag1", "tag2", "tag3"].sort, @user.favorite_tags.sort
-
     @user.remove_favorite_tags "tag1"
     assert_equal ["tag2", "tag3"].sort, @user.favorite_tags.sort
     @user.remove_favorite_tags "tag0"
     assert_equal ["tag2", "tag3"].sort, @user.favorite_tags.sort
     @user.remove_favorite_tags "tag2 tag3"
     assert_equal nil, @user.favorite_tags
+  end
+
+  def test_tag_parser
+    assert_nil @user.favorite_tags
+
+    @user.add_favorite_tags "a" * 21
+    assert_equal [].sort, @user.favorite_tags.sort
+
+    @user.add_favorite_tags "."
+    assert_equal [].sort, @user.favorite_tags.sort
+
+    @user.add_favorite_tags "/ a/b"
+    assert_equal ["ab"].sort, @user.favorite_tags.sort
   end
 end

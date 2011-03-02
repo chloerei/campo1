@@ -26,6 +26,15 @@ class TopicTest < ActiveSupport::TestCase
     t = Topic.new :title => 'title', :content => 'content'
     t.tags = "tag1 tag2 tag3"
     assert_equal ["tag1", "tag2", "tag3"], t.tags
+
+    t.tags = "/"
+    assert_equal [], t.tags
+    t.tags = "a/b"
+    assert_equal ["ab"], t.tags
+    t.tags = "a" * 21 + " b"
+    assert_equal ["b"], t.tags
+    t.tags = "."
+    assert_equal [], t.tags
   end
 
   def test_tags_length
