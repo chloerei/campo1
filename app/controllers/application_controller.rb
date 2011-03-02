@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_user, :current_logined?, :current_admin?
+  helper_method :current_user, :current_logined?, :current_admin?, :page_title
 
   rescue_from Exception, :with => :render_500
   rescue_from Mongoid::Errors::DocumentNotFound, :with => :render_404
@@ -42,6 +42,10 @@ class ApplicationController < ActionController::Base
 
   def set_page_title(value)
     @page_title = value
+  end
+
+  def page_title
+    @page_title
   end
 
   def require_user_not_banned

@@ -1,3 +1,6 @@
+- content_for :head do
+  = auto_discovery_link_tag :rss, newest_topics_url(:format => 'rss')
+
 = render :partial => 'subheader', :locals => {:current => @current}
 
 = render :partial => 'topics'

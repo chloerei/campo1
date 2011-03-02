@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_filter :require_logined, :require_user_not_banned, :except => [:index, :show, :tagged, :interesting, :newest]
+  respond_to :html, :rss, :only => [:newest, :tagged]
 
   def index
     @current = :active
@@ -33,7 +34,10 @@ class TopicsController < ApplicationController
     @current = :newest
     @topics = Topic.desc(:created_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
-    render :index
+    respond_with(@topics) do |format|
+      format.html {render :index}
+      format.rss  {render :topics, :layout => false}
+    end
   end
 
   def tagged
