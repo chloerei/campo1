@@ -5,7 +5,7 @@ body {
     background-image: url("/images/background.jpg");
     margin: 0;
     padding: 0;
-    font: 12px DejaVu Sans,Tahoma,sans;
+    font: 12px DejaVu Sans,Tahoma,sans-serif;
 }
 
 a {
