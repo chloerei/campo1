@@ -57,6 +57,8 @@ class TopicsControllerTest < ActionController::TestCase
   def test_tagged
     get :tagged, :tag => 'test'
     assert_response :success, @response.body
+    get :tagged, :tag => 'test', :foramt => :rss
+    assert_response :success, @response.body
 
     assert_routing '/topics/tagged/min.us', { :controller => "topics", :action => "tagged", :tag => "min.us" }
   end
@@ -82,6 +84,9 @@ class TopicsControllerTest < ActionController::TestCase
   def test_newest
     get :newest
     assert_template :index
+
+    get :newest, :format => :rss
+    assert_response :success, @response.body
   end
 
   def test_collection

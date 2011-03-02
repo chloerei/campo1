@@ -34,9 +34,13 @@ class TopicsController < ApplicationController
     @current = :newest
     @topics = Topic.desc(:created_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
+
     respond_with(@topics) do |format|
       format.html {render :index}
-      format.rss  {render :topics, :layout => false}
+      format.rss  do
+        @channel_link = newest_topics_url
+        render :topics, :layout => false
+      end
     end
   end
 
@@ -46,6 +50,13 @@ class TopicsController < ApplicationController
     set_page_title @tag
     @topics = Topic.where(:tags => @tag).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
+    respond_with(@topics) do |format|
+      format.html
+      format.rss  do
+        @channel_link = tagged_topics_url(:tag => @tag)
+        render :topics, :layout => false
+      end
+    end
   end
 
   def collection

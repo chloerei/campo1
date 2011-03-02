@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -45,7 +46,11 @@ class ApplicationController < ActionController::Base
   end
 
   def page_title
-    @page_title
+    if defined? @page_title
+      "#{APP_CONFIG['site_name']} › #{@page_title}"
+    else
+      APP_CONFIG['site_name']
+    end
   end
 
   def require_user_not_banned

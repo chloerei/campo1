@@ -1,3 +1,6 @@
+- content_for :head do
+  = auto_discovery_link_tag :rss, person_topics_url(:username => @person.username, :format => 'rss')
+
 #profile
   .left.avatar= link_gravatar_to_person @person, :size => 64
   .left

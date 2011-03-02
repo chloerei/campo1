@@ -13,5 +13,8 @@ class PeopleControllerTest < ActionController::TestCase
   def test_topics
     get :topics, :username => @user.username
     assert_response :success, @response.body
+
+    get :topics, :username => @user.username, :format => :rss
+    assert_response :success, @response.body
   end
 end
