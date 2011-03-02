@@ -5,6 +5,7 @@ body {
     background-image: url("/images/background.jpg");
     margin: 0;
     padding: 0;
+    font: 12px DejaVu Sans,Tahoma,sans;
 }
 
 a {
@@ -203,7 +204,7 @@ a.button:hover, .tag:hover {
 #logo {
     float: left;
     margin: 2px 20px 0 0;
-    font-size: 2em;
+    font-size: 30px;
 }
 
 #logo a {
@@ -217,7 +218,6 @@ a.button:hover, .tag:hover {
 #top-menu ul {
     margin-top: 12px;
     padding: 0;
-    font-size: 0.8em;
     list-style: none;
 }
 
@@ -238,7 +238,6 @@ a.button:hover, .tag:hover {
 
 .meta, .tips {
     color: #999;
-    font-size: 0.9em;
     font-weight: bold;
 }
 
@@ -274,7 +273,6 @@ a.button:hover, .tag:hover {
 
 .nice-table {
     font-weight: bold;
-    font-size: 0.9em;
     color: #999;
 }
 
@@ -288,7 +286,6 @@ a.button:hover, .tag:hover {
     border-collapse: collapse;
     margin-bottom: 10px;
     font-weight: bold;
-    font-size: 0.9em;
     color: #999;
 }
 
@@ -309,7 +306,7 @@ a.button:hover, .tag:hover {
     margin-bottom: 10px;
     padding: 0 10px;
     width: 100%;
-    font-size: 0.9em;
+    font-size: 10px;
     font-weight: bold;
 }
 
