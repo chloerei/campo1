@@ -48,11 +48,14 @@ class TopicsController < ApplicationController
     @current = :tagged
     @tag = params[:tag]
     set_page_title @tag
-    @topics = Topic.where(:tags => @tag).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
-    prepare_for_index
     respond_with(@topics) do |format|
-      format.html
+      format.html do
+        @topics = Topic.where(:tags => @tag).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
+        prepare_for_index
+      end
       format.rss  do
+        @topics = Topic.where(:tags => @tag).desc(:created_at).paginate :per_page => 20, :page => params[:page]
+        prepare_for_index
         @channel_link = tagged_topics_url(:tag => @tag)
         render :topics, :layout => false
       end
