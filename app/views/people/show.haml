@@ -9,11 +9,11 @@
       = t :this_user_had_been_ban
     - else
       .detail.meta
-        - if @person.profile.url
+        - if @person.profile.url.present?
           %p
             = image_tag "/images/icons/home.png", :align => 'top'
             = link_to @person.profile.url, @person.profile.url, :target => '_blank'
-        - if @person.profile.twitter
+        - if @person.profile.twitter.present?
           %p
             = image_tag "/images/icons/twitter.png", :align => 'top'
             = link_to "@#{@person.profile.twitter}", "https://twitter.com/#{@person.profile.twitter}", :target => '_blank'
@@ -26,3 +26,9 @@
       = render :partial => 'topics'
       .right= link_to t(:read_more), person_topics_url(:username => @person.username), :class => 'button'
       .clear
+  .section
+    .section-content
+      .right
+        = image_tag 'rss.png', :align => 'top'
+        = link_to t(:subscription_recent_20_topics), person_topics_url(:format => 'rss')
+      .claer

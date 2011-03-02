@@ -5,6 +5,13 @@
 
 = render :partial => 'topics'
 
+.section
+  .section-content
+    .right
+      = image_tag 'rss.png', :align => 'top'
+      = link_to t(:subscription_tag, :tag => @tag), tagged_topics_url(:tag => @tag, :format => 'rss')
+    .claer
+
 - content_for :sidebar do
   - if current_logined?
     .section
@@ -12,8 +19,7 @@
         = link_to t(:create_topic), new_topic_url, :class => 'button'
     .section
       .section-title
-        Tag:
-        = @tag
+        = t :current_tag, :tag => @tag
       .section-content
         - if current_user.favorite_tags.to_a.include? @tag
           = button_to t(:remove_from_favorite_tags), settings_favorite_tags_url(:tags => @tag, :return_to => tagged_topics_url(:tag => @tag)), :method => :delete, :class => 'button reverse'

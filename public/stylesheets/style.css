@@ -568,6 +568,8 @@ span.red {
 
 #profile .avatar {
     margin-right: 20px;
+    height: 128px;
+    width: 128px;
 }
 
 #profile .detail {

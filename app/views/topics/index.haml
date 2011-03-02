@@ -5,6 +5,13 @@
 
 = render :partial => 'topics'
 
+.section
+  .section-content
+    .right
+      = image_tag 'rss.png', :align => 'top'
+      = link_to t(:subscription_recent_20_topics), newest_topics_url(:format => 'rss')
+    .claer
+
 - content_for :sidebar do
   - if current_logined?
     .section

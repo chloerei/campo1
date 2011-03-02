@@ -50,6 +50,9 @@ zh-CN:
   successful_signup: 注册成功！您可以到‘设置’中添加个人信息和喜好标签
   not_have_account_yet: 未有帐号？
   already_have_account: 已有帐号？
+  subscription_recent_20_topics: 订阅最近20个主题
+  subscription_tag: 订阅标签：%{tag}
+  current_tag: 当前标签：%{tag}
 
   what_is_gravatar: 什么是 Gravatar？
   change_email: 修改 Email

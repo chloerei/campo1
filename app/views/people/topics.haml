@@ -14,3 +14,9 @@
       = render :partial => 'topics'
       = paginate_for @topics
       .clear
+  .section
+    .section-content
+      .right
+        = image_tag 'rss.png', :align => 'top'
+        = link_to t(:subscription_recent_20_topics), person_topics_url(:format => 'rss')
+      .claer
