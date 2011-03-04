@@ -9,7 +9,7 @@
   %h3= t :tags
   = @topic.tags_string
   %h3= t :author
-  = image_tag @topic.user.gravatar_url(:size => 48)
+  = image_tag @topic.user.gravatar_url
   = link_to @topic.user.profile.name, admin_user_url(@topic.user)
   %h3= t :status
   = @topic.closed? ? t(:closed): t(:open)

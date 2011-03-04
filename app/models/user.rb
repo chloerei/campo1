@@ -3,7 +3,7 @@ class User
   include Mongoid::Timestamps
   include Gravtastic
   include TagParser
-  gravtastic
+  gravtastic :rating => 'G', :size => 48
 
   field :username
   field :email

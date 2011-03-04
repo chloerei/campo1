@@ -6,7 +6,7 @@
   %h3= t :content
   = simple_format @reply.content
   %h3= t :author
-  = image_tag @reply.user.gravatar_url(:size => 48)
+  = image_tag @reply.user.gravatar_url
   = link_to @reply.user.profile.name, admin_user_url(@reply.user)
 
 #manage

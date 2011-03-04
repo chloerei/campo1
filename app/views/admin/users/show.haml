@@ -11,7 +11,7 @@
       %td= @user.email
     %tr
       %th= t :avatar
-      %td= image_tag @user.gravatar_url(:size => 48)
+      %td= image_tag @user.gravatar_url
     %tr
       %th= t :name
       %td= @user.profile.name
