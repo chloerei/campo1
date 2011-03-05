@@ -53,7 +53,11 @@ zh-CN:
   subscription_recent_20_topics: 订阅最近20个主题
   subscription_tag: 订阅标签：%{tag}
   current_tag: 当前标签：%{tag}
+  forgot_password: 忘记密码？
+  reset_password: 重置密码
   successful_reset_password: 重置密码成功
+  new_reset_password_tips: 稍后会发送一封用于重置密码的邮件到该邮箱
+  created_reset_password_description: 密码重置邮件已经发送，请注意查收
 
   what_is_gravatar: 什么是 Gravatar？
   change_email: 修改 Email

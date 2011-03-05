@@ -18,5 +18,9 @@
 
 .message
   .tips
-    = t :not_have_account_yet
-    = link_to t(:signup), signup_url
+    %p
+      = t :not_have_account_yet
+      = link_to t(:signup), signup_url
+    %p
+      = t :forgot_password
+      = link_to t(:reset_password), new_reset_password_url
