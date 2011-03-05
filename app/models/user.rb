@@ -21,7 +21,8 @@ class User
 
   validates_presence_of :username, :email
   validates_presence_of :password, :if => Proc.new {|user| user.requrie_password?}
-  validates_length_of :password, :minimum => 6, :if => Proc.new {|user| user.requrie_password?}
+  validates_presence_of :current_password, :if => Proc.new {|user| user.require_current_password?}
+  validates_length_of :password, :minimum => 6, :allow_blank => true
   validates_uniqueness_of :username, :email, :case_sensitive => false
   validates_format_of :username, :with => /\A[A-Za-z0-9_]+\z/
   validates_length_of :username, :in => 3..20
@@ -129,7 +130,7 @@ class User
   def reset_password(new_password, new_password_confirmation)
     self.password = new_password
     self.password_confirmation = new_password_confirmation
-    @skip_current_password = true
+    @recovering = true
     self.reset_password_token = nil if valid?
     save
   end
@@ -156,24 +157,22 @@ class User
 
   def check_password
     if self.password.present?
-      errors.add(:base, I18n.t('user.errors.password_confirmation_not_match')) unless self.password == self.password_confirmation
+      errors.add(:password_confirmation, I18n.t('user.errors.password_confirmation_not_match')) unless self.password == self.password_confirmation
     end
   end
 
   def check_current_password
     if require_current_password?
-      errors.add(:base, I18n.t('user.errors.need_current_password')) if self.current_password.blank?
-      errors.add(:base, I18n.t('user.errors.current_password_not_match')) unless self.matching_password?(self.current_password)
+      errors.add(:current_password, I18n.t('user.errors.current_password_not_match')) unless self.matching_password?(self.current_password)
     end
   end
 
   def requrie_password?
-    new_record? or @skip_current_password
-    
+    new_record? or @recovering
   end
 
   def require_current_password?
-    !new_record? and !@skip_current_password and (password.present? or email_changed? or username_changed?)
+    !new_record? and !@recovering and (password.present? or email_changed? or username_changed?)
   end
 
   def prepare_password

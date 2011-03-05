@@ -141,11 +141,8 @@ zh-CN:
 
   user:
     errors:
-      password_blank: 密码不能为空
-      password_confirmation_not_match: 密码确认不匹配
-      password_too_short: 密码太短（不能少于6字符）
-      need_current_password: 需要当前密码
-      current_password_not_match: 当前密码错误
+      password_confirmation_not_match: 不匹配
+      current_password_not_match: 不匹配
 
   date:
     formats:
