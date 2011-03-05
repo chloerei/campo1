@@ -110,14 +110,14 @@ class User
   def self.send_reset_password_instructions(attributes = {})
     return if attributes[:email].blank?
 
-    user = User.first :conditions => {:email => attributes[:email]}
+    user = User.first :conditions => {:email => /^#{attributes[:email]}$/i}
     user && user.send_reset_password_instructions
   end
 
   def send_reset_password_instructions
     self.reset_password_token = make_token
     UserMailer.reset_password_token(self).deliver
-    save
+    save(:validate => false)
   end
 
   def reset_password!(new_password, new_password_confirmation)

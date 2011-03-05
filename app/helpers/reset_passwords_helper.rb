@@ -1,0 +1,2 @@
+module ResetPasswordsHelper
+end

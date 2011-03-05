@@ -2,6 +2,7 @@ production:
   site_name: your_site_name
   organize_name: your_organize_name
   organize_url: your_organize_url
+  host:
   admin_emails:
     - admin@your_email.com
     - admin2@your_email.com
@@ -14,6 +15,7 @@ defaults: &defaults
   site_name: CodeCampo
   organize_name: CodeCampo
   organize_url: http://codecampo.com
+  host: 'localhost:3000'
   admin_emails:
     - admin@codecampo.com
 

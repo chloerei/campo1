@@ -1,0 +1,7 @@
+.dialog
+  = form_tag :action => :create do
+    .field
+      = label_tag :email
+      = text_field_tag :email, nil, :class => 'text'
+    .field
+      = submit_tag t(:post), :class => 'button'

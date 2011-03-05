@@ -5,6 +5,8 @@ Campo::Application.routes.draw do
   match '/logout', :controller => 'user_sessions', :action => 'destroy', :as => :logout
   resource :user_session, :only => [:create]
 
+  resource :reset_password
+
   get '/signup', :controller => 'users', :action => 'new'
   resources :users, :only => [:create]
   namespace :settings do

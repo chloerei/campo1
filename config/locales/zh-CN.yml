@@ -113,6 +113,11 @@ zh-CN:
   manage: 管理
   admin_mode: 管理模式
   normal_mode: 普通模式
+
+  mailer:
+    reset_password_token:
+      title: %{name}密码重置
+      description: 点击链接重置您的%{name}账号密码
   
   tips:
     topic:
