@@ -116,6 +116,7 @@ class User
 
   def send_reset_password_instructions
     self.reset_password_token = make_token
+    UserMailer.reset_password_token(self).deliver
     save
   end
 

@@ -156,7 +156,13 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def test_recover
-    User.send_reset_password_instructions(:email => @user.email)
+    assert_no_difference "ActionMailer::Base.deliveries.size" do
+      User.send_reset_password_instructions(:email => 'notexist@example.com')
+    end
+
+    assert_difference "ActionMailer::Base.deliveries.size" do
+      User.send_reset_password_instructions(:email => @user.email)
+    end
     assert_not_nil @user.reload.reset_password_token
     u = User.first :conditions => {:reset_password_token => @user.reset_password_token}
     assert_equal @user, u
