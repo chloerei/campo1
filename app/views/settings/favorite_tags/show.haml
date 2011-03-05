@@ -4,7 +4,7 @@
   .section-title
     %h2= t :favorite_tags
   .section-content
-    = form_tag nil, :action => settings_favorite_tags_url do
+    = form_tag :action => :create do
       .field
         = text_field_tag :tags, nil, :class => 'text long-text'
         = submit_tag t(:add), :class => 'button'
