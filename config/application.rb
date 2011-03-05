@@ -57,3 +57,5 @@ module Campo
     config.filter_parameters += [:password]
   end
 end
+
+APP_CONFIG = YAML.load_file("#{Rails.root}/config/campo.yml")[Rails.env]

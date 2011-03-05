@@ -5,6 +5,9 @@ production:
   admin_emails:
     - admin@your_email.com
     - admin2@your_email.com
+  # gmail smtp
+  smtp_username:
+  smtp_password:
 
 # example
 defaults: &defaults
@@ -16,6 +19,9 @@ defaults: &defaults
 
 development:
   <<: *defaults
+  # gmail smtp
+  smtp_username:
+  smtp_password:
 
 test:
   <<: *defaults
