@@ -13,6 +13,7 @@ class User
   field :remember_token_expires_at, :type => Time
   field :favorite_tags, :type => Array
   field :banned, :type => Boolean
+  field :reset_password_token
   embeds_one :profile
   
   references_many :topics, :validate => false
@@ -106,6 +107,26 @@ class User
     save
   end
 
+  def self.send_reset_password_instructions(attributes = {})
+    return if attributes[:email].blank?
+
+    user = User.first :conditions => {:email => attributes[:email]}
+    user && user.send_reset_password_instructions
+  end
+
+  def send_reset_password_instructions
+    self.reset_password_token = User.make_token
+    save
+  end
+
+  def reset_password!(new_password, new_password_confirmation)
+    self.password = new_password
+    self.password_confirmation = new_password_confirmation
+    @skip_current_password = true
+    self.reset_password_token = nil if valid?
+    save
+  end
+
   protected
 
   def self.make_token
@@ -148,7 +169,7 @@ class User
   end
 
   def require_current_password?
-    !new_record? and (password.present? or email_changed? or username_changed?)
+    !new_record? and !@skip_current_password and (password.present? or email_changed? or username_changed?)
   end
 
   def prepare_password

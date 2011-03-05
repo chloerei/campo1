@@ -154,4 +154,14 @@ class UserTest < ActiveSupport::TestCase
     @user.add_favorite_tags "/ a/b"
     assert_equal ["ab"].sort, @user.favorite_tags.sort
   end
+
+  def test_recover
+    User.send_reset_password_instructions(:email => @user.email)
+    assert_not_nil @user.reload.reset_password_token
+    u = User.first :conditions => {:reset_password_token => @user.reset_password_token}
+    assert_equal @user, u
+    new_password = new_password_confirm = '87654321'
+    assert u.reset_password!(new_password, new_password_confirm), u.errors.to_s
+    assert_equal @user, User.authenticate(@user.username, '87654321')
+  end
 end
