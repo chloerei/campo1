@@ -115,7 +115,7 @@ class User
   end
 
   def send_reset_password_instructions
-    self.reset_password_token = User.make_token
+    self.reset_password_token = make_token
     save
   end
 
@@ -129,8 +129,8 @@ class User
 
   protected
 
-  def self.make_token
-    User.digest(Time.now, 1, (1..10).map{ rand.to_s })
+  def make_token
+    User.secure_digest(Time.now, (1..10).map{ rand.to_s }, self.username, self.email)
   end
 
   def remember_me_for(time)
@@ -138,7 +138,7 @@ class User
   end
 
   def remember_me_until(time)
-    self.remember_token            = self.class.make_token
+    self.remember_token            = make_token
     self.remember_token_expires_at = time
     save
   end
@@ -181,12 +181,12 @@ class User
   end
 
   def encrypt_password(password)
-    User.digest(password, 20, self.password_salt)
+    digest = [password, self.password_salt].flatten.join('')
+    20.times { digest = User.secure_digest(digest) }
+    digest
   end
   
-  def self.digest(password, stretches, salt)
-    digest = [password, salt].flatten.join('')
-    stretches.times { digest = Digest::SHA512.hexdigest(digest) }
-    digest
+  def self.secure_digest(*args)
+    Digest::SHA512.hexdigest(args.flatten.join)
   end
 end

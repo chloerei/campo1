@@ -162,6 +162,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal @user, u
     new_password = new_password_confirm = '87654321'
     assert u.reset_password!(new_password, new_password_confirm), u.errors.to_s
+    assert_nil u.reset_password_token
     assert_equal @user, User.authenticate(@user.username, '87654321')
   end
 end
