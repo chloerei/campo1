@@ -20,6 +20,8 @@ class User
   references_many :replies, :validate => false
 
   validates_presence_of :username, :email
+  validates_presence_of :password, :if => Proc.new {|user| user.requrie_password?}
+  validates_length_of :password, :minimum => 6, :if => Proc.new {|user| user.requrie_password?}
   validates_uniqueness_of :username, :email, :case_sensitive => false
   validates_format_of :username, :with => /\A[A-Za-z0-9_]+\z/
   validates_length_of :username, :in => 3..20
@@ -115,12 +117,16 @@ class User
   end
 
   def send_reset_password_instructions
-    self.reset_password_token = make_token
+    make_reset_password_token
     UserMailer.reset_password_token(self).deliver
+  end
+
+  def make_reset_password_token
+    self.reset_password_token = make_token
     save(:validate => false)
   end
 
-  def reset_password!(new_password, new_password_confirmation)
+  def reset_password(new_password, new_password_confirmation)
     self.password = new_password
     self.password_confirmation = new_password_confirmation
     @skip_current_password = true
@@ -149,17 +155,9 @@ class User
   end
 
   def check_password
-    if new_record?
-      errors.add(:base, I18n.t('user.errors.password_blank')) if self.password.blank?
-      check_password_format
-    elsif !self.password.blank?
-      check_password_format
+    if self.password.present?
+      errors.add(:base, I18n.t('user.errors.password_confirmation_not_match')) unless self.password == self.password_confirmation
     end
-  end
-
-  def check_password_format
-    errors.add(:base, I18n.t('user.errors.password_confirmation_not_match')) unless self.password == self.password_confirmation
-    errors.add(:base, I18n.t('user.errors.password_too_short')) if self.password.to_s.size < 6
   end
 
   def check_current_password
@@ -167,6 +165,11 @@ class User
       errors.add(:base, I18n.t('user.errors.need_current_password')) if self.current_password.blank?
       errors.add(:base, I18n.t('user.errors.current_password_not_match')) unless self.matching_password?(self.current_password)
     end
+  end
+
+  def requrie_password?
+    new_record? or @skip_current_password
+    
   end
 
   def require_current_password?

@@ -12,4 +12,25 @@ class ResetPasswordsController < ApplicationController
       render :new
     end
   end
+
+  def show
+    if params[:token] && @user = User.first(:conditions => {:reset_password_token => params[:token]})
+    else
+      render_422
+    end
+  end
+
+  def update
+    if params[:token] && @user = User.first(:conditions => {:reset_password_token => params[:token]})
+      if @user.reset_password params[:new_password], params[:new_password_confirmation]
+        flash[:success] = I18n.t :successful_reset_password
+        login_as @user
+        redirect_to root_url
+      else
+        render :show
+      end
+    else
+      render_422
+    end
+  end
 end

@@ -53,6 +53,7 @@ zh-CN:
   subscription_recent_20_topics: 订阅最近20个主题
   subscription_tag: 订阅标签：%{tag}
   current_tag: 当前标签：%{tag}
+  successful_reset_password: 重置密码成功
 
   what_is_gravatar: 什么是 Gravatar？
   change_email: 修改 Email
@@ -113,6 +114,8 @@ zh-CN:
   manage: 管理
   admin_mode: 管理模式
   normal_mode: 普通模式
+  new_password: 新密码
+  new_password_confirmation: 新密码确认
 
   mailer:
     reset_password_token:

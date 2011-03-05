@@ -118,7 +118,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal @user, User.authenticate('test', '12345678')
 
     # ignore confirmation
-    assert @user.update_attributes(:password => '', :password_confirmation => '11111111', :current_password => '12345678')
+    assert @user.update_attributes(:password => '', :password_confirmation => '11111111', :current_password => '12345678'), @user.errors.to_s
     assert_equal @user, User.authenticate('test', '12345678')
 
     assert @user.update_attributes(:password => '11111111', :password_confirmation => '11111111', :current_password => '12345678')
@@ -167,8 +167,13 @@ class UserTest < ActiveSupport::TestCase
     u = User.first :conditions => {:reset_password_token => @user.reset_password_token}
     assert_equal @user, u
     new_password = new_password_confirm = '87654321'
-    assert u.reset_password!(new_password, new_password_confirm), u.errors.to_s
+    assert u.reset_password(new_password, new_password_confirm), u.errors.to_s
     assert_nil u.reset_password_token
     assert_equal @user, User.authenticate(@user.username, '87654321')
+  end
+
+  def test_reset_password
+    assert !@user.reset_password('12345678', '87654321')
+    assert !@user.reset_password('', '')
   end
 end
