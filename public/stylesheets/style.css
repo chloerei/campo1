@@ -240,6 +240,14 @@ span.red {
     text-decoration: none;
 }
 
+.quiet {
+    color: #AAA;
+}
+.quiet a {
+    color: #AAA;
+    text-decoration: none;
+}
+
 /* header */
 #header {
     height: 40px;
@@ -513,7 +521,7 @@ span.red {
 
 #mainbar #topic .content,
 #mainbar #replies .content {
-    margin: 0 0 10px;
+    margin: 10px 0;
     line-height: 1.6em;
 }
 
@@ -529,11 +537,6 @@ span.red {
 #mainbar #replies .avatar {
     height: 48px;
     width: 48px;
-}
-
-#mainbar #replies .time {
-    float: right;
-    color: #AAA;
 }
 
 #mainbar #reply-form .avatar {

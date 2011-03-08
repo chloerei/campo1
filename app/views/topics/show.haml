@@ -70,9 +70,8 @@
           .meta
             %a{:name => "#{reply.id}"}
             %span.author= link_to_person @user_hash[reply.user_id]
-            %span.time
-              = time_ago_in_words reply.created_at
-              = t :ago
+            %span.right.quiet
+              = link_to "#{time_ago_in_words reply.created_at}#{t :ago}", topic_url(@topic, :page => @replies.current_page, :anchor => "#{reply.id}")
           .content~ rich_content reply.content
           - if reply.created_at != reply.updated_at
             .meta
