@@ -3,6 +3,7 @@ production:
   organize_name: your_organize_name
   organize_url: your_organize_url
   host:
+  google_custom_search_id: 
   admin_emails:
     - admin@your_email.com
     - admin2@your_email.com
@@ -16,6 +17,7 @@ defaults: &defaults
   organize_name: CodeCampo
   organize_url: http://codecampo.com
   host: 'localhost:3000'
+  google_custom_search_id: 
   admin_emails:
     - admin@codecampo.com
 

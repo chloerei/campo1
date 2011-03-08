@@ -16,6 +16,7 @@ Campo::Application.routes.draw do
     resource :favorite_tags, :only => [:show, :create, :destroy]
   end
 
+  get '/search', :to => 'topics#search', :as => :search
   resources :topics, :except => [:destroy] do
     collection do
       get 'tagged/:tag', :action => 'tagged', :as => :tagged, :constraints  => { :tag => /[^\/]+/ }, :format => false

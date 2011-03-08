@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_filter :require_logined, :require_user_not_banned, :except => [:index, :show, :tagged, :interesting, :newest]
+  before_filter :require_logined, :require_user_not_banned, :except => [:index, :search, :show, :tagged, :interesting, :newest]
   respond_to :html, :rss, :only => [:newest, :tagged]
 
   def index
@@ -7,6 +7,10 @@ class TopicsController < ApplicationController
     set_page_title I18n.t :home
     @topics = Topic.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
+  end
+
+  def search
+    @current = :search
   end
 
   def interesting

@@ -43,4 +43,7 @@
       - if current == :tagged
         %li.current
           = link_to @tag, tagged_topics_url(:tag => @tag)
+      - if current == :search
+        %li.current
+          = link_to t(:search), search_url
   .clear
