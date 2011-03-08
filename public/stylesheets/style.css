@@ -28,7 +28,6 @@ p {
 
 blockquote {
     background-color: #FFF8D0;
-    font-style: italic;
     -moz-border-radius: 5px;
     border-radius: 5px;
     padding: 10px 10px 5px;
@@ -36,6 +35,7 @@ blockquote {
 
 pre, code {
     background-color: #EEE;
+    overflow: auto;
 }
 
 label {

@@ -10,7 +10,7 @@
           - topic.tags.each do |tag|
             %span.tag= link_to tag, tagged_topics_url(:tag => tag)
         - if topic.last_replied_by_id
-          Replied by
+          = t :last_replyer
           = link_to_person @user_hash[topic.last_replied_by_id]
         = time_ago_in_words topic.created_at
         = t :ago

@@ -27,11 +27,15 @@ p {
 }
 
 blockquote {
-    font-style: italic;
+    background-color: #FFF8D0;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 10px 10px 5px;
 }
 
 pre, code {
     background-color: #EEE;
+    overflow: auto;
 }
 
 label {
