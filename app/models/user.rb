@@ -15,6 +15,7 @@ class User
   field :banned, :type => Boolean
   field :reset_password_token
   embeds_one :profile
+  embeds_many :notifications, :class_name => 'Notification::Base'
   
   references_many :topics, :validate => false
   references_many :replies, :validate => false
