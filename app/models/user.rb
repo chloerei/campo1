@@ -25,7 +25,8 @@ class User
   validates_presence_of :current_password, :if => Proc.new {|user| user.require_current_password?}
   validates_length_of :password, :minimum => 6, :allow_blank => true
   validates_uniqueness_of :username, :email, :case_sensitive => false
-  validates_format_of :username, :with => /\A[A-Za-z0-9_]+\z/
+  UsernameRegex = /\A[A-Za-z0-9_]+\z/
+  validates_format_of :username, :with => UsernameRegex
   validates_length_of :username, :in => 3..20
   validates_length_of :favorite_tags, :maximum => 50
 
