@@ -5,6 +5,7 @@ class Reply
   field :content
   field :memtion_user_ids, :type => Array
 
+  references_and_referenced_in_many :memtion_users, :class_name => 'User', :validate => false
   referenced_in :topic
   referenced_in :user
 
@@ -15,6 +16,7 @@ class Reply
   after_create :increment_topic_reply_cache
   after_destroy :decrement_topic_reply_cache
   before_save :extract_memtions
+  after_create :send_memetion_notifications
 
   def increment_topic_reply_cache
     topic.last_replied_by = user
@@ -29,7 +31,20 @@ class Reply
   end
 
   def extract_memtions
-    usernames = self.content.to_s.scan(/@([A-Za-z0-9_]{3,20})/).flatten!
-    self.memtion_user_ids = User.where(:username.in => usernames.uniq.slice(0..4)).only(:_id).map(&:_id) unless usernames.blank?
+    usernames = self.content.to_s.scan(/@([A-Za-z0-9_]{3,20})/).flatten.uniq.delete_if{|username| username == self.user.username}.slice(0..4)
+    if usernames.blank?
+      self.memtion_user_ids = []
+    else
+      self.memtion_user_ids = User.where(:username.in => usernames).only(:_id).map(&:_id)
+    end
+  end
+
+  def send_memetion_notifications
+    memtion_users.each do |user|
+      user.notifications.create :user_id  => self.user_id,
+                                :topic_id => self.topic_id,
+                                :reply_id => self.id,
+                                :text     => self.content.slice(0..99)
+    end
   end
 end
