@@ -82,6 +82,7 @@ class TopicsController < ApplicationController
     @user_hash = User.create_user_hash(user_ids)
 
     if current_logined?
+      current_user.read_topic @topic
       @reply = Reply.new
       @reply.topic_id = @topic.id
     end

@@ -20,10 +20,28 @@ class UserTest < ActiveSupport::TestCase
 
     assert @user.notifications.include?(n1)
     assert @user.notifications.include?(n2)
-    50.times { @user.send_notification({}) }
+    50.times { @user.send_notification({:created_at => Time.now + 1}) }
     assert_equal 50, @user.reload.notifications.size
     assert !@user.notifications.include?(n1)
     assert !@user.notifications.include?(n2)
+  end
+
+  def test_read_topic
+    topic = @user.topics.create :title => 'title', :content => 'content'
+    reply = topic.replies.new :content => 'conten'
+    reply.user = @admin
+    reply.save
+
+    assert_difference "@user.reload.notifications.count" do
+      @user.send_notification({:user_id => @admin.id,
+                               :topic_id => topic.id,
+                               :reply_id => reply.id,
+                               :text     => reply.content}, Notification::Mention)
+    end
+
+    assert_difference "@user.notifications.count", -1 do
+      @user.read_topic topic
+    end
   end
 
   def test_admin

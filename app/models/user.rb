@@ -49,11 +49,21 @@ class User
   def send_notification(attributes = {}, klass = nil)
     if notifications.size >= 50
       ids = notifications.asc(:created_at).slice(0..-50).map(&:id)
-      collection.update({:_id => self.id}, {'$pull' => {:notifications => {:_id => {'$in' => ids}}}} )
+      collection.update({:_id => self.id},
+                        {'$pull' => {:notifications => {:_id => {'$in' => ids}}}} )
       # TODO : user.notifications need sync
     end
 
     notifications.create attributes, klass
+  end
+
+  def read_topic(topic)
+    if notifications.where({:topic_id => topic.id, :_type => 'Notification::Mention'}).count != 0
+      collection.update({:_id => self.id},
+                        {'$pull' => {:notifications => {:topic_id => topic.id, :_type => 'Notification::Mention'}}} )
+      # TODO : another way to sync user.notifications without object reload
+      reload
+    end
   end
 
   def admin?
