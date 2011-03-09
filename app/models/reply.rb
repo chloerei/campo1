@@ -41,10 +41,10 @@ class Reply
 
   def send_memetion_notifications
     memtion_users.each do |user|
-      user.notifications.create :user_id  => self.user_id,
-                                :topic_id => self.topic_id,
-                                :reply_id => self.id,
-                                :text     => self.content.slice(0..99)
+      user.send_notification({:user_id  => self.user_id,
+                              :topic_id => self.topic_id,
+                              :reply_id => self.id,
+                              :text     => self.content.slice(0..99)}, Notification::Mention)
     end
   end
 end

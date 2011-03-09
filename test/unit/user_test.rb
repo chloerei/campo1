@@ -6,6 +6,26 @@ class UserTest < ActiveSupport::TestCase
     @admin = create_admin
   end
 
+  def test_send_notification
+    n1 = nil
+    assert_difference "@user.notifications.count" do
+      n1 = @user.send_notification({})
+    end
+    assert @user.notifications.last.is_a?(Notification::Base)
+    n2 = nil
+    assert_difference "@user.notifications.count" do
+      n2 = @user.send_notification({}, Notification::Mention)
+    end
+    assert @user.notifications.last.is_a?(Notification::Mention)
+
+    assert @user.notifications.include?(n1)
+    assert @user.notifications.include?(n2)
+    50.times { @user.send_notification({}) }
+    assert_equal 50, @user.reload.notifications.size
+    assert !@user.notifications.include?(n1)
+    assert !@user.notifications.include?(n2)
+  end
+
   def test_admin
     assert !@user.admin?
     assert @admin.admin?

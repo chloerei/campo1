@@ -46,6 +46,16 @@ class User
 
   validate :check_password, :check_current_password
 
+  def send_notification(attributes = {}, klass = nil)
+    if notifications.size >= 50
+      ids = notifications.asc(:created_at).slice(0..-50).map(&:id)
+      collection.update({:_id => self.id}, {'$pull' => {:notifications => {:_id => {'$in' => ids}}}} )
+      # TODO : user.notifications need sync
+    end
+
+    notifications.create attributes, klass
+  end
+
   def admin?
     APP_CONFIG['admin_emails'].include? self.email
   end

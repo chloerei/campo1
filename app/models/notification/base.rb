@@ -1,5 +1,6 @@
 class Notification::Base
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :text
 
