@@ -7,24 +7,12 @@
 
 (function($) {
 	// Make sure that every Ajax request sends the CSRF token
-	function CSRFProtection(fn) {
+	function CSRFProtection(xhr) {
 		var token = $('meta[name="csrf-token"]').attr('content');
-		if (token) fn(function(xhr) { xhr.setRequestHeader('X-CSRF-Token', token) });
+		if (token) xhr.setRequestHeader('X-CSRF-Token', token);
 	}
-	if ($().jquery == '1.5') { // gruesome hack
-		var factory = $.ajaxSettings.xhr;
-		$.ajaxSettings.xhr = function() {
-			var xhr = factory();
-			CSRFProtection(function(setHeader) {
-				var open = xhr.open;
-				xhr.open = function() { open.apply(this, arguments); setHeader(this) };
-			});
-			return xhr;
-		};
-	}
-	else $(document).ajaxSend(function(e, xhr) {
-		CSRFProtection(function(setHeader) { setHeader(xhr) });
-	});
+	if ('ajaxPrefilter' in $) $.ajaxPrefilter(function(options, originalOptions, xhr){ CSRFProtection(xhr) });
+	else $(document).ajaxSend(function(e, xhr){ CSRFProtection(xhr) });
 
 	// Triggers an event on an element and returns the event result
 	function fire(obj, name, data) {
@@ -38,6 +26,7 @@
 		var method, url, data,
 			dataType = element.attr('data-type') || ($.ajaxSettings && $.ajaxSettings.dataType);
 
+	if (fire(element, 'ajax:before')) {
 		if (element.is('form')) {
 			method = element.attr('method');
 			url = element.attr('action');
@@ -53,26 +42,26 @@
 			url = element.attr('href');
 			data = null;
 		}
-
-		$.ajax({
-			url: url, type: method || 'GET', data: data, dataType: dataType,
-			// stopping the "ajax:beforeSend" event will cancel the ajax request
-			beforeSend: function(xhr, settings) {
-				if (settings.dataType === undefined) {
-					xhr.setRequestHeader('accept', '*/*;q=0.5, ' + settings.accepts.script);
+			$.ajax({
+				url: url, type: method || 'GET', data: data, dataType: dataType,
+				// stopping the "ajax:beforeSend" event will cancel the ajax request
+				beforeSend: function(xhr, settings) {
+					if (settings.dataType === undefined) {
+						xhr.setRequestHeader('accept', '*/*;q=0.5, ' + settings.accepts.script);
+					}
+					return fire(element, 'ajax:beforeSend', [xhr, settings]);
+				},
+				success: function(data, status, xhr) {
+					element.trigger('ajax:success', [data, status, xhr]);
+				},
+				complete: function(xhr, status) {
+					element.trigger('ajax:complete', [xhr, status]);
+				},
+				error: function(xhr, status, error) {
+					element.trigger('ajax:error', [xhr, status, error]);
 				}
-				return fire(element, 'ajax:beforeSend', [xhr, settings]);
-			},
-			success: function(data, status, xhr) {
-				element.trigger('ajax:success', [data, status, xhr]);
-			},
-			complete: function(xhr, status) {
-				element.trigger('ajax:complete', [xhr, status]);
-			},
-			error: function(xhr, status, error) {
-				element.trigger('ajax:error', [xhr, status, error]);
-			}
-		});
+			});
+		}
 	}
 
 	// Handles "data-method" on links such as:

@@ -13,7 +13,7 @@
       = t :no_notification
     - else
       - @notifications.each do |notification|
-        .item
+        .item{:id => "notification-#{notification.id}"}
           .meta
             .left
               - case notification
@@ -27,6 +27,6 @@
               = time_ago_in_words notification.created_at
               = t :ago
             .right
-              = link_to 'x', notification_url(notification), :method => :delete
+              = link_to 'x', notification_url(notification), :method => :delete, :remote => true
             .clear
           %blockquote= notification.text
