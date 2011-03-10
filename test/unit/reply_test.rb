@@ -9,29 +9,29 @@ class ReplyTest < ActiveSupport::TestCase
     @topic.save
   end
 
-  def test_extract_memtions
+  def test_extract_mentions
     6.times {|n| User.create :username => "user_#{n}", :email => "email_#{n}@test.com", :password => '12345678', :password_confirmation => '12345678'}
     reply = @topic.replies.new :content => "some text @user_0 @user_1 @user_2 @user_3 @user_4 @user_5 @user_6 @user_99 some text"
     reply.user = @user
-    assert_equal [], reply.memtion_user_ids
+    assert_equal [], reply.mention_user_ids
     reply.save
-    assert_equal 5, reply.memtion_user_ids.size
+    assert_equal 5, reply.mention_user_ids.size
 
     reply.content = "some text @#{@user.username} some text"
     reply.save
-    assert_equal [], reply.memtion_user_ids
+    assert_equal [], reply.mention_user_ids
     reply.content = "some text @#{@admin.username}.com some text"
     reply.save
-    assert_equal [], reply.memtion_user_ids
+    assert_equal [], reply.mention_user_ids
   end
 
-  def test_send_memtion_notifications
+  def test_send_mention_notifications
     reply = @topic.replies.new :content => "some text @#{@user.username} @#{@admin.username} some text"
     reply.user = @user
     assert_no_difference "@user.reload.notifications.count" do
       assert_difference "@admin.reload.notifications.count" do
         reply.save
-        assert_equal [@admin.id], reply.memtion_user_ids
+        assert_equal [@admin.id], reply.mention_user_ids
       end
     end
   end

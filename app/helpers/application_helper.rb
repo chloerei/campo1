@@ -1,6 +1,17 @@
 module ApplicationHelper
   def rich_content(content)
-    sanitize auto_link(RDiscount.new(content).to_html)
+    sanitize auto_link(RDiscount.new(auto_mention(content)).to_html)
+  end
+
+  def auto_mention(text)
+    text.gsub(Reply::MentionRegex) do
+      username = $1
+      if auto_linked?($`, $')
+        $&
+      else
+        %Q[@<a href="/~#{username}">#{username}</a> ]
+      end
+    end
   end
 
   def paginate_for(collection, options = {})
