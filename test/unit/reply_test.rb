@@ -23,6 +23,9 @@ class ReplyTest < ActiveSupport::TestCase
     reply.content = "some text @#{@admin.username}.com some text"
     reply.save
     assert_equal [], reply.mention_user_ids
+    reply.content = "some text @#{@admin.username.upcase} some text"
+    reply.save
+    assert_equal [@admin.id], reply.mention_user_ids
   end
 
   def test_send_mention_notifications

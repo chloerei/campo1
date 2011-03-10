@@ -35,7 +35,7 @@ class Reply
     if usernames.blank?
       self.mention_user_ids = []
     else
-      self.mention_user_ids = User.where(:username.in => usernames).only(:_id).map(&:_id)
+      self.mention_user_ids = User.where(:username.in => usernames.map{|username| /^#{username}$/i }).only(:_id).map(&:_id)
     end
   end
 
