@@ -6,6 +6,8 @@ zh-CN:
   profile_page: 个人页面
   notifications: 提醒
   notification: 提醒
+  deleted_user: 已删除用户
+  deleted_topic: 已删除主题
   no_notification: 没有提醒
   mention_you: 提到你
   in_topic: 在主题

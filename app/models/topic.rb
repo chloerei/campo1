@@ -29,6 +29,13 @@ class Topic
     topic.title_changed? || topic.content_changed? || topic.tags_changed?
   }
 
+  def self.create_topic_hash(topic_ids)
+    topic_hash = {}
+    topics = Topic.where(:_id.in => topic_ids)
+    topics.each{|topic| topic_hash[topic.id] = topic}
+    topic_hash
+  end
+
   def close!
     self.closed = true
     save
