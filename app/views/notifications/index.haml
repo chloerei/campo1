@@ -18,7 +18,7 @@
             .left
               - case notification
               - when Notification::Mention
-                = link_to_person notification.user
+                = link_to_person notification.reply_user
                 = t :in_topic
                 = link_to notification.topic.title, notification.topic, :target => '_blank'
                 = t :mention_you
