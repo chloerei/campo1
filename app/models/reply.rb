@@ -31,7 +31,7 @@ class Reply
   end
 
   def extract_memtions
-    usernames = self.content.to_s.scan(/@([A-Za-z0-9_]{3,20})/).flatten.uniq.delete_if{|username| username == self.user.username}.slice(0..4)
+    usernames = self.content.to_s.scan(/@([A-Za-z0-9_]{3,20})\s/).flatten.uniq.delete_if{|username| username == self.user.username}.slice(0..4)
     if usernames.blank?
       self.memtion_user_ids = []
     else

@@ -20,6 +20,9 @@ class ReplyTest < ActiveSupport::TestCase
     reply.content = "some text @#{@user.username} some text"
     reply.save
     assert_equal [], reply.memtion_user_ids
+    reply.content = "some text @#{@admin.username}.com some text"
+    reply.save
+    assert_equal [], reply.memtion_user_ids
   end
 
   def test_send_memtion_notifications
