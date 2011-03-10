@@ -4,6 +4,10 @@
 zh-CN:
   home: 主页
   profile_page: 个人页面
+  notifications: 提醒
+  notification: 提醒
+  mention_you: 提到你
+  in_topic: 在主题
   settings: 设置
   logout: 退出
   login: 登录
