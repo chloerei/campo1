@@ -2,13 +2,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_user, :current_logined?, :current_admin?, :page_title
+  helper_method :current_user, :current_logined?, :current_admin?, :page_title, :topic_url_with_last_anchor
 
   rescue_from Exception, :with => :render_500
   rescue_from Mongoid::Errors::DocumentNotFound, :with => :render_404
   rescue_from BSON::InvalidObjectId, :with => :render_404
 
   protected
+
+  def topic_url_with_last_anchor(topic)
+    anchor = (topic.replies_count == 0 ? nil : "replies-#{topic.replies_count}")
+    topic_url(topic, :anchor => anchor)
+  end
 
   def render_404(exception = nil)
     if exception

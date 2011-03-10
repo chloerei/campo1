@@ -17,7 +17,7 @@
                   = t :deleted_user
                 = t :in_topic
                 - if @topic_hash[notification.topic_id]
-                  = link_to @topic_hash[notification.topic_id].title, @topic_hash[notification.topic_id]
+                  = link_to @topic_hash[notification.topic_id].title, topic_url_with_last_anchor(@topic_hash[notification.topic_id])
                 - else
                   = t :deleted_topic
                 = t :mention_you

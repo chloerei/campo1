@@ -20,8 +20,7 @@ class RepliesController < ApplicationController
       @reply = @topic.replies.new params[:reply]
       @reply.user = current_user
       if @reply.save
-        anchor = (@topic.replies_count == 0 ? nil : "replies-#{@topic.replies_count}")
-        redirect_to topic_url(@topic, :anchor => anchor)
+        redirect_to topic_url_with_last_anchor(@topic)
       else
         set_page_title I18n.t :new_reply
         render :new, :topic_id => @topic.id

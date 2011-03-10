@@ -11,10 +11,9 @@
         .left-column.avatar
           = link_gravatar_to_person @user_hash[topic.user_id]
         .right-column
-          - anchor = (topic.replies_count == 0 ? nil : "replies-#{topic.replies_count}")
-          .title= link_to topic.title, topic_url(topic, :anchor => anchor)
+          .title= link_to topic.title, topic_url_with_last_anchor(topic)
           .reply-count
-            = link_to topic.replies_count, topic_url(topic, :anchor => anchor)
+            = link_to topic.replies_count, topic_url_with_last_anchor(topic)
           .clear
           .meta
             - if topic.tags
