@@ -46,4 +46,7 @@
       - if current == :search
         %li.current
           = link_to t(:search), search_url
+      - if current == :notifications
+        %li.current
+          = link_to t(:notifications), notifications_url
   .clear

@@ -1,2 +1,8 @@
+<% if current_user.notifications.any? %>
+  $("#notification-count a").text("<%= "#{current_user.notifications.count} #{t(:notifications)}" %>")
+<% else %>
+  $("#notification-count").remove()
+<% end %>
+
 $("#notification-<%= @notification.id %>").hide('blind')
 $("#notification-<%= @notification.id %>").remove()

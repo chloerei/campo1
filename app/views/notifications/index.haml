@@ -1,11 +1,4 @@
-#subheader
-  #mascot
-    %img{:src => '/images/mascot.png'}
-  #tabs
-    %ul
-      %li.current
-        = link_to t(:notifications), notifications_url
-  .clear
+= render :partial => 'topics/subheader', :locals => {:current => :notifications}
 
 .section
   .section-content.item-list
@@ -20,7 +13,7 @@
               - when Notification::Mention
                 = link_to_person notification.reply_user
                 = t :in_topic
-                = link_to notification.topic.title, notification.topic, :target => '_blank'
+                = link_to notification.topic.title, notification.topic
                 = t :mention_you
               - else
                 = t :notification

@@ -4,3 +4,7 @@
       .avatar= link_gravatar_to_person current_user
       .name= link_to_person current_user
       .clear
+      - if current_user.notifications.any?
+        #notification-count.quiet
+          = image_tag 'icons/email.png', :align => 'top'
+          = link_to "#{current_user.notifications.count} #{t(:notifications)}", notifications_url
