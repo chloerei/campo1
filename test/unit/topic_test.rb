@@ -89,5 +89,14 @@ class TopicTest < ActiveSupport::TestCase
     r.user = @admin
     r.save
     assert t.reload.replier_ids.include? @admin.id
+
+    # ignore topic author
+    t = Topic.new :title => 'title', :content => 'content'
+    t.user = @user
+    t.save
+    t.reply_by @admin
+    assert_equal [@admin.id], t.reload.replier_ids
+    t.reply_by @user
+    assert_equal [@admin.id], t.reload.replier_ids
   end
 end

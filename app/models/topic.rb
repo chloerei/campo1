@@ -79,6 +79,7 @@ class Topic
   end
 
   def reply_by(user)
+    return if self.user_id == user.id
     collection.update({:_id => self.id, :replier_ids => {"$ne" => user.id}},
                       {"$push" => {:replier_ids => user.id}})
   end
