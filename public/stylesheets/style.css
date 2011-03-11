@@ -411,30 +411,6 @@ span.red {
     color: #CC2A2A;
 }
 
-#mainbar #topics li.tagged-interesting .reply-count a {
-    background-color: #0079CE;
-}
-
-#mainbar #topics li.tagged-interesting .reply-count a:visited {
-    background-color: #EEE;
-}
-
-#mainbar #topics li.tagged-interesting .reply-count a:hover {
-    background-color: #AAA;
-}
-
-#mainbar #topics li.own-topic .reply-count a {
-    background-color: #CC2A2A;
-}
-
-#mainbar #topics li.own-topic .reply-count a:visited {
-    background-color: #EEE;
-}
-
-#mainbar #topics li.own-topic .reply-count a:hover {
-    background-color: #AAA;
-}
-
 #mainbar #topics .avatar {
     width: 48px;
     height: 48px;
@@ -464,11 +440,23 @@ span.red {
     font-weight: bold;
 }
 
-#mainbar #topics .reply-count a:visited {
+#mainbar #topics .tagged-interesting .reply-count a {
+    background-color: #0079CE;
+}
+
+#mainbar #topics .own-topic .reply-count a {
+    background-color: #CC2A2A;
+}
+
+#mainbar #topics .reply-count a:visited,
+#mainbar #topics .tagged-interesting .reply-count a:visited,
+#mainbar #topics .own-topic .reply-count a:visited {
     background-color: #EEE;
 }
 
-#mainbar #topics .reply-count a:hover {
+#mainbar #topics .reply-count a:hover,
+#mainbar #topics .tagged-interesting .reply-count a:hover,
+#mainbar #topics .own-topic .reply-count a:hover {
     text-decoration: none;
     background-color: #AAA;
 }
