@@ -1,7 +1,6 @@
 production:
-  site_name: your_site_name
-  organize_name: your_organize_name
-  organize_url: your_organize_url
+  secret_token: # 'rake secret' to make a new token
+  site_name: Campo
   host:
   google_custom_search_id: 
   admin_emails:
@@ -13,9 +12,8 @@ production:
 
 # example
 defaults: &defaults
+  secret_token: '4c8418b11e5529b65f7fff02e2e496f0cbdbac990b8453cfe3c67e747469984945bc10039e542c76cb0f8226a950a2c1d55e816fced1a0d65d27d39bcb4fd427'
   site_name: CodeCampo
-  organize_name: CodeCampo
-  organize_url: http://codecampo.com
   host: 'localhost:3000'
   google_custom_search_id: 
   admin_emails:

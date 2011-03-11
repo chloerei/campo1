@@ -20,9 +20,10 @@ Author: Rei(chloerei@gmail.com)
 
 ### 2. Configure the application
 
+    cp config/campo.example.yml config/campo.yml
+    cp config/mongoid.example.yml config/mongoid.yml
     edit config/campo.yml
-
-It will used in layout.
+    edit config/mongoid.yml
 
 ### 3. Make sure mongodb is running
 
@@ -32,13 +33,13 @@ It will used in layout.
 
 ## For production environment
 
-This project is low degree of completion, db schema is changing and not well migration support. not suggest used in production environment. But if you want, there are some more notes.
+This project is low degree of completion, db schema is changing and not well migration support. not suggest used in production environment. But if you want, there are some notes.
 
 ### 1. Reset secret token (importance for security)
 
     rake secret
 
-Copy the output string to config/initializers/secret\_token.rb, and replace secret\_token value.
+Copy the output string and set secret\_token column in config/campo.yml
 
 ### 2. Config mongo connection.
 

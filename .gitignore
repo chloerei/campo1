@@ -4,3 +4,4 @@ log/*.log
 tmp/**/*
 .*.swp
 config/campo.yml
+config/mongoid.yml

@@ -35,9 +35,9 @@
           %ul
         #copyright
           @ Copyright
-          = link_to APP_CONFIG['organize_name'], APP_CONFIG['organize_url']
+          = link_to APP_CONFIG['site_name'], root_url
           |
           Power by
-          = link_to 'Campo', 'https://github.com/chloerei/campo'
+          = link_to 'Campo', 'https://github.com/chloerei/campo', :target => '_blank'
         .clear
     = yield :last
