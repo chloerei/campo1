@@ -98,6 +98,15 @@ class TopicsControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  def test_collection
+    get :replied
+    assert_redirected_to login_url
+
+    login_as @user
+    get :replied
+    assert_response :success, @response.body
+  end
+
   def test_mark
     post :mark, :id => @topic.id
     assert_redirected_to login_url

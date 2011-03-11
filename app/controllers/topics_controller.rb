@@ -74,6 +74,14 @@ class TopicsController < ApplicationController
     render :index
   end
 
+  def replied
+    set_page_title I18n.t :replied
+    @current = :replied
+    @topics = Topic.replied_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
+    prepare_for_index
+    render :index
+  end
+
   def show
     @topic = Topic.find params[:id]
     set_page_title @topic.title

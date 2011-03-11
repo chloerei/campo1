@@ -3,6 +3,7 @@ require 'test_helper'
 class TopicTest < ActiveSupport::TestCase
   def setup
     @user = create_user
+    @admin = create_admin
     @topic = @user.topics.create :title => 'title', :content => 'content', :tags => 'tag1 tag2'
   end
 
@@ -70,5 +71,23 @@ class TopicTest < ActiveSupport::TestCase
     assert_equal [], t.reload.marker_ids
     t.unmark_by @user
     assert_equal [], t.reload.marker_ids
+  end
+
+  def test_replier
+    t = Topic.create :title => 'title', :content => 'content'
+    assert_nil t.replier_ids
+    t.reply_by @user
+    assert_equal [@user.id], t.reload.replier_ids
+    t.reply_by @user
+    assert_equal [@user.id], t.reload.replier_ids
+
+    # query
+    assert Topic.replied_by(@user).include? t
+
+    # callback
+    r = t.replies.new :content => 'content'
+    r.user = @admin
+    r.save
+    assert t.reload.replier_ids.include? @admin.id
   end
 end

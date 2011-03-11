@@ -25,6 +25,7 @@ Campo::Application.routes.draw do
       get :own
       get :newest
       get :collection
+      get :replied
     end
 
     member do

@@ -12,7 +12,7 @@ class Reply
 
   attr_accessible :content
 
-  after_create :increment_topic_reply_cache
+  after_create :increment_topic_reply_cache, :add_replier_ids
   after_destroy :decrement_topic_reply_cache
   before_save :extract_mentions
   after_create :send_menetion_notifications
@@ -27,6 +27,10 @@ class Reply
   def decrement_topic_reply_cache
     # ignore user and time cache
     topic.inc :replies_count, -1
+  end
+
+  def add_replier_ids
+    topic.reply_by self.user
   end
 
   MentionRegex = /@([A-Za-z0-9_]{3,20})\s/

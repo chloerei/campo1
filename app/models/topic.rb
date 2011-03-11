@@ -7,9 +7,11 @@ class Topic
   field :content
   field :tags, :type => Array
   field :marker_ids, :type => Array
+  field :replier_ids, :type => Array
   field :closed, :type => Boolean
 
   scope :marked_by, lambda { |user| where(:marker_ids => user.id) }
+  scope :replied_by, lambda { |user| where(:replier_ids => user.id) }
 
   references_many :replies, :validate => false, :dependent => :delete
   referenced_in :user
@@ -74,5 +76,10 @@ class Topic
   def unmark_by(user)
     collection.update({:_id => self.id},
                       {"$pull" => {:marker_ids => user.id}})
+  end
+
+  def reply_by(user)
+    collection.update({:_id => self.id, :replier_ids => {"$ne" => user.id}},
+                      {"$push" => {:replier_ids => user.id}})
   end
 end
