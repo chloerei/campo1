@@ -2,4 +2,203 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      default: default
+  share:
+    top_menu:
+      home: Home
+      search: Search
+      person_page: Profile
+      settings: Settings
+      admin_dashboard: Admin
+      logout: Logout
+      login: Login
+      signup: Signup
+    paginate:
+      next_page: Next
+      prev_page: Prev
+    sidebar_profile:
+      notifications: notifications
+  topics:
+    subheader:
+      active: Active
+      interesting: Interesting
+      own: Own
+      newest: Newest
+      replied: Replied
+      collection: Collection
+      search: Search
+      notifications: Notifications
+    sidebar:
+      favorite_tags: Favorite Tags
+      manage_tags: Manage Tags
+      recent_tags: Recent Tags
+    index:
+      subscription_recent_20_topics: Subscription recent 20 topics
+      create_topic: Create Topic
+    new:
+      new_topic: New Topic
+      create: Create
+    edit:
+      edit_topic: Edit Topic
+      update: Update
+    form:
+      tags_tips: 'Maximum is 5 tags. Split with space, for example : ruby-on-rails programming. Auto conver to lower case.'
+    show:
+      creator: Creator
+      ago: ago
+      edited_at: Edited at
+      edit: Edit
+      manage: Manage
+      leave_a_reply: Leave a Reply?
+      please: Please
+      or: or
+      login: Login
+      signup: Signup
+      you_had_been_ban: You had been ban.
+      topic_had_been_closed: Topic had been closed.
+      you_are: You are
+      post: Post
+      collect_topic: Collect Topic
+      mark: Mark
+      unmark: Unmark
+      marker_count: Marker %{count}
+    topics:
+      creator: Creator
+      last_replyer: Last Replyer
+      ago: ago
+    search:
+      loading: Loading ...
+    tagged:
+      subscription_tag: Subscription Tag：%{tag}
+      create_topic: Create Topic
+      current_tag: Current Tag：%{tag}
+      remove_from_favorite_tags: Remove from Favorite
+      add_to_favorite_tags: Add to Favorite
+  user_mailer:
+    reset_password_token:
+      title: %{name} Password Reset
+      description: Follow this link to reset your %{name} password.
+  user_sessions:
+    new:
+      login_tips: Username or Email
+      remember_me_tips: remember me (1 month)
+      password: Password
+      login: Login
+      not_have_account_yet: Not have account yet?
+      forgot_password: Forgot password?
+      signup: Signup
+      reset_password: Reset Password
+      login_fail: Login fail, wrong login name or password.
+  users:
+    new:
+      username_tips: Only character, number and underline'_', 3-20 length, can be edit later.
+      email_tips: Will not be publish, use for login and gravatar.
+      password_tips: 6+ length
+      remember_me_tips: remember me (1 month)
+      already_have_account: Already have account?
+      forgot_password: Forgot password?
+      login: Login
+      signup: Signup
+      reset_password: Reset Password
+  reset_passwords:
+    new:
+      post: Post
+      tips: Input you email.
+    create:
+      tips: A reset email will be send to you mailbox, check it later.
+    show:
+      new_password: New Password
+      new_password_confirmation: Confirmation
+      post: Post
+  people:
+    topics:
+      last_replyer: Last Replyer
+      ago: ago
+      closed: Closed
+      subscription_recent_20_topics: Subscription recent 20 topics
+    show:
+      this_user_had_been_ban: This user had been ban.
+      subscription_recent_20_topics: Subscription recent 20 topics
+      read_more: Read More
+  settings:
+    subheader:
+      account: Account
+      password: Password
+      profile: Profile
+      favorite_tags: Favorite Tags
+    accounts:
+      show:
+        current_password_tips: Change need current password.
+        save: Save
+    passwords:
+      show:
+        current_password_tips: Change need current password.
+        save: Save
+    profiles:
+      show:
+        avatar: Avatar
+        gravatar_tips: Using Gravatar service.
+        what_is_gravatar: What is Gravatar?
+        change_email: Change Email
+        go_to_gravatar: go Gravatar
+        save: Save
+    favorite_tags:
+      show:
+        favorite_tags: Favorite Tags
+        favorite_tags_tips: 'Maximum is 50 tags. Split with space, for example : ruby-on-rails programming. Auto conver to lower case.'
+        add: Add
+  admin:
+    nav:
+      dashboard: Dashboard
+      topics: Topics
+      replies: Replies
+      users: Users
+    dashboard:
+      show:
+        today_news: Today News
+        topics: Topics
+        replies: Replies
+        users: Users
+        total: Total
+    topics:
+      show:
+        title: Title
+        content: Content
+        tags: Tags
+        creator: Creator
+        status: Status
+        closed: Closed
+        open: Open
+        close: Close
+        delete: Delete
+        sure_to_delete: Sure to Delete? (Can't recover)
+    replies:
+      show:
+        reply_to: Reply to
+        content: Content
+        replyer: Replyer
+        delete: Delete
+        sure_to_delete: Sure to Delete? (Can't recover)
+  user:
+    errors:
+      password_confirmation_not_match: not match
+      current_password_not_match: not match
+
+  mongoid:
+    attributes:
+      topic:
+        title: Title
+        content: Content
+        tags: Tags
+      user:
+        username: Username
+        email: Email
+        current_password: Current Password
+        password: Password
+        password_confirmation: Password Confirmation
+      profile:
+        name: Name
+        url: Website Url
+        description: Description

@@ -4,7 +4,7 @@ class UserSessionsController < ApplicationController
   layout 'login'
 
   def new
-    set_page_title I18n.t :login
+    set_page_title I18n.t 'user_sessions.new.login'
   end
 
   def create
@@ -15,8 +15,8 @@ class UserSessionsController < ApplicationController
       logger.info params[:return_to]
       redirect_back_or_default params[:return_to] || root_url
     else
-      set_page_title I18n.t :login
-      flash[:error] = I18n.t :login_fail
+      set_page_title I18n.t 'user_sessions.new.login'
+      flash[:error] = I18n.t 'user_sessions.new.login_fail'
       redirect_to login_url
     end
   end

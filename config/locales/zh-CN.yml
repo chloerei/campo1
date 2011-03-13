@@ -87,6 +87,7 @@ zh-CN:
       forgot_password: 忘记密码？
       signup: 注册
       reset_password: 重置密码
+      login_fail: 登录失败，错误的用户名或密码。
   users:
     new:
       username_tips: 仅限英文、数字、下划线，3-20字符，稍后可更改
