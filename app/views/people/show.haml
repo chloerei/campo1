@@ -6,7 +6,7 @@
   .left
     %h1= @person.profile.name
     - if @person.banned?
-      = t :this_user_had_been_ban
+      = t '.this_user_had_been_ban'
     - else
       .detail.meta
         - if @person.profile.url.present?
@@ -24,11 +24,11 @@
   #topics.section
     .section-content
       = render :partial => 'topics'
-      .right= link_to t(:read_more), person_topics_url(:username => @person.username), :class => 'button'
+      .right= link_to t('.read_more'), person_topics_url(:username => @person.username), :class => 'button'
       .clear
   .section
     .section-content
       .right
         = image_tag 'rss.png', :align => 'top'
-        = link_to t(:subscription_recent_20_topics), person_topics_url(:format => 'rss')
+        = link_to t('.subscription_recent_20_topics'), person_topics_url(:format => 'rss')
       .claer

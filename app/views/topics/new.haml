@@ -6,10 +6,10 @@
 
 #new-topic-form.section
   .section-title
-    %h2= t :new_topic
+    %h2= t '.new_topic'
   .section-content
     = form_for @topic do |f|
       = render :partial => 'form', :object => f
       .field
-        = f.submit t(:create), :class => 'button'
+        = f.submit t('.create'), :class => 'button'
 

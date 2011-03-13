@@ -2,13 +2,13 @@
 
 .section
   .section-title
-    %h2= t :favorite_tags
+    %h2= t '.favorite_tags'
   .section-content
     = form_tag :action => :create do
       .field
         = text_field_tag :tags, nil, :class => 'text long-text'
-        = submit_tag t(:add), :class => 'button'
-        .meta= t 'tips.favorite_tags'
+        = submit_tag t('.add'), :class => 'button'
+        .meta= t '.favorite_tags_tips'
 
 - if !@favorite_tags.blank?
   .section

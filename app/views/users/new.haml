@@ -6,31 +6,31 @@
       = f.label :username
       %br/
       = f.text_field :username, :class => 'text'
-      .tips= t 'tips.signup.username'
+      .tips= t '.username_tips'
     .field
       = f.label :email
       %br/
       = f.text_field :email, :class => 'text'
-      .tips= t 'tips.signup.email'
+      .tips= t '.email_tips'
     .field
       = f.label :password
       %br/
       = f.password_field :password, :class => 'text'
-      .tips= t 'tips.signup.password'
+      .tips= t '.password_tips'
     .field
       = f.label :password_confirmation
       %br/
       = f.password_field :password_confirmation, :class => 'text'
     .field
-      = f.submit t(:signup), :class => 'button'
+      = f.submit t('.signup'), :class => 'button'
       = f.check_box :remember_me
-      %span.tips= f.label :remember_me, t('tips.login.remember_me')
+      %span.tips= f.label :remember_me, t('.remember_me_tips')
 
 .message
   .tips
     %p
-      = t :already_have_account
-      = link_to t(:login), login_url
+      = t '.already_have_account'
+      = link_to t('.login'), login_url
     %p
-      = t :forgot_password
-      = link_to t(:reset_password), new_reset_password_url
+      = t '.forgot_password'
+      = link_to t('.reset_password'), new_reset_password_url

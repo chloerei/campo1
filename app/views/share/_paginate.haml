@@ -7,7 +7,7 @@
       %td.prev
         - if current_page != 1
           - prev_page = current_page - 1
-          = link_to t(:prev_page), url_for(:page => prev_page), :class => 'prev button'
+          = link_to t('.prev_page'), url_for(:page => prev_page), :class => 'prev button'
 
       %td.pages
         - unless defined? hide_page and hide_page
@@ -27,5 +27,5 @@
 
       %td.next
         - if current_page < total_page
-          = link_to t(:next_page), url_for(:page => current_page + 1), :class => 'next button'
+          = link_to t('.next_page'), url_for(:page => current_page + 1), :class => 'next button'
   .clear

@@ -6,55 +6,55 @@
     %ul
       - if current == :active
         %li.current
-          = link_to t(:active), root_url
+          = link_to t('.active'), root_url
       - else
         %li
-          = link_to t(:active), root_url
+          = link_to t('.active'), root_url
 
       - if current == :interesting
         %li.tagged-interesting.current
-          = link_to t(:interesting), interesting_topics_url
+          = link_to t('.interesting'), interesting_topics_url
       - else
         %li.tagged-interesting
-          = link_to t(:interesting), interesting_topics_url
+          = link_to t('.interesting'), interesting_topics_url
 
       - if current_logined?
         - if current == :own
           %li.own-topic.current
-            = link_to t(:own), own_topics_url
+            = link_to t('.own'), own_topics_url
         - else
           %li.own-topic
-            = link_to t(:own), own_topics_url
+            = link_to t('.own'), own_topics_url
 
       - if current == :newest
         %li.current
-          = link_to t(:newest), newest_topics_url
+          = link_to t('.newest'), newest_topics_url
       - else
         %li
-          = link_to t(:newest), newest_topics_url
+          = link_to t('.newest'), newest_topics_url
 
       - if current_logined?
         - if current == :replied
           %li.current
-            = link_to t(:replied), replied_topics_url
+            = link_to t('.replied'), replied_topics_url
         - else
           %li
-            = link_to t(:replied), replied_topics_url
+            = link_to t('.replied'), replied_topics_url
 
       - if current_logined?
         - if current == :collection
           %li.current
-            = link_to t(:collection), collection_topics_url
+            = link_to t('.collection'), collection_topics_url
         - else
           %li
-            = link_to t(:collection), collection_topics_url
+            = link_to t('.collection'), collection_topics_url
       - if current == :tagged
         %li.current
           = link_to @tag, tagged_topics_url(:tag => @tag)
       - if current == :search
         %li.current
-          = link_to t(:search), search_url
+          = link_to t('.search'), search_url
       - if current == :notifications
         %li.current
-          = link_to t(:notifications), notifications_url
+          = link_to t('.notifications'), notifications_url
   .clear

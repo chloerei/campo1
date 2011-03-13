@@ -3,24 +3,23 @@
     - if flash[:error]
       .error= flash[:error]
     .field
-      = f.label :login, t(:login_name)
+      = f.label :login, t('.login_tips')
       %br
       = f.text_field :login, :class => 'text'
-      .tips= t 'tips.login.login_name'
     .field
-      = f.label :password, t(:password)
+      = f.label :password, t('.password')
       %br
       = f.password_field :password, :class => 'text'
     .field
-      = f.submit t(:login), :class => 'button'
+      = f.submit t('.login'), :class => 'button'
       = f.check_box :remember_me
-      %span.tips= f.label :remember_me, t('tips.login.remember_me')
+      %span.tips= f.label :remember_me, t('.remember_me_tips')
 
 .message
   .tips
     %p
-      = t :not_have_account_yet
-      = link_to t(:signup), signup_url
+      = t '.not_have_account_yet'
+      = link_to t('.signup'), signup_url
     %p
-      = t :forgot_password
-      = link_to t(:reset_password), new_reset_password_url
+      = t '.forgot_password'
+      = link_to t('.reset_password'), new_reset_password_url

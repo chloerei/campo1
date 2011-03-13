@@ -3,11 +3,11 @@
 .section
   .section-content
     #cse
-      = t :loading
+      = t '.loading'
 - content_for :last do
   = javascript_include_tag 'http://www.google.com/jsapi'
   :javascript
-    google.load('search', '1', {language : 'zh-CN'});
+    google.load('search', '1', {language : '#{I18n.locale}'});
     google.setOnLoadCallback(function() {
     var customSearchControl = new google.search.CustomSearchControl('#{APP_CONFIG['google_custom_search_id']}');
     customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);

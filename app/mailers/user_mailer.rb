@@ -5,6 +5,6 @@ class UserMailer < ActionMailer::Base
   def reset_password_token(user)
     @user = user
     mail :to => user.email,
-         :subject => I18n.t('mailer.reset_password_token.title', :name => APP_CONFIG['site_name'])
+         :subject => I18n.t('user_mailer.reset_password_token.title', :name => APP_CONFIG['site_name'])
   end
 end

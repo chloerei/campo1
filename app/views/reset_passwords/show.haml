@@ -3,10 +3,10 @@
     - if !@user.errors.blank?
       = render :partial => 'share/error_messages', :locals => {:object => @user}
     .field
-      = label_tag :new_password, t(:new_password)
+      = label_tag :new_password, t('.new_password')
       = password_field_tag :new_password, nil, :class => 'text'
     .field
-      = label_tag :new_password_confirmation, t(:new_password_confirmation)
+      = label_tag :new_password_confirmation, t('.new_password_confirmation')
       = password_field_tag :new_password_confirmation, nil, :class => 'text'
     .field
-      = submit_tag t(:post), :class => 'button'
+      = submit_tag t('.post'), :class => 'button'

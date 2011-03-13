@@ -1,158 +1,179 @@
-# Chinese (China) translations for Ruby on Rails
-# by tsechingho (http://github.com/tsechingho)
-
 zh-CN:
-  home: 主页
-  profile_page: 个人页面
-  notifications: 提醒
-  notification: 提醒
-  deleted_user: 已删除用户
-  deleted_topic: 已删除主题
-  no_notification: 没有提醒
-  mention_you: 提到你
-  in_topic: 在主题
-  settings: 设置
-  logout: 退出
-  login: 登录
-  signup: 注册
-  login_name: 登录名
-  ago: 前
-  creator: 创建者
-  last_replyer: 最后回复者
-  edited_at: 编辑于
-  leave_a_reply: 添加回复？
-  please: 请
-  or: 或
-  you_are: 你是
-  post: 提交
-  collect_topic: 收藏主题
-  marker_count: 已有%{count}人收藏
-  mark: 马克
-  edit: 编辑
-  edit_topic: 编辑主题
-  update: 更新
-  new_topic: 新主题
-  create: 创建
-  new_reply: 新回复
-  edit_reply: 编辑回复
-  topic_title: 主题标题
-  unmark: 取消马克
-  active: 活跃主题
-  search: 搜索
-  loading: 载入中...
-  interesting: 有趣
-  own: 自有
-  newest: 最新
-  collection: 收藏
-  replied: 回复过
-  favorite_tags: 喜好标签
-  recent_tags: 最近标签
-  create_topic: 创建主题
-  prev_page: 上一页
-  next_page: 下一页
-  read_more: 查看更多...
-  avatar: 头像
-  save: 保存
-  add: 添加
-  require_login: 需要登录
-  successful_update: 更新成功
-  login_fail: 登录失败，错误的用户名或密码
-  successful_signup: 注册成功！您可以到‘设置’中添加个人信息和喜好标签
-  not_have_account_yet: 未有帐号？
-  already_have_account: 已有帐号？
-  subscription_recent_20_topics: 订阅最近20个主题
-  subscription_tag: 订阅标签：%{tag}
-  current_tag: 当前标签：%{tag}
-  forgot_password: 忘记密码？
-  reset_password: 重置密码
-  successful_reset_password: 重置密码成功
-  new_reset_password_tips: 稍后会发送一封用于重置密码的邮件到该邮箱
-  created_reset_password_description: 密码重置邮件已经发送，请注意查收
-
-  what_is_gravatar: 什么是 Gravatar？
-  change_email: 修改 Email
-  go_to_gravatar: 去 Gravatar
-
-  account: 账户
-  password: 密码
-  profile: 资料
-  settings_account: 设置账户
-  settings_password: 设置密码
-  settings_profile: 设置资料
-  settings_favorite_tags: 设置喜好标签
-  add_to_favorite_tags: 添加到喜好标签
-  remove_from_favorite_tags: 从喜好标签移除
-  manage_tags: 管理标签
-
-  404_title: 404 未找到页面
-  404_tips: "页面不存在或者已经被移除 : ("
-  422_title: 422 操作被拒绝
-  422_tips: "可能你企图修改不属于你的资源 : ("
-  500_title: 500 服务器错误
-  500_tips: "啊呀！服务器出错啦 : ("
-
-  admin_dashboard: 管理面板
-  dashboard: 面板
-  topics: 主题
-  replies: 回复
-  users: 用户
-  today_news: 今日新增
-  total: 全部
-  title: 标题
-  content: 内容
-  tags: 标签
-  author: 作者
-  status: 状态
-  open: 打开
-  closed: 已关闭
-  close: 关闭
-  delete: 删除
-  sure_to_delete: 确认删除？（不可撤销）
-  reply_to: 回复到
-  username: 用户名
-  email: Email
-  twitter: Twitter
-  url: 网站
-  description: 描述
-  topics_count: 文章数
-  replies_count: 回复数
-  banned: 被封禁
-  normal: 正常
-  name: 名称
-  ban: 封禁
-  unban: 解禁
-  ban_and_clean: 封禁且清空数据
-  you_had_been_ban: 你已经被封禁了
-  topic_had_been_close: 主题已经被关闭了
-  this_user_had_been_ban: 该用户已经被封禁了
-  manage: 管理
-  admin_mode: 管理模式
-  normal_mode: 普通模式
-  new_password: 新密码
-  new_password_confirmation: 新密码确认
-
-  mailer:
+  share:
+    top_menu:
+      home: 主页
+      search: 搜索
+      person_page: 个人主页
+      settings: 设置
+      admin_dashboard: 管理面板
+      logout: 退出
+      login: 登录
+      signup: 注册
+    paginate:
+      next_page: 下一页
+      prev_page: 上一页
+    sidebar_profile:
+      notifications: 提醒
+  topics:
+    subheader:
+      active: 活跃
+      interesting: 感兴趣
+      own: 自有
+      newest: 最新
+      replied: 回复过
+      collection: 收藏
+      search: 搜索
+      notifications: 提醒
+    sidebar:
+      favorite_tags: 喜好标签
+      manage_tags: 管理标签
+      recent_tags: 最近标签
+    index:
+      subscription_recent_20_topics: 订阅最新 20 条
+      create_topic: 发表主题
+    new:
+      new_topic: 新主题
+      create: 创建
+    edit:
+      edit_topic: 编辑主题
+      update: 更新
+    form:
+      tags_tips: 最多五个，用空格间隔，词组用 '-' 号连接，例如： ruby-on-rails 编程。自动转换为小写。
+    show:
+      creator: 创建者
+      ago: 前
+      edited_at: 编辑于
+      edit: 编辑
+      manage: 管理
+      leave_a_reply: 发表回复？
+      please: 请
+      or: 或
+      login: 登录
+      signup: 注册
+      you_had_been_ban: 你已经被封禁了
+      topic_had_been_closed: 主题已被关闭
+      you_are: 你是
+      post: 发表
+      collect_topic: 收藏主题
+      mark: 马克
+      unmark: 取消马克
+      marker_count: 马克人数 %{count}
+    topics:
+      creator: 创建者
+      last_replyer: 最后回复
+      ago: 前
+    search:
+      loading: 载入中...
+    tagged:
+      subscription_tag: 订阅 Tag：%{tag}
+      create_topic: 发表主题
+      current_tag: 当前标签：%{tag}
+      remove_from_favorite_tags: 从喜好标签中移除
+      add_to_favorite_tags: 添加到喜好标签
+  user_mailer:
     reset_password_token:
       title: %{name}密码重置
       description: 点击链接重置您的%{name}账号密码
-  
-  tips:
-    topic:
-      tags: 最多五个，用空格间隔，词组用 '-' 号连接，例如： ruby-on-rails 编程。自动转换为小写。
-    favorite_tags: 最多五十个，用空格间隔，词组用 '-' 号连接，例如： ruby-on-rails 编程。自动转换为小写。
-
-    login:
-      login_name: 用户名 或 Email
-      remember_me: 记住我（1个月）
-    signup:
-      username: 仅限英文字符和数字，3-20字符，稍后可更改
-      email: 不会公开
-      password: 至少6字符
-    user:
-      current_password: 更改需要提供当前密码
-    profile:
-      gravatar: 头像使用 Gravatar 服务
-
+  user_sessions:
+    new:
+      login_tips: 用户名 或 Email
+      remember_me_tips: 记住我（1个月）
+      password: 密码
+      login: 登录
+      not_have_account_yet: 未有账号？
+      forgot_password: 忘记密码？
+      signup: 注册
+      reset_password: 重置密码
+  users:
+    new:
+      username_tips: 仅限英文、数字、下划线，3-20字符，稍后可更改
+      email_tips: 不会公开，用于登录和 Gravatar
+      password_tips: 最少6字符
+      remember_me_tips: 记住我（1个月）
+      already_have_account: 已有账号？
+      forgot_password: 忘记密码？
+      login: 登录
+      signup: 注册
+      reset_password: 重置密码
+  reset_passwords:
+    new:
+      post: 提交
+      tips: 填入账户邮箱
+    create:
+      tips: 稍后将会有密码重置邮件发送到邮箱，请注意查收
+    show:
+      new_password: 新密码
+      new_password_confirmation: 新密码确认
+      post: 提交
+  people:
+    topics:
+      last_replyer: 最后回复
+      ago: 前
+      closed: 已关闭
+      subscription_recent_20_topics: 订阅最新 20 条主题
+    show:
+      this_user_had_been_ban: 该用户已被封禁
+      subscription_recent_20_topics: 订阅最新 20 条主题
+      read_more: 阅读更多
+  settings:
+    subheader:
+      account: 账户
+      password: 密码
+      profile: 个人资料
+      favorite_tags: 喜好标签
+    accounts:
+      show:
+        current_password_tips: 更改需要提供当前密码 
+        save: 保存
+    passwords:
+      show:
+        current_password_tips: 更改需要提供当前密码 
+        save: 保存
+    profiles:
+      show:
+        avatar: 头像
+        gravatar_tips: 头像使用 Gravatar 服务
+        what_is_gravatar: 什么是 Gravatar？
+        change_email: 修改 Email
+        go_to_gravatar: 到 Gravatar
+        save: 保存
+    favorite_tags:
+      show:
+        favorite_tags: 喜好标签
+        favorite_tags_tips: 最多五十个，用空格间隔，词组用 '-' 号连接，例如： ruby-on-rails 编程。自动转换为小写。
+        add: 添加
+  admin:
+    nav:
+      dashboard: 面板
+      topics: 主题
+      replies: 回复
+      users: 用户
+    dashboard:
+      show:
+        today_news: 今日新增
+        topics: 主题
+        replies: 回复
+        users: 用户
+        total: 全部
+    topics:
+      show:
+        title: 标题
+        content: 内容
+        tags: 标签
+        creator: 创建者
+        status: 状态
+        closed: 已关闭
+        open: 开放
+        close: 关闭
+        delete: 删除
+        sure_to_delete: 确认删除？（无法恢复）
+    replies:
+      show:
+        reply_to: 回复到
+        content: 内容
+        replyer: 回复者
+        delete: 删除
+        sure_to_delete: 确认删除？（无法恢复）
   user:
     errors:
       password_confirmation_not_match: 不匹配

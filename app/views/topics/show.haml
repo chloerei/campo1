@@ -14,25 +14,25 @@
       - if @topic.tags
         - @topic.tags.each do |tag|
           = link_to tag, tagged_topics_url(:tag => tag)
-      = t :creator
+      = t '.creator'
       = link_to_person @user_hash[@topic.user_id]
       = time_ago_in_words @topic.created_at
-      = t :ago
+      = t '.ago'
   .avatar
     = link_gravatar_to_person @user_hash[@topic.user_id], :size => 64
   .clear
   .content~ rich_content @topic.content
   - if @topic.edited_at
     .meta
-      = t :edited_at
+      = t '.edited_at'
       = time_ago_in_words @topic.edited_at
-      = t :ago
+      = t '.ago'
   - if current_logined? and @topic.user_id == current_user.id and !@user_hash[@topic.user_id].banned?
     .actions
-      = link_to t(:edit), edit_topic_url(@topic)
+      = link_to t('.edit'), edit_topic_url(@topic)
   - if show_admin_link?
     .actions
-      = link_to t(:manage), admin_topic_url(@topic), :target => '_blank'
+      = link_to t('.manage'), admin_topic_url(@topic), :target => '_blank'
 #replies
   .item-list
     - @replies.each do |reply|
@@ -43,41 +43,41 @@
           .meta
             %span.author= link_to_person @user_hash[reply.user_id]
             %span.right.quiet
-              = link_to "#{time_ago_in_words reply.created_at}#{t :ago}", topic_url(@topic, :page => @replies.current_page, :anchor => "reply-#{reply.id}")
+              = link_to "#{time_ago_in_words reply.created_at} #{t '.ago'}", topic_url(@topic, :page => @replies.current_page, :anchor => "reply-#{reply.id}")
               = link_to_function "@", "append_mention('#{@user_hash[reply.user_id].username}')"
           .content~ rich_content reply.content
           - if reply.created_at != reply.updated_at
             .meta
-              = t :edited_at
+              = t '.edited_at'
               = time_ago_in_words reply.updated_at
-              = t :ago
+              = t '.ago'
           - if current_logined? and reply.user_id == current_user.id and !@user_hash[reply.user_id].banned?
             .actions
-              = link_to t(:edit), edit_reply_url(reply)
+              = link_to t('.edit'), edit_reply_url(reply)
           - if show_admin_link?
             .actions
-              = link_to t(:manage), admin_reply_url(reply), :target => '_blank'
+              = link_to t('.manage'), admin_reply_url(reply), :target => '_blank'
         .clear
   = paginate_for @replies
 
 #reply-form.section
   .section-title
-    %h2= t :leave_a_reply
+    %h2= t '.leave_a_reply'
     %a{:name => '#reply-form'}
   .section-content
     - if !current_logined?
       .meta
-        = t :please
-        = link_to t(:login), login_url(:return_to => topic_url(@topic, :anchor => "reply-form")), :class => 'button'
-        = t :or
-        = link_to t(:signup), login_url(:return_to => topic_url(@topic, :anchor => "reply-form")), :class => 'button'
+        = t '.please'
+        = link_to t('.login'), login_url(:return_to => topic_url(@topic, :anchor => "reply-form")), :class => 'button'
+        = t '.or'
+        = link_to t('.signup'), login_url(:return_to => topic_url(@topic, :anchor => "reply-form")), :class => 'button'
     - elsif current_user.banned?
-      .meta= t :you_had_been_ban
+      .meta= t '.you_had_been_ban'
     - elsif @topic.closed?
-      .meta= t :topic_had_been_close
+      .meta= t '.topic_had_been_closed'
     - else
       .meta
-        = t :you_are
+        = t '.you_are'
         = link_to_person current_user
       .left-column.avatar
         = link_gravatar_to_person current_user
@@ -85,7 +85,7 @@
         = form_for @reply do |f|
           = render :partial => 'replies/form', :object => f
           .field
-            = f.submit t(:post), :class => 'button'
+            = f.submit t('.post'), :class => 'button'
       .clear
 
 - if current_admin?
@@ -97,11 +97,11 @@
   - if current_logined? and !current_user.banned?
     .section
       .section-title
-        = t :collect_topic
+        = t '.collect_topic'
       .section-content
         - if @topic.marker_ids.to_a.include? current_user.id
-          = button_to t(:unmark), mark_topic_url(@topic), :method => :delete, :class => 'button reverse'
+          = button_to t('.unmark'), mark_topic_url(@topic), :method => :delete, :class => 'button reverse'
         - else
-          = button_to t(:mark), mark_topic_url(@topic), :method => :post, :class => 'button'
+          = button_to t('.mark'), mark_topic_url(@topic), :method => :post, :class => 'button'
         .meta
-          = t :marker_count, :count => @topic.marker_ids.to_a.count
+          = t '.marker_count', :count => @topic.marker_ids.to_a.count

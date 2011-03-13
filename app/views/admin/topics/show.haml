@@ -2,23 +2,23 @@
 
 #topic
   = link_to topic_url(@topic), topic_url(@topic), :target => '_blank'
-  %h3= t :title
+  %h3= t '.title'
   = @topic.title
-  %h3= t :content
+  %h3= t '.content'
   = simple_format @topic.content
-  %h3= t :tags
+  %h3= t '.tags'
   = @topic.tags_string
-  %h3= t :author
+  %h3= t '.creator'
   = image_tag @topic.user.gravatar_url
   = link_to @topic.user.profile.name, admin_user_url(@topic.user)
-  %h3= t :status
-  = @topic.closed? ? t(:closed): t(:open)
+  %h3= t '.status'
+  = @topic.closed? ? t('.closed'): t('.open')
 
 #manage
   .left
     - if @topic.closed?
-      = button_to t(:open), open_admin_topic_url(@topic), :method => :post, :class => 'button'
+      = button_to t('.open'), open_admin_topic_url(@topic), :method => :post, :class => 'button'
     - else
-      = button_to t(:close), close_admin_topic_url(@topic), :method => :post, :class => 'button'
-  .right= button_to t(:delete), admin_topic_url(@topic), :method => :delete, :confirm => t(:sure_to_delete), :class => 'button'
+      = button_to t('.close'), close_admin_topic_url(@topic), :method => :post, :class => 'button'
+  .right= button_to t('.delete'), admin_topic_url(@topic), :method => :delete, :confirm => t('.sure_to_delete'), :class => 'button'
   .clear

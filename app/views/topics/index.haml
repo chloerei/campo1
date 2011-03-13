@@ -11,12 +11,12 @@
     .section-content
       .right
         = image_tag 'rss.png', :align => 'top'
-        = link_to t(:subscription_recent_20_topics), newest_topics_url(:format => 'rss')
+        = link_to t('.subscription_recent_20_topics'), newest_topics_url(:format => 'rss')
       .claer
 
 - content_for :sidebar do
   - if current_logined?
     .section
       .section-content
-        = link_to t(:create_topic), new_topic_url, :class => 'button'
+        = link_to t('.create_topic'), new_topic_url, :class => 'button'
   = render :partial => 'sidebar'

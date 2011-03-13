@@ -1,14 +1,14 @@
 = render :partial => 'admin/nav'
 
 #reply
-  %h3= t :reply_to
+  %h3= t '.reply_to'
   = link_to @reply.topic.title, admin_topic_url(@reply.topic)
-  %h3= t :content
+  %h3= t '.content'
   = simple_format @reply.content
-  %h3= t :author
+  %h3= t '.replyer'
   = image_tag @reply.user.gravatar_url
   = link_to @reply.user.profile.name, admin_user_url(@reply.user)
 
 #manage
-  .right= button_to t(:delete), admin_reply_url(@reply), :method => :delete, :confirm => t(:sure_to_delete), :class => 'button'
+  .right= button_to t('.delete'), admin_reply_url(@reply), :method => :delete, :confirm => t('.sure_to_delete'), :class => 'button'
   .clear
