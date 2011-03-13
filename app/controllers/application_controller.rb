@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def set_locale
-    I18n.locale = extract_locale_from_params
+    I18n.locale = extract_locale_from_params || I18n.default_locale
   end
 
   def extract_locale_from_params
