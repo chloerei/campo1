@@ -8,7 +8,22 @@ class ApplicationController < ActionController::Base
   rescue_from Mongoid::Errors::DocumentNotFound, :with => :render_404
   rescue_from BSON::InvalidObjectId, :with => :render_404
 
+  before_filter :set_locale
+ 
   protected
+
+  def set_locale
+    I18n.locale = extract_locale_from_params
+  end
+
+  def extract_locale_from_params
+    AllowLocale.include?(params[:locale]) ? params[:locale] : nil
+  end
+
+  def default_url_options(options={})
+    options.merge!(:locale => extract_locale_from_params) if extract_locale_from_params
+    options
+  end
 
   def topic_url_with_last_anchor(topic)
     anchor = (topic.replies_count == 0 ? nil : "replies-#{topic.replies_count}")

@@ -59,3 +59,4 @@ module Campo
 end
 
 APP_CONFIG = YAML.load_file("#{Rails.root}/config/campo.yml")[Rails.env]
+AllowLocale = %w(zh-CN en)
