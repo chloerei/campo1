@@ -4,18 +4,17 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    set_page_title I18n.t :signup
+    set_page_title I18n.t 'users.new.signup'
   end
 
   def create
     @user = User.new params[:user]
     if @user.save
-      flash[:success] = I18n.t :successful_signup
       login_as @user
       set_remember_cookie if params[:user][:remember_me] == "1"
       redirect_to root_url
     else
-      set_page_title I18n.t :signup
+      set_page_title I18n.t 'users.new.signup'
       render :new
     end
   end

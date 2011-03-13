@@ -1,7 +1,11 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
+  _require_login: 需要登录
+  _home: Home
+  _interesting: Interesting
+  _own: Own
+  _newest: Newest
+  _collection: Collection
+  _replied: Replied
   layouts:
     application:
       default: default
@@ -76,6 +80,15 @@ en:
       current_tag: Current Tag：%{tag}
       remove_from_favorite_tags: Remove from Favorite
       add_to_favorite_tags: Add to Favorite
+  replies:
+    new:
+      new_reply: New Reply
+      reply_to: Reply to
+      post: Post
+    edit:
+      edit_reply: Edit Reply
+      reply_to: Reply to
+      post: Post
   user_mailer:
     reset_password_token:
       title: %{name} Password Reset
@@ -112,6 +125,8 @@ en:
       new_password: New Password
       new_password_confirmation: Confirmation
       post: Post
+    update:
+      flash_success: Reset password success.
   people:
     topics:
       last_replyer: Last Replyer
@@ -129,14 +144,21 @@ en:
       profile: Profile
       favorite_tags: Favorite Tags
     accounts:
+      title: Setting Account
       show:
         current_password_tips: Change need current password.
         save: Save
+      update:
+        flash_success: Update success.
     passwords:
+      title: Setting Password
       show:
         current_password_tips: Change need current password.
         save: Save
+      update:
+        flash_success: Update success.
     profiles:
+      title: Setting Profile
       show:
         avatar: Avatar
         gravatar_tips: Using Gravatar service.
@@ -144,7 +166,10 @@ en:
         change_email: Change Email
         go_to_gravatar: go Gravatar
         save: Save
+      update:
+        flash_success: Update success.
     favorite_tags:
+      title: Setting Favorite Tags
       show:
         favorite_tags: Favorite Tags
         favorite_tags_tips: 'Maximum is 50 tags. Split with space, for example : ruby-on-rails programming. Auto conver to lower case.'

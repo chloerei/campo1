@@ -23,7 +23,7 @@ class ResetPasswordsController < ApplicationController
   def update
     if params[:token] && @user = User.first(:conditions => {:reset_password_token => params[:token]})
       if @user.reset_password params[:new_password], params[:new_password_confirmation]
-        flash[:success] = I18n.t :successful_reset_password
+        flash[:success] = I18n.t 'reset_password.update.flash_success'
         login_as @user
         redirect_to root_url
       else

@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
 
   def index
     @current = :active
-    set_page_title I18n.t :home
+    set_page_title I18n.t :_home
     @topics = Topic.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
   end
@@ -14,7 +14,7 @@ class TopicsController < ApplicationController
   end
 
   def interesting
-    set_page_title I18n.t :interesting
+    set_page_title I18n.t :_interesting
     if current_logined?
       @current = :interesting
       @topics = Topic.where(:tags.in => current_user.favorite_tags.to_a).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
@@ -26,7 +26,7 @@ class TopicsController < ApplicationController
   end
 
   def own
-    set_page_title I18n.t :own
+    set_page_title I18n.t :_own
     @current = :own
     @topics = current_user.topics.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
@@ -34,7 +34,7 @@ class TopicsController < ApplicationController
   end
 
   def newest
-    set_page_title I18n.t :newest
+    set_page_title I18n.t :_newest
     @current = :newest
     @topics = Topic.desc(:created_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
@@ -67,7 +67,7 @@ class TopicsController < ApplicationController
   end
 
   def collection
-    set_page_title I18n.t :collection
+    set_page_title I18n.t :_collection
     @current = :collection
     @topics = Topic.marked_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
@@ -75,7 +75,7 @@ class TopicsController < ApplicationController
   end
 
   def replied
-    set_page_title I18n.t :replied
+    set_page_title I18n.t :_replied
     @current = :replied
     @topics = Topic.replied_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
@@ -98,7 +98,7 @@ class TopicsController < ApplicationController
   end
 
   def new
-    set_page_title I18n.t :new_topic
+    set_page_title I18n.t 'topics.new.new_topic'
     @topic = Topic.new
   end
 
@@ -112,7 +112,7 @@ class TopicsController < ApplicationController
   end
 
   def edit
-    set_page_title I18n.t :edit_topic
+    set_page_title I18n.t 'topics.edit.edit_topic'
     @topic = current_user.topics.find params[:id]
   end
 

@@ -1,4 +1,11 @@
 zh-CN:
+  _require_login: 需要登录
+  _home: 主页
+  _interesting: 感兴趣
+  _own: 自有
+  _newest: 最新
+  _collection: 收藏
+  _replied: 回复过
   layouts:
     application:
       default: 默认
@@ -73,6 +80,15 @@ zh-CN:
       current_tag: 当前标签：%{tag}
       remove_from_favorite_tags: 从喜好标签中移除
       add_to_favorite_tags: 添加到喜好标签
+  replies:
+    new:
+      new_reply: 新回复
+      reply_to: 回复到
+      post: 提交
+    edit:
+      edit_reply: 编辑回复
+      reply_to: 回复到
+      post: 提交
   user_mailer:
     reset_password_token:
       title: %{name}密码重置
@@ -109,6 +125,8 @@ zh-CN:
       new_password: 新密码
       new_password_confirmation: 新密码确认
       post: 提交
+    update:
+      flash_success: 成功更新密码
   people:
     topics:
       last_replyer: 最后回复
@@ -126,14 +144,21 @@ zh-CN:
       profile: 个人资料
       favorite_tags: 喜好标签
     accounts:
+      title: 设置账户
       show:
         current_password_tips: 更改需要提供当前密码 
         save: 保存
+      update:
+        flash_success: 成功更新
     passwords:
+      title: 设置密码
       show:
         current_password_tips: 更改需要提供当前密码 
         save: 保存
+      update:
+        flash_success: 成功更新
     profiles:
+      title: 设置个人资料
       show:
         avatar: 头像
         gravatar_tips: 头像使用 Gravatar 服务
@@ -141,7 +166,10 @@ zh-CN:
         change_email: 修改 Email
         go_to_gravatar: 到 Gravatar
         save: 保存
+      update:
+        flash_success: 成功更新
     favorite_tags:
+      title: 设置喜好标签
       show:
         favorite_tags: 喜好标签
         favorite_tags_tips: 最多五十个，用空格间隔，词组用 '-' 号连接，例如： ruby-on-rails 编程。自动转换为小写。

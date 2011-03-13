@@ -3,7 +3,7 @@ class Settings::AccountsController < ApplicationController
 
   def show
     @user = current_user
-    set_page_title I18n.t :settings_account
+    set_page_title I18n.t 'settings.accounts.title'
   end
 
   def update
@@ -11,10 +11,10 @@ class Settings::AccountsController < ApplicationController
     params[:user].delete(:password)
     params[:user].delete(:password_confirmation)
     if @user.update_attributes params[:user]
-      flash[:success] = I18n.t :successful_update
+      flash[:success] = I18n.t '.settings.accounts.update.flash_success'
       redirect_to :action => :show
     else
-      set_page_title I18n.t :settings_account
+      set_page_title I18n.t 'settings.accounts.title'
       render :show
     end
   end
