@@ -25,6 +25,8 @@ zh-CN:
     sidebar_profile:
       notifications: 提醒
   topics:
+    normal_mode: 普通模式
+    admin_mode: 管理模式
     subheader:
       active: 活跃
       interesting: 感兴趣

@@ -5,9 +5,9 @@ module TopicsHelper
 
   def switch_admin_mode
     if show_admin_link?
-      link_to t(:normal_mode), url_for(:page => params[:page])
+      link_to t('topics.normal_mode'), url_for(:page => params[:page])
     else
-      link_to t(:admin_mode), url_for(:manage => 'true', :page => params[:page])
+      link_to t('topics.admin_mode'), url_for(:manage => 'true', :page => params[:page])
     end
   end
 end

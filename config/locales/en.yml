@@ -25,6 +25,8 @@ en:
     sidebar_profile:
       notifications: notifications
   topics:
+    normal_mode: Normal Mode
+    admin_mode: Admin Mode
     subheader:
       active: Active
       interesting: Interesting
