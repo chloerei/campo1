@@ -24,6 +24,14 @@ zh-CN:
       prev_page: 上一页
     sidebar_profile:
       notifications: 提醒
+  notifications:
+    index:
+      deleted_user: 已删除用户
+      deleted_topic: 已删除主题
+      in: 在
+      mention_you: 提到你
+      notification: 消息
+      ago: 前
   topics:
     normal_mode: 普通模式
     admin_mode: 管理模式

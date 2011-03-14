@@ -24,6 +24,14 @@ en:
       prev_page: Prev
     sidebar_profile:
       notifications: notifications
+  notifications:
+    index:
+      deleted_user: Deleted User
+      deleted_topic: Deleted Topic
+      in: in
+      mention_you: mention you
+      notification: notification
+      ago: ago
   topics:
     normal_mode: Normal Mode
     admin_mode: Admin Mode

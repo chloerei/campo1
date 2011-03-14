@@ -14,17 +14,17 @@
                 - if @user_hash[notification.reply_user_id]
                   = link_to_person @user_hash[notification.reply_user_id] 
                 - else
-                  = t :deleted_user
-                = t :in_topic
+                  = t '.deleted_user'
+                = t '.in'
                 - if @topic_hash[notification.topic_id]
                   = link_to @topic_hash[notification.topic_id].title, topic_url_with_last_anchor(@topic_hash[notification.topic_id])
                 - else
-                  = t :deleted_topic
-                = t :mention_you
+                  = t '.deleted_topic'
+                = t '.mention_you'
               - else
-                = t :notification
+                = t '.notification'
               = time_ago_in_words notification.created_at
-              = t :ago
+              = t '.ago'
             .right
               = link_to 'x', notification_url(notification), :method => :delete, :remote => true
             .clear
