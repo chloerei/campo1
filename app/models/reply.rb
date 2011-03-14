@@ -33,7 +33,7 @@ class Reply
     topic.reply_by self.user
   end
 
-  MentionRegex = /@([A-Za-z0-9_]{3,20})\s/
+  MentionRegex = /@(\w{3,20})(?![.\w])/
   def extract_mentions
     usernames = self.content.to_s.scan(MentionRegex).flatten.uniq.delete_if{|username| username == self.user.username}.slice(0..4)
     if usernames.blank?

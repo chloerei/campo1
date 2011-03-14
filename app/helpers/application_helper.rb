@@ -9,7 +9,7 @@ module ApplicationHelper
       if auto_linked?($`, $')
         $&
       else
-        %Q[@<a href="/~#{username}">#{username}</a> ]
+        %Q[@<a href="/~#{username}">#{username}</a>]
       end
     end
   end
