@@ -22,8 +22,6 @@ en:
     paginate:
       next_page: Next
       prev_page: Prev
-    sidebar_profile:
-      notifications: notifications
   notifications:
     index:
       deleted_user: Deleted User
@@ -214,6 +212,25 @@ en:
         reply_to: Reply to
         content: Content
         replyer: Replyer
+        delete: Delete
+        sure_to_delete: Sure to Delete? (Can't recover)
+    users:
+      show:
+        username: Username
+        email: Email
+        avatar: Avatar
+        name: Name
+        url: Url
+        twitter: Twitter
+        description: Description
+        status: Status
+        topics_count: Topics Count
+        replies_count: Replies Count
+        banned: Banned
+        normal: Normal
+        unban: Unban
+        ban: Ban
+        ban_and_clean: Ban and Clean
         delete: Delete
         sure_to_delete: Sure to Delete? (Can't recover)
   user:

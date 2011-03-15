@@ -4,42 +4,42 @@
   = link_to person_url(:username => @user.username), person_url(:username => @user.username), :target => '_blank'
   %table.nice-table
     %tr
-      %th= t :username
+      %th= t '.username'
       %td= @user.username
     %tr
-      %th= t :email
+      %th= t '.email'
       %td= @user.email
     %tr
-      %th= t :avatar
+      %th= t '.avatar'
       %td= image_tag @user.gravatar_url
     %tr
-      %th= t :name
+      %th= t '.name'
       %td= @user.profile.name
     %tr
-      %th= t :url
+      %th= t '.url'
       %td= @user.profile.url
     %tr
-      %th= t :twitter
+      %th= t '.twitter'
       %td= @user.profile.twitter
     %tr
-      %th= t :description
+      %th= t '.description'
       %td= sanitize simple_format(auto_link(@user.profile.description))
     %tr
-      %th= t :status
-      %td= @user.banned? ? t(:banned) : t(:normal)
+      %th= t '.status'
+      %td= @user.banned? ? t('.banned') : t('.normal')
     %tr
-      %th= t :topics_count
+      %th= t '.topics_count'
       %td= @user.topics.count
     %tr
-      %th= t :replies_count
+      %th= t '.replies_count'
       %td= @user.replies.count
 
 #manage
   - if @user.banned?
-    .left= button_to t(:unban), ban_admin_user_url(@user), :method => :delete, :class => 'button'
+    .left= button_to t('.unban'), ban_admin_user_url(@user), :method => :delete, :class => 'button'
   - else
-    .left= button_to t(:ban), ban_admin_user_url(@user), :method => :post, :class => 'button'
-    .left= button_to t(:ban_and_clean), ban_and_clean_admin_user_url(@user), :method => :post, :confirm => t(:sure_to_delete), :class => 'button'
+    .left= button_to t('.ban'), ban_admin_user_url(@user), :method => :post, :class => 'button'
+    .left= button_to t('.ban_and_clean'), ban_and_clean_admin_user_url(@user), :method => :post, :confirm => t('.sure_to_delete'), :class => 'button'
   .right
-    = button_to t(:delete), admin_user_url(@user), :method => :delete, :confirm => t(:sure_to_delete), :class => 'button'
+    = button_to t('.delete'), admin_user_url(@user), :method => :delete, :confirm => t('.sure_to_delete'), :class => 'button'
   .clear
