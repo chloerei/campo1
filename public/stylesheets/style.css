@@ -319,7 +319,7 @@ span.red {
 }
 
 #mainbar .section {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     margin-top: 10px;
     padding: 0 10px;
 }
@@ -608,7 +608,7 @@ span.red {
 }
 
 #sidebar .section {
-    margin: 0 0 20px;
+    margin: 0 0 30px;
 }
 
 #sidebar .section-title {
@@ -626,6 +626,20 @@ span.red {
 #sidebar .profile .name{
     float: left;
     font-size: 16px;
+}
+
+#notification-count {
+}
+
+#notification-count a {
+    color: #FFFFF9;
+    background-color: #999;
+    padding: 1px 9px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 #sidebar ul {

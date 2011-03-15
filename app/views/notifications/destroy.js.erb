@@ -1,5 +1,5 @@
 <% if current_user.notifications.any? %>
-  $("#notification-count a").text("<%= "#{current_user.notifications.count} #{t(:notifications)}" %>")
+  $("#notification-count a").text("<%= current_user.notifications.count %>")
 <% else %>
   $("#notification-count").remove()
 <% end %>
