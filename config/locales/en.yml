@@ -22,6 +22,16 @@ en:
     paginate:
       next_page: Next
       prev_page: Prev
+  errors:
+    '404':
+      title: 404 Page Not Found
+      tips: This page is not exists.
+    '422':
+      title: 422 Unprocessable Entity
+      tips: You are not allow to do this.
+    '500':
+      title: 500 System error
+      tips: An system error is happen, please contact admin.
   notifications:
     index:
       deleted_user: Deleted User

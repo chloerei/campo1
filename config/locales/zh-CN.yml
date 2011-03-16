@@ -22,6 +22,16 @@ zh-CN:
     paginate:
       next_page: 下一页
       prev_page: 上一页
+  errors:
+    '404':
+      title: 404 页面未找到
+      tips: 你访问了不存在的资源。
+    '422':
+      title: 422 没有访问权限
+      tips: 你没有访问该资源的权限。
+    '500':
+      title: 500 系统错误
+      tips: 系统发生了错误，请联系管理员。
   notifications:
     index:
       deleted_user: 已删除用户
