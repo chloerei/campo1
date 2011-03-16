@@ -20,7 +20,7 @@ Gems Dependencies see Gemfile.
 
     cd campo/
 
-### 3. Install gems
+### 2. Install gems
 
     bundle install
 
