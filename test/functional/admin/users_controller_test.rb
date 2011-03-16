@@ -4,6 +4,7 @@ class Admin::UsersControllerTest < ActionController::TestCase
   def setup
     @user = create_user
     @admin = create_admin
+    create_site_config
   end
 
   def test_index

@@ -5,6 +5,10 @@ require 'rails/test_help'
 class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   
+  def create_site_config
+    SiteConfig.create
+  end
+  
   def create_user
     User.create :username => 'test', :email => 'test@test.com', :password => '12345678', :password_confirmation => '12345678'
   end

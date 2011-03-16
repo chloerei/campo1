@@ -7,6 +7,7 @@ class RepliesControllerTest < ActionController::TestCase
     @reply = @topic.replies.new :content => 'hi'
     @reply.user = @user
     @reply.save
+    create_site_config
   end
 
   def test_new

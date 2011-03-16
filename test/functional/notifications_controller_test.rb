@@ -4,6 +4,7 @@ class NotificationsControllerTest < ActionController::TestCase
   def setup
     @user = create_user
     @user.send_notification
+    create_site_config
   end
 
   def test_index

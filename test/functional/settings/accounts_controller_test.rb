@@ -3,6 +3,7 @@ require 'test_helper'
 class Settings::AccountsControllerTest < ActionController::TestCase
   def setup
     @user = create_user
+    create_site_config
   end
 
   def test_show

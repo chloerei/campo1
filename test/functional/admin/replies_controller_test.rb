@@ -8,6 +8,7 @@ class Admin::RepliesControllerTest < ActionController::TestCase
     @reply = @topic.replies.new :content => 'content'
     @reply.user = @user
     @reply.save
+    create_site_config
   end
 
   def test_index

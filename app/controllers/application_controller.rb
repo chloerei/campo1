@@ -2,7 +2,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_user, :current_logined?, :current_admin?, :page_title, :topic_url_with_last_anchor
+  helper_method :current_user, :current_logined?, :current_admin?, :page_title, :topic_url_with_last_anchor, :site_config
 
   rescue_from Exception, :with => :render_500
   rescue_from Mongoid::Errors::DocumentNotFound, :with => :render_404
@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
  
   protected
+
+  def site_config
+    @site_config ||= SiteConfig.first
+  end
 
   def set_locale
     I18n.locale = extract_locale_from_params || I18n.default_locale

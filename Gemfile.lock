@@ -53,6 +53,11 @@ GEM
       mongo (~> 1.2)
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
+    mongoid_rails_migrations (0.0.10)
+      activesupport (~> 3.0.0)
+      bundler (>= 0.9.19)
+      rails (~> 3.0.0)
+      railties (~> 3.0.0)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -89,5 +94,6 @@ DEPENDENCIES
   haml
   jquery-rails
   mongoid (= 2.0.0.rc.7)
+  mongoid_rails_migrations (>= 0.0.10)
   rails (= 3.0.5)
   rdiscount
