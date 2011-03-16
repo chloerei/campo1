@@ -188,6 +188,7 @@ en:
       topics: Topics
       replies: Replies
       users: Users
+      site_config: Site Config
     dashboard:
       show:
         today_news: Today News

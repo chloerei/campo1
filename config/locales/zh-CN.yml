@@ -188,6 +188,7 @@ zh-CN:
       topics: 主题
       replies: 回复
       users: 用户
+      site_config: 网站设置
     dashboard:
       show:
         today_news: 今日新增

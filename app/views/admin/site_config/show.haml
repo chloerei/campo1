@@ -1,0 +1,16 @@
+= render :partial => 'admin/nav'
+
+.section
+  .section-content
+    = form_for @site_config, :url => admin_site_config_url do |f|
+      %table.form-table
+        = f.fields_for :layout, @site_config.layout do |layout_f|
+          %tr
+            %th= layout_f.label :head_html
+            %td= layout_f.text_area :head_html
+          %tr
+            %th= layout_f.label :sidebar_bottom_html
+            %td= layout_f.text_area :sidebar_bottom_html
+        %tr
+          %th
+          %td= f.submit :save, :class => 'button'

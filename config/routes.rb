@@ -54,6 +54,7 @@ Campo::Application.routes.draw do
         post :ban_and_clean
       end
     end
+    resource :site_config, :controller => 'site_config'
   end
 
   match '*path', :to => 'errors#routing'

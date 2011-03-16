@@ -98,6 +98,26 @@ input.button::-moz-focus-inner {
     border: none;
 }
 
+table.form-table, table.tags-table {
+    width: 100%;
+}
+
+table.tags-table td {
+    width: 25%;
+}
+
+table.form-table th,
+table.form-table td,
+table.tags-table td {
+    padding: 5px;
+}
+
+table.form-table th {
+    text-align: left;
+    padding: 11px 10px 0 0;
+    vertical-align: top;
+    width: 150px;
+}
 input.text { width: 328px; }
 input.short-text { width: 100px; }
 input.long-text { width: 400px; }

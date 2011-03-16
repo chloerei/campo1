@@ -4,5 +4,5 @@ class SiteConfig::Layout
   embedded_in :site_config
 
   field :head_html
-  field :sidebar_html
+  field :sidebar_bottom_html
 end
