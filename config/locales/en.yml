@@ -234,6 +234,9 @@ en:
         ban_and_clean: Ban and Clean
         delete: Delete
         sure_to_delete: Sure to Delete? (Can't recover)
+    site_config:
+      show:
+        save: Save
   user:
     errors:
       password_confirmation_not_match: not match
@@ -255,3 +258,7 @@ en:
         name: Name
         url: Website Url
         description: Description
+      site_config:
+        layout:
+          head_html: HEAD Code
+          sidebar_bottom_html: Sidebar Button Code
