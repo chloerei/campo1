@@ -1,5 +1,6 @@
 class Settings::FavoriteTagsController < ApplicationController
   before_filter :require_logined
+  layout 'settings'
 
   def show
     @favorite_tags = current_user.favorite_tags

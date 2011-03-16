@@ -1,5 +1,6 @@
 class Settings::ProfilesController < ApplicationController
   before_filter :require_logined
+  layout 'settings'
 
   def show
     set_page_title I18n.t 'settings.profiles.title'

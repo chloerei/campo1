@@ -9,6 +9,8 @@ en:
   layouts:
     application:
       default: Default
+    settings:
+      default: Default
   share:
     top_menu:
       home: Home

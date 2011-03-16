@@ -9,6 +9,8 @@ zh-CN:
   layouts:
     application:
       default: 默认
+    settings:
+      default: 默认
   share:
     top_menu:
       home: 主页

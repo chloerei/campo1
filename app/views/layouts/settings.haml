@@ -1,0 +1,46 @@
+!!! 5
+%html
+  %head
+    %meta{ "charset" => "utf-8" }
+    %title= page_title
+    %link{:rel => "shortcut icon", :href => "/favicon.ico"}
+    = stylesheet_link_tag 'style'
+    = javascript_include_tag :defaults
+    = yield :head
+    = csrf_meta_tag
+  %body
+    #header
+      .center-wraper
+        #logo
+          = link_to APP_CONFIG['site_name'], root_url
+        = render :partial => 'share/top_menu'
+        .clear
+    #content
+      .center-wraper
+        #mainbar
+          - if flash[:success]
+            .success= flash[:success]
+          - if flash[:error]
+            .error= flash[:error]
+          - if flash[:notice]
+            .notice= flash[:notice]
+          = yield
+        #sidebar
+          = render :partial => 'share/sidebar_profile'
+          = yield :sidebar
+        .clear
+    #footer
+      .center-wraper
+        #bottom-menu
+          %ul
+            %li= link_to t('.default'), url_for(:locale => nil)
+            %li= link_to 'English', url_for(:locale => 'en')
+            %li= link_to '中文', url_for(:locale => 'zh-CN')
+        #copyright
+          @ Copyright
+          = link_to APP_CONFIG['site_name'], root_url
+          |
+          Power by
+          = link_to 'Campo', 'https://github.com/chloerei/campo', :target => '_blank'
+        .clear
+    = yield :last
