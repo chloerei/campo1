@@ -31,7 +31,11 @@ Gems Dependencies see Gemfile.
     edit config/campo.yml
     edit config/mongoid.yml
 
-### 4. Make sure mongodb is running
+### 4. Setup Data
+
+Make sure mongodb is running.
+
+    rake db:seed
 
 ### 5. Start the server
 
@@ -57,7 +61,7 @@ Change production params.
 
 http://codecampo.com is the main website running Campo with develop branch.
 
-Feedback in codecampo.com or github issues(https://github.com/chloerei/campo).
+Feedback in codecampo.com or github issues(https://github.com/chloerei/campo/issues).
 
 ## LICENSE 
 
