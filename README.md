@@ -6,9 +6,11 @@ Author: Rei(chloerei@gmail.com)
 
 ## Dependencies
 
-- Ruby 1.9.2 (1.8.6+ maybe work, but not test yet)
+- Ruby 1.9.2
 - mongodb 1.6.5+
-- Ruby on Rails 3.0.4
+- Ruby on Rails 3.0.5
+
+Gems Dependencies see Gemfile.
 
 ## Getting Started
 
@@ -18,16 +20,20 @@ Author: Rei(chloerei@gmail.com)
 
     cd campo/
 
-### 2. Configure the application
+### 3. Install gems
+
+    bundle install
+
+### 3. Configure the application
 
     cp config/campo.example.yml config/campo.yml
     cp config/mongoid.example.yml config/mongoid.yml
     edit config/campo.yml
     edit config/mongoid.yml
 
-### 3. Make sure mongodb is running
+### 4. Make sure mongodb is running
 
-### 4. Start the server
+### 5. Start the server
 
     rails s
 
