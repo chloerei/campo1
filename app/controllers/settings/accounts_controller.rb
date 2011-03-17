@@ -3,6 +3,7 @@ class Settings::AccountsController < ApplicationController
 
   def show
     @user = current_user
+    @user.locale = I18n.locale || I18n.default_locale
     set_page_title I18n.t 'settings.accounts.title'
   end
 
