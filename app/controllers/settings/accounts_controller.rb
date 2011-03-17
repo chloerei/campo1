@@ -11,7 +11,7 @@ class Settings::AccountsController < ApplicationController
     params[:user].delete(:password)
     params[:user].delete(:password_confirmation)
     if @user.update_attributes params[:user]
-      flash[:success] = I18n.t '.settings.accounts.update.flash_success'
+      flash[:success] = I18n.t '.settings.accounts.update.flash_success', :locale => @user.locale
       redirect_to :action => :show
     else
       set_page_title I18n.t 'settings.accounts.title'

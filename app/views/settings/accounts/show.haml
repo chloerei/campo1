@@ -14,6 +14,10 @@
           %td
             = f.text_field :email, :class => 'text', :maxlength => 100
         %tr
+          %th= f.label :locale
+          %td
+            = f.select :locale, AllowLocale.map{|locale| [t(locale), locale]}
+        %tr
           %th= f.label :current_password
           %td
             = f.password_field :current_password, :class => 'text'

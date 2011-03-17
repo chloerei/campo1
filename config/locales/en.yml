@@ -6,6 +6,8 @@ en:
   _newest: Newest
   _collection: Collection
   _replied: Replied
+  zh-CN: Chinese(Simplified)
+  en: English
   layouts:
     application:
       default: Default
@@ -166,7 +168,7 @@ en:
     accounts:
       title: Setting Account
       show:
-        current_password_tips: Change need current password.
+        current_password_tips: If modified Username or Email
         save: Save
       update:
         flash_success: Update success.
@@ -263,6 +265,7 @@ en:
       user:
         username: Username
         email: Email
+        locale: Language
         current_password: Current Password
         password: Password
         password_confirmation: Password Confirmation

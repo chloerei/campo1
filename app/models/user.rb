@@ -7,6 +7,7 @@ class User
 
   field :username
   field :email
+  field :locale, :default => I18n.default_locale
   field :crypted_password
   field :password_salt
   field :remember_token
@@ -28,6 +29,7 @@ class User
   UsernameRegex = /\A\w{3,20}\z/
   validates_format_of :username, :with => UsernameRegex
   validates_length_of :favorite_tags, :maximum => 50
+  validates_format_of :locale, :with => /\A(#{AllowLocale.join('|')})\Z/, :allow_blank => true
 
   EmailNameRegex  = '[\w\.%\+\-]+'
   DomainHeadRegex = '(?:[A-Z0-9\-]+\.)+'
@@ -37,7 +39,7 @@ class User
   validates_length_of :email, :maximum => 100
 
   attr_accessor :password, :password_confirmation, :current_password
-  attr_accessible :login, :username, :email, :password, :password_confirmation, :current_password
+  attr_accessible :login, :username, :email, :locale, :password, :password_confirmation, :current_password
 
   before_save :prepare_password
   before_create :init_profile

@@ -6,6 +6,8 @@ zh-CN:
   _newest: 最新
   _collection: 收藏
   _replied: 回复过
+  zh-CN: 中文（简体）
+  en: 英文
   layouts:
     application:
       default: 默认
@@ -166,7 +168,7 @@ zh-CN:
     accounts:
       title: 设置账户
       show:
-        current_password_tips: 更改需要提供当前密码 
+        current_password_tips: 如果修改了用户名或 Email
         save: 保存
       update:
         flash_success: 成功更新
@@ -263,6 +265,7 @@ zh-CN:
       user:
         username: 用户名
         email: Email
+        locale: 语言
         current_password: 当前密码
         password: 密码
         password_confirmation: 密码确认
