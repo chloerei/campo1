@@ -24,11 +24,11 @@ class ApplicationController < ActionController::Base
 
   def extract_locale_from_user_config
     return unless current_logined?
-    I18n.available_locales.include?(current_user.locale) ? current_user.locale : nil
+    AllowLocale.include?(current_user.locale) ? current_user.locale : nil
   end
 
   def extract_locale_from_accept_language_header
-    request.compatible_language_from(I18n.available_locales)
+    request.compatible_language_from(AllowLocale)
   end
 
   def topic_url_with_last_anchor(topic)

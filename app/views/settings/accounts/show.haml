@@ -16,7 +16,7 @@
         %tr
           %th= f.label :locale
           %td
-            = f.select :locale, I18n.available_locales.map{|locale| [t(locale), locale]}
+            = f.select :locale, AllowLocale.map{|locale| [t(locale), locale]}
         %tr
           %th= f.label :current_password
           %td
