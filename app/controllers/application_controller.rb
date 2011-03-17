@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
  
   protected
 
+  def show_head_html=(value)
+    @show_head_html = value
+  end
+
+  def show_sidebar_bottom_html=(value)
+    @show_sidebar_bottom_html = value
+  end
+
   def site_config
     @site_config ||= SiteConfig.first
   end

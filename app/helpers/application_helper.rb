@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def show_head_html?
+    !!@show_head_html
+  end
+
+  def show_sidebar_bottom_html?
+    !!@show_sidebar_bottom_html
+  end
+
   def rich_content(content)
     sanitize auto_link(RDiscount.new(auto_mention(content)).to_html)
   end

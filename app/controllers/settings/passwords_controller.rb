@@ -1,6 +1,5 @@
 class Settings::PasswordsController < ApplicationController
   before_filter :require_logined
-  layout 'settings'
 
   def show
     set_page_title I18n.t 'settings.passwords.title'

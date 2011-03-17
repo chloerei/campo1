@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
   respond_to :html, :rss, :only => [:topics]
+  before_filter :layout_config
 
   def show
     @person = User.first :conditions => {:username => /^#{params[:username]}$/i}
@@ -31,5 +32,11 @@ class PeopleController < ApplicationController
         render 'topics/topics', :layout => false
       end
     end
+  end
+
+  protected
+
+  def layout_config
+    self.show_head_html = true
   end
 end

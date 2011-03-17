@@ -8,7 +8,8 @@
     = javascript_include_tag :defaults
     = yield :head
     = csrf_meta_tag
-    = raw site_config.layout.head_html
+    - if show_head_html?
+      = raw site_config.layout.head_html
   %body
     #header
       .center-wraper
@@ -29,7 +30,8 @@
         #sidebar
           = render :partial => 'share/sidebar_profile'
           = yield :sidebar
-          = raw site_config.layout.sidebar_bottom_html
+          - if show_sidebar_bottom_html?
+            = raw site_config.layout.sidebar_bottom_html
         .clear
     #footer
       .center-wraper

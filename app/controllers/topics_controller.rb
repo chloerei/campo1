@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   before_filter :require_logined, :require_user_not_banned, :except => [:index, :search, :show, :tagged, :interesting, :newest]
   respond_to :html, :rss, :only => [:newest, :tagged]
+  before_filter :layout_config, :only => [:index, :search, :show, :tagged, :interesting, :newest, :own, :collection]
 
   def index
     @current = :active
@@ -138,6 +139,11 @@ class TopicsController < ApplicationController
   end
 
   private
+
+  def layout_config
+    self.show_head_html = true
+    self.show_sidebar_bottom_html = true
+  end
 
   def prepare_for_index
     user_ids = @topics.map{|topic| [topic.user_id, topic.last_replied_by_id]}.flatten.compact.uniq

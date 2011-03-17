@@ -1,6 +1,5 @@
 class Settings::AccountsController < ApplicationController
   before_filter :require_logined, :except => [:new, :create]
-  layout 'settings'
 
   def show
     @user = current_user
