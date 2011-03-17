@@ -9,3 +9,4 @@ gem 'gravtastic'
 gem 'jquery-rails'
 gem 'rdiscount'
 gem "mongoid_rails_migrations", ">=0.0.10"
+gem 'http_accept_language', :git => 'http://github.com/iain/http_accept_language.git'

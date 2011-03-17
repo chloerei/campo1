@@ -1,3 +1,9 @@
+GIT
+  remote: http://github.com/iain/http_accept_language.git
+  revision: 0b78aa7849fc90cf9e12586af162fa4c408a795d
+  specs:
+    http_accept_language (1.0.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -92,6 +98,7 @@ DEPENDENCIES
   bson_ext
   gravtastic
   haml
+  http_accept_language!
   jquery-rails
   mongoid (= 2.0.0.rc.7)
   mongoid_rails_migrations (>= 0.0.10)

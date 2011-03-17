@@ -19,21 +19,16 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = extract_locale_from_params || extract_locale_from_user_config || I18n.default_locale
-  end
-
-  def extract_locale_from_params
-    AllowLocale.include?(params[:locale]) ? params[:locale] : nil
+    I18n.locale = extract_locale_from_user_config || extract_locale_from_accept_language_header || I18n.default_locale
   end
 
   def extract_locale_from_user_config
     return unless current_logined?
-    AllowLocale.include?(current_user.locale) ? current_user.locale : nil
+    I18n.available_locales.include?(current_user.locale) ? current_user.locale : nil
   end
 
-  def default_url_options(options={})
-    options.merge!(:locale => extract_locale_from_params) if extract_locale_from_params
-    options
+  def extract_locale_from_accept_language_header
+    request.compatible_language_from(I18n.available_locales)
   end
 
   def topic_url_with_last_anchor(topic)
