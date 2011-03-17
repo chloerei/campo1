@@ -1,6 +1,6 @@
 class CreateSiteConfig < Mongoid::Migration
   def self.up
-    site_config = SiteConfig.create
+    SiteConfig.find_or_initialize_by
   end
 
   def self.down

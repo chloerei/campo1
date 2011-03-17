@@ -41,7 +41,7 @@ Make sure mongodb is running.
 
     rails s
 
-## For production environment
+## For Production Environment
 
 This project is low degree of completion, db schema is changing and not well migration support. not suggest used in production environment. But if you want, there are some notes.
 
@@ -56,6 +56,23 @@ Copy the output string and set secret\_token column in config/campo.yml
     edit config/mongoid.yml
 
 Change production params.
+
+## For Update
+
+### 1. Pull source
+
+    cd /path/to/your_source
+    git pull
+
+### 2. Backup data and run migration.(If you are no first time to setup)
+
+Backup mongo data first.
+
+    mongodump -o /path/to/your_want_to_dump_mongo
+
+Run migration.
+
+    rake db:migrate
 
 ## Community
 
