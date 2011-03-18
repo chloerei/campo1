@@ -13,6 +13,8 @@
           = link_to_person @user_hash[topic.last_replied_by_id]
         = time_ago_in_words topic.created_at
         = t '.ago'
+        - if topic.marker_ids and topic.marker_ids.any?
+          %span.orange= "+ #{topic.marker_ids.count} #{t '.marker'}"
         - if topic.closed?
           %span.red= t '.closed'
       .clear

@@ -156,6 +156,7 @@ zh-CN:
       last_replyer: 最后回复
       ago: 前
       closed: 已关闭
+      marker: 马克
       subscription_recent_20_topics: 订阅最新 20 条主题
     show:
       this_user_had_been_ban: 该用户已被封禁

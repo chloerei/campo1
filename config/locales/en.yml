@@ -156,6 +156,7 @@ en:
       last_replyer: Last Replyer
       ago: ago
       closed: Closed
+      marker: Marker
       subscription_recent_20_topics: Subscription recent 20 topics
     show:
       this_user_had_been_ban: This user had been ban.
