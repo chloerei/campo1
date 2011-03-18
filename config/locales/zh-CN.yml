@@ -95,6 +95,7 @@ zh-CN:
       last_replyer: 最后回复
       ago: 前
       closed: 已关闭
+      marker: 马克
     search:
       loading: 载入中...
     tagged:

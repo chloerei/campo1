@@ -95,6 +95,7 @@ en:
       last_replyer: Last Replyer
       ago: ago
       closed: Closed
+      marker: Marker
     search:
       loading: Loading ...
     tagged:

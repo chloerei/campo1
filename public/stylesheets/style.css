@@ -178,6 +178,26 @@ span.red {
     border-radius: 5px;
 }
 
+span.orange {
+    font-weight: bold;
+    background: #FFF6BF;
+    color: #514721;
+    border-color: #FFD324;
+    padding: 0 6px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+span.green {
+    font-weight: bold;
+    background: #E6EFC2;
+    color: #264409;
+    border-color: #C6D880;
+    padding: 0 6px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
 .actions {
   color: #999;
   font-size: 11px;

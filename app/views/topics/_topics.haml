@@ -27,6 +27,8 @@
 
             = time_ago_in_words topic.actived_at
             = t '.ago'
+            - if topic.marker_ids and topic.marker_ids.any?
+              %span.orange= "+ #{topic.marker_ids.count} #{t '.marker'}"
             - if topic.closed?
               %span.red= t '.closed'
         .clear
