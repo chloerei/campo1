@@ -98,17 +98,12 @@ input.button::-moz-focus-inner {
     border: none;
 }
 
-table.form-table, table.tags-table {
+table.form-table {
     width: 100%;
 }
 
-table.tags-table td {
-    width: 25%;
-}
-
 table.form-table th,
-table.form-table td,
-table.tags-table td {
+table.form-table td {
     padding: 5px;
 }
 
@@ -556,6 +551,18 @@ span.green {
 #mainbar #new-topic-form input.tags,
 #mainbar #new-topic-form textarea.editor {
     width: 688px;
+}
+
+ul#favorite-tags {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul#favorite-tags li {
+    padding: 5px;
+    width: 160px;
+    float: left;
 }
 
 #mainbar #new-topic-form textarea.editor {

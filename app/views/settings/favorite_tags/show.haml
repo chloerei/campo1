@@ -13,11 +13,8 @@
 - if !@favorite_tags.blank?
   .section
     .section-content
-      %table.tags-table
-        - @favorite_tags.in_groups_of(4) do |group_tags|
-          %tr
-            - group_tags.each do |tag|
-              %td
-                - if tag
-                  = link_to tag, tagged_topics_url(:tag => tag), :class => 'button'
-                  %span.actions= link_to 'X', settings_favorite_tags_url(:tags => tag), :method => :delete, :title => "remove tag '#{tag}'"
+      %ul#favorite-tags
+        - @favorite_tags.each do |tag|
+          %li
+            = link_to tag, tagged_topics_url(:tag => tag), :class => 'button'
+            %span.actions= link_to 'X', settings_favorite_tags_url(:tags => tag), :method => :delete, :title => "remove tag '#{tag}'"
