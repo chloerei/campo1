@@ -21,11 +21,17 @@
       .center-wraper
         #mainbar
           - if flash[:success]
-            .success= flash[:success]
+            .success.flash
+              = flash[:success]
+              %span.close x
           - if flash[:error]
-            .error= flash[:error]
+            .error.flash
+              = flash[:error]
+              %span.close x
           - if flash[:notice]
-            .notice= flash[:notice]
+            .notice.flash
+              = flash[:notice]
+              %span.close x
           = yield
         #sidebar
           = render :partial => 'share/sidebar_profile'

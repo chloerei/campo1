@@ -199,18 +199,24 @@ span.green {
 }
 
 .actions {
-  color: #999;
-  font-size: 11px;
+    color: #999;
+    font-size: 11px;
 }
 
 .actions a {
-  color: #999;
+    color: #999;
 }
 
 .actions a:hover {
-  background-color: #999;
-  color: #FFF;
-  text-decoration: none;
+    background-color: #999;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.flash .close {
+    cursor: pointer;
+    padding: 0 5px;
+    float: right;
 }
 
 .error, .notice, .success {
@@ -247,17 +253,6 @@ span.green {
 
 .success a {
     color: #264409;
-}
-
-.error .close, .notice .close, .success .close {
-    float: right;
-}
-
-.error .close a, .notice .close a, .success .close a {
-    padding: 0 5px;
-}
-.error .close a:hover, .notice .close a:hover, .success .close a:hover {
-    text-decoration: none;
 }
 
 .quiet {
