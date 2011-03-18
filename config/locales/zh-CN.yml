@@ -94,6 +94,7 @@ zh-CN:
       creator: 创建者
       last_replyer: 最后回复
       ago: 前
+      closed: 已关闭
     search:
       loading: 载入中...
     tagged:

@@ -94,6 +94,7 @@ en:
       creator: Creator
       last_replyer: Last Replyer
       ago: ago
+      closed: Closed
     search:
       loading: Loading ...
     tagged:
