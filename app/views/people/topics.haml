@@ -2,8 +2,8 @@
   = auto_discovery_link_tag :rss, person_topics_url(:username => @person.username, :format => 'rss')
 
 #profile
-  .left.avatar= link_gravatar_to_person @person, :size => 64
-  .left
+  .avatar= link_gravatar_to_person @person, :size => 128
+  .right-column
     %h1
       = link_to_person @person
   .clear

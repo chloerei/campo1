@@ -578,9 +578,14 @@ span.green {
 }
 
 #profile .avatar {
-    margin-right: 20px;
+    float: left;
     height: 128px;
     width: 128px;
+}
+
+#profile .right-column {
+    float: right;
+    width: 550px;
 }
 
 #profile .detail {
