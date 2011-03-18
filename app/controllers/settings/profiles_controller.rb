@@ -9,7 +9,7 @@ class Settings::ProfilesController < ApplicationController
   def update
     @profile = current_user.profile
     if @profile.update_attributes params[:profile]
-      flash[:success] = I18n.t 'settings.profiles.flash_success'
+      flash[:success] = I18n.t 'settings.profiles.update.flash_success'
       redirect_to :action => :show
     else
       set_page_title I18n.t 'settings.profiles.title'
