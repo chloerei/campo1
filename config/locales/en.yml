@@ -258,6 +258,7 @@ en:
     errors:
       password_confirmation_not_match: not match
       current_password_not_match: not match
+      favorite_tags_size: Favorite Tags maximum is 50
 
   mongoid:
     attributes:
@@ -272,6 +273,7 @@ en:
         current_password: Current Password
         password: Password
         password_confirmation: Password Confirmation
+        favorite_tags: Favorite Tags
       profile:
         name: Name
         url: Website Url

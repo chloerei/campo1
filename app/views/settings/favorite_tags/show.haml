@@ -4,7 +4,7 @@
   .section-title
     %h2= t '.favorite_tags'
   .section-content
-    = form_tag :action => :create do
+    = form_tag({:action => :create}, :remote => true) do
       .field
         = text_field_tag :tags, nil, :class => 'text long-text'
         = submit_tag t('.add'), :class => 'button'
@@ -15,6 +15,4 @@
     .section-content
       %ul#favorite-tags
         - @favorite_tags.each do |tag|
-          %li
-            = link_to tag, tagged_topics_url(:tag => tag), :class => 'button'
-            %span.actions= link_to 'X', settings_favorite_tags_url(:tags => tag), :method => :delete, :title => "remove tag '#{tag}'"
+          = render :partial => 'tag', :object => tag

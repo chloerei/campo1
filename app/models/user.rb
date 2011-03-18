@@ -28,7 +28,6 @@ class User
   validates_uniqueness_of :username, :email, :case_sensitive => false
   UsernameRegex = /\A\w{3,20}\z/
   validates_format_of :username, :with => UsernameRegex
-  validates_length_of :favorite_tags, :maximum => 50
   validates_format_of :locale, :with => /\A(#{AllowLocale.join('|')})\Z/, :allow_blank => true
 
   EmailNameRegex  = '[\w\.%\+\-]+'
@@ -45,7 +44,7 @@ class User
   before_create :init_profile
   before_destroy :clean!
 
-  validate :check_password, :check_current_password
+  validate :check_password, :check_current_password, :check_favorite_tags
 
   def send_notification(attributes = {}, klass = nil)
     if notifications.size >= 50
@@ -118,21 +117,6 @@ class User
     user_hash
   end
 
-  def add_favorite_tags(tags_string)
-    return if tags_string.nil?
-    self.favorite_tags ||= []
-    self.favorite_tags += parse_tags_from_string(tags_string)
-    self.favorite_tags = self.favorite_tags.uniq
-    save
-  end
-
-  def remove_favorite_tags(tags_string)
-    return if self.favorite_tags.nil?
-    self.favorite_tags -= tags_string.split(" ")
-    self.favorite_tags = nil if self.favorite_tags.empty?
-    save
-  end
-
   def self.send_reset_password_instructions(attributes = {})
     return if attributes[:email].blank?
 
@@ -187,6 +171,12 @@ class User
   def check_current_password
     if require_current_password?
       errors.add(:current_password, I18n.t('user.errors.current_password_not_match')) unless self.matching_password?(self.current_password)
+    end
+  end
+
+  def check_favorite_tags
+    if favorite_tags and favorite_tags.count > 50
+      errors.add(:favorite_tags, I18n.t('user.errors.favorite_tags_size'))
     end
   end
 

@@ -562,6 +562,8 @@ ul#favorite-tags {
 ul#favorite-tags li {
     padding: 5px;
     width: 160px;
+    height: 24px;
+    overflow: auto;
     float: left;
 }
 

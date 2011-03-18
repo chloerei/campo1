@@ -1,8 +1,21 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
-$(document).ready(function () {
+function active_flash_close() {
   $('.flash .close').click(function() {
     $(this).parent('.flash').hide('blind').remove();
   });
+}
+
+function display_flash(type, message) {
+  var message = $('<div class="flash">' + message + '<span class="close">x</span></div>');
+  message.addClass(type);
+  message.hide();
+  $('#mainbar').prepend(message);
+  message.show('blind');
+  active_flash_close();
+}
+
+$(document).ready(function () {
+  active_flash_close();
 });

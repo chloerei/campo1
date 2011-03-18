@@ -1,0 +1,3 @@
+<% @destroy_tags.each do |tag| %>
+  $('#tag-' + '<%= escape_javascript(tag) %>').remove();
+<% end %>

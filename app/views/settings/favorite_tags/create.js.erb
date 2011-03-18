@@ -1,0 +1,8 @@
+<% if current_user.valid? %>
+  <% @new_tags.each do |tag| %>
+    $('#favorite-tags').append("<%= escape_javascript(render :partial => 'tag', :object => tag) %>")
+  <% end %>
+  $('input#tags').val('');
+<% else %>
+  display_flash("error", "<%= escape_javascript(current_user.errors.full_messages.first) %>");
+<% end %>

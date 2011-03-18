@@ -258,6 +258,7 @@ zh-CN:
     errors:
       password_confirmation_not_match: 不匹配
       current_password_not_match: 不匹配
+      favorite_tags_size: 喜好标签数量上限是50个
 
   mongoid:
     attributes:
@@ -272,6 +273,7 @@ zh-CN:
         current_password: 当前密码
         password: 密码
         password_confirmation: 密码确认
+        favorite_tags: 喜好标签
       profile:
         name: 名字
         url: 网站url
