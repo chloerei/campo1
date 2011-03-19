@@ -6,6 +6,13 @@ class UserTest < ActiveSupport::TestCase
     @admin = create_admin
   end
 
+  def test_access_token
+    assert_not_nil @user.access_token
+    old_token = @user.access_token
+    @user.reset_access_token
+    assert_not_equal old_token, @user.access_token
+  end
+
   def test_send_notification
     n1 = nil
     assert_difference "@user.notifications.count" do

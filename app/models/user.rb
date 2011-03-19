@@ -15,6 +15,7 @@ class User
   field :favorite_tags, :type => Array
   field :banned, :type => Boolean
   field :reset_password_token
+  field :access_token
   embeds_one :profile
   embeds_many :notifications, :class_name => 'Notification::Base'
   
@@ -41,10 +42,14 @@ class User
   attr_accessible :login, :username, :email, :locale, :password, :password_confirmation, :current_password
 
   before_save :prepare_password
-  before_create :init_profile
+  before_create :init_profile, :reset_access_token
   before_destroy :clean!
 
   validate :check_password, :check_current_password, :check_favorite_tags
+
+  def reset_access_token
+    self.access_token = make_token
+  end
 
   def send_notification(attributes = {}, klass = nil)
     if notifications.size >= 50
