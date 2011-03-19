@@ -23,22 +23,24 @@ class TopicsController < ApplicationController
       @user = User.first :conditions => {:access_token => params[:token]}
     end
 
-    if @user
-      @current = :interesting
-      @topics = Topic.where(:tags.in => @user.favorite_tags.to_a).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
-      prepare_for_index
-    end
-
     respond_with @topics do |format|
       format.html do
         if @user
+          @current = :interesting
+          @topics = Topic.where(:tags.in => @user.favorite_tags.to_a).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
+          prepare_for_index
           render :index
         else
           render :interesting_help
         end
       end
       format.rss do
-        @topics ||= []
+        if @user
+          @topics = Topic.where(:tags.in => @user.favorite_tags.to_a).desc(:created_at).paginate :per_page => 20, :page => params[:page]
+          prepare_for_index
+        else
+          @topics = []
+        end
         @channel_link = interesting_topics_url
         render :topics, :layout => false
       end
