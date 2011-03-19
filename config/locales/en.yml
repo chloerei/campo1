@@ -281,4 +281,5 @@ en:
       site_config:
         layout:
           head_html: HEAD Code
-          sidebar_bottom_html: Sidebar Button Code
+          sidebar_bottom_html: Sidebar Bottom Code
+          topic_bottom_html: Topic Bottom Code

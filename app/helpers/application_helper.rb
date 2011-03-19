@@ -1,10 +1,10 @@
 module ApplicationHelper
   def show_head_html?
-    !!@show_head_html
+    !!@show_head_html and site_config.layout.head_html.present?
   end
 
   def show_sidebar_bottom_html?
-    !!@show_sidebar_bottom_html
+    !!@show_sidebar_bottom_html and site_config.layout.sidebar_bottom_html.present?
   end
 
   def rich_content(content)

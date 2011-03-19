@@ -33,6 +33,12 @@
   - if show_admin_link?
     .actions
       = link_to t('.manage'), admin_topic_url(@topic), :target => '_blank'
+
+- if site_config.layout.topic_bottom_html.present?
+  .section
+    .section-content
+      = raw site_config.layout.topic_bottom_html
+
 #replies
   .item-list
     - @replies.each do |reply|

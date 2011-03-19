@@ -282,3 +282,4 @@ zh-CN:
         layout:
           head_html: HEAD 代码
           sidebar_bottom_html: 边栏底部代码
+          topic_bottom_html: 文章底部代码
