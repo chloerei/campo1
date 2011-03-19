@@ -1,6 +1,9 @@
 - if params[:action] == 'index' or params[:action] == 'newest'
   - content_for :head do
     = auto_discovery_link_tag :rss, newest_topics_url(:format => 'rss')
+- if params[:action] == 'interesting'
+  - content_for :head do
+    = auto_discovery_link_tag :rss, interesting_topics_url(:format => 'rss', :token => @user.access_token)
 
 = render :partial => 'subheader', :locals => {:current => @current}
 
@@ -12,6 +15,13 @@
       .right
         = image_tag 'rss.png', :align => 'top'
         = link_to t('.subscription_recent_20_topics'), newest_topics_url(:format => 'rss')
+      .claer
+- if params[:action]  == 'interesting'
+  .section
+    .section-content
+      .right
+        = image_tag 'rss.png', :align => 'top'
+        = link_to t('.subscription_recent_20_topics'), interesting_topics_url(:format => 'rss', :token => @user.access_token)
       .claer
 
 - content_for :sidebar do

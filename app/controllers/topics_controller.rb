@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_filter :require_logined, :require_user_not_banned, :except => [:index, :search, :show, :tagged, :interesting, :newest]
-  respond_to :html, :rss, :only => [:newest, :tagged]
+  respond_to :html, :rss, :only => [:newest, :tagged, :interesting]
   before_filter :layout_config, :only => [:index, :search, :show, :tagged, :interesting, :newest, :own, :collection]
 
   def index
@@ -16,13 +16,32 @@ class TopicsController < ApplicationController
 
   def interesting
     set_page_title I18n.t :_interesting
+
     if current_logined?
+      @user = current_user
+    elsif params[:token]
+      @user = User.first :conditions => {:access_token => params[:token]}
+    end
+
+    if @user
       @current = :interesting
-      @topics = Topic.where(:tags.in => current_user.favorite_tags.to_a).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
+      @topics = Topic.where(:tags.in => @user.favorite_tags.to_a).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
       prepare_for_index
-      render :index
-    else
-      render :interesting_help
+    end
+
+    respond_with @topics do |format|
+      format.html do
+        if @user
+          render :index
+        else
+          render :interesting_help
+        end
+      end
+      format.rss do
+        @topics ||= []
+        @channel_link = interesting_topics_url
+        render :topics, :layout => false
+      end
     end
   end
 

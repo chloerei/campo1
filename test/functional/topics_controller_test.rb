@@ -71,6 +71,10 @@ class TopicsControllerTest < ActionController::TestCase
     login_as @user
     get :interesting
     assert_template :index
+
+    login_as nil
+    get :interesting, :token => @user.access_token
+    assert_template :index
   end
 
   def test_own
