@@ -5,7 +5,7 @@
     - if !@recent_tags.blank?
       %ul
         - @recent_tags.each do |tag, count|
-          %li
+          %li.tag
             = link_to tag, tagged_topics_url(:tag => tag), :class => 'button', :remote => true
             %span.meta
               x

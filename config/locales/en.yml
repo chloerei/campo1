@@ -56,6 +56,7 @@ en:
       collection: Collection
       search: Search
       notifications: Notifications
+      loading: Loading...
     sidebar:
       favorite_tags:
         favorite_tags: Favorite Tags

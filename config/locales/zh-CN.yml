@@ -56,6 +56,7 @@ zh-CN:
       collection: 收藏
       search: 搜索
       notifications: 提醒
+      loading: 载入中...
     sidebar:
       favorite_tags:
         favorite_tags: 喜好标签

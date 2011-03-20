@@ -1,9 +1,24 @@
-- if params[:action] == 'index' or params[:action] == 'newest'
-  - content_for :head do
+- content_for :head do
+  - if params[:action] == 'index' or params[:action] == 'newest'
     = auto_discovery_link_tag :rss, newest_topics_url(:format => 'rss')
-- if params[:action] == 'interesting'
-  - content_for :head do
+  - if params[:action] == 'interesting'
     = auto_discovery_link_tag :rss, interesting_topics_url(:format => 'rss', :token => current_user.access_token)
+  :javascript
+    function show_loading_notice() {
+      $('#loading-notice').show();
+    }
+    function hide_loading_notice() {
+      $('#loading-notice').hide();
+    }
+    function prepare_ajax_link() {
+      $('#tabs a, .tag a').live('ajax:before', function(event, xhr, settings) {
+        show_loading_notice();
+      });
+      $('#tabs a, .tag a').live('ajax:success', function(event, data, status, xhr) {
+        hide_loading_notice();
+      });
+    }
+    prepare_ajax_link();
 
 = render :partial => 'subheader', :locals => {:remote => true}
 
