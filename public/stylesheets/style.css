@@ -566,13 +566,13 @@ span.green {
     width: 688px;
 }
 
-ul#favorite-tags {
+#mainbar ul#favorite-tags {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-ul#favorite-tags li {
+#mainbar ul#favorite-tags li {
     padding: 5px;
     width: 160px;
     height: 24px;
@@ -694,7 +694,7 @@ ul#favorite-tags li {
     padding: 6px 6px 6px 0;
 }
 
-.favorite-tags li {
+#sidebar #favorite-tags li {
     float: left;
 }
 
