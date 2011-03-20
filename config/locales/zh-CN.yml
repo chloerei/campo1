@@ -57,11 +57,16 @@ zh-CN:
       search: 搜索
       notifications: 提醒
     sidebar:
-      favorite_tags: 喜好标签
-      manage_tags: 管理标签
-      recent_tags: 最近标签
+      favorite_tags:
+        favorite_tags: 喜好标签
+        manage_tags: 管理标签
+      recent_tags:
+        recent_tags: 最近标签
+      current_tag:
+        current_tag: 当前标签：%{tag}
+        remove_from_favorite_tags: 从喜好标签中移除
+        add_to_favorite_tags: 添加到喜好标签
     index:
-      subscription_recent_20_topics: 订阅最新 20 条
       create_topic: 发表主题
     new:
       new_topic: 新主题
@@ -96,14 +101,10 @@ zh-CN:
       ago: 前
       closed: 已关闭
       marker: 马克
+      subscription_recent_20_topics: 订阅最新 20 条
+      subscription_tag: 订阅 Tag：%{tag}
     search:
       loading: 载入中...
-    tagged:
-      subscription_tag: 订阅 Tag：%{tag}
-      create_topic: 发表主题
-      current_tag: 当前标签：%{tag}
-      remove_from_favorite_tags: 从喜好标签中移除
-      add_to_favorite_tags: 添加到喜好标签
   replies:
     new:
       new_reply: 新回复

@@ -1,0 +1,14 @@
+$('#subheader').replaceWith("<%= escape_javascript(render :partial => 'subheader', :locals => {:remote => true}) %>")
+$('#topics').hide('slide', {'direction' : 'left'}, function() {
+  $(this).replaceWith("<%= escape_javascript(render :partial => 'topics') %>");
+  $('#topics').show('slide', {'direction' : 'right'})
+})
+$('#recent-tags').replaceWith("<%= escape_javascript(render :partial => 'topics/sidebar/recent_tags') %>")
+$('#current-tag').remove()
+<% if params[:action] == 'tagged' %>
+  $('#recent-tags').before("<%= escape_javascript(render :partial => 'topics/sidebar/current_tag') %>")
+<% end %>
+document.title = "<%= escape_javascript(page_title) %>"
+if (history && history.pushState) {
+  history.pushState(null, document.title, "<%= url_for %>");
+}

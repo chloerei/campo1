@@ -1,13 +1,19 @@
 class TopicsController < ApplicationController
-  before_filter :require_logined, :require_user_not_banned, :except => [:index, :search, :show, :tagged, :interesting, :newest]
-  respond_to :html, :rss, :only => [:newest, :tagged, :interesting]
+  before_filter :login_by_token, :only => :interesting
+  before_filter :require_logined, :require_user_not_banned, :except => [:index, :search, :show, :tagged, :newest]
   before_filter :layout_config, :only => [:index, :search, :show, :tagged, :interesting, :newest, :own, :collection]
+  respond_to :rss, :only => [:newest, :tagged, :interesting]
+  respond_to :js, :only => [:index, :newest, :interesting, :collection, :own, :replied]
 
   def index
     @current = :active
     set_page_title I18n.t :_home
     @topics = Topic.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
+    respond_with @topics do |format|
+      format.html
+      format.js { render :layout => false }
+    end
   end
 
   def search
@@ -17,33 +23,21 @@ class TopicsController < ApplicationController
   def interesting
     set_page_title I18n.t :_interesting
 
-    if current_logined?
-      @user = current_user
-    elsif params[:token]
-      @user = User.first :conditions => {:access_token => params[:token]}
+    @current = :interesting
+    if params[:format] == 'rss'
+      @topics = Topic.where(:tags.in => current_user.favorite_tags.to_a).desc(:created_at).paginate :per_page => 20, :page => params[:page]
+    else
+      @topics = Topic.where(:tags.in => current_user.favorite_tags.to_a).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     end
+    prepare_for_index
 
     respond_with @topics do |format|
-      format.html do
-        if @user
-          @current = :interesting
-          @topics = Topic.where(:tags.in => @user.favorite_tags.to_a).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
-          prepare_for_index
-          render :index
-        else
-          render :interesting_help
-        end
-      end
+      format.html { render :index }
       format.rss do
-        if @user
-          @topics = Topic.where(:tags.in => @user.favorite_tags.to_a).desc(:created_at).paginate :per_page => 20, :page => params[:page]
-          prepare_for_index
-        else
-          @topics = []
-        end
         @channel_link = interesting_topics_url
         render :topics, :layout => false
       end
+      format.js { render :index, :layout => false }
     end
   end
 
@@ -52,7 +46,10 @@ class TopicsController < ApplicationController
     @current = :own
     @topics = current_user.topics.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
-    render :index
+    respond_with @topics do |format|
+      format.html { render :index }
+      format.js { render :index, :layout => false }
+    end
   end
 
   def newest
@@ -67,6 +64,7 @@ class TopicsController < ApplicationController
         @channel_link = newest_topics_url
         render :topics, :layout => false
       end
+      format.js { render :index, :layout => false }
     end
   end
 
@@ -74,17 +72,21 @@ class TopicsController < ApplicationController
     @current = :tagged
     @tag = params[:tag]
     set_page_title @tag
-    respond_with(@topics) do |format|
-      format.html do
-        @topics = Topic.where(:tags => @tag).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
-        prepare_for_index
-      end
-      format.rss  do
+
+    if params[:format] == 'rss'
         @topics = Topic.where(:tags => @tag).desc(:created_at).paginate :per_page => 20, :page => params[:page]
-        prepare_for_index
+    else
+        @topics = Topic.where(:tags => @tag).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
+    end
+    prepare_for_index
+
+    respond_with(@topics) do |format|
+      format.html { render :index }
+      format.rss  do
         @channel_link = tagged_topics_url(:tag => @tag)
         render :topics, :layout => false
       end
+      format.js { render :index, :layout => false }
     end
   end
 
@@ -93,7 +95,10 @@ class TopicsController < ApplicationController
     @current = :collection
     @topics = Topic.marked_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
-    render :index
+    respond_with @topics do |format|
+      format.html { render :index }
+      format.js { render :index, :layout => false }
+    end
   end
 
   def replied
@@ -101,7 +106,10 @@ class TopicsController < ApplicationController
     @current = :replied
     @topics = Topic.replied_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
-    render :index
+    respond_with @topics do |format|
+      format.html { render :index }
+      format.js { render :index, :layout => false }
+    end
   end
 
   def show
@@ -160,6 +168,12 @@ class TopicsController < ApplicationController
   end
 
   private
+
+  def login_by_token
+    if params[:token]
+      @current_user = User.first :conditions => {:access_token => params[:token]}
+    end
+  end
 
   def layout_config
     self.show_head_html = true

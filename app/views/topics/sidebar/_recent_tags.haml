@@ -1,0 +1,13 @@
+#recent-tags.section
+  .section-title
+    = t '.recent_tags'
+  .section-content
+    - if !@recent_tags.blank?
+      %ul
+        - @recent_tags.each do |tag, count|
+          %li
+            = link_to tag, tagged_topics_url(:tag => tag), :class => 'button', :remote => true
+            %span.meta
+              x
+              = count
+    .clear

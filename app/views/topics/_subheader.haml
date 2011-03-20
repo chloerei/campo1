@@ -1,60 +1,60 @@
-- current ||= :none
+- remote ||= false
 #subheader
   #mascot
     %img{:src => '/images/mascot.png'}
   #tabs
     %ul
-      - if current == :active
+      - if @current == :active
         %li.current
-          = link_to t('.active'), root_url
+          = link_to t('.active'), root_url, :remote => remote
       - else
         %li
-          = link_to t('.active'), root_url
-
-      - if current == :interesting
-        %li.tagged-interesting.current
-          = link_to t('.interesting'), interesting_topics_url
-      - else
-        %li.tagged-interesting
-          = link_to t('.interesting'), interesting_topics_url
+          = link_to t('.active'), root_url, :remote => remote
 
       - if current_logined?
-        - if current == :own
+        - if @current == :interesting
+          %li.tagged-interesting.current
+            = link_to t('.interesting'), interesting_topics_url, :remote => remote
+        - else
+          %li.tagged-interesting
+            = link_to t('.interesting'), interesting_topics_url, :remote => remote
+
+        - if @current == :own
           %li.own-topic.current
-            = link_to t('.own'), own_topics_url
+            = link_to t('.own'), own_topics_url, :remote => remote
         - else
           %li.own-topic
-            = link_to t('.own'), own_topics_url
+            = link_to t('.own'), own_topics_url, :remote => remote
 
-      - if current == :newest
+      - if @current == :newest
         %li.current
-          = link_to t('.newest'), newest_topics_url
+          = link_to t('.newest'), newest_topics_url, :remote => remote
       - else
         %li
-          = link_to t('.newest'), newest_topics_url
+          = link_to t('.newest'), newest_topics_url, :remote => remote
 
       - if current_logined?
-        - if current == :replied
+        - if @current == :replied
           %li.current
-            = link_to t('.replied'), replied_topics_url
+            = link_to t('.replied'), replied_topics_url, :remote => remote
         - else
           %li
-            = link_to t('.replied'), replied_topics_url
+            = link_to t('.replied'), replied_topics_url, :remote => remote
 
       - if current_logined?
-        - if current == :collection
+        - if @current == :collection
           %li.current
-            = link_to t('.collection'), collection_topics_url
+            = link_to t('.collection'), collection_topics_url, :remote => remote
         - else
           %li
-            = link_to t('.collection'), collection_topics_url
-      - if current == :tagged
+            = link_to t('.collection'), collection_topics_url, :remote => remote
+      - if @current == :tagged
         %li.current
-          = link_to @tag, tagged_topics_url(:tag => @tag)
-      - if current == :search
+          = link_to @tag, tagged_topics_url(:tag => @tag), :remote => remote
+      - if @current == :search
         %li.current
           = link_to t('.search'), search_url
-      - if current == :notifications
+      - if @current == :notifications
         %li.current
           = link_to t('.notifications'), notifications_url
   .clear

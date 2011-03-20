@@ -57,11 +57,16 @@ en:
       search: Search
       notifications: Notifications
     sidebar:
-      favorite_tags: Favorite Tags
-      manage_tags: Manage Tags
-      recent_tags: Recent Tags
+      favorite_tags:
+        favorite_tags: Favorite Tags
+        manage_tags: Manage Tags
+      recent_tags:
+        recent_tags: Recent Tags
+      current_tag:
+        current_tag: Current Tag：%{tag}
+        remove_from_favorite_tags: Remove from Favorite
+        add_to_favorite_tags: Add to Favorite
     index:
-      subscription_recent_20_topics: Subscription recent 20 topics
       create_topic: Create Topic
     new:
       new_topic: New Topic
@@ -96,14 +101,10 @@ en:
       ago: ago
       closed: Closed
       marker: Marker
+      subscription_tag: Subscription Tag：%{tag}
+      subscription_recent_20_topics: Subscription recent 20 topics
     search:
       loading: Loading ...
-    tagged:
-      subscription_tag: Subscription Tag：%{tag}
-      create_topic: Create Topic
-      current_tag: Current Tag：%{tag}
-      remove_from_favorite_tags: Remove from Favorite
-      add_to_favorite_tags: Add to Favorite
   replies:
     new:
       new_reply: New Reply

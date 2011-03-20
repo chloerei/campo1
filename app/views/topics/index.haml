@@ -3,30 +3,19 @@
     = auto_discovery_link_tag :rss, newest_topics_url(:format => 'rss')
 - if params[:action] == 'interesting'
   - content_for :head do
-    = auto_discovery_link_tag :rss, interesting_topics_url(:format => 'rss', :token => @user.access_token)
+    = auto_discovery_link_tag :rss, interesting_topics_url(:format => 'rss', :token => current_user.access_token)
 
-= render :partial => 'subheader', :locals => {:current => @current}
+= render :partial => 'subheader', :locals => {:remote => true}
 
 = render :partial => 'topics'
-
-- if params[:action] == 'index' or params[:action] == 'newest'
-  .section
-    .section-content
-      .right
-        = image_tag 'rss.png', :align => 'top'
-        = link_to t('.subscription_recent_20_topics'), newest_topics_url(:format => 'rss')
-      .claer
-- if params[:action]  == 'interesting'
-  .section
-    .section-content
-      .right
-        = image_tag 'rss.png', :align => 'top'
-        = link_to t('.subscription_recent_20_topics'), interesting_topics_url(:format => 'rss', :token => @user.access_token)
-      .claer
 
 - content_for :sidebar do
   - if current_logined?
     .section
       .section-content
         = link_to t('.create_topic'), new_topic_url, :class => 'button'
-  = render :partial => 'sidebar'
+  - if current_logined?
+    = render :partial => 'topics/sidebar/favorite_tags'
+    - if params[:action] == 'tagged'
+      = render :partial => 'topics/sidebar/current_tag'
+  = render :partial => 'topics/sidebar/recent_tags'

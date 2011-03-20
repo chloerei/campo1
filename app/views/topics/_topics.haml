@@ -34,3 +34,18 @@
         .clear
   = paginate_for @topics, :hide_page => true
 
+  - if params[:action] == 'index' or params[:action] == 'newest'
+    .right
+      = image_tag 'rss.png', :align => 'top'
+      = link_to t('.subscription_recent_20_topics'), newest_topics_url(:format => 'rss')
+    .claer
+  - if params[:action]  == 'interesting'
+    .right
+      = image_tag 'rss.png', :align => 'top'
+      = link_to t('.subscription_recent_20_topics'), interesting_topics_url(:format => 'rss', :token => current_user.access_token)
+    .claer
+  - if params[:action]  == 'tagged'
+    .right
+      = image_tag 'rss.png', :align => 'top'
+      = link_to t('.subscription_tag', :tag => @tag), tagged_topics_url(:tag => @tag, :format => 'rss')
+    .claer
