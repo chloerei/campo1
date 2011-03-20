@@ -1,7 +1,7 @@
 $('#subheader').replaceWith("<%= escape_javascript(render :partial => 'subheader', :locals => {:remote => true}) %>")
 $('#topics').hide('slide', {'direction' : 'left'}, function() {
   $(this).replaceWith("<%= escape_javascript(render :partial => 'topics') %>");
-  $('#topics').show('slide', {'direction' : 'right'})
+  $('#topics').show('slide', {'direction' : 'left'})
 })
 $('#recent-tags').replaceWith("<%= escape_javascript(render :partial => 'topics/sidebar/recent_tags') %>")
 $('#current-tag').remove()
