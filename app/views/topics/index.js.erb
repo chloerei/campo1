@@ -21,7 +21,7 @@ if ($('#topics').data('direction') == 'left') {
 
 $('#recent-tags').replaceWith("<%= escape_javascript(render :partial => 'topics/sidebar/recent_tags') %>")
 $('#current-tag').remove()
-<% if params[:action] == 'tagged' %>
+<% if params[:action] == 'tagged' and current_logined? %>
   $('#recent-tags').before("<%= escape_javascript(render :partial => 'topics/sidebar/current_tag') %>")
 <% end %>
 document.title = "<%= escape_javascript(page_title) %>"
