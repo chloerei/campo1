@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
   respond_to :js, :only => [:index, :newest, :interesting, :collection, :own, :replied]
 
   def index
-    @current = :active
+    @current = 'active'
     set_page_title I18n.t :_home
     @topics = Topic.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
@@ -17,13 +17,13 @@ class TopicsController < ApplicationController
   end
 
   def search
-    @current = :search
+    @current = 'search'
   end
 
   def interesting
     set_page_title I18n.t :_interesting
 
-    @current = :interesting
+    @current = 'interesting'
     if params[:format] == 'rss'
       @topics = Topic.where(:tags.in => current_user.favorite_tags.to_a).desc(:created_at).paginate :per_page => 20, :page => params[:page]
     else
@@ -43,7 +43,7 @@ class TopicsController < ApplicationController
 
   def own
     set_page_title I18n.t :_own
-    @current = :own
+    @current = 'own'
     @topics = current_user.topics.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
     respond_with @topics do |format|
@@ -54,7 +54,7 @@ class TopicsController < ApplicationController
 
   def newest
     set_page_title I18n.t :_newest
-    @current = :newest
+    @current = 'newest'
     @topics = Topic.desc(:created_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
 
@@ -69,7 +69,7 @@ class TopicsController < ApplicationController
   end
 
   def tagged
-    @current = :tagged
+    @current = 'tagged'
     @tag = params[:tag]
     set_page_title @tag
 
@@ -92,7 +92,7 @@ class TopicsController < ApplicationController
 
   def collection
     set_page_title I18n.t :_collection
-    @current = :collection
+    @current = 'collection'
     @topics = Topic.marked_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
     respond_with @topics do |format|
@@ -103,7 +103,7 @@ class TopicsController < ApplicationController
 
   def replied
     set_page_title I18n.t :_replied
-    @current = :replied
+    @current = 'replied'
     @topics = Topic.replied_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
     respond_with @topics do |format|

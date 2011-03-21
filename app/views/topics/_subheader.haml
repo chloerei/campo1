@@ -1,5 +1,4 @@
 - remote ||= false
-- action = params[:action]
 
 #subheader
   #mascot
@@ -8,32 +7,32 @@
     = t '.loading'
   #tabs
     %ul
-      %li{:class => (action == 'index' ? :current : nil)}
-        = link_to t('.active'), root_url, :remote => remote
+      %li{:class => (@current == 'active' ? :current : nil)}
+        = link_to t('.active'), root_url, :remote => remote, 'data-direction' => direction_for(@current, 'active')
 
       - if current_logined?
-        %li.tagged-interesting{:class => (action == 'interesting' ? :current : nil)} 
-          = link_to t('.interesting'), interesting_topics_url, :remote => remote
-        %li.own-topic{:class => (action == 'own' ? :current : nil)}
-          = link_to t('.own'), own_topics_url, :remote => remote
+        %li.tagged-interesting{:class => (@current == 'interesting' ? :current : nil)} 
+          = link_to t('.interesting'), interesting_topics_url, :remote => remote, 'data-direction' => direction_for(@current, 'interesting')
+        %li.own-topic{:class => (@current == 'own' ? :current : nil)}
+          = link_to t('.own'), own_topics_url, :remote => remote, 'data-direction' => direction_for(@current, 'own')
 
-      %li{:class => (action == 'newest' ? :current : nil)}
-        = link_to t('.newest'), newest_topics_url, :remote => remote
+      %li{:class => (@current == 'newest' ? :current : nil)}
+        = link_to t('.newest'), newest_topics_url, :remote => remote, 'data-direction' => direction_for(@current, 'newest')
 
       - if current_logined?
-        %li{:class => (action == 'replied' ? :current : nil)}
-          = link_to t('.replied'), replied_topics_url, :remote => remote
+        %li{:class => (@current == 'replied' ? :current : nil)}
+          = link_to t('.replied'), replied_topics_url, :remote => remote, 'data-direction' => direction_for(@current, 'replied')
 
-        %li{:class => (action == 'collection' ? :current : nil)}
-          = link_to t('.collection'), collection_topics_url, :remote => remote
+        %li{:class => (@current == 'collection' ? :current : nil)}
+          = link_to t('.collection'), collection_topics_url, :remote => remote, 'data-direction' => direction_for(@current, 'collection')
 
-      - if action == 'tagged'
+      - if @current == 'tagged'
         %li.current
           = link_to @tag, tagged_topics_url(:tag => @tag), :remote => remote
-      - if action == 'search'
+      - if @current == 'search'
         %li.current
           = link_to t('.search'), search_url
-      - if action == 'notifications'
+      - if @current == 'notifications'
         %li.current
           = link_to t('.notifications'), notifications_url
   .clear
