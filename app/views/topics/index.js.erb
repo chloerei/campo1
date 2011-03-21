@@ -25,6 +25,3 @@ $('#current-tag').remove()
   $('#recent-tags').before("<%= escape_javascript(render :partial => 'topics/sidebar/current_tag') %>")
 <% end %>
 document.title = "<%= escape_javascript(page_title) %>"
-if (history && history.pushState) {
-  history.pushState(null, document.title, "<%= url_for :page => params[:page] %>");
-}

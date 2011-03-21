@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
 
   attr_writer :show_head_html, :show_sidebar_bottom_html
 
+  def set_cache_buster
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
+
   def site_config
     @site_config ||= SiteConfig.first
   end

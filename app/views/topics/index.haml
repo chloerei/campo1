@@ -10,6 +10,9 @@
           $('#topics').data('direction', $(this).data('direction'));
         }
         show_loading_notice();
+        if (history && history.pushState) {
+          history.pushState(null, document.title, this.href);
+        }
       });
       $('#tabs a, .tag a, .paginate a').live('ajax:complete', function(event, data, status, xhr) {
         hide_loading_notice();

@@ -2,6 +2,7 @@ class TopicsController < ApplicationController
   before_filter :login_by_token, :only => :interesting
   before_filter :require_logined, :require_user_not_banned, :except => [:index, :search, :show, :tagged, :newest]
   before_filter :layout_config, :only => [:index, :search, :show, :tagged, :interesting, :newest, :own, :collection]
+  before_filter :set_cache_buster
   respond_to :rss, :only => [:newest, :tagged, :interesting]
   respond_to :js, :only => [:index, :newest, :interesting, :collection, :own, :replied]
 
