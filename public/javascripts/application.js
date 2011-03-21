@@ -26,3 +26,15 @@ function hide_loading_notice() {
 $(document).ready(function () {
   active_flash_close();
 });
+
+
+if (history && history.pushState) {
+  var loaded = false;
+  $(window).bind("popstate", function() {
+    if (!loaded) {
+      loaded = true;
+    } else {
+      $.getScript(location.href);
+    }
+  });
+}
