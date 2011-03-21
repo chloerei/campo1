@@ -32,6 +32,8 @@
             .notice.flash
               = flash[:notice]
               %span.close x
+          #loading-notice
+            = t '.loading'
           = yield
         #sidebar
           = render :partial => 'share/sidebar_profile'

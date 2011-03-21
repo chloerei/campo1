@@ -369,15 +369,17 @@ span.green {
 }
 
 #mainbar #loading-notice {
+    background: #FFEE88;
+    color: #292929;
+    font-weight: bold;
     display: none;
-    background-color: #AAA;
-    color: #FFFFF9;
-    padding: 5px;
+    padding: 5px 10px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    position: absolute;
+    position: fixed;
     top: 0;
-    right: 10px;
+    left: 50%;
+    z-index: 99;
 }
 
 #mainbar #tabs {

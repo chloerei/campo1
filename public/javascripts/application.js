@@ -16,6 +16,13 @@ function display_flash(type, message) {
   active_flash_close();
 }
 
+function show_loading_notice() {
+  $('#loading-notice').show();
+}
+function hide_loading_notice() {
+  $('#loading-notice').hide();
+}
+
 $(document).ready(function () {
   active_flash_close();
 });

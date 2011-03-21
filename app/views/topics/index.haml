@@ -4,12 +4,6 @@
   - if params[:action] == 'interesting'
     = auto_discovery_link_tag :rss, interesting_topics_url(:format => 'rss', :token => current_user.access_token)
   :javascript
-    function show_loading_notice() {
-      $('#loading-notice').show();
-    }
-    function hide_loading_notice() {
-      $('#loading-notice').hide();
-    }
     function prepare_ajax_link() {
       $('#tabs a, .tag a, .paginate a').live('ajax:beforeSend', function(event, xhr, settings) {
         if ($(this).data('direction')) {
@@ -17,7 +11,7 @@
         }
         show_loading_notice();
       });
-      $('#tabs a, .tag a').live('ajax:complete', function(event, data, status, xhr) {
+      $('#tabs a, .tag a, .paginate a').live('ajax:complete', function(event, data, status, xhr) {
         hide_loading_notice();
       });
     }
