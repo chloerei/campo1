@@ -27,14 +27,16 @@ $(document).ready(function () {
   active_flash_close();
 });
 
-
 if (history && history.pushState) {
   var loaded = false;
   $(window).bind("popstate", function() {
     if (!loaded) {
       loaded = true;
     } else {
-      $.getScript(location.href);
+      show_loading_notice();
+      $.getScript(location.href, function(){
+        hide_loading_notice();
+      });
     }
   });
 }
