@@ -23,5 +23,5 @@ $('#current-tag').remove()
 <% end %>
 document.title = "<%= escape_javascript(page_title) %>"
 if (history && history.pushState) {
-  history.pushState(null, document.title, "<%= url_for %>");
+  history.pushState(null, document.title, "<%= url_for :page => params[:page] %>");
 }
