@@ -11,10 +11,13 @@
       $('#loading-notice').hide();
     }
     function prepare_ajax_link() {
-      $('#tabs a, .tag a').live('ajax:before', function(event, xhr, settings) {
+      $('#tabs a, .tag a, .paginate a').live('ajax:beforeSend', function(event, xhr, settings) {
+        if ($(this).data('direction')) {
+          $('#topics').data('direction', $(this).data('direction'));
+        }
         show_loading_notice();
       });
-      $('#tabs a, .tag a').live('ajax:success', function(event, data, status, xhr) {
+      $('#tabs a, .tag a').live('ajax:complete', function(event, data, status, xhr) {
         hide_loading_notice();
       });
     }

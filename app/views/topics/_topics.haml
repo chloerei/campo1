@@ -32,7 +32,7 @@
             - if topic.closed?
               %span.red= t '.closed'
         .clear
-  = paginate_for @topics, :hide_page => true
+  = paginate_for @topics, :hide_page => true, :remote => true
 
   - if params[:action] == 'index' or params[:action] == 'newest'
     .right

@@ -1,7 +1,20 @@
+if ($('#topics').data('direction') == 'left') {
+  var hide_direction = 'right';
+  var show_direction = 'left';
+} else if ($('#topics').data('direction') == 'right') {
+  var hide_direction = 'left';
+  var show_direction = 'right';
+} else {
+  var hide_direction = 'left';
+  var show_direction = 'left';
+}
+
 $('#subheader').replaceWith("<%= escape_javascript(render :partial => 'subheader', :locals => {:remote => true}) %>")
-$('#topics').hide('slide', {'direction' : 'left'}, function() {
-  $(this).replaceWith("<%= escape_javascript(render :partial => 'topics') %>");
-  $('#topics').show('slide', {'direction' : 'left'})
+$('#topics').hide('slide', {'direction' : hide_direction}, function() {
+  var new_topics = $("<%= escape_javascript(render :partial => 'topics') %>");
+  new_topics.hide();
+  $(this).replaceWith(new_topics);
+  new_topics.show('slide', {'direction' : show_direction})
 })
 $('#recent-tags').replaceWith("<%= escape_javascript(render :partial => 'topics/sidebar/recent_tags') %>")
 $('#current-tag').remove()
