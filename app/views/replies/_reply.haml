@@ -7,7 +7,10 @@
       %span.author= link_to_person user
       %span.right.quiet
         = link_to "#{time_ago_in_words reply.created_at} #{t '.ago'}", topic_url(@topic, :page => page, :anchor => "reply-#{reply.id}")
-        = link_to_function "@", "append_mention('#{user.username}')"
+        - if user.username == user.profile.name
+          = link_to_function "@", "append_mention('#{user.username}')"
+        - else
+          = link_to_function "@", "append_mention('#{user.username}(#{user.profile.name})')"
     .content~ rich_content reply.content
     - if reply.created_at != reply.updated_at
       .meta
