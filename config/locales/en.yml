@@ -8,6 +8,7 @@ en:
   _replied: Replied
   zh-CN: Chinese(Simplified)
   en: English
+  ago: ago
   layouts:
     application:
       default: Default
@@ -44,7 +45,6 @@ en:
       in: in
       mention_you: mention you
       notification: notification
-      ago: ago
   topics:
     normal_mode: Normal Mode
     admin_mode: Admin Mode
@@ -79,7 +79,6 @@ en:
       tags_tips: 'Maximum is 5 tags. Split with space, for example : ruby-on-rails programming. Auto conver to lower case.'
     show:
       creator: Creator
-      ago: ago
       edited_at: Edited at
       edit: Edit
       manage: Manage
@@ -100,7 +99,6 @@ en:
     topics:
       creator: Creator
       last_replyer: Last Replyer
-      ago: ago
       closed: Closed
       marker: Marker
       subscription_tag: Subscription Tag：%{tag}
@@ -117,7 +115,6 @@ en:
       reply_to: Reply to
       post: Post
     reply:
-      ago: ago
       edited_at: Edited at
       manage: Manage
       edit: Edit
@@ -162,7 +159,6 @@ en:
   people:
     topics:
       last_replyer: Last Replyer
-      ago: ago
       closed: Closed
       marker: Marker
       subscription_recent_20_topics: Subscription recent 20 topics

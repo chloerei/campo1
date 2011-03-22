@@ -26,8 +26,7 @@
           = link_to tag, tagged_topics_url(:tag => tag)
       = t '.creator'
       = link_to_person @user_hash[@topic.user_id]
-      = time_ago_in_words @topic.created_at
-      = t '.ago'
+      = smart_time_string @topic.created_at
   .avatar
     = link_gravatar_to_person @user_hash[@topic.user_id], :size => 64
   .clear
@@ -35,8 +34,7 @@
   - if @topic.edited_at
     .meta
       = t '.edited_at'
-      = time_ago_in_words @topic.edited_at
-      = t '.ago'
+      = smart_time_string @topic.edited_at
   - if current_logined? and @topic.user_id == current_user.id and !@user_hash[@topic.user_id].banned?
     .actions
       = link_to t('.edit'), edit_topic_url(@topic)

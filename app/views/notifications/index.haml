@@ -23,8 +23,7 @@
                 = t '.mention_you'
               - else
                 = t '.notification'
-              = time_ago_in_words notification.created_at
-              = t '.ago'
+              = smart_time_string notification.created_at
             .right
               = link_to 'x', notification_url(notification), :method => :delete, :remote => true
             .clear

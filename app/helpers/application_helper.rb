@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def smart_time_string(time)
+    time < 1.day.ago ? l(time, :format => :long) : "#{time_ago_in_words time} #{t :ago}"
+  end
+
   def show_head_html?
     !!@show_head_html and site_config.layout.head_html.present?
   end

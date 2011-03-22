@@ -8,6 +8,7 @@ zh-CN:
   _replied: 回复过
   zh-CN: 中文（简体）
   en: 英文
+  ago: 前
   layouts:
     application:
       default: 默认
@@ -44,7 +45,6 @@ zh-CN:
       in: 在
       mention_you: 提到你
       notification: 消息
-      ago: 前
   topics:
     normal_mode: 普通模式
     admin_mode: 管理模式
@@ -79,7 +79,6 @@ zh-CN:
       tags_tips: 最多五个，用空格间隔，词组用 '-' 号连接，例如： ruby-on-rails 编程。自动转换为小写。
     show:
       creator: 创建者
-      ago: 前
       edited_at: 编辑于
       edit: 编辑
       manage: 管理
@@ -100,7 +99,6 @@ zh-CN:
     topics:
       creator: 创建者
       last_replyer: 最后回复
-      ago: 前
       closed: 已关闭
       marker: 马克
       subscription_recent_20_topics: 订阅最新 20 条
@@ -117,7 +115,6 @@ zh-CN:
       reply_to: 回复到
       post: 提交
     reply:
-      ago: 前
       edited_at: 编辑于
       manage: 管理
       edit: 编辑
@@ -162,7 +159,6 @@ zh-CN:
   people:
     topics:
       last_replyer: 最后回复
-      ago: 前
       closed: 已关闭
       marker: 马克
       subscription_recent_20_topics: 订阅最新 20 条主题

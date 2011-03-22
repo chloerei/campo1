@@ -7,7 +7,7 @@
       %span.author= link_to_person user
       %span.right.quiet
         = "##{floor}"
-        = link_to "#{time_ago_in_words reply.created_at} #{t '.ago'}", topic_url(@topic, :page => page, :anchor => "reply-#{reply.id}")
+        = link_to smart_time_string(reply.created_at), topic_url(@topic, :page => page, :anchor => "reply-#{reply.id}")
         - if user.username == user.profile.name
           = link_to_function "@", "append_mention('#{user.username}')"
         - else
@@ -16,8 +16,7 @@
     - if reply.created_at != reply.updated_at
       .meta
         = t '.edited_at'
-        = time_ago_in_words reply.updated_at
-        = t '.ago'
+        = smart_time_string reply.updated_at
     - if current_logined? and reply.user_id == current_user.id and !current_user.banned?
       .actions
         = link_to t('.edit'), edit_reply_url(reply)

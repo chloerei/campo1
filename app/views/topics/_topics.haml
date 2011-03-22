@@ -25,8 +25,7 @@
               = t '.last_replyer'
               = link_to_person @user_hash[topic.last_replied_by_id]
 
-            = time_ago_in_words topic.actived_at
-            = t '.ago'
+            = smart_time_string topic.actived_at
             - if topic.marker_ids and topic.marker_ids.any?
               %span.orange= "+ #{topic.marker_ids.count} #{t '.marker'}"
             - if topic.closed?
