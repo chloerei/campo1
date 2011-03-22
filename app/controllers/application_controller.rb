@@ -1,4 +1,3 @@
-#encoding: utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -79,7 +78,7 @@ class ApplicationController < ActionController::Base
 
   def page_title
     if defined? @page_title
-      "#{APP_CONFIG['site_name']} › #{@page_title}"
+      "#{@page_title} - #{APP_CONFIG['site_name']}"
     else
       APP_CONFIG['site_name']
     end
