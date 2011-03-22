@@ -1,6 +1,6 @@
 module ApplicationHelper
   def smart_time_string(time)
-    time < 1.day.ago ? l(time, :format => :long) : "#{time_ago_in_words time} #{t :ago}"
+    time < 1.week.ago ? l(time, :format => :long) : "#{time_ago_in_words time} #{t :ago}"
   end
 
   def show_head_html?
