@@ -319,6 +319,7 @@ span.green {
     border-left: 1px solid #CCC;
     border-right: 1px solid #CCC;
     background-color: #FFF;
+    overflow: hidden;
 }
 
 /* mainbar */
