@@ -20,7 +20,7 @@
             - if page - prev > 1
               %span.dot ...
             - if page != current_page
-              = link_to page, url_for(:page => page), :class => 'button'
+              = link_to page, url_for(:page => page), :class => 'button', :remote => remote
             - else
               %span.current_page.button-like= page
             - page

@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
   before_filter :layout_config, :only => [:index, :search, :show, :tagged, :interesting, :newest, :own, :collection]
   before_filter :set_cache_buster
   respond_to :rss, :only => [:newest, :tagged, :interesting]
-  respond_to :js, :only => [:index, :newest, :interesting, :collection, :own, :replied]
+  respond_to :js, :only => [:index, :newest, :interesting, :collection, :own, :replied, :show]
 
   def index
     @current = 'active'
@@ -125,6 +125,11 @@ class TopicsController < ApplicationController
       current_user.read_topic @topic
       @reply = Reply.new
       @reply.topic_id = @topic.id
+    end
+
+    respond_with @topic do |format|
+      format.html
+      format.js { render :layout => false }
     end
   end
 

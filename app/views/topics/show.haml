@@ -4,6 +4,16 @@
     = stylesheet_link_tag 'wmd'
   = javascript_include_tag 'jquery.ae.image.resize.min', 'fancybox/jquery.fancybox-1.3.4.pack', 'topic-show'
   = stylesheet_link_tag '/javascripts/fancybox/jquery.fancybox-1.3.4.css'
+  :javascript
+    $('.paginate a').live('ajax:beforeSend', function(event, xhr, settings) {
+      show_loading_notice();
+      if (history && history.pushState) {
+        history.pushState(null, document.title, this.href);
+      }
+    });
+    $('.paginate a').live('ajax:complete', function(event, data, status, xhr) {
+      hide_loading_notice();
+    });
 
 = render :partial => 'subheader'
 
@@ -39,32 +49,7 @@
     .section-content
       = raw site_config.layout.topic_bottom_html
 
-#replies
-  .item-list
-    - @replies.each do |reply|
-      .item{:id => "reply-#{reply.id}"}
-        .left-column.avatar
-          = link_gravatar_to_person @user_hash[reply.user_id]
-        .right-column
-          .meta
-            %span.author= link_to_person @user_hash[reply.user_id]
-            %span.right.quiet
-              = link_to "#{time_ago_in_words reply.created_at} #{t '.ago'}", topic_url(@topic, :page => @replies.current_page, :anchor => "reply-#{reply.id}")
-              = link_to_function "@", "append_mention('#{@user_hash[reply.user_id].username}')"
-          .content~ rich_content reply.content
-          - if reply.created_at != reply.updated_at
-            .meta
-              = t '.edited_at'
-              = time_ago_in_words reply.updated_at
-              = t '.ago'
-          - if current_logined? and reply.user_id == current_user.id and !@user_hash[reply.user_id].banned?
-            .actions
-              = link_to t('.edit'), edit_reply_url(reply)
-          - if show_admin_link?
-            .actions
-              = link_to t('.manage'), admin_reply_url(reply), :target => '_blank'
-        .clear
-  = paginate_for @replies
+= render :partial => 'replies'
 
 #reply-form.section
   .section-title

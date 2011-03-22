@@ -77,6 +77,11 @@ zh-CN:
       update: 更新
     form:
       tags_tips: 最多五个，用空格间隔，词组用 '-' 号连接，例如： ruby-on-rails 编程。自动转换为小写。
+    replies:
+      ago: 前
+      edited_at: 编辑于
+      manage: 管理
+      edit: 编辑
     show:
       creator: 创建者
       ago: 前

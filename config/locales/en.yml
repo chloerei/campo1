@@ -77,6 +77,11 @@ en:
       update: Update
     form:
       tags_tips: 'Maximum is 5 tags. Split with space, for example : ruby-on-rails programming. Auto conver to lower case.'
+    replies:
+      ago: ago
+      edited_at: Edited at
+      manage: Manage
+      edit: Edit
     show:
       creator: Creator
       ago: ago

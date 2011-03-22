@@ -1,0 +1,7 @@
+var new_replies = $("<%= escape_javascript( render :partial => 'replies' ) %>");
+new_replies.hide();
+
+$('#replies').fadeOut( function() {
+  $(this).replaceWith(new_replies);
+  new_replies.fadeIn();
+})
