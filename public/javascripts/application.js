@@ -3,7 +3,9 @@
 
 function active_flash_close() {
   $('.flash .close').click(function() {
-    $(this).parent('.flash').hide('blind').remove();
+    $(this).parent('.flash').hide('blind', function(){
+      $(this).remove();
+    })
   });
 }
 
