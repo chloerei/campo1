@@ -6,6 +6,7 @@
     .meta
       %span.author= link_to_person user
       %span.right.quiet
+        = "##{floor}"
         = link_to "#{time_ago_in_words reply.created_at} #{t '.ago'}", topic_url(@topic, :page => page, :anchor => "reply-#{reply.id}")
         - if user.username == user.profile.name
           = link_to_function "@", "append_mention('#{user.username}')"

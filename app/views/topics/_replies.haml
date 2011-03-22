@@ -1,5 +1,6 @@
 #replies
   .item-list
-    - @replies.each do |reply|
-      = render :partial => 'replies/reply', :locals => { :reply => reply, :user => @user_hash[reply.user_id] , :page => @replies.current_page}
+    - floor_start = (@replies.current_page - 1) * @replies.per_page
+    - @replies.each_with_index do |reply, index|
+      = render :partial => 'replies/reply', :locals => { :reply => reply, :user => @user_hash[reply.user_id] , :page => @replies.current_page, :floor => ( floor_start + index + 1) }
   = paginate_for @replies, :remote => true

@@ -1,5 +1,5 @@
 <% if @reply.valid? %>
-  var new_reply = $("<%= escape_javascript( render :partial => 'reply', :locals => {:reply => @reply, :user => @reply.user} ) %>")
+  var new_reply = $("<%= escape_javascript( render :partial => 'reply', :locals => {:reply => @reply, :user => @reply.user, :floor => @topic.replies_count} ) %>")
   new_reply.hide()
   $('#replies .item-list').append(new_reply)
   new_reply.show('blind')
