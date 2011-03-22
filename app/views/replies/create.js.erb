@@ -3,6 +3,13 @@
   new_reply.hide()
   $('#replies .item-list').append(new_reply)
   new_reply.show('blind')
+  if (history && history.pushState) {
+    history.pushState(null, document.title, "<%= escape_javascript( topic_url_with_last_anchor(@topic) ) %>" );
+  } else {
+    location.hash = "<%= escape_javascript( "replies-#{@topic.replies_count}" ) %>"
+  }
+  $('#editor-input').val('')
+  $('#editor-preview').text('')
 <% else %>
   display_flash('error', "<%= escape_javascript( @reply.errors.full_messages.join('<br />') ) %>")
 <% end %>
