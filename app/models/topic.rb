@@ -38,6 +38,10 @@ class Topic
     topic_hash
   end
 
+  def last_page
+    replies_count == 0 ? 1 : (replies_count / 20.to_f).ceil
+  end
+
   def close!
     self.closed = true
     save

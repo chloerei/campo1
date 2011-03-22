@@ -1,0 +1,8 @@
+<% if @reply.valid? %>
+  var new_reply = $("<%= escape_javascript( render :partial => 'reply', :locals => {:reply => @reply, :user => @reply.user} ) %>")
+  new_reply.hide()
+  $('#replies .item-list').append(new_reply)
+  new_reply.show('blind')
+<% else %>
+  display_flash('error', "<%= escape_javascript( @reply.errors.full_messages.join('<br />') ) %>")
+<% end %>

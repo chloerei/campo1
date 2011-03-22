@@ -77,11 +77,6 @@ zh-CN:
       update: 更新
     form:
       tags_tips: 最多五个，用空格间隔，词组用 '-' 号连接，例如： ruby-on-rails 编程。自动转换为小写。
-    replies:
-      ago: 前
-      edited_at: 编辑于
-      manage: 管理
-      edit: 编辑
     show:
       creator: 创建者
       ago: 前
@@ -97,6 +92,7 @@ zh-CN:
       topic_had_been_closed: 主题已被关闭
       you_are: 你是
       post: 发表
+      posting: 发表中...
       collect_topic: 收藏主题
       mark: 马克
       unmark: 取消马克
@@ -120,6 +116,11 @@ zh-CN:
       edit_reply: 编辑回复
       reply_to: 回复到
       post: 提交
+    reply:
+      ago: 前
+      edited_at: 编辑于
+      manage: 管理
+      edit: 编辑
   user_mailer:
     reset_password_token:
       title: %{name}密码重置
@@ -273,6 +274,8 @@ zh-CN:
         title: 标题
         content: 内容
         tags: 标签
+      reply:
+        content: 内容
       user:
         username: 用户名
         email: Email

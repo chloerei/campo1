@@ -116,7 +116,7 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find params[:id]
     set_page_title @topic.title
-    last_page = @topic.replies_count == 0 ? nil : (@topic.replies_count / 20.to_f).ceil
+    last_page = @topic.last_page
     @replies = @topic.replies.asc(:created_at).paginate :per_page => 20, :page => (params[:page] || last_page )
     user_ids = @replies.map{|reply| reply.user_id}.push(@topic.user_id).flatten.compact.uniq
     @user_hash = User.create_user_hash(user_ids)

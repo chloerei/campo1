@@ -77,11 +77,6 @@ en:
       update: Update
     form:
       tags_tips: 'Maximum is 5 tags. Split with space, for example : ruby-on-rails programming. Auto conver to lower case.'
-    replies:
-      ago: ago
-      edited_at: Edited at
-      manage: Manage
-      edit: Edit
     show:
       creator: Creator
       ago: ago
@@ -120,6 +115,11 @@ en:
       edit_reply: Edit Reply
       reply_to: Reply to
       post: Post
+    reply:
+      ago: ago
+      edited_at: Edited at
+      manage: Manage
+      edit: Edit
   user_mailer:
     reset_password_token:
       title: %{name} Password Reset
@@ -273,6 +273,8 @@ en:
         title: Title
         content: Content
         tags: Tags
+      reply:
+        content: Content
       user:
         username: Username
         email: Email

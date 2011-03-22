@@ -73,10 +73,10 @@
       .left-column.avatar
         = link_gravatar_to_person current_user
       .right-column
-        = form_for @reply do |f|
+        = form_for @reply, :remote => true do |f|
           = render :partial => 'replies/form', :object => f
           .field
-            = f.submit t('.post'), :class => 'button'
+            = f.submit t('.post'), :class => 'button', :disable_with => t('.posting')
       .clear
 
 - if current_admin?

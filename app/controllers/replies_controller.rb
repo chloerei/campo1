@@ -1,5 +1,6 @@
 class RepliesController < ApplicationController
   before_filter :require_logined, :require_user_not_banned
+  respond_to :js, :only => [:create]
   
   def new
     set_page_title I18n.t 'replies.new.new_reply'
@@ -19,11 +20,17 @@ class RepliesController < ApplicationController
     else
       @reply = @topic.replies.new params[:reply]
       @reply.user = current_user
-      if @reply.save
-        redirect_to topic_url_with_last_anchor(@topic)
-      else
-        set_page_title I18n.t 'replies.new.new_reply'
-        render :new, :topic_id => @topic.id
+      @reply.save
+      respond_with @reply do |format|
+        format.html do
+          if @reply.valid?
+            redirect_to topic_url_with_last_anchor(@topic)
+          else
+            set_page_title I18n.t 'replies.new.new_reply'
+            render :new, :topic_id => @topic.id
+          end
+        end
+        format.js { render :layout => false }
       end
     end
   end

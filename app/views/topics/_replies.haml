@@ -1,26 +1,5 @@
 #replies
   .item-list
     - @replies.each do |reply|
-      .item{:id => "reply-#{reply.id}"}
-        .left-column.avatar
-          = link_gravatar_to_person @user_hash[reply.user_id]
-        .right-column
-          .meta
-            %span.author= link_to_person @user_hash[reply.user_id]
-            %span.right.quiet
-              = link_to "#{time_ago_in_words reply.created_at} #{t '.ago'}", topic_url(@topic, :page => @replies.current_page, :anchor => "reply-#{reply.id}")
-              = link_to_function "@", "append_mention('#{@user_hash[reply.user_id].username}')"
-          .content~ rich_content reply.content
-          - if reply.created_at != reply.updated_at
-            .meta
-              = t '.edited_at'
-              = time_ago_in_words reply.updated_at
-              = t '.ago'
-          - if current_logined? and reply.user_id == current_user.id and !@user_hash[reply.user_id].banned?
-            .actions
-              = link_to t('.edit'), edit_reply_url(reply)
-          - if show_admin_link?
-            .actions
-              = link_to t('.manage'), admin_reply_url(reply), :target => '_blank'
-        .clear
+      = render :partial => 'replies/reply', :locals => { :reply => reply, :user => @user_hash[reply.user_id] , :page => @replies.current_page}
   = paginate_for @replies, :remote => true
