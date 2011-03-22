@@ -208,6 +208,13 @@ span.green {
     text-decoration: none;
 }
 
+.flash {
+    position: fixed;
+    top: 50px;
+    z-index: 99;
+    width: 676px;
+}
+
 .flash .close {
     cursor: pointer;
     padding: 0 5px;
