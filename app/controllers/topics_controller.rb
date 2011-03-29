@@ -3,8 +3,8 @@ class TopicsController < ApplicationController
   before_filter :require_logined, :require_user_not_banned, :except => [:index, :search, :show, :tagged, :newest]
   before_filter :layout_config, :only => [:index, :search, :show, :tagged, :interesting, :newest, :own, :collection]
   before_filter :set_cache_buster
-  respond_to :rss, :only => [:newest, :tagged, :interesting]
-  respond_to :js, :only => [:index, :newest, :interesting, :collection, :own, :replied, :show]
+  respond_to :html, :js, :only => [:index, :collection, :own, :replied, :show]
+  respond_to :html, :js, :rss, :only => [:newest, :tagged, :interesting]
 
   def index
     @current = 'active'
