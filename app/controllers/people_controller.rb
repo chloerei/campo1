@@ -28,6 +28,7 @@ class PeopleController < ApplicationController
     respond_with(@topics) do |format|
       format.html
       format.rss do
+        @user_hash[@person.id] = @person
         @channel_link = person_url(:username => @person.username)
         render 'topics/topics', :layout => false
       end

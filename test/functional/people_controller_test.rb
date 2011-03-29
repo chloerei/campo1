@@ -3,6 +3,7 @@ require 'test_helper'
 class PeopleControllerTest < ActionController::TestCase
   def setup
     @user = create_user
+    @topic = @user.topics.create :title => 'title', :content => 'content', :tags => 'tag1 tag2'
     create_site_config
   end
 
