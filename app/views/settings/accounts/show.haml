@@ -2,7 +2,7 @@
 
 .section
   .section-content
-    = form_for @user, :url => settings_account_url, :method => :put do |f|
+    = form_for @user, :url => settings_account_path, :method => :put do |f|
       - if !f.object.errors.blank?
         = render :partial => 'share/error_messages', :locals => {:object => f.object}
       %table.form-table

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_user, :current_logined?, :current_admin?, :page_title, :topic_url_with_last_anchor, :site_config
+  helper_method :current_user, :current_logined?, :current_admin?, :page_title,:topic_url_with_last_anchor, :topic_path_with_last_anchor, :site_config
 
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, :with => :render_500
@@ -36,6 +36,11 @@ class ApplicationController < ActionController::Base
 
   def extract_locale_from_accept_language_header
     request.compatible_language_from(AllowLocale)
+  end
+
+  def topic_path_with_last_anchor(topic)
+    anchor = (topic.replies_count == 0 ? nil : "replies-#{topic.replies_count}")
+    topic_path(topic, :anchor => anchor)
   end
 
   def topic_url_with_last_anchor(topic)

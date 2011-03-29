@@ -4,7 +4,7 @@
   %table.data-table
     - @users.each do |user|
       %tr{:class => cycle("even", "odd")}
-        %td= link_to user.profile.name, admin_user_url(user)
+        %td= link_to user.profile.name, admin_user_path(user)
         %td= user.username
         %td= user.email
         %td.time= l user.created_at, :format => :short

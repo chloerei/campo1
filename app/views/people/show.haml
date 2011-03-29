@@ -1,5 +1,5 @@
 - content_for :head do
-  = auto_discovery_link_tag :rss, person_topics_url(:username => @person.username, :format => 'rss')
+  = auto_discovery_link_tag :rss, person_topics_path(:username => @person.username, :format => 'rss')
 
 #profile
   .avatar= link_gravatar_to_person @person, :size => 128
@@ -24,11 +24,11 @@
   #topics.section
     .section-content
       = render :partial => 'topics'
-      .right= link_to t('.read_more'), person_topics_url(:username => @person.username), :class => 'button'
+      .right= link_to t('.read_more'), person_topics_path(:username => @person.username), :class => 'button'
       .clear
   .section
     .section-content
       .right
         = image_tag 'rss.png', :align => 'top'
-        = link_to t('.subscription_recent_20_topics'), person_topics_url(:format => 'rss')
+        = link_to t('.subscription_recent_20_topics'), person_topics_path(:format => 'rss')
       .claer

@@ -2,7 +2,7 @@
 
 .section
   .section-content
-    = form_for @profile, :url => settings_profile_url, :method => :put do |f|
+    = form_for @profile, :url => settings_profile_path, :method => :put do |f|
       - if !f.object.errors.blank?
         = render :partial => 'share/error_messages', :locals => {:object => f.object}
       %table.form-table
@@ -18,7 +18,7 @@
                 = link_to t('.what_is_gravatar'), 'http://www.gravatar.com/'
                 )
                 %br/
-                = link_to t('.change_email'), settings_account_url
+                = link_to t('.change_email'), settings_account_path
                 = '/'
                 = link_to t('.go_to_gravatar'), 'http://www.gravatar.com/'
         %tr

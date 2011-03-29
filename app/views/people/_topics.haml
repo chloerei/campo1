@@ -1,13 +1,13 @@
 .item-list
   - @topics.each do |topic|
     .item
-      .title= link_to topic.title, topic_url_with_last_anchor(topic)
-      .reply-count= link_to topic.replies_count, topic_url_with_last_anchor(topic)
+      .title= link_to topic.title, topic_path_with_last_anchor(topic)
+      .reply-count= link_to topic.replies_count, topic_path_with_last_anchor(topic)
       .clear
       .meta
         - if topic.tags
           - topic.tags.each do |tag|
-            %span.tag= link_to tag, tagged_topics_url(:tag => tag)
+            %span.tag= link_to tag, tagged_topics_path(:tag => tag)
         - if topic.last_replied_by_id
           = t '.last_replyer'
           = link_to_person @user_hash[topic.last_replied_by_id]

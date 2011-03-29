@@ -14,7 +14,7 @@
     .left-column.avatar
       = link_gravatar_to_person current_user
     .right-column
-      = form_for @reply, :url => reply_url(@reply, :return_to => request.referer) do |f|
+      = form_for @reply, :url => reply_path(@reply, :return_to => request.referer) do |f|
         = render :partial => 'form', :object => f
         .field
           = f.submit t('.post'), :class => 'button'

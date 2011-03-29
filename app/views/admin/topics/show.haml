@@ -1,7 +1,7 @@
 = render :partial => 'admin/nav'
 
 #topic
-  = link_to topic_url(@topic), topic_url(@topic), :target => '_blank'
+  = link_to topic_path(@topic), topic_path(@topic), :target => '_blank'
   %h3= t '.title'
   = @topic.title
   %h3= t '.content'
@@ -10,15 +10,15 @@
   = @topic.tags_string
   %h3= t '.creator'
   = image_tag @topic.user.gravatar_url
-  = link_to @topic.user.profile.name, admin_user_url(@topic.user)
+  = link_to @topic.user.profile.name, admin_user_path(@topic.user)
   %h3= t '.status'
   = @topic.closed? ? t('.closed'): t('.open')
 
 #manage
   .left
     - if @topic.closed?
-      = button_to t('.open'), open_admin_topic_url(@topic), :method => :post, :class => 'button'
+      = button_to t('.open'), open_admin_topic_path(@topic), :method => :post, :class => 'button'
     - else
-      = button_to t('.close'), close_admin_topic_url(@topic), :method => :post, :class => 'button'
-  .right= button_to t('.delete'), admin_topic_url(@topic), :method => :delete, :confirm => t('.sure_to_delete'), :class => 'button'
+      = button_to t('.close'), close_admin_topic_path(@topic), :method => :post, :class => 'button'
+  .right= button_to t('.delete'), admin_topic_path(@topic), :method => :delete, :confirm => t('.sure_to_delete'), :class => 'button'
   .clear

@@ -23,7 +23,7 @@
     .meta
       - if @topic.tags
         - @topic.tags.each do |tag|
-          = link_to tag, tagged_topics_url(:tag => tag)
+          = link_to tag, tagged_topics_path(:tag => tag)
       = t '.creator'
       = link_to_person @user_hash[@topic.user_id]
       = smart_time_string @topic.created_at
@@ -37,10 +37,10 @@
       = smart_time_string @topic.edited_at
   - if current_logined? and @topic.user_id == current_user.id and !@user_hash[@topic.user_id].banned?
     .actions
-      = link_to t('.edit'), edit_topic_url(@topic)
+      = link_to t('.edit'), edit_topic_path(@topic)
   - if show_admin_link?
     .actions
-      = link_to t('.manage'), admin_topic_url(@topic), :target => '_blank'
+      = link_to t('.manage'), admin_topic_path(@topic), :target => '_blank'
 
 - if site_config.layout.topic_bottom_html.present?
   .section
@@ -57,9 +57,9 @@
     - if !current_logined?
       .meta
         = t '.please'
-        = link_to t('.login'), login_url(:return_to => topic_url(@topic, :anchor => "reply-form")), :class => 'button'
+        = link_to t('.login'), login_path(:return_to => topic_path(@topic, :anchor => "reply-form")), :class => 'button'
         = t '.or'
-        = link_to t('.signup'), login_url(:return_to => topic_url(@topic, :anchor => "reply-form")), :class => 'button'
+        = link_to t('.signup'), login_path(:return_to => topic_path(@topic, :anchor => "reply-form")), :class => 'button'
     - elsif current_user.banned?
       .meta= t '.you_had_been_ban'
     - elsif @topic.closed?
@@ -89,8 +89,8 @@
         = t '.collect_topic'
       .section-content
         - if @topic.marker_ids.to_a.include? current_user.id
-          = button_to t('.unmark'), mark_topic_url(@topic), :method => :delete, :class => 'button reverse'
+          = button_to t('.unmark'), mark_topic_path(@topic), :method => :delete, :class => 'button reverse'
         - else
-          = button_to t('.mark'), mark_topic_url(@topic), :method => :post, :class => 'button'
+          = button_to t('.mark'), mark_topic_path(@topic), :method => :post, :class => 'button'
         .meta
           = t '.marker_count', :count => @topic.marker_ids.to_a.count

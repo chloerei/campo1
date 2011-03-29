@@ -2,7 +2,7 @@
 
 .section
   .section-content
-    = form_for @site_config, :url => admin_site_config_url do |f|
+    = form_for @site_config, :url => admin_site_config_path do |f|
       %table.form-table
         = f.fields_for :layout, @site_config.layout do |layout_f|
           %tr

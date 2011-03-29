@@ -1,13 +1,13 @@
 #top-menu
   %ul
-    %li= link_to t('.home'), root_url
-    %li= link_to t('.search'), search_url
+    %li= link_to t('.home'), root_path
+    %li= link_to t('.search'), search_path
     - if current_logined?
-      %li= link_to t('.person_page'), person_url(:username => current_user.username)
-      %li= link_to t('.settings'), settings_profile_url
+      %li= link_to t('.person_page'), person_path(:username => current_user.username)
+      %li= link_to t('.settings'), settings_profile_path
       - if current_user.admin?
-        %li= link_to t('.admin_dashboard'), admin_dashboard_url
-      %li.last= link_to t('.logout'), logout_url
+        %li= link_to t('.admin_dashboard'), admin_dashboard_path
+      %li.last= link_to t('.logout'), logout_path
     - else
-      %li= link_to t('.login'), login_url
-      %li.last= link_to t('.signup'), signup_url
+      %li= link_to t('.login'), login_path
+      %li.last= link_to t('.signup'), signup_path
