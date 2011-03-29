@@ -16,7 +16,6 @@
         #logo
           = link_to APP_CONFIG['site_name'], root_path
         = render :partial => 'share/top_menu'
-        .clear
     #content
       .center-wraper
         #mainbar
@@ -40,7 +39,6 @@
           = yield :sidebar
           - if show_sidebar_bottom_html?
             = raw site_config.layout.sidebar_bottom_html
-        .clear
     #footer
       .center-wraper
         #bottom-menu
@@ -51,5 +49,4 @@
           |
           Power by
           = link_to 'Campo', 'https://github.com/chloerei/campo', :target => '_blank'
-        .clear
     = yield :last

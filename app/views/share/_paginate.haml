@@ -29,4 +29,3 @@
       %td.next
         - if current_page < total_page
           = link_to t('.next_page'), url_for(:page => current_page + 1), :class => 'next button', :remote => remote
-  .clear

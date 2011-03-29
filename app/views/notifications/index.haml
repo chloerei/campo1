@@ -26,5 +26,4 @@
               = smart_time_string notification.created_at
             .right
               = link_to 'x', notification_path(notification), :method => :delete, :remote => true
-            .clear
           %blockquote= notification.text

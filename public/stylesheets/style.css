@@ -140,6 +140,7 @@ textarea {
 .center-wraper {
     width: 960px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .clear {
@@ -319,7 +320,6 @@ span.green {
     border-left: 1px solid #CCC;
     border-right: 1px solid #CCC;
     background-color: #FFF;
-    overflow: hidden;
 }
 
 /* mainbar */
@@ -340,6 +340,7 @@ span.green {
     margin-bottom: 30px;
     margin-top: 10px;
     padding: 0 10px;
+    overflow: hidden;
 }
 
 #mainbar .item-list {
@@ -362,6 +363,7 @@ span.green {
 #mainbar .item-list .item {
     border-bottom: 1px dashed #CCC;
     padding: 15px 10px;
+    overflow: hidden;
 }
 
 #mainbar #subheader {
@@ -661,6 +663,7 @@ span.green {
 
 #sidebar .section {
     margin: 0 0 30px;
+    overflow: hidden;
 }
 
 #sidebar .section-title {

@@ -192,6 +192,7 @@ a.button:hover, .tag:hover {
 .center-wraper {
     width: 960px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 /* header */
