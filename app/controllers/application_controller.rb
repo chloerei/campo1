@@ -39,13 +39,11 @@ class ApplicationController < ActionController::Base
   end
 
   def topic_path_with_last_anchor(topic)
-    anchor = (topic.replies_count == 0 ? nil : "replies-#{topic.replies_count}")
-    topic_path(topic, :anchor => anchor)
+    topic_path(topic, :anchor => topic.last_anchor)
   end
 
   def topic_url_with_last_anchor(topic)
-    anchor = (topic.replies_count == 0 ? nil : "replies-#{topic.replies_count}")
-    topic_url(topic, :anchor => anchor)
+    topic_url(topic, :anchor => topic.last_anchor)
   end
 
   def render_404(exception = nil)
