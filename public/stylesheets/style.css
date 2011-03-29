@@ -129,6 +129,10 @@ textarea {
 
 /* common */
 
+img.icon {
+  vertical-align: top;
+}
+
 .left {
   float: left;
 }

@@ -11,11 +11,11 @@
       .detail.meta
         - if @person.profile.url.present?
           %p
-            = image_tag "/images/icons/home.png", :align => 'top'
+            = image_tag "/images/icons/home.png", :class => 'icon'
             = link_to @person.profile.url, @person.profile.url, :target => '_blank'
         - if @person.profile.twitter.present?
           %p
-            = image_tag "/images/icons/twitter.png", :align => 'top'
+            = image_tag "/images/icons/twitter.png", :class => 'icon'
             = link_to "@#{@person.profile.twitter}", "https://twitter.com/#{@person.profile.twitter}", :target => '_blank'
       .description= sanitize simple_format(auto_link(@person.profile.description))
   .clear
@@ -29,6 +29,6 @@
   .section
     .section-content
       .right
-        = image_tag 'rss.png', :align => 'top'
+        = image_tag 'rss.png', :class => 'icon'
         = link_to t('.subscription_recent_20_topics'), person_topics_path(:format => 'rss')
       .claer

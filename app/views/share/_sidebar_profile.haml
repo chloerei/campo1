@@ -7,5 +7,5 @@
         .clear
       - if current_logined? and current_user.notifications.any?
         #notification-count
-          = image_tag 'icons/email.png', :align => 'top'
+          = image_tag 'icons/email.png', :class => 'icon'
           = link_to current_user.notifications.count, notifications_path
