@@ -1,291 +1,291 @@
 zh-CN:
-  _require_login: 需要登录
-  _home: 主页
-  _interesting: 感兴趣
-  _own: 自有
-  _newest: 最新
-  _collection: 收藏
-  _replied: 回复过
-  zh-CN: 中文（简体）
-  en: 英文
-  ago: 前
+  _require_login: "需要登录"
+  _home: "主页"
+  _interesting: "感兴趣"
+  _own: "自有"
+  _newest: "最新"
+  _collection: "收藏"
+  _replied: "回复过"
+  'zh-CN': "中文（简体）"
+  en: "英文"
+  ago: "前"
   layouts:
     application:
-      default: 默认
-      loading: 读取中...
+      default: "默认"
+      loading: "读取中..."
     settings:
-      default: 默认
+      default: "默认"
   share:
     top_menu:
-      home: 主页
-      search: 搜索
-      person_page: 个人主页
-      settings: 设置
-      admin_dashboard: 管理面板
-      logout: 退出
-      login: 登录
-      signup: 注册
+      home: "主页"
+      search: "搜索"
+      person_page: "个人主页"
+      settings: "设置"
+      admin_dashboard: "管理面板"
+      logout: "退出"
+      login: "登录"
+      signup: "注册"
     paginate:
-      next_page: 下一页
-      prev_page: 上一页
+      next_page: "下一页"
+      prev_page: "上一页"
   errors:
     '404':
-      title: 404 页面未找到
-      tips: 你访问了不存在的资源。
+      title: "404 页面未找到"
+      tips: "你访问了不存在的资源。"
     '422':
-      title: 422 没有访问权限
-      tips: 你没有访问该资源的权限。
+      title: "422 没有访问权限"
+      tips: "你没有访问该资源的权限。"
     '500':
-      title: 500 系统错误
-      tips: 系统发生了错误，请联系管理员。
+      title: "500 系统错误"
+      tips: "系统发生了错误，请联系管理员。"
   notifications:
     index:
-      deleted_user: 已删除用户
-      deleted_topic: 已删除主题
-      in: 在
-      mention_you: 提到你
-      notification: 消息
+      deleted_user: "已删除用户"
+      deleted_topic: "已删除主题"
+      in: "在"
+      mention_you: "提到你"
+      notification: "消息"
   topics:
-    normal_mode: 普通模式
-    admin_mode: 管理模式
+    normal_mode: "普通模式"
+    admin_mode: "管理模式"
     subheader:
-      active: 活跃
-      interesting: 感兴趣
-      own: 自有
-      newest: 最新
-      replied: 回复过
-      collection: 收藏
-      search: 搜索
-      notifications: 提醒
+      active: "活跃"
+      interesting: "感兴趣"
+      own: "自有"
+      newest: "最新"
+      replied: "回复过"
+      collection: "收藏"
+      search: "搜索"
+      notifications: "提醒"
     sidebar:
       favorite_tags:
-        favorite_tags: 喜好标签
-        manage_tags: 管理标签
+        favorite_tags: "喜好标签"
+        manage_tags: "管理标签"
       recent_tags:
-        recent_tags: 最近标签
+        recent_tags: "最近标签"
       current_tag:
-        current_tag: 当前标签：%{tag}
-        remove_from_favorite_tags: 从喜好标签中移除
-        add_to_favorite_tags: 添加到喜好标签
+        current_tag: "当前标签：%{tag}"
+        remove_from_favorite_tags: "从喜好标签中移除"
+        add_to_favorite_tags: "添加到喜好标签"
     index:
-      create_topic: 发表主题
+      create_topic: "发表主题"
     new:
-      new_topic: 新主题
-      create: 创建
+      new_topic: "新主题"
+      create: "创建"
     edit:
-      edit_topic: 编辑主题
-      update: 更新
+      edit_topic: "编辑主题"
+      update: "更新"
     form:
-      tags_tips: 最多五个，用空格间隔，词组用 '-' 号连接，例如： ruby-on-rails 编程。自动转换为小写。
+      tags_tips: "最多五个，用空格间隔，词组用 '-' 号连接，例如： ruby-on-rails 编程。自动转换为小写。"
     show:
-      creator: 创建者
-      edited_at: 编辑于
-      edit: 编辑
-      manage: 管理
-      leave_a_reply: 发表回复？
-      please: 请
-      or: 或
-      login: 登录
-      signup: 注册
-      you_had_been_ban: 你已经被封禁了
-      topic_had_been_closed: 主题已被关闭
-      you_are: 你是
-      post: 发表
-      posting: 发表中...
-      collect_topic: 收藏主题
-      mark: 马克
-      unmark: 取消马克
-      marker_count: 马克人数 %{count}
+      creator: "创建者"
+      edited_at: "编辑于"
+      edit: "编辑"
+      manage: "管理"
+      leave_a_reply: "发表回复？"
+      please: "请"
+      or: "或"
+      login: "登录"
+      signup: "注册"
+      you_had_been_ban: "你已经被封禁了"
+      topic_had_been_closed: "主题已被关闭"
+      you_are: "你是"
+      post: "发表"
+      posting: "发表中..."
+      collect_topic: "收藏主题"
+      mark: "马克"
+      unmark: "取消马克"
+      marker_count: "马克人数 %{count}"
     topics:
-      creator: 创建者
-      last_replyer: 最后回复
-      closed: 已关闭
-      marker: 马克
-      subscription_recent_20_topics: 订阅最新 20 条
-      subscription_tag: 订阅 Tag：%{tag}
+      creator: "创建者"
+      last_replyer: "最后回复"
+      closed: "已关闭"
+      marker: "马克"
+      subscription_recent_20_topics: "订阅最新 20 条"
+      subscription_tag: "订阅 Tag：%{tag}"
     search:
-      loading: 载入中...
+      loading: "载入中..."
   replies:
     new:
-      new_reply: 新回复
-      reply_to: 回复到
-      post: 提交
+      new_reply: "新回复"
+      reply_to: "回复到"
+      post: "提交"
     edit:
-      edit_reply: 编辑回复
-      reply_to: 回复到
-      post: 提交
+      edit_reply: "编辑回复"
+      reply_to: "回复到"
+      post: "提交"
     reply:
-      edited_at: 编辑于
-      manage: 管理
-      edit: 编辑
+      edited_at: "编辑于"
+      manage: "管理"
+      edit: "编辑"
   user_mailer:
     reset_password_token:
-      title: %{name}密码重置
-      description: 点击链接重置您的%{name}账号密码
+      title: "%{name}密码重置"
+      description: "点击链接重置您的%{name}账号密码"
   user_sessions:
     new:
-      login_tips: 用户名 或 Email
-      remember_me_tips: 记住我（1个月）
-      password: 密码
-      login: 登录
-      not_have_account_yet: 未有账号？
-      forgot_password: 忘记密码？
-      signup: 注册
-      reset_password: 重置密码
-      login_fail: 登录失败，错误的用户名或密码。
+      login_tips: "用户名 或 Email"
+      remember_me_tips: "记住我（1个月）"
+      password: "密码"
+      login: "登录"
+      not_have_account_yet: "未有账号？"
+      forgot_password: "忘记密码？"
+      signup: "注册"
+      reset_password: "重置密码"
+      login_fail: "登录失败，错误的用户名或密码。"
   users:
     new:
-      username_tips: 仅限英文、数字、下划线，3-20字符，稍后可更改
-      email_tips: 不会公开，用于登录和 Gravatar
-      password_tips: 最少6字符
-      remember_me_tips: 记住我（1个月）
-      already_have_account: 已有账号？
-      forgot_password: 忘记密码？
-      login: 登录
-      signup: 注册
-      reset_password: 重置密码
+      username_tips: "仅限英文、数字、下划线，3-20字符，稍后可更改"
+      email_tips: "不会公开，用于登录和 Gravatar"
+      password_tips: "最少6字符"
+      remember_me_tips: "记住我（1个月）"
+      already_have_account: "已有账号？"
+      forgot_password: "忘记密码？"
+      login: "登录"
+      signup: "注册"
+      reset_password: "重置密码"
   reset_passwords:
     new:
-      post: 提交
-      tips: 填入账户邮箱
+      post: "提交"
+      tips: "填入账户邮箱"
     create:
-      tips: 稍后将会有密码重置邮件发送到邮箱，请注意查收
+      tips: "稍后将会有密码重置邮件发送到邮箱，请注意查收"
     show:
-      new_password: 新密码
-      new_password_confirmation: 新密码确认
-      post: 提交
+      new_password: "新密码"
+      new_password_confirmation: "新密码确认"
+      post: "提交"
     update:
-      flash_success: 成功更新密码
+      flash_success: "成功更新密码"
   people:
     topics:
-      last_replyer: 最后回复
-      closed: 已关闭
-      marker: 马克
-      subscription_recent_20_topics: 订阅最新 20 条主题
+      last_replyer: "最后回复"
+      closed: "已关闭"
+      marker: "马克"
+      subscription_recent_20_topics: "订阅最新 20 条主题"
     show:
-      this_user_had_been_ban: 该用户已被封禁
-      subscription_recent_20_topics: 订阅最新 20 条主题
-      read_more: 阅读更多
+      this_user_had_been_ban: "该用户已被封禁"
+      subscription_recent_20_topics: "订阅最新 20 条主题"
+      read_more: "阅读更多"
   settings:
     subheader:
-      account: 账户
-      password: 密码
-      profile: 个人资料
-      favorite_tags: 喜好标签
+      account: "账户"
+      password: "密码"
+      profile: "个人资料"
+      favorite_tags: "喜好标签"
     accounts:
-      title: 设置账户
+      title: "设置账户"
       show:
-        current_password_tips: 如果修改了用户名或 Email
-        save: 保存
+        current_password_tips: "如果修改了用户名或 Email"
+        save: "保存"
       update:
-        flash_success: 成功更新
+        flash_success: "成功更新"
     passwords:
-      title: 设置密码
+      title: "设置密码"
       show:
-        current_password_tips: 更改需要提供当前密码 
-        save: 保存
+        current_password_tips: "更改需要提供当前密码" 
+        save: "保存"
       update:
-        flash_success: 成功更新
+        flash_success: "成功更新"
     profiles:
-      title: 设置个人资料
+      title: "设置个人资料"
       show:
-        avatar: 头像
-        gravatar_tips: 头像使用 Gravatar 服务
-        what_is_gravatar: 什么是 Gravatar？
-        change_email: 修改 Email
-        go_to_gravatar: 到 Gravatar
-        save: 保存
+        avatar: "头像"
+        gravatar_tips: "头像使用 Gravatar 服务"
+        what_is_gravatar: "什么是 Gravatar？"
+        change_email: "修改 Email"
+        go_to_gravatar: "到 Gravatar"
+        save: "保存"
       update:
-        flash_success: 成功更新
+        flash_success: "成功更新"
     favorite_tags:
-      title: 设置喜好标签
+      title: "设置喜好标签"
       show:
-        favorite_tags: 喜好标签
-        favorite_tags_tips: 最多五十个，用空格间隔，词组用 '-' 号连接，例如： ruby-on-rails 编程。自动转换为小写。
-        add: 添加
+        favorite_tags: "喜好标签"
+        favorite_tags_tips: "最多五十个，用空格间隔，词组用 '-' 号连接，例如： ruby-on-rails 编程。自动转换为小写。"
+        add: "添加"
   admin:
     nav:
-      dashboard: 面板
-      topics: 主题
-      replies: 回复
-      users: 用户
-      site_config: 网站设置
+      dashboard: "面板"
+      topics: "主题"
+      replies: "回复"
+      users: "用户"
+      site_config: "网站设置"
     dashboard:
       show:
-        today_news: 今日新增
-        topics: 主题
-        replies: 回复
-        users: 用户
-        total: 全部
+        today_news: "今日新增"
+        topics: "主题"
+        replies: "回复"
+        users: "用户"
+        total: "全部"
     topics:
       show:
-        title: 标题
-        content: 内容
-        tags: 标签
-        creator: 创建者
-        status: 状态
-        closed: 已关闭
-        open: 开放
-        close: 关闭
-        delete: 删除
-        sure_to_delete: 确认删除？（无法恢复）
+        title: "标题"
+        content: "内容"
+        tags: "标签"
+        creator: "创建者"
+        status: "状态"
+        closed: "已关闭"
+        open: "开放"
+        close: "关闭"
+        delete: "删除"
+        sure_to_delete: "确认删除？（无法恢复）"
     replies:
       show:
-        reply_to: 回复到
-        content: 内容
-        replyer: 回复者
-        delete: 删除
-        sure_to_delete: 确认删除？（无法恢复）
+        reply_to: "回复到"
+        content: "内容"
+        replyer: "回复者"
+        delete: "删除"
+        sure_to_delete: "确认删除？（无法恢复）"
     users:
       show:
-        username: 用户名
-        email: Email
-        avatar: 头像
-        name: 名称
-        url: 网址
-        twitter: Twitter
-        description: 描述
-        status: 状态
-        topics_count: 主题总数
-        replies_count: 回复总数
-        banned: 已封禁
-        normal: 正常
-        unban: 解除封禁
-        ban: 封禁
-        ban_and_clean: 封禁并清理
-        delete: 删除
-        sure_to_delete: 确认删除？（无法恢复）
+        username: "用户名"
+        email: "Email"
+        avatar: "头像"
+        name: "名称"
+        url: "网址"
+        twitter: "Twitter"
+        description: "描述"
+        status: "状态"
+        topics_count: "主题总数"
+        replies_count: "回复总数"
+        banned: "已封禁"
+        normal: "正常"
+        unban: "解除封禁"
+        ban: "封禁"
+        ban_and_clean: "封禁并清理"
+        delete: "删除"
+        sure_to_delete: "确认删除？（无法恢复）"
     site_config:
       show:
-        save: 保存
+        save: "保存"
   user:
     errors:
-      password_confirmation_not_match: 不匹配
-      current_password_not_match: 不匹配
-      favorite_tags_size: 喜好标签数量上限是50个
+      password_confirmation_not_match: "不匹配"
+      current_password_not_match: "不匹配"
+      favorite_tags_size: "喜好标签数量上限是50个"
 
   mongoid:
     attributes:
       topic:
-        title: 标题
-        content: 内容
-        tags: 标签
+        title: "标题"
+        content: "内容"
+        tags: "标签"
       reply:
-        content: 内容
+        content: "内容"
       user:
-        username: 用户名
-        email: Email
-        locale: 语言
-        current_password: 当前密码
-        password: 密码
-        password_confirmation: 密码确认
-        favorite_tags: 喜好标签
+        username: "用户名"
+        email: "Email"
+        locale: "语言"
+        current_password: "当前密码"
+        password: "密码"
+        password_confirmation: "密码确认"
+        favorite_tags: "喜好标签"
       profile:
-        name: 名字
-        url: 网站url
-        description: 描述
+        name: "名字"
+        url: "网站url"
+        description: "描述"
       site_config:
         layout:
-          head_html: HEAD 代码
-          sidebar_bottom_html: 边栏底部代码
-          topic_bottom_html: 文章底部代码
+          head_html: "HEAD 代码"
+          sidebar_bottom_html: "边栏底部代码"
+          topic_bottom_html: "文章底部代码"
