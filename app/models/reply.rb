@@ -4,9 +4,9 @@ class Reply
 
   field :content
 
-  references_and_referenced_in_many :mention_users, :class_name => 'User', :validate => false
-  referenced_in :topic
-  referenced_in :user
+  has_and_belongs_to_many :mention_users, :class_name => 'User', :validate => false
+  belongs_to :topic
+  belongs_to :user
 
   validates_presence_of :content
 

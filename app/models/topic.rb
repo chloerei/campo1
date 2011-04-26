@@ -13,9 +13,9 @@ class Topic
   scope :marked_by, lambda { |user| where(:marker_ids => user.id) }
   scope :replied_by, lambda { |user| where(:replier_ids => user.id) }
 
-  references_many :replies, :validate => false, :dependent => :delete
-  referenced_in :user
-  referenced_in :last_replied_by, :class_name => 'User'
+  has_many :replies, :validate => false, :dependent => :delete
+  belongs_to :user
+  belongs_to :last_replied_by, :class_name => 'User'
   field :actived_at, :type => Time
   field :replies_count, :type => Integer, :default => 0
   field :edited_at, :type => Time

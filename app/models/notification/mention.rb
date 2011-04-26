@@ -1,5 +1,5 @@
 class Notification::Mention < Notification::Base
-  referenced_in :topic
-  referenced_in :reply
-  referenced_in :reply_user, :class_name => 'User'
+  belongs_to :topic
+  belongs_to :reply
+  belongs_to :reply_user, :class_name => 'User'
 end

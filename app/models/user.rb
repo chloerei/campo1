@@ -19,8 +19,8 @@ class User
   embeds_one :profile
   embeds_many :notifications, :class_name => 'Notification::Base'
   
-  references_many :topics, :validate => false
-  references_many :replies, :validate => false
+  has_many :topics, :validate => false
+  has_many :replies, :validate => false
 
   validates_presence_of :username, :email
   validates_presence_of :password, :if => Proc.new {|user| user.requrie_password?}
