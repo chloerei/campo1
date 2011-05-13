@@ -1,6 +1,7 @@
 function append_mention(name) {
   $('#editor-input').val($('#editor-input').val() + '@' + name + ' ');
   $('#editor-input').focus();
+  $('#editor-input').position($('#editor-input').val().length);
 };
 
 $(function() {

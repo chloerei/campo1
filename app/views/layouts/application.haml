@@ -6,6 +6,7 @@
     %link{:rel => "shortcut icon", :href => "/favicon.ico"}
     = stylesheet_link_tag 'style'
     = javascript_include_tag :defaults
+    = javascript_include_tag "jquery.position.js"
     = yield :head
     = csrf_meta_tag
     - if show_head_html?
