@@ -15,6 +15,14 @@
       hide_loading_notice();
     });
 
+    $(function(){
+      if ($('#editor-input').val() != undefined){
+        var text_length = $('#editor-input').val().length;
+        $('#editor-input').focus();
+        $('#editor-input').position(text_length);
+      }
+    });
+
 = render :partial => 'subheader'
 
 #topic
