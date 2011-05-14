@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Settings::PasswordsControllerTest < ActionController::TestCase
   def setup
-    @user = create_user
+    @user = Factory(:user, :username => 'test', :password => '12345678', :password_confirmation => '12345678')
     create_site_config
   end
 

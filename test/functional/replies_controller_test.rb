@@ -2,11 +2,9 @@ require 'test_helper'
 
 class RepliesControllerTest < ActionController::TestCase
   def setup
-    @user = create_user
-    @topic = @user.topics.create :title => 'title', :content => 'content', :tags => 'tag1 tag2'
-    @reply = @topic.replies.new :content => 'hi'
-    @reply.user = @user
-    @reply.save
+    @user  = Factory :user
+    @topic = Factory(:topic, :user => @user)
+    @reply = Factory(:reply, :content => 'hi', :topic => @topic, :user => @user)
     create_site_config
   end
 

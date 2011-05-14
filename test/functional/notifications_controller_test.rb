@@ -2,7 +2,7 @@ require 'test_helper'
 
 class NotificationsControllerTest < ActionController::TestCase
   def setup
-    @user = create_user
+    @user = Factory :user
     @user.send_notification
     create_site_config
   end

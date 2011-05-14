@@ -2,11 +2,9 @@ require 'test_helper'
 
 class ReplyTest < ActiveSupport::TestCase
   def setup
-    @user = create_user
+    @user  = Factory :user
     @admin = create_admin
-    @topic = Topic.new :title => 'title', :content => 'content'
-    @topic.user = @user
-    @topic.save
+    @topic = Factory(:topic, :user => @user)
   end
 
   def test_extract_mentions

@@ -6,7 +6,7 @@ xml.rss :version => "2.0" do
     xml.description
     xml.lastBuildDate @topics.first.created_at.to_s(:rfc822) if @topics.any?
 
-    for topic in @topics
+    @topics.each do |topic|
       xml.item do
         xml.title topic.title
         xml.description rich_content(topic.content)
@@ -14,8 +14,10 @@ xml.rss :version => "2.0" do
         xml.author @user_hash[topic.user_id].profile.name
         xml.link topic_url_with_last_anchor(topic)
         xml.guid topic_url(topic)
-        topic.tags.each do |tag|
-          xml.category tag
+        if topic.tags.present?
+          topic.tags.each do |tag|
+            xml.category tag
+          end
         end
       end
     end

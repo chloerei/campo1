@@ -2,7 +2,8 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = create_user
+    @user  = Factory(:user, :username => 'test', :email => 'test@test.com', :password => '12345678',
+                     :password_confirmation => '12345678')
     @admin = create_admin
   end
 

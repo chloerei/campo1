@@ -2,9 +2,9 @@ require 'test_helper'
 
 class Admin::TopicsControllerTest < ActionController::TestCase
   def setup
-    @user = create_user
+    @user  = Factory :user
     @admin = create_admin
-    @topic = @user.topics.create :title => 'title', :content => 'content', :tags => 'tag1 tag2'
+    @topic = Factory :topic
     create_site_config
   end
 

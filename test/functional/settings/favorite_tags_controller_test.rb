@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Settings::FavoriteTagsControllerTest < ActionController::TestCase
   def setup
-    @user = create_user
+    @user = Factory :user
     create_site_config
   end
 

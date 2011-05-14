@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Admin::DashboardControllerTest < ActionController::TestCase
   def setup
-    @user = create_user
+    @user  = Factory :user
     @admin = create_admin
     create_site_config
   end

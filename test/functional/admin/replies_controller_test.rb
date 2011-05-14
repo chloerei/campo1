@@ -2,12 +2,10 @@ require 'test_helper'
 
 class Admin::RepliesControllerTest < ActionController::TestCase
   def setup
-    @user = create_user
+    @user  = Factory :user
     @admin = create_admin
-    @topic = @user.topics.create :title => 'title', :content => 'content', :tags => 'tag1 tag2'
-    @reply = @topic.replies.new :content => 'content'
-    @reply.user = @user
-    @reply.save
+    @topic = Factory :topic
+    @reply = Factory :reply
     create_site_config
   end
 

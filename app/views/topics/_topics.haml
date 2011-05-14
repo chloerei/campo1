@@ -16,7 +16,7 @@
             = link_to topic.replies_count, topic_path_with_last_anchor(topic)
           .clear
           .meta
-            - if topic.tags
+            - if topic.tags.present?
               - topic.tags.each do |tag|
                 %span.tag= link_to tag, tagged_topics_path(:tag => tag), :remote => true, 'data-direction' => 'right'
             = t '.creator'
