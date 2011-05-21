@@ -8,7 +8,6 @@ class TopicsController < ApplicationController
 
   def index
     @current = 'active'
-    set_page_title I18n.t :_home
     @topics = Topic.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
     respond_with @topics do |format|
