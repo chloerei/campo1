@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def rich_content(content)
-    sanitize Redcarpet.new(content, :hard_wrap, :autolink).to_html
+    sanitize Redcarpet.new(content, :hard_wrap, :autolink, :no_intraemphasis).to_html
   end
 
   def paginate_for(collection, options = {})
