@@ -45,7 +45,7 @@ class RepliesController < ApplicationController
     @reply = current_user.replies.find params[:id]
     @topic = @reply.topic
     if @reply.update_attributes params[:reply]
-      redirect_to params[:return_to].blank? ? @topic : "#{params[:return_to]}##{@reply.id}"
+      redirect_to params[:return_to].blank? ? @topic : "#{params[:return_to]}#reply-#{@reply.id}"
     else
       set_page_title I18n.t 'replies.edit.edit_reply'
       render :edit
