@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def rich_content(content)
-    sanitize auto_link(RDiscount.new(auto_mention(content)).to_html)
+    sanitize Redcarpet.new(auto_mention(content), :hard_wrap, :autolink).to_html
   end
 
   def auto_mention(text)

@@ -7,7 +7,7 @@ gem 'bson_ext', "~> 1.3"
 gem 'haml'
 gem 'gravtastic'
 gem 'jquery-rails'
-gem 'rdiscount'
+gem 'redcarpet'
 gem "mongoid_rails_migrations", ">=0.0.10"
 gem 'http_accept_language', :git => 'http://github.com/iain/http_accept_language.git'
 

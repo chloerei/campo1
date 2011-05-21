@@ -88,7 +88,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
-    rdiscount (1.6.8)
+    redcarpet (1.14.2)
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
@@ -108,4 +108,4 @@ DEPENDENCIES
   mongoid (~> 2.0)
   mongoid_rails_migrations (>= 0.0.10)
   rails (= 3.0.7)
-  rdiscount
+  redcarpet
