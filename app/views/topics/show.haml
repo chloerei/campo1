@@ -1,9 +1,9 @@
 - content_for :head do
   - if current_logined?
-    = javascript_include_tag 'wmd.combined.min'
+    = javascript_include_tag 'wmd.combined.min', 'highlight.pack'
     = stylesheet_link_tag 'wmd'
   = javascript_include_tag 'jquery.ae.image.resize.min', 'fancybox/jquery.fancybox-1.3.4.pack', 'topic-show'
-  = stylesheet_link_tag '/javascripts/fancybox/jquery.fancybox-1.3.4.css'
+  = stylesheet_link_tag '/javascripts/fancybox/jquery.fancybox-1.3.4.css', 'github'
   :javascript
     $('.paginate a').live('ajax:beforeSend', function(event, xhr, settings) {
       show_loading_notice();
@@ -14,6 +14,7 @@
     $('.paginate a').live('ajax:complete', function(event, data, status, xhr) {
       hide_loading_notice();
     });
+    hljs.initHighlightingOnLoad();
 
 = render :partial => 'subheader'
 

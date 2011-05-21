@@ -12,18 +12,7 @@ module ApplicationHelper
   end
 
   def rich_content(content)
-    sanitize Redcarpet.new(auto_mention(content), :hard_wrap, :autolink).to_html
-  end
-
-  def auto_mention(text)
-    text.gsub(Reply::MentionRegex) do
-      username = $1
-      if auto_linked?($`, $')
-        $&
-      else
-        %Q[@<a href="/~#{username}">#{username}</a>]
-      end
-    end
+    sanitize Redcarpet.new(content, :hard_wrap, :autolink).to_html
   end
 
   def paginate_for(collection, options = {})
