@@ -7,8 +7,7 @@
   = form.text_area :content, :class => 'editor', :id => 'editor-input', :required => "required"
   #editor-preview
 .field
-  = form.label :tags
-  #topic_tags_preview
+  #topic-tags-preview
   = form.text_field :tags, :value => form.object.tags_string, :class => 'text tags', :autocomplete => "off", :placeholder => t('.tags_tips')
   :javascript
     setup_wmd({
@@ -16,4 +15,4 @@
                 button_bar: "editor-button-bar",
                 preview: "editor-preview",
               });
-    extract_tags("topic_tags", "topic_tags_preview");
+    extract_tags("topic_tags", "topic-tags-preview");

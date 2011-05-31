@@ -76,8 +76,8 @@ zh-CN:
       edit_topic: "编辑主题"
       update: "更新"
     form:
-      title_tips: "标题"
-      tags_tips: "最多五个，用空格间隔，词组用 '-' 号连接，例如： ruby-on-rails 编程。自动转换为小写。"
+      title_tips: "你的话题是？"
+      tags_tips: "标签：例如 ( ruby-on-rails 编程)，最多 5 个 "
     show:
       creator: "创建者"
       edited_at: "编辑于"

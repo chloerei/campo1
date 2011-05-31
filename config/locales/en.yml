@@ -76,8 +76,8 @@ en:
       edit_topic: "Edit Topic"
       update: "Update"
     form:
-      title_tips: "Title"
-      tags_tips: "Maximum is 5 tags. Split with space, for example : ruby-on-rails programming. Auto conver to lower case."
+      title_tips: "What's your topic?"
+      tags_tips: "Tags: such as ( ruby-on-rails programming ), max 5 tags"
     show:
       creator: "Creator"
       edited_at: "Edited at"

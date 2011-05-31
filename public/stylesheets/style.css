@@ -607,6 +607,10 @@ span.green {
     padding: 5px;
 }
 
+#topic-tags-preview {
+    margin-bottom: 5px;
+}
+
 #profile {
     margin: 0 10px 20px;
 }
