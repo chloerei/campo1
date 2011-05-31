@@ -3,7 +3,7 @@
 .field
   = form.hidden_field :topic_id
   #editor-button-bar
-  = form.text_area :content, :id => 'editor-input'
+  = form.text_area :content, :id => 'editor-input', :required => 'required'
   #editor-preview
   :javascript
     setup_wmd({
