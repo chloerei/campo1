@@ -1,19 +1,19 @@
 - if !form.object.errors.blank?
   = render :partial => 'share/error_messages', :locals => {:object => form.object}
 .field
-  = form.label :title
-  = form.text_field :title, :class => 'text title', :maxlength => 100
+  = form.text_field :title, :class => 'text title', :maxlength => 100, :placeholder => t('.title_tips'), :required => "required"
 .field
   #editor-button-bar
-  = form.text_area :content, :class => 'editor', :id => 'editor-input'
+  = form.text_area :content, :class => 'editor', :id => 'editor-input', :required => "required"
   #editor-preview
+.field
+  = form.label :tags
+  #topic_tags_preview
+  = form.text_field :tags, :value => form.object.tags_string, :class => 'text tags', :autocomplete => "off", :placeholder => t('.tags_tips')
   :javascript
     setup_wmd({
                 input: "editor-input",
                 button_bar: "editor-button-bar",
                 preview: "editor-preview",
               });
-.field
-  = form.label :tags
-  = form.text_field :tags, :value => form.object.tags_string, :class => 'text tags'
-  .meta= t '.tags_tips'
+    extract_tags("topic_tags", "topic_tags_preview");

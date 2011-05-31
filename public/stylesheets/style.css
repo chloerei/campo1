@@ -161,6 +161,7 @@ a.button, .button-like {
     color: #FFFFF7;
     padding: 3px 9px;
     display: inline-block;
+    margin-right: 6px;
 }
 
 a.button:hover {
@@ -708,7 +709,7 @@ span.green {
 }
 
 #sidebar li {
-    padding: 6px 6px 6px 0;
+    padding: 6px 0;
 }
 
 #sidebar #favorite-tags li {

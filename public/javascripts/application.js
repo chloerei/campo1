@@ -42,3 +42,17 @@ if (history && history.pushState) {
     }
   });
 }
+
+function extract_tags(input, preview) {
+  var input_element = $('#' + input);
+  var preview_element = $('#' + preview);
+
+  input_element.keyup( function() {
+      tag_list = $.trim($(this).val()).split(/\s+/).map(function (tag) {
+        if (tag !== '') {
+          return '<span class="button-like">' + tag + '</span>'; 
+        }
+      }).join('');
+      preview_element.html(tag_list);
+  });
+}
