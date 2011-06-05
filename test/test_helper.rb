@@ -27,6 +27,7 @@ class ActiveSupport::TestCase
     Mongoid.database.collections.each do |coll|
       coll.remove
     end
+    $redis.flushdb
   end
 
   # Make sure that each test case has a teardown

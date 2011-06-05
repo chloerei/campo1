@@ -48,6 +48,10 @@ class User
 
   validate :check_password, :check_current_password, :check_favorite_tags
 
+  def stream
+    Stream.new(self)
+  end
+
   def reset_access_token
     self.access_token = make_token
   end
