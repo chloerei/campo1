@@ -21,6 +21,7 @@ class User
   
   has_many :topics, :validate => false
   has_many :replies, :validate => false
+  has_many :statuses, :validate => false, :class_name => 'Status::Base'
 
   validates_presence_of :username, :email
   validates_presence_of :password, :if => Proc.new {|user| user.requrie_password?}

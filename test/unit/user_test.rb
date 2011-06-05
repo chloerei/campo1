@@ -7,6 +7,12 @@ class UserTest < ActiveSupport::TestCase
     @admin = create_admin
   end
 
+  test "should have many status" do
+    assert_difference "@user.statuses.count" do
+      @user.statuses.create({}, Status::Base)
+    end
+  end
+
   def test_access_token
     assert_not_nil @user.access_token
     old_token = @user.access_token
