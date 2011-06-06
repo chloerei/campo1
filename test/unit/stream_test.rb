@@ -30,4 +30,16 @@ class StreamTest < ActiveSupport::TestCase
     11.times { @stream.push_status Status::Base.create }
     assert_equal 10, @stream.status_ids.count
   end
+
+  test "should fetch status" do
+    25.times { @stream.push_status Status::Base.create }
+    assert_equal 20, @stream.fetch_statuses.count
+    assert_equal 5,  @stream.fetch_statuses(:page => 2).count
+    assert_equal 10, @stream.fetch_statuses(:per_page => 10, :page => 2).count
+
+    statuses = @stream.fetch_statuses(:per_page => 10, :page => 2)
+    assert_equal 10, statuses.per_page
+    assert_equal 2,  statuses.current_page
+    assert_equal 25, statuses.total_entries
+  end
 end
