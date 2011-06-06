@@ -16,3 +16,14 @@ Factory.define :reply do |reply|
   reply.association :user
   reply.association :topic
 end
+
+Factory.define :status_reply, :class => Status::Reply do |r|
+  r.association :user
+  r.association :topic
+  r.association :reply
+end
+
+Factory.define :status_topic, :class => Status::Topic do |r|
+  r.association :user
+  r.association :topic
+end

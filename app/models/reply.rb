@@ -15,7 +15,7 @@ class Reply
   after_create :increment_topic_reply_cache, :add_replier_ids
   after_destroy :decrement_topic_reply_cache
   before_save :extract_mentions
-  after_create :send_menetion_notifications
+  after_create :send_menetion_notifications, :create_status
 
   def increment_topic_reply_cache
     topic.last_replied_by = user
@@ -50,5 +50,11 @@ class Reply
                               :reply_id => self.id,
                               :text     => self.content.slice(0..99)}, Notification::Mention)
     end
+  end
+
+  def create_status
+    Status::Reply.create :user  => user,
+                         :topic => topic,
+                         :reply => self
   end
 end

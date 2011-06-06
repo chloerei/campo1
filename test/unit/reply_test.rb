@@ -7,6 +7,11 @@ class ReplyTest < ActiveSupport::TestCase
     @topic = Factory(:topic, :user => @user)
   end
 
+  test "should create status after create" do
+    reply = Factory :reply
+    assert_not_nil Status::Reply.where(:reply_id => reply.id).first
+  end
+
   def test_extract_mentions
     6.times {|n| User.create :username => "user_#{n}", :email => "email_#{n}@test.com", :password => '12345678', :password_confirmation => '12345678'}
     reply = @topic.replies.new :content => "some text @user_0 @user_1 @user_2 @user_3 @user_4 @user_5 @user_6 @user_99 some text"
