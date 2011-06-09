@@ -19,7 +19,7 @@ class Status::ReplyTest < ActiveSupport::TestCase
     assert status_reply.target_user_ids.include?(replier.id)
   end
 
-  test "should send stream who create reply" do
+  test "should send stream to whom create reply" do
     user = Factory :user
 
     assert_difference "user.stream.status_ids.count" do
@@ -27,7 +27,7 @@ class Status::ReplyTest < ActiveSupport::TestCase
     end
   end
 
-  test "should send stream who marked topic after create reply" do
+  test "should send stream to whom marked topic after create reply" do
     topic   = Factory :topic
     replier = Factory :user
     marker  = Factory :user
