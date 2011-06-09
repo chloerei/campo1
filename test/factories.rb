@@ -17,13 +17,17 @@ Factory.define :reply do |reply|
   reply.association :topic
 end
 
-Factory.define :status_reply, :class => Status::Reply do |r|
-  r.association :user
-  r.association :topic
-  r.association :reply
+Factory.define :status_base, :class => Status::Base do |s|
+  s.association :user
 end
 
-Factory.define :status_topic, :class => Status::Topic do |r|
-  r.association :user
-  r.association :topic
+Factory.define :status_reply, :class => Status::Reply do |s|
+  s.association :user
+  s.association :topic
+  s.association :reply
+end
+
+Factory.define :status_topic, :class => Status::Topic do |s|
+  s.association :user
+  s.association :topic
 end
