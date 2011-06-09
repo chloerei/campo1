@@ -16,6 +16,9 @@ class User
   field :banned, :type => Boolean
   field :reset_password_token
   field :access_token
+  field :follower_ids, :type => Array
+  field :following_ids, :type => Array
+
   embeds_one :profile
   embeds_many :notifications, :class_name => 'Notification::Base'
   
@@ -47,6 +50,24 @@ class User
   before_destroy :clean!
 
   validate :check_password, :check_current_password, :check_favorite_tags
+
+  def followers
+    User.where(:following_ids => id)
+  end
+
+  def followings
+    User.where(:follower_ids => id)
+  end
+
+  def add_follower(user)
+    collection.update({:_id => id}, {'$addToSet' => {:follower_ids => user.id}})
+    collection.update({:_id => user.id}, {'$addToSet' => {:following_ids => id}})
+  end
+
+  def remove_follower(user)
+    collection.update({:_id => id}, {'$pull' => {:follower_ids => user.id}})
+    collection.update({:_id => user.id}, {'$pull' => {:following_ids => id}})
+  end
 
   def stream
     Stream.new(self)

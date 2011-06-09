@@ -7,6 +7,20 @@ class UserTest < ActiveSupport::TestCase
     @admin = create_admin
   end
 
+  test "should follow user" do
+    user_two = Factory :user
+    assert_difference "@user.followers.count" do
+      assert_difference "user_two.followings.count" do
+        @user.add_follower user_two
+      end
+    end
+    assert_difference "@user.followers.count", -1 do
+      assert_difference "user_two.followings.count", -1 do
+        @user.remove_follower user_two
+      end
+    end
+  end
+
   test "should have many status" do
     assert_difference "@user.statuses.count" do
       @user.statuses.create({}, Status::Base)
