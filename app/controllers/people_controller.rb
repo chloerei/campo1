@@ -1,9 +1,9 @@
 class PeopleController < ApplicationController
   respond_to :html, :rss, :only => [:topics]
-  before_filter :layout_config
+  before_filter :layout_config, :find_person
+  before_filter :require_logined, :except => [:show, :topics]
 
   def show
-    @person = User.first :conditions => {:username => /^#{params[:username]}$/i}
     raise Mongoid::Errors::DocumentNotFound.new(User, params[:username]) if @person.nil?
     unless @person.banned?
       set_page_title @person.profile.name
@@ -14,7 +14,6 @@ class PeopleController < ApplicationController
   end
 
   def topics
-    @person = User.first :conditions => {:username => /^#{params[:username]}$/i}
     raise Mongoid::Errors::DocumentNotFound.new(User, params[:username]) if @person.nil?
     unless @person.banned?
       set_page_title @person.profile.name
@@ -35,9 +34,22 @@ class PeopleController < ApplicationController
     end
   end
 
-  protected
+  def follow
+    @person.add_follower current_user
+    redirect_to person_url(:username => @person.username)
+  end
 
+  def unfollow
+    @person.remove_follower current_user
+    redirect_to person_url(:username => @person.username)
+  end
+
+  protected
   def layout_config
     self.show_head_html = true
+  end
+
+  def find_person
+    @person = User.first :conditions => {:username => /^#{params[:username]}$/i}
   end
 end

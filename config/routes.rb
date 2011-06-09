@@ -37,6 +37,8 @@ Campo::Application.routes.draw do
 
   get '~:username' => 'people#show', :as => :person
   get '~:username/topics' => 'people#topics', :as => :person_topics
+  post '~:username/follow' => 'people#follow', :as => :follow_person
+  delete '~:username/follow' => 'people#unfollow'
 
   namespace :admin do
     get '/' => 'dashboard#show', :as => :dashboard
