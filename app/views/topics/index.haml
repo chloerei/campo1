@@ -22,7 +22,5 @@
       .section-content
         = link_to t('.create_topic'), new_topic_path, :class => 'button'
   - if current_logined?
-    = render :partial => 'topics/sidebar/favorite_tags'
     - if params[:action] == 'tagged'
       = render :partial => 'topics/sidebar/current_tag'
-  = render :partial => 'topics/sidebar/recent_tags'

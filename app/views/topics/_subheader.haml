@@ -13,15 +13,12 @@
       - if current_logined?
         %li.tagged-interesting{:class => (@current == 'interesting' ? :current : nil)} 
           = link_to t('.interesting'), interesting_topics_path
-        - if @current == 'own'
-          %li.current
-            = link_to t('.own'), own_topics_path
-        - if @current == 'replied'
-          %li.current
-            = link_to t('.replied'), replied_topics_path
-        - if @current == 'collection'
-          %li.current
-            = link_to t('.collection'), collection_topics_path
+        %li.own-topic{:class => (@current == 'own' ? :current : nil)} 
+          = link_to t('.own'), own_topics_path
+        %li{:class => (@current == 'replied' ? :current : nil)} 
+          = link_to t('.replied'), replied_topics_path
+        %li{:class => (@current == 'collection' ? :current : nil)} 
+          = link_to t('.collection'), collection_topics_path
 
       - if @current == 'tagged'
         %li.current

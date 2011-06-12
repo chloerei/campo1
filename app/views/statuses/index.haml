@@ -4,3 +4,9 @@
   .item-list
     = render :partial => 'status', :collection => @statuses
   = paginate_for @statuses
+
+- content_for :sidebar do
+  - if current_logined?
+    .section
+      .section-content
+        = link_to t('.create_topic'), new_topic_path, :class => 'button'

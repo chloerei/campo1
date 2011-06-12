@@ -11,9 +11,9 @@ class Status::TopicTest < ActiveSupport::TestCase
     assert status_topic.target_user_ids.include? user.id
   end
 
-  test "should send stream to whom create topic" do
+  test "should no send stream to whom create topic" do
     user = Factory :user
-    assert_difference "user.stream.status_ids.count" do
+    assert_no_difference "user.stream.status_ids.count" do
       status_topic = Factory :status_topic, :user => user
     end
   end

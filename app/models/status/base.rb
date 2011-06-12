@@ -16,7 +16,6 @@ class Status::Base
 
   def send_stream
     unless silent
-      user.stream.push_status self
       send_stream_to_target_users
     end
   end

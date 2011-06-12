@@ -16,7 +16,7 @@ class Status::ReplyTest < ActiveSupport::TestCase
     replier = Factory :user
     status_reply.topic.reply_by replier
     status_reply.topic.reload
-    assert status_reply.target_user_ids.include?(replier.id)
+    assert !status_reply.target_user_ids.include?(replier.id)
 
     follower = Factory :user
     status_reply.user.add_follower follower
@@ -24,10 +24,10 @@ class Status::ReplyTest < ActiveSupport::TestCase
     assert status_reply.target_user_ids.include?(follower.id)
   end
 
-  test "should send stream to whom create reply" do
+  test "should no send stream to whom create reply" do
     user = Factory :user
 
-    assert_difference "user.stream.status_ids.count" do
+    assert_no_difference "user.stream.status_ids.count" do
       Factory :status_reply, :user => user
     end
   end
@@ -41,7 +41,7 @@ class Status::ReplyTest < ActiveSupport::TestCase
     topic.reload
 
     assert_difference "marker.stream.status_ids.count" do
-      assert_difference "replier.stream.status_ids.count" do
+      assert_no_difference "replier.stream.status_ids.count" do
         assert_difference "topic.user.stream.status_ids.count" do
           Factory :status_reply, :topic => topic
         end
