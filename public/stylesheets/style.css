@@ -353,6 +353,17 @@ span.green {
     padding: 0;
 }
 
+#mainbar .item-list .avatar {
+    width: 48px;
+    height: 48px;
+}
+
+#mainbar .item-list h3 {
+    font-size: 12px;
+    font-weight: normal;
+    margin: 0 0 10px;
+}
+
 #mainbar .section .left-column,
 #mainbar .item-list .left-column {
     float: left;
@@ -371,19 +382,19 @@ span.green {
     overflow: hidden;
 }
 
-#mainbar #subheader {
+#subheader {
     border-bottom: 1px solid #CCC;
     position: relative;
     height: 95px;
 }
 
-#mainbar #mascot {
+#mascot {
     margin-left: 10px;
     position: absolute;
     bottom: 0px;
 }
 
-#mainbar #loading-notice {
+#loading-notice {
     background: #FFEE88;
     color: #292929;
     font-weight: bold;
@@ -397,7 +408,7 @@ span.green {
     z-index: 99;
 }
 
-#mainbar #tabs {
+#tabs {
     position: absolute;
     bottom: 0px;
     right: 0px;
@@ -405,19 +416,19 @@ span.green {
     font-size: 14px;
 }
 
-#mainbar #tabs ul {
+#tabs ul {
     list-style: none;
     margin: 0 10px 0 0;
     padding: 0;
 }
 
-#mainbar #tabs li {
+#tabs li {
     float: left;
     margin: 0 0 -1px;
     padding: 0 0 0 4px;
 }
 
-#mainbar #tabs a {
+#tabs a {
     text-decoration: none;
     font-weight: bold;
     color: #AAA;
@@ -428,8 +439,8 @@ span.green {
     border-width: 1px;
 }
 
-#mainbar #tabs .current a,
-#mainbar #tabs a:hover
+#tabs .current a,
+#tabs a:hover
 {
     border-color: #CCC #CCC #FFF;
     border-style: solid;
@@ -438,38 +449,33 @@ span.green {
     font-weight: bold;
 }
 
-#mainbar #tabs .tagged-interesting a,
-#mainbar #tabs .tagged-interesting a:hover,
-#mainbar #tabs .tagged-interesting.current a:hover {
+#tabs .tagged-interesting a,
+#tabs .tagged-interesting a:hover,
+#tabs .tagged-interesting.current a:hover {
     color: #0079CE;
 }
 
-#mainbar #tabs .own-topic a,
-#mainbar #tabs .own-topic a:hover,
-#mainbar #tabs .own-topic.current a:hover {
+#tabs .own-topic a,
+#tabs .own-topic a:hover,
+#tabs .own-topic.current a:hover {
     color: #CC2A2A;
 }
 
-#mainbar #topics .avatar {
-    width: 48px;
-    height: 48px;
-}
-
-#mainbar #topics .title {
+#topics h3 {
     float: left;
 }
 
-#mainbar #topics .title a {
+#topics h3 a {
     font-weight: bold;
     color: #292929; 
 }
 
-#mainbar #topics .reply-count {
+#topics .reply-count {
     float: right;
     margin-right: 10px;
 }
 
-#mainbar #topics .reply-count a {
+#topics .reply-count a {
     color: #FFFFF9;
     background-color: #999;
     padding: 1px 9px;
@@ -479,33 +485,33 @@ span.green {
     font-weight: bold;
 }
 
-#mainbar #topics .tagged-interesting .reply-count a {
+#topics .tagged-interesting .reply-count a {
     background-color: #0079CE;
 }
 
-#mainbar #topics .own-topic .reply-count a {
+#topics .own-topic .reply-count a {
     background-color: #CC2A2A;
 }
 
-#mainbar #topics .reply-count a:visited,
-#mainbar #topics .tagged-interesting .reply-count a:visited,
-#mainbar #topics .own-topic .reply-count a:visited {
+#topics .reply-count a:visited,
+#topics .tagged-interesting .reply-count a:visited,
+#topics .own-topic .reply-count a:visited {
     background-color: #EEE;
 }
 
-#mainbar #topics .reply-count a:hover,
-#mainbar #topics .tagged-interesting .reply-count a:hover,
-#mainbar #topics .own-topic .reply-count a:hover {
+#topics .reply-count a:hover,
+#topics .tagged-interesting .reply-count a:hover,
+#topics .own-topic .reply-count a:hover {
     text-decoration: none;
     background-color: #AAA;
 }
 
-#mainbar #topics .meta {
+#topics .meta {
     margin: 5px 0;
     font-weight: normal;
 }
 
-#mainbar #topics .meta a {
+#topics .meta a {
     color: #999;
     font-weight: bold;
 }
@@ -521,75 +527,75 @@ span.green {
     text-decoration: none;
 }
 
-#mainbar #topic {
+#topic {
     padding: 0 10px;
     margin-bottom: 30px;
 }
 
-#mainbar #topic .header {
+#topic .header {
     float: left;
     margin-top: 20px;
     width: 622px;
 }
 
-#mainbar #topic .header h1 {
+#topic .header h1 {
     margin: 0;
     padding-bottom: 10px;
 }
 
-#mainbar #topic .avatar {
+#topic .avatar {
     float: right;
     margin-top: 20px;
 }
 
-#mainbar #topic .avatar img {
+#topic .avatar img {
     height: 64px;
     width: 64px;
 }
 
-#mainbar #topic .content,
-#mainbar #replies .content {
+#topic .content,
+#replies .content {
     margin: 10px 0;
     line-height: 1.6em;
 }
 
-#mainbar #topic .content {
+#topic .content {
     margin-top: 10px;
 }
 
-#mainbar #replies {
+#replies {
     border-top: 1px dashed #CCC;
     margin-top: 20px;
 }
 
-#mainbar #replies .avatar {
+#replies .avatar {
     height: 48px;
     width: 48px;
 }
 
-#mainbar #reply-form .avatar {
+#reply-form .avatar {
     height: 48px;
     width: 48px;
 }
 
-#mainbar #reply-form textarea {
+#reply-form textarea {
     width: 630px;
     height: 120px;
 }
 
-#mainbar #new-topic-form input.title,
-#mainbar #new-topic-form input.tags,
-#mainbar #new-topic-form textarea.editor {
+#new-topic-form input.title,
+#new-topic-form input.tags,
+#new-topic-form textarea.editor {
     width: 688px;
 }
 
-#mainbar ul#favorite-tags {
+#favorite-tags {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-#mainbar ul#favorite-tags li {
+#favorite-tags li {
     padding: 5px;
     width: 160px;
     height: 24px;
@@ -597,7 +603,7 @@ span.green {
     float: left;
 }
 
-#mainbar #new-topic-form textarea.editor {
+#new-topic-form textarea.editor {
     height: 300px;
 }
 
