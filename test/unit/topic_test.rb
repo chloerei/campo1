@@ -6,6 +6,12 @@ class TopicTest < ActiveSupport::TestCase
     @admin = create_admin
   end
 
+  test "should create status after create" do
+    assert_difference "Status::Base.count" do
+      Factory :topic
+    end
+  end
+
   def test_close_and_open
     topic = Factory :topic
     topic.close!

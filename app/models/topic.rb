@@ -30,6 +30,7 @@ class Topic
   before_update :set_edited_at, :if => Proc.new { |topic| 
     topic.title_changed? || topic.content_changed? || topic.tags_changed?
   }
+  after_create :create_status
 
   def self.create_topic_hash(topic_ids)
     topic_hash = {}
@@ -90,5 +91,10 @@ class Topic
     return if self.user_id == user.id
     collection.update({:_id => self.id, :replier_ids => {"$ne" => user.id}},
                       {"$push" => {:replier_ids => user.id}})
+  end
+
+  def create_status
+    Status::Topic.create :user  => user,
+                         :topic => self
   end
 end

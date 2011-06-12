@@ -17,6 +17,11 @@ class Status::ReplyTest < ActiveSupport::TestCase
     status_reply.topic.reply_by replier
     status_reply.topic.reload
     assert status_reply.target_user_ids.include?(replier.id)
+
+    follower = Factory :user
+    status_reply.user.add_follower follower
+    status_reply.user.reload
+    assert status_reply.target_user_ids.include?(follower.id)
   end
 
   test "should send stream to whom create reply" do

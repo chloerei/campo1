@@ -22,8 +22,8 @@ class Stream
   end
 
   def fetch_statuses(options = {})
-    page     = options[:page] || 1
-    per_page = options[:per_page] || 20
+    page     = (options[:page] || 1).to_i
+    per_page = (options[:per_page] || 20).to_i
 
     start = (page - 1) * per_page
     stop  = page * per_page - 1

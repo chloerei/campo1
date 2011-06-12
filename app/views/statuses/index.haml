@@ -1,1 +1,5 @@
 = render :partial => 'topics/subheader'
+
+#statuses.item-list
+  = render :partial => 'status', :collection => @statuses
+  = paginate_for @statuses
