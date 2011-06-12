@@ -7,9 +7,7 @@ class PeopleController < ApplicationController
     raise Mongoid::Errors::DocumentNotFound.new(User, params[:username]) if @person.nil?
     unless @person.banned?
       set_page_title @person.profile.name
-      @topics = @person.topics.desc(:created_at).limit(10)
-      user_ids = @topics.map{|topic| topic.last_replied_by_id}.compact.uniq
-      @user_hash = User.create_user_hash(user_ids)
+      @statuses = @person.statuses.desc(:created_at).limit(5)
     end
   end
 

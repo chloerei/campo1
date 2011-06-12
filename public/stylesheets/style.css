@@ -151,6 +151,10 @@ img.icon {
     clear: both;
 }
 
+.more {
+    margin-top: 10px;
+}
+
 a.button, .button-like {
     -moz-border-radius: 12px;
     border-radius: 12px;
@@ -353,25 +357,26 @@ span.green {
     padding: 0;
 }
 
-#mainbar .item-list .avatar {
+#mainbar .item .avatar {
     width: 48px;
     height: 48px;
 }
 
-#mainbar .item-list h3 {
-    font-size: 12px;
-    font-weight: normal;
+#mainbar .item h3 {
+    font-size: 14px;
     margin: 0 0 10px;
+    color: #292929;
+    float: left;
+    font-weight: normal;
+    width: 100%;
 }
 
-#mainbar .section .left-column,
-#mainbar .item-list .left-column {
+#mainbar .item .left-column {
     float: left;
     margin-right: 10px;
 }
 
-#mainbar .section .right-column,
-#mainbar .item-list .right-column {
+#mainbar .item .right-column {
     float: right;
     width: 642px;
 }
@@ -380,6 +385,19 @@ span.green {
     border-bottom: 1px dashed #CCC;
     padding: 15px 10px;
     overflow: hidden;
+}
+
+#mainbar .section .item {
+    border-bottom: 1px dashed #CCC;
+    padding: 15px 0;
+    overflow: hidden;
+}
+
+#statuses .item blockquote {
+    color: #444;
+    background-color: transparent;
+    padding: 5px 10px 0;
+    margin: 10px 10px 0;
 }
 
 #subheader {
@@ -461,21 +479,16 @@ span.green {
     color: #CC2A2A;
 }
 
-#topics h3 {
-    float: left;
+#topics .item h3 a {
+    color: #292929;
 }
 
-#topics h3 a {
-    font-weight: bold;
-    color: #292929; 
-}
-
-#topics .reply-count {
+#topics .item h3 .reply-count {
     float: right;
     margin-right: 10px;
 }
 
-#topics .reply-count a {
+#topics .item h3 .reply-count a {
     color: #FFFFF9;
     background-color: #999;
     padding: 1px 9px;
@@ -485,23 +498,23 @@ span.green {
     font-weight: bold;
 }
 
-#topics .tagged-interesting .reply-count a {
+#topics .item.tagged-interesting .reply-count a {
     background-color: #0079CE;
 }
 
-#topics .own-topic .reply-count a {
+#topics .item.own-topic .reply-count a {
     background-color: #CC2A2A;
 }
 
-#topics .reply-count a:visited,
-#topics .tagged-interesting .reply-count a:visited,
-#topics .own-topic .reply-count a:visited {
+#topics .item.reply-count a:visited,
+#topics .item.tagged-interesting .reply-count a:visited,
+#topics .item.own-topic .reply-count a:visited {
     background-color: #EEE;
 }
 
-#topics .reply-count a:hover,
-#topics .tagged-interesting .reply-count a:hover,
-#topics .own-topic .reply-count a:hover {
+#topics .item.reply-count a:hover,
+#topics .item.tagged-interesting .reply-count a:hover,
+#topics .item.own-topic .reply-count a:hover {
     text-decoration: none;
     background-color: #AAA;
 }

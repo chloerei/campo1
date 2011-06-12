@@ -6,10 +6,10 @@
   .left-column.avatar
     = link_gravatar_to_person @user_hash[topic.user_id]
   .right-column
-    %h3= link_to topic.title, topic_path_with_last_anchor(topic)
-    .reply-count
-      = link_to topic.replies_count, topic_path_with_last_anchor(topic)
-    .clear
+    %h3
+      = link_to topic.title, topic_path_with_last_anchor(topic)
+      .reply-count
+        = link_to topic.replies_count, topic_path_with_last_anchor(topic)
     .meta
       - if topic.tags.present?
         - topic.tags.each do |tag|

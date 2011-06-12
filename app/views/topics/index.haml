@@ -4,8 +4,9 @@
 
 = render :partial => 'subheader'
 
-#topics.item-list
-  = render :partial => 'topic', :collection => @topics
+#topics
+  .item-list
+    = render :partial => 'topic', :collection => @topics
   = paginate_for @topics, :hide_page => true
 
 - if @rss_path

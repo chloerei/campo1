@@ -45,10 +45,15 @@ zh-CN:
       in: "在"
       mention_you: "提到你"
       notification: "消息"
+  statuses:
+    status:
+      replied_topic: "回复了主题"
+      created_topic: "创建了主题"
   topics:
     normal_mode: "普通模式"
     admin_mode: "管理模式"
     subheader:
+      statuses: "动态"
       active: "活跃"
       interesting: "感兴趣"
       own: "自有"
@@ -69,6 +74,7 @@ zh-CN:
         add_to_favorite_tags: "添加到喜好标签"
     index:
       create_topic: "发表主题"
+      subscription_recent_20_topics: "订阅最新 20 条"
     new:
       new_topic: "新主题"
       create: "创建"
@@ -97,13 +103,11 @@ zh-CN:
       mark: "马克"
       unmark: "取消马克"
       marker_count: "马克人数 %{count}"
-    topics:
+    topic:
       creator: "创建者"
       last_replyer: "最后回复"
       closed: "已关闭"
       marker: "马克"
-      subscription_recent_20_topics: "订阅最新 20 条"
-      subscription_tag: "订阅 Tag：%{tag}"
     search:
       loading: "载入中..."
   replies:

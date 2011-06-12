@@ -41,15 +41,11 @@
           - @person.followings.limit(8).each do |following|
             %li= link_gravatar_to_person following, :size => 24
 
-- if !@person.banned? and !@topics.empty? 
-  #topics.section
+- if !@person.banned? and !@statuses.empty? 
+  #statuses.section
+    .section-title
+      %h2 Statuses
     .section-content
-      = render :partial => 'topics'
-      .right= link_to t('.read_more'), person_topics_path(:username => @person.username), :class => 'button'
+      = render :partial => 'statuses/status', :collection => @statuses
+      .right.more= link_to t('.read_more'), person_statuses_path(:username => @person.username), :class => 'button'
       .clear
-  .section
-    .section-content
-      .right
-        = image_tag 'rss.png', :class => 'icon'
-        = link_to t('.subscription_recent_20_topics'), person_topics_path(:format => 'rss')
-      .claer
