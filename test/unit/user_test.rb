@@ -7,6 +7,19 @@ class UserTest < ActiveSupport::TestCase
     @admin = create_admin
   end
 
+  test "should not follow self" do
+    assert_no_difference "@user.followers.count" do
+      assert_no_difference "@user.followings.count" do
+        @user.add_follower @user
+      end
+    end
+    assert_no_difference "@user.followers.count" do
+      assert_no_difference "@user.followings.count" do
+        @user.remove_follower @user
+      end
+    end
+  end
+
   test "should follow user" do
     user_two = Factory :user
     assert_difference "@user.followers.count" do

@@ -60,13 +60,17 @@ class User
   end
 
   def add_follower(user)
-    collection.update({:_id => id}, {'$addToSet' => {:follower_ids => user.id}})
-    collection.update({:_id => user.id}, {'$addToSet' => {:following_ids => id}})
+    if user.id != id
+      collection.update({:_id => id}, {'$addToSet' => {:follower_ids => user.id}})
+      collection.update({:_id => user.id}, {'$addToSet' => {:following_ids => id}})
+    end
   end
 
   def remove_follower(user)
-    collection.update({:_id => id}, {'$pull' => {:follower_ids => user.id}})
-    collection.update({:_id => user.id}, {'$pull' => {:following_ids => id}})
+    if user.id != id
+      collection.update({:_id => id}, {'$pull' => {:follower_ids => user.id}})
+      collection.update({:_id => user.id}, {'$pull' => {:following_ids => id}})
+    end
   end
 
   def stream
