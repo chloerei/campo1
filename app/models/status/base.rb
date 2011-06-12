@@ -1,11 +1,16 @@
 class Status::Base
   include Mongoid::Document
-  include Mongoid::Timestamps
+  field :created_at
 
   belongs_to :user
   validates_presence_of :user_id
 
   after_create :send_stream
+  before_create :set_timestamps
+
+  def set_timestamps
+    self.created_at ||= Time.now
+  end
 
   def send_stream
     user.stream.push_status self
