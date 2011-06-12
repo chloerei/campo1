@@ -612,26 +612,105 @@ span.green {
 }
 
 #profile {
-    margin: 0 10px 20px;
-}
-
-#profile .avatar {
-    float: left;
-    height: 128px;
-    width: 128px;
-}
-
-#profile .right-column {
-    float: right;
-    width: 550px;
-}
-
-#profile .detail {
-    margin-bottom: 20px;
+    padding: 0 10px;
 }
 
 #profile h1 {
+    margin-top: 0;
+    color: #888;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #CCC;
+}
+
+#profile h1 img {
+    vertical-align: middle;
+    height: 60px;
+    width: 60px;
+    margin-right: 5px;
+}
+
+#profile h1 input {
+    margin-top: 18px;
+}
+
+#profile .detail {
+    overflow: hidden;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #CCC;
+}
+
+#profile .left-side {
+    width: 350px;
+    float: left;
+}
+
+#profile .detail dl {
     margin: 0 0 10px;
+}
+
+#profile .detail dl dt {
+    float: left;
+    width: 115px;
+    color: #999;
+}
+
+#profile .vcard {
+    padding-top: 8px;
+}
+
+#profile .right-side {
+    width: 350px;
+    float: right;
+}
+
+#profile .detail dl dd {
+    margin: 0;
+}
+
+#profile ul.stats {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#profile .stats li {
+    list-style-type: none;
+    margin-right: 36px;
+    float: left;
+}
+
+#profile .stats a {
+    color: #292929;
+}
+
+#profile .stats a:hover, #profile .stats a:hover span {
+    text-decoration: none;
+    color: #CC2A2A;
+}
+
+#profile .stats strong {
+    font-size: 36px;
+    display: block;
+}
+
+#profile .stats span {
+    color: #999;
+}
+
+#profile .followings h3 {
+    font-size: 12px;
+}
+
+#profile .followings ul {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#profile .followings li {
+    list-style-type: none;
+    float: left;
+    margin-right: 3px;
 }
 
 .paginate {

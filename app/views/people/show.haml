@@ -2,23 +2,44 @@
   = auto_discovery_link_tag :rss, person_topics_path(:username => @person.username, :format => 'rss')
 
 #profile
-  .avatar= link_gravatar_to_person @person, :size => 128
-  .right-column
-    %h1= @person.profile.name
-    - if @person.banned?
-      = t '.this_user_had_been_ban'
-    - else
-      .detail.meta
-        - if @person.profile.url.present?
-          %p
-            = image_tag "/images/icons/home.png", :class => 'icon'
-            = link_to @person.profile.url, @person.profile.url, :target => '_blank'
-        - if @person.profile.twitter.present?
-          %p
-            = image_tag "/images/icons/twitter.png", :class => 'icon'
-            = link_to "@#{@person.profile.twitter}", "https://twitter.com/#{@person.profile.twitter}", :target => '_blank'
-      .description= sanitize simple_format(auto_link(@person.profile.description))
-  .clear
+  = render :partial => 'profile_head'
+  .detail
+    .left-side.vcard
+      %dl
+        %dt= t('.name')
+        %dd= @person.profile.name
+      %dl
+        %dt= t('.join_at')
+        %dd= l @person.created_at.to_date, :format => :long
+      - if @person.profile.url.present?
+        %dl
+          %dt= t('.homepage')
+          %dd= link_to @person.profile.url, @person.profile.url
+      - if @person.profile.twitter.present?
+        %dl
+          %dt Twitter
+          %dd= link_to @person.profile.twitter, "https://twitter.com/#{@person.profile.twitter}"
+      - if @person.profile.description.present?
+        %dl
+          %dt= t('.description')
+          %dd= rich_content @person.profile.description
+    .right-side
+      %ul.stats
+        %li
+          %a{:href => person_topics_path(:username => @person.username)}
+            %strong= @person.topics.count
+            %span= t('.topics')
+        %li
+          %a{:href => '#'}
+            %strong= @person.followers.count
+            %span= t('.followers')
+      .followings
+        %h3
+          = t('.followings_title', :count => @person.followings.count)
+          = link_to t('.view_all'), '#'
+        %ul.avatars
+          - @person.followings.limit(8).each do |following|
+            %li= link_gravatar_to_person following, :size => 24
 
 - if !@person.banned? and !@topics.empty? 
   #topics.section

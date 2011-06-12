@@ -1,0 +1,14 @@
+%h1
+  = link_gravatar_to_person @person, :size => 60
+  - if action_name != 'show'
+    = link_to @person.username, person_path(:username => @person.username)
+  - else
+    = @person.username
+  - if @person.profile.name != @person.username
+    = "(#{@person.profile.name})"
+  - if current_logined? and current_user != @person
+    .right
+      - if @person.follower_ids.to_a.include? current_user.id
+        = button_to 'Unfollow', follow_person_url(:username => @person.username), :class => 'button reverse', :method => :delete
+      - else
+        = button_to 'Follow', follow_person_url(:username => @person.username), :class => 'button'
