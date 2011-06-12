@@ -52,10 +52,11 @@ class Reply
     end
   end
 
-  def create_status
-    Status::Reply.create :user  => user,
-                         :topic => topic,
-                         :reply => self,
-                         :created_at => created_at
+  def create_status(options = {})
+    Status::Reply.create :user       => user,
+                         :topic      => topic,
+                         :reply      => self,
+                         :created_at => created_at,
+                         :silent     => options[:silent]
   end
 end

@@ -93,9 +93,10 @@ class Topic
                       {"$push" => {:replier_ids => user.id}})
   end
 
-  def create_status
-    Status::Topic.create :user  => user,
-                         :topic => self,
-                         :created_at => created_at
+  def create_status(options = {})
+    Status::Topic.create :user       => user,
+                         :topic      => self,
+                         :created_at => created_at,
+                         :silent     => options[:silent]
   end
 end

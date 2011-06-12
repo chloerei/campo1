@@ -2,6 +2,8 @@ class Status::Base
   include Mongoid::Document
   field :created_at
 
+  attr_accessor :silent
+
   belongs_to :user
   validates_presence_of :user_id
 
@@ -13,8 +15,10 @@ class Status::Base
   end
 
   def send_stream
-    user.stream.push_status self
-    send_stream_to_target_users
+    unless silent
+      user.stream.push_status self
+      send_stream_to_target_users
+    end
   end
 
   def send_stream_to_target_users
