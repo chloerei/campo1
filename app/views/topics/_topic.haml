@@ -1,0 +1,29 @@
+- topic_style = []
+- if current_logined?
+  - if topic.tags and current_user.favorite_tags and !(topic.tags & current_user.favorite_tags).empty?
+    - topic_style << "tagged-interesting"
+  - if topic.user_id == current_user.id
+    - topic_style << "own-topic"
+.item{:class => topic_style}
+  .left-column.avatar
+    = link_gravatar_to_person @user_hash[topic.user_id]
+  .right-column
+    .title= link_to topic.title, topic_path_with_last_anchor(topic)
+    .reply-count
+      = link_to topic.replies_count, topic_path_with_last_anchor(topic)
+    .clear
+    .meta
+      - if topic.tags.present?
+        - topic.tags.each do |tag|
+          %span.tag= link_to tag, tagged_topics_path(:tag => tag)
+      = t '.creator'
+      = link_to_person @user_hash[topic.user_id]
+      - if topic.last_replied_by_id
+        = t '.last_replyer'
+        = link_to_person @user_hash[topic.last_replied_by_id]
+
+      = smart_time_string topic.actived_at
+      - if topic.marker_ids and topic.marker_ids.any?
+        %span.orange= "+ #{topic.marker_ids.count} #{t '.marker'}"
+      - if topic.closed?
+        %span.red= t '.closed'

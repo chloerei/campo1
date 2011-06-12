@@ -17,6 +17,7 @@ class TopicsController < ApplicationController
   def interesting
     set_page_title I18n.t :_interesting
 
+    @rss_path = interesting_topics_url(:format => :rss, :token => current_user.access_token)
     @current = 'interesting'
     if params[:format] == 'rss'
       @topics = Topic.where(:tags.in => current_user.favorite_tags.to_a).desc(:created_at).paginate :per_page => 20, :page => params[:page]
@@ -44,6 +45,7 @@ class TopicsController < ApplicationController
 
   def newest
     set_page_title I18n.t :_newest
+    @rss_path = newest_topics_url(:format => :rss)
     @current = 'newest'
     @topics = Topic.desc(:created_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
@@ -58,6 +60,7 @@ class TopicsController < ApplicationController
   end
 
   def tagged
+    @rss_path = tagged_topics_url(:format => :rss)
     @current = 'tagged'
     @tag = params[:tag]
     set_page_title @tag

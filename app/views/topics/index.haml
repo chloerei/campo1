@@ -1,12 +1,19 @@
 - content_for :head do
-  - if params[:action] == 'index' or params[:action] == 'newest'
-    = auto_discovery_link_tag :rss, newest_topics_path(:format => 'rss')
-  - if params[:action] == 'interesting'
-    = auto_discovery_link_tag :rss, interesting_topics_path(:format => 'rss', :token => current_user.access_token)
+  - if @rss_path
+    = auto_discovery_link_tag :rss, @rss_path
 
 = render :partial => 'subheader'
 
-= render :partial => 'topics'
+#topics.item-list
+  = render :partial => 'topic', :collection => @topics
+  = paginate_for @topics, :hide_page => true
+
+- if @rss_path
+  .section
+    .right
+      = image_tag 'rss.png', :class => 'icon'
+      = link_to t('.subscription_recent_20_topics'), @rss_path
+    .claer
 
 - content_for :sidebar do
   - if current_logined?

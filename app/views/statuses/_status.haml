@@ -4,14 +4,14 @@
   .right-column
     - case status
     - when Status::Reply
-      .title
+      %h3
         = link_to_person status.user
         = t '.reply_topic'
         = link_to status.topic.title, status.topic
       .content
         = simple_format truncate(status.reply.content, :length => 140)
     - when Status::Topic
-      .title
+      %h3
         = link_to_person status.user
         = t '.create_topic'
         = link_to status.topic.title, status.topic
