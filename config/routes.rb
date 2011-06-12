@@ -1,5 +1,5 @@
 Campo::Application.routes.draw do
-  root :to => "topics#index"
+  root :to => "statuses#index"
 
   get '/login', :controller => 'user_sessions', :action => 'new', :as => :login
   match '/logout', :controller => 'user_sessions', :action => 'destroy', :as => :logout
@@ -16,6 +16,8 @@ Campo::Application.routes.draw do
     resource :profile, :only => [:show, :update]
     resource :favorite_tags, :only => [:show, :create, :destroy]
   end
+
+  resources :statuses, :only => [:index, :show]
 
   get '/search', :to => 'topics#search', :as => :search
   resources :topics, :except => [:destroy] do

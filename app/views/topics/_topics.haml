@@ -30,7 +30,7 @@
               %span.orange= "+ #{topic.marker_ids.count} #{t '.marker'}"
             - if topic.closed?
               %span.red= t '.closed'
-  = paginate_for @topics, :hide_page => true, :remote => true
+  = paginate_for @topics, :hide_page => true
 
   - if params[:action] == 'index' or params[:action] == 'newest'
     .right

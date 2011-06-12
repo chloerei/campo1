@@ -29,20 +29,6 @@ $(document).ready(function () {
   active_flash_close();
 });
 
-if (history && history.pushState) {
-  var loaded = false;
-  $(window).bind("popstate", function() {
-    if (!loaded) {
-      loaded = true;
-    } else {
-      show_loading_notice();
-      $.getScript(location.href, function(){
-        hide_loading_notice();
-      });
-    }
-  });
-}
-
 function extract_tags(input, preview) {
   var input_element = $('#' + input);
   var preview_element = $('#' + preview);

@@ -1,14 +1,13 @@
 - total_page = collection.total_pages
 - current_page = collection.current_page
 - per_page = collection.per_page
-- remote ||= false
 - if total_page > 1
   %table.paginate
     %tr
       %td.prev
         - if current_page != 1
           - prev_page = current_page - 1
-          = link_to t('.prev_page'), url_for(:page => prev_page), :class => 'prev button', :remote => remote
+          = link_to t('.prev_page'), url_for(:page => prev_page), :class => 'prev button'
 
       %td.pages
         - unless defined? hide_page and hide_page
@@ -20,12 +19,11 @@
             - if page - prev > 1
               %span.dot ...
             - if page != current_page
-              = link_to page, url_for(:page => page), :class => 'button', :remote => remote
+              = link_to page, url_for(:page => page), :class => 'button'
             - else
               %span.current_page.button-like= page
             - page
-          
 
       %td.next
         - if current_page < total_page
-          = link_to t('.next_page'), url_for(:page => current_page + 1), :class => 'next button', :remote => remote
+          = link_to t('.next_page'), url_for(:page => current_page + 1), :class => 'next button'

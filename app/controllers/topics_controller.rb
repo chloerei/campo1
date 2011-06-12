@@ -2,18 +2,12 @@ class TopicsController < ApplicationController
   before_filter :login_by_token, :only => :interesting
   before_filter :require_logined, :require_user_not_banned, :except => [:index, :search, :show, :tagged, :newest]
   before_filter :layout_config, :only => [:index, :search, :show, :tagged, :interesting, :newest, :own, :collection]
-  before_filter :set_cache_buster
-  respond_to :html, :js, :only => [:index, :collection, :own, :replied, :show]
-  respond_to :html, :js, :rss, :only => [:newest, :tagged, :interesting]
+  respond_to :html, :rss, :only => [:newest, :tagged, :interesting]
 
   def index
     @current = 'active'
     @topics = Topic.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
-    respond_with @topics do |format|
-      format.html
-      format.js { render :layout => false }
-    end
   end
 
   def search
@@ -37,7 +31,6 @@ class TopicsController < ApplicationController
         @channel_link = interesting_topics_url
         render :topics, :layout => false
       end
-      format.js { render :index, :layout => false }
     end
   end
 
@@ -46,10 +39,7 @@ class TopicsController < ApplicationController
     @current = 'own'
     @topics = current_user.topics.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
-    respond_with @topics do |format|
-      format.html { render :index }
-      format.js { render :index, :layout => false }
-    end
+    render :index
   end
 
   def newest
@@ -64,7 +54,6 @@ class TopicsController < ApplicationController
         @channel_link = newest_topics_url
         render :topics, :layout => false
       end
-      format.js { render :index, :layout => false }
     end
   end
 
@@ -86,7 +75,6 @@ class TopicsController < ApplicationController
         @channel_link = tagged_topics_url(:tag => @tag)
         render :topics, :layout => false
       end
-      format.js { render :index, :layout => false }
     end
   end
 
@@ -95,10 +83,7 @@ class TopicsController < ApplicationController
     @current = 'collection'
     @topics = Topic.marked_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
-    respond_with @topics do |format|
-      format.html { render :index }
-      format.js { render :index, :layout => false }
-    end
+    render :index
   end
 
   def replied
@@ -106,10 +91,7 @@ class TopicsController < ApplicationController
     @current = 'replied'
     @topics = Topic.replied_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
-    respond_with @topics do |format|
-      format.html { render :index }
-      format.js { render :index, :layout => false }
-    end
+    render :index
   end
 
   def show
@@ -124,11 +106,6 @@ class TopicsController < ApplicationController
       current_user.read_topic @topic
       @reply = Reply.new
       @reply.topic_id = @topic.id
-    end
-
-    respond_with @topic do |format|
-      format.html
-      format.js { render :layout => false }
     end
   end
 

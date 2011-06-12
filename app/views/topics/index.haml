@@ -3,24 +3,8 @@
     = auto_discovery_link_tag :rss, newest_topics_path(:format => 'rss')
   - if params[:action] == 'interesting'
     = auto_discovery_link_tag :rss, interesting_topics_path(:format => 'rss', :token => current_user.access_token)
-  :javascript
-    function prepare_ajax_link() {
-      $('#tabs a, .tag a, .paginate a').live('ajax:beforeSend', function(event, xhr, settings) {
-        if ($(this).data('direction')) {
-          $('#topics').data('direction', $(this).data('direction'));
-        }
-        show_loading_notice();
-        if (history && history.pushState) {
-          history.pushState(null, document.title, this.href);
-        }
-      });
-      $('#tabs a, .tag a, .paginate a').live('ajax:complete', function(event, data, status, xhr) {
-        hide_loading_notice();
-      });
-    }
-    prepare_ajax_link();
 
-= render :partial => 'subheader', :locals => {:remote => true}
+= render :partial => 'subheader'
 
 = render :partial => 'topics'
 
