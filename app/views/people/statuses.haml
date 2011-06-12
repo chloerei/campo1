@@ -1,0 +1,10 @@
+#profile
+  = render :partial => 'profile_head'
+
+- if @statuses.any?
+  #statuses.section
+    .section-title
+      %h2 Statuses
+    .section-content
+      = render :partial => 'statuses/status', :collection => @statuses
+    = paginate_for @statuses

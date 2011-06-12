@@ -41,7 +41,7 @@
           - @person.followings.limit(8).each do |following|
             %li= link_gravatar_to_person following, :size => 24
 
-- if !@person.banned? and !@statuses.empty? 
+- if @statuses.any? 
   #statuses.section
     .section-title
       %h2 Statuses

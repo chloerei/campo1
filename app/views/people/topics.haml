@@ -3,14 +3,14 @@
 
 #profile
   = render :partial => 'profile_head'
-- if !@person.banned? and !@topics.empty?
+- if @topics.any?
   #topics.section
+    .section-title
+      %h2 Topics
     .section-content
       = render :partial => 'topics'
       = paginate_for @topics
       .clear
-  .section
-    .section-content
       .right
         = image_tag 'rss.png', :class => 'icon'
         = link_to t('.subscription_recent_20_topics'), person_topics_path(:format => 'rss')

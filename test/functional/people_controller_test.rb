@@ -7,6 +7,19 @@ class PeopleControllerTest < ActionController::TestCase
     create_site_config
   end
 
+  test "should render banned when user had been band" do
+    @user.ban!
+
+    get :show, :username => @user.username
+    assert_template :banned
+    
+  end
+
+  test "should get statuses" do
+    get :statuses, :username => @user.username
+    assert_response :success, @response.body
+  end
+
   test "should follow user" do
     post :follow, :username => @user.username
     assert_redirected_to login_url

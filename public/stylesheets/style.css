@@ -352,6 +352,10 @@ span.green {
     overflow: hidden;
 }
 
+#mainbar .section .section-content {
+    margin-bottom: 10px;
+}
+
 #mainbar .item-list {
     margin: 0 0 10px;
     padding: 0;
