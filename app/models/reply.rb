@@ -55,6 +55,7 @@ class Reply
   def create_status
     Status::Reply.create :user  => user,
                          :topic => topic,
-                         :reply => self
+                         :reply => self,
+                         :created_at => created_at
   end
 end

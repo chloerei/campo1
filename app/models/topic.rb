@@ -95,6 +95,7 @@ class Topic
 
   def create_status
     Status::Topic.create :user  => user,
-                         :topic => self
+                         :topic => self,
+                         :created_at => created_at
   end
 end
