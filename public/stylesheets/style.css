@@ -397,7 +397,7 @@ span.green {
     overflow: hidden;
 }
 
-#statuses .item blockquote {
+.item blockquote {
     color: #444;
     background-color: transparent;
     padding: 5px 10px 0;

@@ -7,4 +7,8 @@ class StatusesController < ApplicationController
                 end
     @current = 'statuses'
   end
+
+  def show
+    @status = Status::Base.find params[:id]
+  end
 end
