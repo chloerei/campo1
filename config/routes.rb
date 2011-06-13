@@ -17,7 +17,12 @@ Campo::Application.routes.draw do
     resource :favorite_tags, :only => [:show, :create, :destroy]
   end
 
-  resources :statuses, :only => [:index, :show]
+  resources :statuses, :only => [:index, :show] do
+    collection do
+      get :own
+      get :all
+    end
+  end
 
   get '/search', :to => 'topics#search', :as => :search
   resources :topics, :except => [:destroy] do

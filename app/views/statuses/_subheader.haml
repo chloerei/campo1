@@ -13,9 +13,9 @@
         %li{:class => (action_name == 'index' ? :current : nil)}
           = link_to t('.feed'), root_path
         %li{:class => (action_name == 'own' ? :current : nil)}
-          = link_to t('.own'), root_path
+          = link_to t('.own'), own_statuses_path
         %li{:class => (action_name == 'all' ? :current : nil)}
-          = link_to t('.all'), root_path
+          = link_to t('.all'), all_statuses_path
       - else
         %li{:class => (action_name == 'index' ? :current : nil)}
           = link_to t('.all'), root_path

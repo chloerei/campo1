@@ -21,4 +21,5 @@
   - if current_logined?
     - if params[:action] == 'tagged'
       = render :partial => 'topics/sidebar/current_tag'
+    = render :partial => 'topics/sidebar/favorite_tags'
   = render :partial => 'topics/sidebar/recent_tags'

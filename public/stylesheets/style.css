@@ -640,13 +640,13 @@ span.green {
     width: 688px;
 }
 
-#favorite-tags {
+#mainbar #favorite-tags {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-#favorite-tags li {
+#mainbar #favorite-tags li {
     padding: 5px;
     width: 160px;
     height: 24px;

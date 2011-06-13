@@ -15,13 +15,27 @@ class StatusesControllerTest < ActionController::TestCase
   end
 
   test "should get status" do
-    get :show, :id => Factory(:status_base)
+    get :show, :id => Factory(:status_base).id
     assert_response :success, @response.body
     
-    get :show, :id => Factory(:status_reply)
+    get :show, :id => Factory(:status_reply).id
     assert_response :success, @response.body
 
-    get :show, :id => Factory(:status_topic)
+    get :show, :id => Factory(:status_topic).id
+    assert_response :success, @response.body
+  end
+
+  test "should get own if logined" do
+    get :own
+    assert_redirected_to login_url 
+
+    login_as @user
+    get :own
+    assert_response :success, @response.body
+  end
+
+  test "should get all" do
+    get :all
     assert_response :success, @response.body
   end
 end

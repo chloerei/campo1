@@ -1,4 +1,7 @@
-= render :partial => 'topics/subheader'
+= render :partial => 'subheader'
 
 #status.section
   = render :partial => 'status', :object => @status
+
+- content_for :sidebar do
+  = render :partial => 'share/sidebar_new_topic'
