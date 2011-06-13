@@ -28,6 +28,8 @@ en:
     paginate:
       next_page: "Next"
       prev_page: "Prev"
+    sidebar_new_topic:
+      create_topic: "Create Topic"
   errors:
     '404':
       title: "404 Page Not Found"
@@ -45,10 +47,22 @@ en:
       in: "in"
       mention_you: "mention you"
       notification: "notification"
+  statuses:
+    subheader:
+      statuses: "Statuses"
+      topics: "Topics"
+      feed: "Feed"
+      own: "Yours"
+      all: "All"
+    status:
+      replied_topic: "回复了主题"
+      created_topic: "创建了主题"
   topics:
     normal_mode: "Normal Mode"
     admin_mode: "Admin Mode"
     subheader:
+      statuses: "Statuses"
+      topics: "Topics"
       active: "Active"
       interesting: "Interesting"
       own: "Own"
@@ -68,7 +82,7 @@ en:
         remove_from_favorite_tags: "Remove from Favorite"
         add_to_favorite_tags: "Add to Favorite"
     index:
-      create_topic: "Create Topic"
+      subscription_recent_20_topics: "Subscription recent 20 topics"
     new:
       new_topic: "New Topic"
       create: "Create"
@@ -97,13 +111,11 @@ en:
       mark: "Mark"
       unmark: "Unmark"
       marker_count: "Marker %{count}"
-    topics:
+    topic:
       creator: "Creator"
       last_replyer: "Last Replyer"
       closed: "Closed"
       marker: "Marker"
-      subscription_tag: "Subscription Tag：%{tag}"
-      subscription_recent_20_topics: "Subscription recent 20 topics"
     search:
       loading: "Loading ..."
   replies:
