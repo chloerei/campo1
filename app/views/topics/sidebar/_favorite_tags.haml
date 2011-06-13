@@ -5,6 +5,6 @@
     - if current_user.favorite_tags
       %ul
         - current_user.favorite_tags.each do |tag|
-          %li.tag= link_to tag, tagged_topics_path(:tag => tag), :class => 'button', :remote => true, 'data-direction' => 'right'
+          %li.tag= link_to tag, tagged_topics_path(:tag => tag), :class => 'button'
       .clear
     .actions= link_to t('.manage_tags'), settings_favorite_tags_path

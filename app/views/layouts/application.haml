@@ -35,7 +35,6 @@
             = t '.loading'
           = yield
         #sidebar
-          = render :partial => 'share/sidebar_profile'
           = yield :sidebar
           - if show_sidebar_bottom_html?
             = raw site_config.layout.sidebar_bottom_html

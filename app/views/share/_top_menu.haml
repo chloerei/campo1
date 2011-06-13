@@ -3,7 +3,7 @@
     %li= link_to t('.home'), root_path
     %li= link_to t('.search'), search_path
     - if current_logined?
-      %li= link_to t('.person_page'), person_path(:username => current_user.username)
+      %li= link_to current_user.username, person_path(:username => current_user.username)
       %li= link_to t('.settings'), settings_profile_path
       - if current_user.admin?
         %li= link_to t('.admin_dashboard'), admin_dashboard_path

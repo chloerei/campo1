@@ -1,10 +1,14 @@
 #subheader
   #mascot
     %img{:src => '/images/mascot.png'}
+  #navs
+    %ul
+      %li
+        = link_to t('.statuses'), root_path
+      %li.current
+        = link_to t('.topics'), topics_path
   #tabs
     %ul
-      %li{:class => (@current == 'statuses' ? :current : nil)}
-        = link_to t('.statuses'), root_path
       %li{:class => (@current == 'active' ? :current : nil)}
         = link_to t('.active'), topics_path
       %li{:class => (@current == 'newest' ? :current : nil)}

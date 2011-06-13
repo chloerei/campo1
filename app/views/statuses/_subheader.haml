@@ -1,0 +1,21 @@
+#subheader
+  #mascot
+    %img{:src => '/images/mascot.png'}
+  #navs
+    %ul
+      %li.current
+        = link_to t('.statuses'), root_path
+      %li
+        = link_to t('.topics'), topics_path
+  #tabs
+    %ul
+      - if current_logined?
+        %li{:class => (action_name == 'index' ? :current : nil)}
+          = link_to t('.feed'), root_path
+        %li{:class => (action_name == 'own' ? :current : nil)}
+          = link_to t('.own'), root_path
+        %li{:class => (action_name == 'all' ? :current : nil)}
+          = link_to t('.all'), root_path
+      - else
+        %li{:class => (action_name == 'index' ? :current : nil)}
+          = link_to t('.all'), root_path

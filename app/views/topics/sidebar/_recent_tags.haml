@@ -6,7 +6,7 @@
       %ul
         - @recent_tags.each do |tag, count|
           %li.tag
-            = link_to tag, tagged_topics_path(:tag => tag), :class => 'button', :remote => true, 'data-direction' => 'right'
+            = link_to tag, tagged_topics_path(:tag => tag), :class => 'button'
             %span.meta
               x
               = count
