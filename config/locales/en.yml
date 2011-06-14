@@ -1,11 +1,5 @@
 en:
   _require_login: "Require Login"
-  _home: "Home"
-  _interesting: "Interesting"
-  _own: "Own"
-  _newest: "Newest"
-  _collection: "Collection"
-  _replied: "Replied"
   'zh-CN': "Chinese(Simplified)"
   en: "English"
   ago: "ago"
@@ -42,6 +36,7 @@ en:
       tips: "An system error is happen, please contact admin."
   notifications:
     index:
+      page_title: "Notifications"
       deleted_user: "Deleted User"
       deleted_topic: "Deleted Topic"
       in: "in"
@@ -54,9 +49,15 @@ en:
       feed: "Feed"
       own: "Yours"
       all: "All"
+    index:
+      index_page_title: ""
+      own_page_title: "My Status "
+      all_page_title: "All Status"
     status:
       replied_topic: "回复了主题"
       created_topic: "创建了主题"
+    show:
+      page_title: "Status %{id}"
   topics:
     normal_mode: "Normal Mode"
     admin_mode: "Admin Mode"
@@ -82,11 +83,21 @@ en:
         remove_from_favorite_tags: "Remove from Favorite"
         add_to_favorite_tags: "Add to Favorite"
     index:
+      index_page_title: "Active Topics"
+      newest_page_title: "Newest Topics"
+      interesting_page_title: "Interesting Topics"
+      own_page_title: "My Topics"
+      replied_page_title: "Replied Topics"
+      tagged_page_title: "Tagged"
+      collection_page_title: "Collection Topics"
       subscription_recent_20_topics: "Subscription recent 20 topics"
+      page_count: "page %{page}"
     new:
+      page_title: "Create Topic"
       new_topic: "New Topic"
       create: "Create"
     edit:
+      page_title: "Edit Topic"
       edit_topic: "Edit Topic"
       update: "Update"
     form:
@@ -117,6 +128,7 @@ en:
       closed: "Closed"
       marker: "Marker"
     search:
+      page_title: "Search"
       loading: "Loading ..."
   replies:
     new:
@@ -159,23 +171,32 @@ en:
       reset_password: "Reset Password"
   reset_passwords:
     new:
+      page_title: "Reset Password"
       post: "Post"
       tips: "Input you email."
     create:
+      page_title: "Reset email had been send"
       tips: "A reset email will be send to you mailbox, check it later."
     show:
+      page_title: "New Password"
       new_password: "New Password"
       new_password_confirmation: "Confirmation"
       post: "Post"
     update:
       flash_success: "Reset password success."
   people:
+    statuses:
+      page_title: "%{name}'s status"
+      page_count: "page %{page}"
     topics:
+      page_title: "%{name}'s topics"
+      page_count: "page %{page}"
       last_replyer: "Last Replyer"
       closed: "Closed"
       marker: "Marker"
       subscription_recent_20_topics: "Subscription recent 20 topics"
     show:
+      page_title: "%{name}'s personal page"
       this_user_had_been_ban: "This user had been ban."
       subscription_recent_20_topics: "Subscription recent 20 topics"
       read_more: "Read More"
@@ -211,8 +232,8 @@ en:
       update:
         flash_success: "Update success."
     favorite_tags:
-      title: "Setting Favorite Tags"
       show:
+        page_title: "Setting favorite tags"
         favorite_tags: "Favorite Tags"
         favorite_tags_tips: "Maximum is 50 tags. Split with space, for example : ruby-on-rails programming. Auto conver to lower case."
         add: "Add"
@@ -225,13 +246,17 @@ en:
       site_config: "Site Config"
     dashboard:
       show:
+        page_title: "Dashboard"
         today_news: "Today News"
         topics: "Topics"
         replies: "Replies"
         users: "Users"
         total: "Total"
     topics:
+      index:
+        page_title: "Topic Manage"
       show:
+        page_title: "Topic Manage %{title}"
         title: "Title"
         content: "Content"
         tags: "Tags"
@@ -243,14 +268,20 @@ en:
         delete: "Delete"
         sure_to_delete: "Sure to Delete? (Can't recover)"
     replies:
+      index:
+        page_title: "Reply Manage"
       show:
+        page_title: "Reply Manage %{id}"
         reply_to: "Reply to"
         content: "Content"
         replyer: "Replyer"
         delete: "Delete"
         sure_to_delete: "Sure to Delete? (Can't recover)"
     users:
+      index:
+        page_title: "User Manage"
       show:
+        page_title: "User Manage %{name}"
         username: "Username"
         email: "Email"
         avatar: "Avatar"
@@ -270,6 +301,7 @@ en:
         sure_to_delete: "Sure to Delete? (Can't recover)"
     site_config:
       show:
+        page_title: "Site Config"
         save: "Save"
   user:
     errors:
