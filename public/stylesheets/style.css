@@ -374,12 +374,12 @@ span.green {
     width: 100%;
 }
 
-#mainbar .item .left-column {
+#mainbar .left-column {
     float: left;
     margin-right: 10px;
 }
 
-#mainbar .item .right-column {
+#mainbar .right-column {
     float: right;
     width: 642px;
 }
