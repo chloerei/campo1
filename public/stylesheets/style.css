@@ -452,6 +452,7 @@ span.green {
     padding: 4px 10px;
     color: #FFF;
     background-color: #CCC;
+    display: inline-block;
 }
 
 #navs li.current a {
@@ -813,6 +814,20 @@ span.green {
 #sidebar .section-title {
     font-size: 16px;
     margin-bottom: 10px;
+}
+
+#sidebar a.create_topic_button {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 4px 10px;
+    color: #FFF;
+    background-color: #CCC;
+    display: inline-block;
+}
+
+#sidebar a.create_topic_button:hover {
+    background-color: #0079CE;
+    text-decoration: none;
 }
 
 #sidebar .profile .avatar {
