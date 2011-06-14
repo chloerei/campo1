@@ -9,6 +9,11 @@ class Status::TopicTest < ActiveSupport::TestCase
     status_topic.user.add_follower user
     status_topic.user.reload
     assert status_topic.target_user_ids.include? user.id
+
+    tag_user = Factory :user, :favorite_tags => ['tag']
+    status_topic.topic.tags = ['tag']
+    status_topic.topic.save
+    assert status_topic.target_user_ids.include? tag_user.id
   end
 
   test "should no send stream to whom create topic" do
