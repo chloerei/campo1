@@ -544,13 +544,13 @@ span.green {
     background-color: #CC2A2A;
 }
 
-#topics .item.reply-count a:visited,
+#topics .item .reply-count a:visited,
 #topics .item.tagged-interesting .reply-count a:visited,
 #topics .item.own-topic .reply-count a:visited {
     background-color: #EEE;
 }
 
-#topics .item.reply-count a:hover,
+#topics .item .reply-count a:hover,
 #topics .item.tagged-interesting .reply-count a:hover,
 #topics .item.own-topic .reply-count a:hover {
     text-decoration: none;

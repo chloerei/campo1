@@ -9,23 +9,22 @@
     - else
       - @notifications.each do |notification|
         .item{:id => "notification-#{notification.id}"}
-          .meta
-            .left
-              - case notification
-              - when Notification::Mention
-                - if @user_hash[notification.reply_user_id]
-                  = link_to_person @user_hash[notification.reply_user_id] 
-                - else
-                  = t '.deleted_user'
-                = t '.in'
-                - if @topic_hash[notification.topic_id]
-                  = link_to @topic_hash[notification.topic_id].title, topic_path_with_last_anchor(@topic_hash[notification.topic_id])
-                - else
-                  = t '.deleted_topic'
-                = t '.mention_you'
+          %h3
+            - case notification
+            - when Notification::Mention
+              - if @user_hash[notification.reply_user_id]
+                = link_to_person @user_hash[notification.reply_user_id] 
               - else
-                = t '.notification'
-              = smart_time_string notification.created_at
+                = t '.deleted_user'
+              = t '.in'
+              - if @topic_hash[notification.topic_id]
+                = link_to @topic_hash[notification.topic_id].title, topic_path_with_last_anchor(@topic_hash[notification.topic_id])
+              - else
+                = t '.deleted_topic'
+              = t '.mention_you'
+            - else
+              = t '.notification'
+            = smart_time_string notification.created_at
             .right
               = link_to 'x', notification_path(notification), :method => :delete, :remote => true
           %blockquote= notification.text
