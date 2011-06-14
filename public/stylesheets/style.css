@@ -830,21 +830,6 @@ span.green {
     text-decoration: none;
 }
 
-#sidebar .profile .avatar {
-    width: 48px;
-    height: 48px;
-    float: left;
-    margin: 0 10px 10px 0;
-}
-
-#sidebar .profile .name{
-    float: left;
-    font-size: 16px;
-}
-
-#notification-count {
-}
-
 #notification-count a {
     color: #FFFFF9;
     background-color: #CC2A2A;
@@ -854,6 +839,10 @@ span.green {
     font-size: 11px;
     font-weight: bold;
     text-decoration: none;
+}
+
+#notification-count a:hover {
+    background-color: #0079CE;
 }
 
 #sidebar ul {
