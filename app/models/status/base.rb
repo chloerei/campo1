@@ -16,7 +16,7 @@ class Status::Base
 
   def send_stream
     unless silent
-      send_stream_to_target_users
+      Resque.enqueue(Status::Deliver, self.id)
     end
   end
 

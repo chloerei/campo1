@@ -5,6 +5,7 @@ gem 'rails', '3.0.7'
 gem 'mongoid', "~> 2.0"
 gem "hiredis", "~> 0.3.1"
 gem "redis", "~> 2.2.0", :require => ["redis/connection/hiredis", "redis"]
+gem 'resque'
 gem 'bson_ext', "~> 1.3"
 gem 'haml'
 gem 'gravtastic'
