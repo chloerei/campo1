@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    set_page_title I18n.t 'users.new.signup'
   end
 
   def create
@@ -14,7 +13,6 @@ class UsersController < ApplicationController
       set_remember_cookie if params[:user][:remember_me] == "1"
       redirect_to root_url
     else
-      set_page_title I18n.t 'users.new.signup'
       render :new
     end
   end

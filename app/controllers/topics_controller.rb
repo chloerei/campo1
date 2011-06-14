@@ -15,8 +15,6 @@ class TopicsController < ApplicationController
   end
 
   def interesting
-    set_page_title I18n.t :_interesting
-
     @rss_path = interesting_topics_url(:format => :rss, :token => current_user.access_token)
     @current = 'interesting'
     if params[:format] == 'rss'
@@ -36,7 +34,6 @@ class TopicsController < ApplicationController
   end
 
   def own
-    set_page_title I18n.t :_own
     @current = 'own'
     @topics = current_user.topics.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
@@ -44,7 +41,6 @@ class TopicsController < ApplicationController
   end
 
   def newest
-    set_page_title I18n.t :_newest
     @rss_path = newest_topics_url(:format => :rss)
     @current = 'newest'
     @topics = Topic.desc(:created_at).paginate :per_page => 20, :page => params[:page]
@@ -63,7 +59,6 @@ class TopicsController < ApplicationController
     @rss_path = tagged_topics_url(:format => :rss)
     @current = 'tagged'
     @tag = params[:tag]
-    set_page_title @tag
 
     if params[:format] == 'rss'
         @topics = Topic.where(:tags => @tag).desc(:created_at).paginate :per_page => 20, :page => params[:page]
@@ -82,7 +77,6 @@ class TopicsController < ApplicationController
   end
 
   def collection
-    set_page_title I18n.t :_collection
     @current = 'collection'
     @topics = Topic.marked_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
@@ -90,7 +84,6 @@ class TopicsController < ApplicationController
   end
 
   def replied
-    set_page_title I18n.t :_replied
     @current = 'replied'
     @topics = Topic.replied_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
@@ -99,7 +92,6 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find params[:id]
-    set_page_title @topic.title
     last_page = @topic.last_page
     @replies = @topic.replies.asc(:created_at).paginate :per_page => 20, :page => (params[:page] || last_page )
     user_ids = @replies.map{|reply| reply.user_id}.push(@topic.user_id).flatten.compact.uniq
@@ -113,7 +105,6 @@ class TopicsController < ApplicationController
   end
 
   def new
-    set_page_title I18n.t 'topics.new.new_topic'
     @topic = Topic.new
   end
 
@@ -127,7 +118,6 @@ class TopicsController < ApplicationController
   end
 
   def edit
-    set_page_title I18n.t 'topics.edit.edit_topic'
     @topic = current_user.topics.find params[:id]
   end
 

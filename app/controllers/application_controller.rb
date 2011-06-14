@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
         logger.info "Rendering 404: #{exception.message}"
     end
 
-    set_page_title "404"
+    @page_title = "404"
     render 'errors/404', :layout => 'login', :status => 404
   end
 
@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
         logger.info "Rendering 422: #{exception.message}"
     end
 
-    set_page_title "422"
+    @page_title = "422"
     render 'errors/422', :layout => 'login', :status => 422
   end
 
@@ -69,16 +69,12 @@ class ApplicationController < ActionController::Base
         logger.info "Rendering 500: #{exception.message}"
     end
 
-    set_page_title "500"
+    @page_title = "500"
     render 'errors/500', :layout => 'login', :status => 500
   end
 
   def current_admin?
     current_logined? and current_user.admin?
-  end
-
-  def set_page_title(value)
-    @page_title = value
   end
 
   def page_title
