@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def page_title
+   @page_title.present? ? "#{@page_title} - #{APP_CONFIG['site_name']}" : APP_CONFIG['site_name']
+  end
+
   def smart_time_string(time)
     time < 1.week.ago ? l(time, :format => :long) : "#{time_ago_in_words time} #{t :ago}"
   end

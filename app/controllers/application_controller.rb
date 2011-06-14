@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_user, :current_logined?, :current_admin?, :page_title,:topic_url_with_last_anchor, :topic_path_with_last_anchor, :site_config
+  helper_method :current_user, :current_logined?, :current_admin?, :topic_url_with_last_anchor, :topic_path_with_last_anchor, :site_config
 
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, :with => :render_500
@@ -75,14 +75,6 @@ class ApplicationController < ActionController::Base
 
   def current_admin?
     current_logined? and current_user.admin?
-  end
-
-  def page_title
-    if defined? @page_title
-      "#{@page_title} - #{APP_CONFIG['site_name']}"
-    else
-      APP_CONFIG['site_name']
-    end
   end
 
   def require_user_not_banned

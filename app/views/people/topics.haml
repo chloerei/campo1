@@ -1,3 +1,6 @@
+- @page_title = t('.page_title', :name => @person.username)
+- @page_title += t(".page_count", :page => params[:page]) if params[:page]
+
 - content_for :head do
   = auto_discovery_link_tag :rss, person_topics_path(:username => @person.username, :format => 'rss')
 

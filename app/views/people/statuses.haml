@@ -1,3 +1,6 @@
+- @page_title = t('.page_title', :name => @person.username)
+- @page_title += t(".page_count", :page => params[:page]) if params[:page]
+
 #profile
   = render :partial => 'profile_head'
 

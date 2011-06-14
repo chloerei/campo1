@@ -1,3 +1,5 @@
+- @page_title = t('.page_title')
+
 .dialog
   = form_tag url_for(:action => :update, :token => params[:token]), {:method => :put} do
     - if !@user.errors.blank?
