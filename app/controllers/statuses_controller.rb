@@ -8,7 +8,7 @@ class StatusesController < ApplicationController
                   when 'all'
                     Status::Base.desc(:created_at).paginate :page => params[:page], :per_page => 20
                   when 'own'
-                    @statuses = current_user.statuses.desc(:created_at).paginate :per_page => 20, :page => params[:page]
+                    current_user.statuses.desc(:created_at).paginate :per_page => 20, :page => params[:page]
                   else
                     current_user.stream.fetch_statuses :page => params[:page]
                   end

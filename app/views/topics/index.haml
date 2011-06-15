@@ -11,7 +11,7 @@
 #topics
   .item-list
     = render :partial => 'topic', :collection => @topics
-  = paginate_for @topics, :hide_page => true
+  = paginate_for @topics, :hide_page => true, :url => {:tab => @tab || 'active'}
 
 - if @rss_path
   .section

@@ -1,3 +1,4 @@
+- url ||= {}
 - total_page = collection.total_pages
 - current_page = collection.current_page
 - per_page = collection.per_page
@@ -7,7 +8,7 @@
       %td.prev
         - if current_page != 1
           - prev_page = current_page - 1
-          = link_to t('.prev_page'), url_for(:page => prev_page), :class => 'prev button'
+          = link_to t('.prev_page'), url_for(url.merge! :page => prev_page), :class => 'prev button'
 
       %td.pages
         - unless defined? hide_page and hide_page
@@ -19,11 +20,11 @@
             - if page - prev > 1
               %span.dot ...
             - if page != current_page
-              = link_to page, url_for(:page => page), :class => 'button'
+              = link_to page, url_for(url.merge! :page => page), :class => 'button'
             - else
               %span.current_page.button-like= page
             - page
 
       %td.next
         - if current_page < total_page
-          = link_to t('.next_page'), url_for(:page => current_page + 1), :class => 'next button'
+          = link_to t('.next_page'), url_for(url.merge! :page => current_page + 1), :class => 'next button'

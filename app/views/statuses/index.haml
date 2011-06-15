@@ -6,7 +6,7 @@
 #statuses
   .item-list
     = render :partial => 'status', :collection => @statuses
-  = paginate_for @statuses
+  = paginate_for @statuses, :url => {:tab => @tab ? @tab : (current_logined? ? 'feed' : 'all')}
 
 - content_for :sidebar do
   = render :partial => 'share/sidebar_new_topic'
