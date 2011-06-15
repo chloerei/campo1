@@ -188,6 +188,9 @@ zh-CN:
     update:
       flash_success: "成功更新密码"
   people:
+    profile_head:
+      follow: "关注"
+      unfollow: "取消关注"
     statuses:
       page_title: "%{name} 的动态列表"
       page_count: "第%{page}页"

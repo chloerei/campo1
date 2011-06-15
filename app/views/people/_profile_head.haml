@@ -9,6 +9,6 @@
   - if current_logined? and current_user != @person
     .right
       - if @person.follower_ids.to_a.include? current_user.id
-        = button_to 'Unfollow', follow_person_url(:username => @person.username), :class => 'button reverse', :method => :delete
+        = button_to t('.unfollow'), follow_person_url(:username => @person.username), :class => 'button reverse', :method => :delete
       - else
-        = button_to 'Follow', follow_person_url(:username => @person.username), :class => 'button'
+        = button_to t('.follow'), follow_person_url(:username => @person.username), :class => 'button'

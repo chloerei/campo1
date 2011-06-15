@@ -188,6 +188,9 @@ en:
     update:
       flash_success: "Reset password success."
   people:
+    profile_head:
+      follow: "Follow"
+      unfollow: "Unfollow"
     statuses:
       page_title: "%{name}'s status"
       page_count: "page %{page}"
