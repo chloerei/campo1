@@ -24,6 +24,9 @@ en:
       prev_page: "Prev"
     sidebar_new_topic:
       create_topic: "Create Topic"
+    navs:
+      statuses: "Statuses"
+      topics: "Topics"
   errors:
     '404':
       title: "404 Page Not Found"
@@ -35,6 +38,8 @@ en:
       title: "500 System error"
       tips: "An system error is happen, please contact admin."
   notifications:
+    subheader:
+      notifications: "notifications"
     index:
       page_title: "Notifications"
       deleted_user: "Deleted User"
@@ -44,8 +49,6 @@ en:
       notification: "notification"
   statuses:
     subheader:
-      statuses: "Statuses"
-      topics: "Topics"
       feed: "Feed"
       own: "Yours"
       all: "All"
@@ -64,8 +67,6 @@ en:
     normal_mode: "Normal Mode"
     admin_mode: "Admin Mode"
     subheader:
-      statuses: "Statuses"
-      topics: "Topics"
       active: "Active"
       interesting: "Interesting"
       own: "Own"

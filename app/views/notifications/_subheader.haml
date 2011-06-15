@@ -1,0 +1,8 @@
+#subheader
+  #mascot
+    %img{:src => '/images/mascot.png'}
+  = render :partial => 'share/navs'
+  #tabs
+    %ul
+      %li.current
+        = link_to t('.notifications'), notifications_path

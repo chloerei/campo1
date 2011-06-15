@@ -24,6 +24,9 @@ zh-CN:
       prev_page: "上一页"
     sidebar_new_topic:
       create_topic: "创建主题"
+    navs:
+      statuses: "动态"
+      topics: "主题"
   errors:
     '404':
       title: "404 页面未找到"
@@ -35,6 +38,8 @@ zh-CN:
       title: "500 系统错误"
       tips: "系统发生了错误，请联系管理员。"
   notifications:
+    subheader:
+      notifications: "提醒"
     index:
       page_title: "提醒"
       deleted_user: "已删除用户"
@@ -44,8 +49,6 @@ zh-CN:
       notification: "消息"
   statuses:
     subheader:
-      statuses: "动态"
-      topics: "主题"
       feed: "订阅"
       own: "自己"
       all: "全部"
@@ -64,8 +67,6 @@ zh-CN:
     normal_mode: "普通模式"
     admin_mode: "管理模式"
     subheader:
-      statuses: "动态"
-      topics: "主题"
       active: "活跃"
       interesting: "推荐"
       own: "我的"

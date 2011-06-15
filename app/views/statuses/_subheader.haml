@@ -1,12 +1,7 @@
 #subheader
   #mascot
     %img{:src => '/images/mascot.png'}
-  #navs
-    %ul
-      %li.current
-        = link_to t('.statuses'), root_path
-      %li
-        = link_to t('.topics'), topics_path
+  = render :partial => 'share/navs'
   #tabs
     %ul
       - if current_logined?
