@@ -7,9 +7,9 @@
       - if current_logined? and current_user != user
         .right
           - if current_user.following_ids.include? user.id
-            = button_to 'Unfollow', follow_person_path(:username => user.username), :class => 'button', :method => :delete
+            = button_to t('.unfollow'), follow_person_path(:username => user.username), :class => 'button', :method => :delete
           - else
-            = button_to 'Follow', follow_person_path(:username => user.username), :class => 'button'
+            = button_to t('.follow'), follow_person_path(:username => user.username), :class => 'button'
     .meta
-      = "#{user.followings.count} followings"
-      = "#{user.followers.count} followers"
+      = "#{user.followings.count} #{t('.followings')}"
+      = "#{user.followers.count} #{t('.followers')}"

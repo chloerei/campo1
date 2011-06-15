@@ -198,6 +198,7 @@ en:
       closed: "Closed"
       marker: "Marker"
       subscription_recent_20_topics: "Subscription recent 20 topics"
+      topics: "Topics"
     show:
       page_title: "%{name}'s personal page"
       read_more: "Read More"
@@ -206,12 +207,22 @@ en:
       homepage: "Homepage"
       description: "Description"
       followings_title: "Following..."
+      topics: "Topics"
+      followers: "Followers"
+      statuses: "Statuses"
     followings:
       page_title: "%{name} Followings"
       page_count: " page %{page}"
+      followings: "Followings"
     followers:
       page_title: "%{name} Followers"
       page_count: " page %{page}"
+      followers: "Followers"
+    user:
+      follow: "Follow"
+      unfollow: "Unfollow"
+      followings: "followings"
+      followers: "followers"
   settings:
     subheader:
       account: "Account"

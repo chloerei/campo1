@@ -198,6 +198,7 @@ zh-CN:
       closed: "已关闭"
       marker: "马克"
       subscription_recent_20_topics: "订阅最新 20 条主题"
+      topics: "主题"
     show:
       page_title: "%{name} 的个人页面"
       read_more: "查看更多"
@@ -206,12 +207,22 @@ zh-CN:
       homepage: "主页"
       description: "描述"
       followings_title: "他关注了……"
+      topics: "主题"
+      followers: "关注者"
+      statuses: "动态"
     followings:
-      page_title: "%{name} 关注的人"
+      page_title: "%{name} 关注中"
       page_count: "第 %{page} 页"
+      followings: "关注中"
     followers:
-      page_title: "%{name} 的关注者"
+      page_title: "%{name} 的关注着"
       page_count: "第 %{page} 页"
+      followers: "关注者"
+    user:
+      follow: "关注"
+      unfollow: "取消关注"
+      followings: "关注中"
+      followers: "关注者"
   settings:
     subheader:
       account: "账户"

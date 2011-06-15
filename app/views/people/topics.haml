@@ -9,7 +9,7 @@
 - if @topics.any?
   #topics.section
     .section-title
-      %h2 Topics
+      %h2= t '.topics'
     .section-content
       = render :partial => 'topics'
       = paginate_for @topics

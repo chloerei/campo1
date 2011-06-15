@@ -7,7 +7,7 @@
 - if @followings.any?
   .section
     .section-title
-      %h2 Followings
+      %h2= t '.followings'
     .section-content
       = render :partial => 'user', :collection => @followings
       = paginate_for @followings

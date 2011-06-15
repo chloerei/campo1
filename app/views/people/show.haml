@@ -46,7 +46,7 @@
 - if @statuses.any? 
   #statuses.section
     .section-title
-      %h2 Statuses
+      %h2= t '.statuses'
     .section-content
       = render :partial => 'statuses/status', :collection => @statuses
       .right.more= link_to t('.read_more'), person_statuses_path(:username => @person.username), :class => 'button'
