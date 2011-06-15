@@ -1,4 +1,4 @@
-- @page_title = t(".#{action_name}_page_title")
+- @page_title = t(".#{@tab || 'index'}_page_title")
 - @page_title += t(".page_count", :page => params[:page]) if params[:page]
 
 = render :partial => 'subheader'

@@ -51,6 +51,8 @@ zh-CN:
       all: "全部"
     index:
       index_page_title: ""
+      feed_page_title: ""
+      page_count: "第%{page}页"
       own_page_title: "我的动态"
       all_page_title: "全站动态"
     status:

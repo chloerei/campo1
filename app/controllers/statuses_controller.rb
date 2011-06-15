@@ -2,7 +2,16 @@ class StatusesController < ApplicationController
   before_filter :require_logined, :only => [:own]
   def index
     @statuses = if current_logined?
-                  current_user.stream.fetch_statuses :page => params[:page]
+                  @tab = params[:tab] || session[:statuses_tab]
+                  session[:statuses_tab] = @tab
+                  case @tab
+                  when 'all'
+                    Status::Base.desc(:created_at).paginate :page => params[:page], :per_page => 20
+                  when 'own'
+                    @statuses = current_user.statuses.desc(:created_at).paginate :per_page => 20, :page => params[:page]
+                  else
+                    current_user.stream.fetch_statuses :page => params[:page]
+                  end
                 else
                   Status::Base.desc(:created_at).paginate :page => params[:page], :per_page => 20
                 end
@@ -10,15 +19,5 @@ class StatusesController < ApplicationController
 
   def show
     @status = Status::Base.find params[:id]
-  end
-
-  def own
-    @statuses = current_user.statuses.desc(:created_at).paginate :per_page => 20, :page => params[:page]
-    render :index
-  end
-
-  def all
-    @statuses  = Status::Base.desc(:created_at).paginate :page => params[:page], :per_page => 20
-    render :index
   end
 end

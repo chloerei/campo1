@@ -10,12 +10,12 @@
   #tabs
     %ul
       - if current_logined?
-        %li{:class => (action_name == 'index' ? :current : nil)}
-          = link_to t('.feed'), root_path
-        %li{:class => (action_name == 'own' ? :current : nil)}
-          = link_to t('.own'), own_statuses_path
-        %li{:class => (action_name == 'all' ? :current : nil)}
-          = link_to t('.all'), all_statuses_path
+        %li{:class => ((@tab.nil? || @tab == 'feed') ? :current : nil)}
+          = link_to t('.feed'), root_path(:tab => 'feed')
+        %li{:class => (@tab == 'own' ? :current : nil)}
+          = link_to t('.own'), root_path(:tab => 'own')
+        %li{:class => (@tab == 'all' ? :current : nil)}
+          = link_to t('.all'), root_path(:tab => 'all')
       - else
         %li{:class => (action_name == 'index' ? :current : nil)}
           = link_to t('.all'), root_path

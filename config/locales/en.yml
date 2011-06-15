@@ -51,6 +51,8 @@ en:
       all: "All"
     index:
       index_page_title: ""
+      feed_page_title: ""
+      page_count: "page %{page}"
       own_page_title: "My Status "
       all_page_title: "All Status"
     status:
