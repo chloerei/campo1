@@ -200,9 +200,18 @@ en:
       subscription_recent_20_topics: "Subscription recent 20 topics"
     show:
       page_title: "%{name}'s personal page"
-      this_user_had_been_ban: "This user had been ban."
-      subscription_recent_20_topics: "Subscription recent 20 topics"
       read_more: "Read More"
+      name: "Name"
+      join_at: "Join at"
+      homepage: "Homepage"
+      description: "Description"
+      followings_title: "Following..."
+    followings:
+      page_title: "%{name} Followings"
+      page_count: " page %{page}"
+    followers:
+      page_title: "%{name} Followers"
+      page_count: " page %{page}"
   settings:
     subheader:
       account: "Account"

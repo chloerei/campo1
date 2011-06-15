@@ -1,0 +1,13 @@
+- @page_title = t('.page_title', :name => @person.username)
+- @page_title += t(".page_count", :page => params[:page]) if params[:page]
+
+#profile
+  = render :partial => 'profile_head'
+
+- if @followings.any?
+  .section
+    .section-title
+      %h2 Followings
+    .section-content
+      = render :partial => 'user', :collection => @followings
+      = paginate_for @followings

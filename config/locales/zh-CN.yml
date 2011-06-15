@@ -200,9 +200,18 @@ zh-CN:
       subscription_recent_20_topics: "订阅最新 20 条主题"
     show:
       page_title: "%{name} 的个人页面"
-      this_user_had_been_ban: "该用户已被封禁"
-      subscription_recent_20_topics: "订阅最新 20 条主题"
-      read_more: "阅读更多"
+      read_more: "查看更多"
+      name: "名字"
+      join_at: "加入于"
+      homepage: "主页"
+      description: "描述"
+      followings_title: "他关注了……"
+    followings:
+      page_title: "%{name} 关注的人"
+      page_count: "第 %{page} 页"
+    followers:
+      page_title: "%{name} 的关注者"
+      page_count: "第 %{page} 页"
   settings:
     subheader:
       account: "账户"

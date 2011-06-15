@@ -37,6 +37,8 @@ Campo::Application.routes.draw do
   get '~:username' => 'people#show', :as => :person
   get '~:username/topics' => 'people#topics', :as => :person_topics
   get '~:username/statuses' => 'people#statuses', :as => :person_statuses
+  get '~:username/followers' => 'people#followers', :as => :person_followers
+  get '~:username/followings' => 'people#followings', :as => :person_followings
   post '~:username/follow' => 'people#follow', :as => :follow_person
   delete '~:username/follow' => 'people#unfollow'
 

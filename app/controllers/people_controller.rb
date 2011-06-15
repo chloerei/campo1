@@ -1,7 +1,7 @@
 class PeopleController < ApplicationController
   respond_to :html, :rss, :only => [:topics]
   before_filter :layout_config, :find_person, :check_banned
-  before_filter :require_logined, :except => [:show, :statuses, :topics]
+  before_filter :require_logined, :except => [:show, :statuses, :topics, :followings, :followers]
 
   def show
     @statuses = @person.statuses.desc(:created_at).limit(5)
@@ -24,6 +24,14 @@ class PeopleController < ApplicationController
         render 'topics/topics', :layout => false
       end
     end
+  end
+
+  def followings
+    @followings = @person.followings.paginate :per_page => 20, :page => params[:page]
+  end
+
+  def followers
+    @followers = @person.followers.paginate :per_page => 20, :page => params[:page]
   end
 
   def follow

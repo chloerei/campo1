@@ -1,0 +1,15 @@
+.item
+  .left-column.avatar
+    = link_gravatar_to_person user
+  .right-column
+    %h3
+      = link_to_person user
+      - if current_logined? and current_user != user
+        .right
+          - if current_user.following_ids.include? user.id
+            = button_to 'Unfollow', follow_person_path(:username => user.username), :class => 'button', :method => :delete
+          - else
+            = button_to 'Follow', follow_person_path(:username => user.username), :class => 'button'
+    .meta
+      = "#{user.followings.count} followings"
+      = "#{user.followers.count} followers"

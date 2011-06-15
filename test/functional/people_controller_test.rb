@@ -49,6 +49,16 @@ class PeopleControllerTest < ActionController::TestCase
     end
   end
 
+  test "should get followings" do
+    get :followings, :username => @user.username
+    assert_response :success, @response.body
+  end
+
+  test "should get followers" do
+    get :followers, :username => @user.username
+    assert_response :success, @response.body
+  end
+
   def test_show
     get :show, :username => @user.username
     assert_response :success, @response.body

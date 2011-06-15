@@ -32,15 +32,15 @@
             %strong= @person.topics.count
             %span= t('.topics')
         %li
-          %a{:href => '#'}
+          %a{:href => person_followers_path(:username => @person.username)}
             %strong= @person.followers.count
             %span= t('.followers')
       .followings
         %h3
           = t('.followings_title', :count => @person.followings.count)
-          = link_to t('.view_all'), '#'
+          = link_to t('.read_more'), person_followings_path(:username => @person.username)
         %ul.avatars
-          - @person.followings.limit(8).each do |following|
+          - @person.followings.limit(12).each do |following|
             %li= link_gravatar_to_person following, :size => 24
 
 - if @statuses.any? 
