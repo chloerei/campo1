@@ -9,27 +9,24 @@
         = link_to t('.topics'), topics_path
   #tabs
     %ul
-      %li{:class => (@current == 'active' ? :current : nil)}
-        = link_to t('.active'), topics_path
-      %li{:class => (@current == 'newest' ? :current : nil)}
-        = link_to t('.newest'), newest_topics_path
+      %li{:class => ((@tab.nil? || @tab == 'active') ? :current : nil)}
+        = link_to t('.active'), topics_path(:tab => 'active')
+      %li{:class => (@tab == 'newest' ? :current : nil)}
+        = link_to t('.newest'), topics_path(:tab => 'newest')
 
       - if current_logined?
-        %li.tagged-interesting{:class => (@current == 'interesting' ? :current : nil)} 
-          = link_to t('.interesting'), interesting_topics_path
-        %li.own-topic{:class => (@current == 'own' ? :current : nil)} 
-          = link_to t('.own'), own_topics_path
-        %li{:class => (@current == 'replied' ? :current : nil)} 
-          = link_to t('.replied'), replied_topics_path
-        %li{:class => (@current == 'collection' ? :current : nil)} 
-          = link_to t('.collection'), collection_topics_path
+        %li.tagged-interesting{:class => (@tab == 'interesting' ? :current : nil)} 
+          = link_to t('.interesting'), topics_path(:tab => 'interesting')
+        %li.own-topic{:class => (@tab == 'own' ? :current : nil)} 
+          = link_to t('.own'), topics_path(:tab => 'own')
+        %li{:class => (@tab == 'replied' ? :current : nil)} 
+          = link_to t('.replied'), topics_path(:tab => 'replied')
+        %li{:class => (@tab == 'collection' ? :current : nil)} 
+          = link_to t('.collection'), topics_path(:tab => 'collection')
 
-      - if @current == 'tagged'
+      - if action_name == 'tagged'
         %li.current
           = link_to @tag, tagged_topics_path(:tag => @tag)
-      - if @current == 'search'
+      - if action_name == 'search'
         %li.current
           = link_to t('.search'), search_path
-      - if @current == 'notifications'
-        %li.current
-          = link_to t('.notifications'), notifications_path

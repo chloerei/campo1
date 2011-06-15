@@ -1,4 +1,4 @@
-- @page_title = t(".#{action_name}_page_title")
+- @page_title = t(".#{@tab || 'active'}_page_title")
 - @page_title += " #{@tag} " if action_name == 'tagged'
 - @page_title += t(".page_count", :page => params[:page]) if params[:page]
 

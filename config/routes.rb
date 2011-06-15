@@ -24,10 +24,7 @@ Campo::Application.routes.draw do
     collection do
       get 'tagged/:tag', :action => 'tagged', :as => :tagged, :constraints  => { :tag => /[^\/]+/ }, :format => false
       get :interesting
-      get :own
       get :newest
-      get :collection
-      get :replied
     end
 
     member do

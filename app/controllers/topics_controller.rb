@@ -1,31 +1,46 @@
 class TopicsController < ApplicationController
   before_filter :login_by_token, :only => :interesting
   before_filter :require_logined, :require_user_not_banned, :except => [:index, :search, :show, :tagged, :newest]
-  before_filter :layout_config, :only => [:index, :search, :show, :tagged, :interesting, :newest, :own, :collection]
-  respond_to :html, :rss, :only => [:newest, :tagged, :interesting]
+  before_filter :layout_config, :only => [:index, :search, :show, :tagged]
+  respond_to :html, :rss, :only => [:tagged]
+  respond_to :rss, :only => [:newest, :interesting]
 
   def index
-    @current = 'active'
-    @topics = Topic.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
+    @tab = filter_tab(params[:tab]) || filter_tab(session[:topics_tab])
+    session[:topics_tab] = @tab
+
+    @topics = case @tab
+              when 'newest'
+                @rss_path = newest_topics_url(:format => :rss)
+                Topic.desc(:created_at).paginate :per_page => 20, :page => params[:page]
+              when 'interesting'
+                @rss_path = interesting_topics_url(:format => :rss, :token => current_user.access_token)
+                if params[:format] == 'rss'
+                  Topic.where(:tags.in => current_user.favorite_tags.to_a).desc(:created_at).paginate :per_page => 20, :page => params[:page]
+                else
+                  Topic.where(:tags.in => current_user.favorite_tags.to_a).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
+                end
+              when 'own'
+                current_user.topics.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
+              when 'replied'
+                Topic.replied_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
+              when 'collection'
+                Topic.marked_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
+              else
+                Topic.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
+              end
     prepare_for_index
   end
 
   def search
-    @current = 'search'
   end
 
+  # rss
   def interesting
-    @rss_path = interesting_topics_url(:format => :rss, :token => current_user.access_token)
-    @current = 'interesting'
-    if params[:format] == 'rss'
-      @topics = Topic.where(:tags.in => current_user.favorite_tags.to_a).desc(:created_at).paginate :per_page => 20, :page => params[:page]
-    else
-      @topics = Topic.where(:tags.in => current_user.favorite_tags.to_a).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
-    end
+    @topics = Topic.where(:tags.in => current_user.favorite_tags.to_a).desc(:created_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
 
     respond_with @topics do |format|
-      format.html { render :index }
       format.rss do
         @channel_link = interesting_topics_url
         render :topics, :layout => false
@@ -33,21 +48,12 @@ class TopicsController < ApplicationController
     end
   end
 
-  def own
-    @current = 'own'
-    @topics = current_user.topics.desc(:actived_at).paginate :per_page => 20, :page => params[:page]
-    prepare_for_index
-    render :index
-  end
-
+  # rss
   def newest
-    @rss_path = newest_topics_url(:format => :rss)
-    @current = 'newest'
     @topics = Topic.desc(:created_at).paginate :per_page => 20, :page => params[:page]
     prepare_for_index
 
     respond_with(@topics) do |format|
-      format.html {render :index}
       format.rss  do
         @channel_link = newest_topics_url
         render :topics, :layout => false
@@ -74,20 +80,6 @@ class TopicsController < ApplicationController
         render :topics, :layout => false
       end
     end
-  end
-
-  def collection
-    @current = 'collection'
-    @topics = Topic.marked_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
-    prepare_for_index
-    render :index
-  end
-
-  def replied
-    @current = 'replied'
-    @topics = Topic.replied_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
-    prepare_for_index
-    render :index
   end
 
   def show
@@ -171,5 +163,14 @@ class TopicsController < ApplicationController
       end
     end
     recent_tags
+  end
+
+  def filter_tab(tab)
+    if current_logined?
+      allow_list = %w( active newest interesting own replied collection )
+    else
+      allow_list = %w( active newest )
+    end
+    allow_list.include?(tab) ? tab : nil
   end
 end

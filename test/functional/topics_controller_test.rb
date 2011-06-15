@@ -10,6 +10,35 @@ class TopicsControllerTest < ActionController::TestCase
   def test_index
     get :index
     assert_response :success, @response.body
+    assert_current_tab :active
+
+    login_as @user
+    get :index
+    assert_response :success, @response.body
+    assert_current_tab :active
+
+    %w( newest interesting own replied collection ).each do |tab|
+      get :index, :tab => tab
+      assert_response :success, @response.body
+      assert_current_tab tab
+    end
+  end
+
+  test "should get index, params is important than session" do
+    login_as @user
+    %w( active newest interesting own collection replied ).each do |param_tab|
+      get :index, :tab => param_tab
+      assert_response :success, @response.body
+      assert_current_tab param_tab
+
+      %w( active newest interesting own collection replied ).each do |tab|
+        session[:topics_tab] = tab
+        get :index, :tab => param_tab
+        assert_response :success, @response.body
+        assert_current_tab param_tab
+        assert_equal param_tab, session[:topics_tab]
+      end
+    end
   end
 
   def test_show
@@ -64,49 +93,19 @@ class TopicsControllerTest < ActionController::TestCase
     assert_routing '/topics/tagged/min.us', { :controller => "topics", :action => "tagged", :tag => "min.us" }
   end
   
+  def test_newest
+    get :newest, :format => :rss
+    assert_template :topics
+  end
+
   def test_interesting
     login_as @user
-    get :interesting
-    assert_template :index
+    get :interesting, :format => :rss
+    assert_template :topics
 
     login_as nil
-    get :interesting, :token => @user.access_token
-    assert_template :index
-  end
-
-  def test_own
-    get :own
-    assert_redirected_to login_url
-
-    login_as @user
-    get :own
-    assert_template :index
-  end
-
-  def test_newest
-    get :newest
-    assert_template :index
-
-    get :newest, :format => :rss
-    assert_response :success, @response.body
-  end
-
-  def test_collection
-    get :collection
-    assert_redirected_to login_url
-
-    login_as @user
-    get :collection
-    assert_response :success, @response.body
-  end
-
-  def test_collection
-    get :replied
-    assert_redirected_to login_url
-
-    login_as @user
-    get :replied
-    assert_response :success, @response.body
+    get :interesting, :format => :rss, :token => @user.access_token
+    assert_template :topics
   end
 
   def test_mark
@@ -152,5 +151,9 @@ class TopicsControllerTest < ActionController::TestCase
 
     delete :unmark, :id => @topic.id
     assert_template 'errors/422'
+  end
+
+  def assert_current_tab(name)
+    assert_select '#tabs li.current a', I18n.t("topics.subheader.#{name}")
   end
 end
