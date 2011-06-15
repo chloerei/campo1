@@ -11,7 +11,7 @@
     .section-title
       %h2= t '.topics'
     .section-content
-      = render :partial => 'topics'
+      = render :partial => 'topics/topic', :collection => @topics
       = paginate_for @topics
       .clear
       .right
