@@ -2,7 +2,7 @@ class StatusesController < ApplicationController
   before_filter :require_logined, :only => [:own]
   def index
     @statuses = if current_logined?
-                  @tab = params[:tab] || session[:statuses_tab]
+                  @tab = filter_tab(params[:tab]) || filter_tab(session[:statuses_tab])
                   session[:statuses_tab] = @tab
                   case @tab
                   when 'all'
@@ -19,5 +19,11 @@ class StatusesController < ApplicationController
 
   def show
     @status = Status::Base.find params[:id]
+  end
+
+  private
+  
+  def filter_tab(tab)
+    %w( feed own all ).include?(tab) ? tab : nil
   end
 end
