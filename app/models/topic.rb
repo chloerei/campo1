@@ -97,6 +97,7 @@ class Topic
     Status::Topic.create :user       => user,
                          :topic      => self,
                          :created_at => created_at,
-                         :silent     => options[:silent]
+                         :silent     => options[:silent],
+                         :tags       => tags
   end
 end

@@ -34,6 +34,7 @@ class Status::ReplyTest < ActiveSupport::TestCase
     user = Factory :user
     status_reply.reply.content = "@#{user.username}"
     status_reply.reply.save
+    status_reply.save
     assert status_reply.targeted?
 
     assert status_reply.target_user_ids.empty?

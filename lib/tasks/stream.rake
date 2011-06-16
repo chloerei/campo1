@@ -22,5 +22,16 @@ namespace :stream do
 
       Rake::Task["stream:rebuild"].execute
     end
+
+    desc "update status data"
+    task :update => [:environment] do
+      Status::Topic.all.each do |status|
+        status.update_attribute :tags, status.topic.tags
+      end
+
+      Status::Reply.all.each do |status|
+        status.save
+      end
+    end
   end
 end

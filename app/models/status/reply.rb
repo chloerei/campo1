@@ -1,7 +1,10 @@
 class Status::Reply < Status::Base
+  field :targeted, :type => Boolean
   belongs_to :topic
   belongs_to :reply
   validates_presence_of :topic_id, :reply_id
+
+  before_save :set_targeted
 
   def target_user_ids
     unless targeted?
@@ -11,7 +14,8 @@ class Status::Reply < Status::Base
     end
   end
 
-  def targeted?
-    reply.mention_user_ids.any? and reply.content[0] == '@'
+  def set_targeted
+    self.targeted = (reply.mention_user_ids.any? and reply.content[0] == '@')
+    true
   end
 end

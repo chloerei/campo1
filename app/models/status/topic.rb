@@ -1,4 +1,5 @@
 class Status::Topic < Status::Base
+  field :tags, :type => Array
   belongs_to :topic
   validates_presence_of :topic_id
 

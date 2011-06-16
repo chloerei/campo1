@@ -33,4 +33,16 @@ class Stream
       pager.replace(statuses.to_a)
     end
   end
+
+  def rebuild
+    mark_topic_ids = Topic.where(:marker_ids => @user.id).only(:_id).map(&:_id) 
+    self_topic_ids = @user.topics.only(:_id).map(&:_id)
+    topic_ids = (mark_topic_ids + self_topic_ids).uniq
+    status_ids = Status::Base.where(:targeted.exists => false, :user_id.ne => @user.id).any_of({:user_id.in => @user.following_ids}, {:tags.in => @user.favorite_tags}, {:topic_id.in => topic_ids}).asc(:created_at).limit(Stream.status_limit).only(:_id).map(&:id)
+    $redis.multi do
+      $redis.del store_key
+      status_ids.each {|id| $redis.lpush store_key, id }
+      $redis.ltrim store_key, 0, Stream.status_limit - 1
+    end
+  end
 end

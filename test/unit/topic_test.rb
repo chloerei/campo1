@@ -8,8 +8,9 @@ class TopicTest < ActiveSupport::TestCase
 
   test "should create status after create" do
     assert_difference "Status::Base.count" do
-      Factory :topic
+      Factory :topic, :tags => ['tag', 'tag2']
     end
+    assert_equal Topic.last.tags.sort, Status::Topic.last.tags.sort
   end
 
   def test_close_and_open
