@@ -5,7 +5,7 @@
   #tabs
     %ul
       - if current_logined?
-        %li{:class => ((@tab.nil? || @tab == 'feed') ? :current : nil)}
+        %li{:class => ((action_name == 'index' && @tab.nil? || @tab == 'feed') ? :current : nil)}
           = link_to t('.feed'), root_path(:tab => 'feed')
         %li{:class => (@tab == 'own' ? :current : nil)}
           = link_to t('.own'), root_path(:tab => 'own')

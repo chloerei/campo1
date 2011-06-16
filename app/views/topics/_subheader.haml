@@ -4,7 +4,7 @@
   = render :partial => 'share/navs'
   #tabs
     %ul
-      %li{:class => ((@tab.nil? || @tab == 'active') ? :current : nil)}
+      %li{:class => ((action_name == 'index' && @tab.nil? || @tab == 'active') ? :current : nil)}
         = link_to t('.active'), topics_path(:tab => 'active')
       %li{:class => (@tab == 'newest' ? :current : nil)}
         = link_to t('.newest'), topics_path(:tab => 'newest')
