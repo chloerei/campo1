@@ -32,6 +32,7 @@ namespace :stream do
       Status::Reply.all.each do |status|
         status.save
       end
+      Status::Reply.collection.update({"$unset" => "targeted"}, {:targeted => { "$ne" => true }})
     end
   end
 end
