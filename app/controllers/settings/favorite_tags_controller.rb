@@ -11,6 +11,7 @@ class Settings::FavoriteTagsController < ApplicationController
     current_user.favorite_tags ||= []
     current_user.favorite_tags += @new_tags
     current_user.save
+    current_user.stream.rebuild_later
 
     respond_with @new_tags do |format|
       format.html do
@@ -25,6 +26,7 @@ class Settings::FavoriteTagsController < ApplicationController
     @destroy_tags = current_user.parse_tags_from_string(params[:tags])
     current_user.favorite_tags -= @destroy_tags
     current_user.save
+    current_user.stream.rebuild_later
     respond_with @destroy_tags do |format|
       format.html do
         redirect_to params[:return_to] || {:action => :show}

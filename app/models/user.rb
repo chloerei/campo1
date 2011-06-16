@@ -63,6 +63,7 @@ class User
     if user.id != id
       collection.update({:_id => id}, {'$addToSet' => {:follower_ids => user.id}})
       collection.update({:_id => user.id}, {'$addToSet' => {:following_ids => id}})
+      user.stream.rebuild_later
     end
   end
 
@@ -70,6 +71,7 @@ class User
     if user.id != id
       collection.update({:_id => id}, {'$pull' => {:follower_ids => user.id}})
       collection.update({:_id => user.id}, {'$pull' => {:following_ids => id}})
+      user.stream.rebuild_later
     end
   end
 

@@ -80,11 +80,13 @@ class Topic
   def mark_by(user)
     collection.update({:_id => self.id, :marker_ids => {"$ne" => user.id}},
                       {"$push" => {:marker_ids => user.id}})
+    user.stream.rebuild_later
   end
 
   def unmark_by(user)
     collection.update({:_id => self.id},
                       {"$pull" => {:marker_ids => user.id}})
+    user.stream.rebuild_later
   end
 
   def reply_by(user)
