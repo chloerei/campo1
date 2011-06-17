@@ -59,4 +59,10 @@ class Reply
                          :created_at => created_at,
                          :silent     => options[:silent]
   end
+
+  def self.create_reply_hash(reply_ids)
+    reply_hash = {}
+    Reply.where(:_id.in => reply_ids).each{|reply| reply_hash[reply.id] = reply}
+    reply_hash
+  end
 end

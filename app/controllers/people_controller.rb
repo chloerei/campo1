@@ -5,10 +5,12 @@ class PeopleController < ApplicationController
 
   def show
     @statuses = @person.statuses.desc(:created_at).limit(5)
+    prepare_status_index
   end
 
   def statuses
     @statuses = @person.statuses.desc(:created_at).paginate :per_page => 20, :page => params[:page]
+    prepare_status_index
   end
 
   def topics
@@ -57,5 +59,15 @@ class PeopleController < ApplicationController
 
   def check_banned
     render :banned, :status => 403 if @person.banned?
+  end
+
+  def prepare_status_index
+    topic_ids = @statuses.map{|status| status.topic_id if status.respond_to?(:topic_id) }.compact.uniq
+    reply_ids = @statuses.map{|status| status.reply_id if status.respond_to?(:reply_id) }.compact.uniq
+    user_ids  = @statuses.map(&:user_id).compact
+
+    @topic_hash = Topic.create_topic_hash(topic_ids)
+    @reply_hash = Reply.create_reply_hash(reply_ids)
+    @user_hash  = User.create_user_hash(user_ids)
   end
 end

@@ -1,22 +1,22 @@
 .item
   .left-column.avatar
-    = link_gravatar_to_person status.user
+    = link_gravatar_to_person @user_hash[status.user_id]
   .right-column
     - case status
     - when Status::Reply
       %h3
-        = link_to_person status.user
+        = link_to_person @user_hash[status.user_id]
         = t '.replied_topic'
-        = link_to status.topic.title, topic_path_with_last_anchor(status.topic)
+        = link_to @topic_hash[status.topic_id].title, topic_path_with_last_anchor(@topic_hash[status.topic_id])
         %span.right.meta.quiet= link_to smart_time_string(status.created_at), status_path(status)
       %blockquote
-        = simple_format truncate(status.reply.content, :length => 140)
+        = simple_format truncate(@reply_hash[status.reply_id].content, :length => 140)
     - when Status::Topic
       %h3
-        = link_to_person status.user
+        = link_to_person @user_hash[status.user_id]
         = t '.created_topic'
-        = link_to status.topic.title, topic_path_with_last_anchor(status.topic)
+        = link_to @topic_hash[status.topic_id].title, topic_path_with_last_anchor(@topic_hash[status.topic_id])
         %span.right.meta.quiet= link_to smart_time_string(status.created_at), status_path(status)
       .clear
       %blockquote
-        = simple_format truncate(status.topic.content, :length => 140)
+        = simple_format truncate(@topic_hash[status.topic_id].content, :length => 140)
