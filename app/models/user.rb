@@ -118,10 +118,9 @@ class User
   end
 
   def clean!
-    self.replies.delete_all
-    topic_ids = self.topics.only(:id).to_a.map{|topic| topic.id}
-    Reply.delete_all :conditions => {:topic_id => {"$in" => topic_ids}}
-    self.topics.delete_all
+    self.replies.destroy
+    self.topics.destroy
+    self.statuses.delete_all
   end
   
   def self.authenticate(login, password)

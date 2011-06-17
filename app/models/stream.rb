@@ -21,6 +21,11 @@ class Stream
     $redis.ltrim store_key, 0, Stream.status_limit - 1
   end
 
+  # slow than fetch_statuses, but complete than fetch_statuses
+  def statuses
+    Status::Base.where(:_id.in => status_ids).desc(:created_at)
+  end
+
   def fetch_statuses(options = {})
     page     = (options[:page] || 1).to_i
     per_page = (options[:per_page] || 20).to_i

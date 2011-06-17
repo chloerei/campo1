@@ -13,7 +13,8 @@ class Topic
   scope :marked_by, lambda { |user| where(:marker_ids => user.id) }
   scope :replied_by, lambda { |user| where(:replier_ids => user.id) }
 
-  has_many :replies, :validate => false, :dependent => :delete
+  has_many :replies, :validate => false, :dependent => :destroy
+  has_many :statuses, :validate => false, :class_name => 'Status::Base', :dependent => :delete
   belongs_to :user
   belongs_to :last_replied_by, :class_name => 'User'
   field :actived_at, :type => Time

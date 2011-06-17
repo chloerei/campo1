@@ -3,6 +3,7 @@ class Reply
   include Mongoid::Timestamps
 
   field :content
+  has_many :statuses, :validate => false, :class_name => 'Status::Base', :dependent => :delete
 
   has_and_belongs_to_many :mention_users, :class_name => 'User', :validate => false
   belongs_to :topic
@@ -13,7 +14,7 @@ class Reply
   attr_accessible :content
 
   after_create :increment_topic_reply_cache, :add_replier_ids
-  after_destroy :decrement_topic_reply_cache
+  before_destroy :decrement_topic_reply_cache
   before_save :extract_mentions
   after_create :send_menetion_notifications, :create_status
 
@@ -26,7 +27,7 @@ class Reply
 
   def decrement_topic_reply_cache
     # ignore user and time cache
-    topic.inc :replies_count, -1
+    topic.inc :replies_count, -1 if topic && !topic.frozen?
   end
 
   def add_replier_ids

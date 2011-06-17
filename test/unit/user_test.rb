@@ -108,6 +108,7 @@ class UserTest < ActiveSupport::TestCase
 
   def test_destroy
     make_content
+
     assert_difference "Topic.count", -1 do
       assert_difference "Reply.count", -3 do
         @user.destroy
@@ -116,21 +117,12 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def make_content
-    t = @user.topics.create :title => 'title', :content => 'content', :tags => 'tag1 tag2'
-    r = t.replies.new :content => 'content'
-    r.user = @admin
-    r.save
-    r = t.replies.new :content => 'content'
-    r.user = @user
-    r.save
-
-    t = @admin.topics.create :title => 'title', :content => 'content', :tags => 'tag1 tag2'
-    r = t.replies.new :content => 'content'
-    r.user = @admin
-    r.save
-    r = t.replies.new :content => 'content'
-    r.user = @user
-    r.save
+    topic = Factory :topic, :user => @user
+    Factory :reply, :topic => topic
+    Factory :reply, :topic => topic, :user => @user
+    topic2 = Factory :topic
+    Factory :reply, :topic => topic2
+    Factory :reply, :topic => topic2, :user => @user
   end
 
   def test_remember_token
