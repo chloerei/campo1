@@ -745,12 +745,12 @@ span.green {
     color: #CC2A2A;
 }
 
-#profile .stats strong {
+#profile .stats strong, #topic-stats strong {
     font-size: 36px;
     display: block;
 }
 
-#profile .stats span {
+#profile .stats span, #topic-stats span {
     color: #999;
 }
 

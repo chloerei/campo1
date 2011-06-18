@@ -22,6 +22,10 @@
 
 - content_for :sidebar do
   = render :partial => 'share/sidebar_new_topic'
+  #topic-stats.section
+    .section-content
+      %strong= @topics.total_entries
+      %span= t '.topics'
   - if current_logined?
     - if params[:action] == 'tagged'
       = render :partial => 'topics/sidebar/current_tag'

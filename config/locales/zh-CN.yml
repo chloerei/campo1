@@ -86,6 +86,7 @@ zh-CN:
         remove_from_favorite_tags: "从喜好标签中移除"
         add_to_favorite_tags: "添加到喜好标签"
     index:
+      topics: "主题"
       active_page_title: "活跃主题"
       newest_page_title: "最新主题"
       interesting_page_title: "推荐主题"

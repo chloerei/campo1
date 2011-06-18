@@ -86,6 +86,7 @@ en:
         remove_from_favorite_tags: "Remove from Favorite"
         add_to_favorite_tags: "Add to Favorite"
     index:
+      topics: "Topics"
       active_page_title: "Active Topics"
       newest_page_title: "Newest Topics"
       interesting_page_title: "Interesting Topics"
