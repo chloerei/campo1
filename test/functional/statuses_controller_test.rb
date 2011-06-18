@@ -3,6 +3,7 @@ require 'test_helper'
 class StatusesControllerTest < ActionController::TestCase
   def setup
     @user = Factory :user
+    create_site_config
   end
 
   test "should get index" do

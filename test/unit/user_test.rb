@@ -7,15 +7,24 @@ class UserTest < ActiveSupport::TestCase
     @admin = create_admin
   end
 
-  test "should not follow self" do
-    assert_no_difference "@user.followers.count" do
-      assert_no_difference "@user.followings.count" do
-        @user.add_follower @user
+  test "should block user" do
+    user_two = Factory :user
+    assert_difference "@user.blockings.count" do
+      assert_difference "user_two.blockers.count" do
+        @user.add_blocking user_two
       end
     end
-    assert_no_difference "@user.followers.count" do
-      assert_no_difference "@user.followings.count" do
-        @user.remove_follower @user
+    assert_difference "@user.blockings.count", -1 do
+      assert_difference "user_two.blockers.count", -1 do
+        @user.remove_blocking user_two
+      end
+    end
+  end
+
+  test "should not block self" do
+    assert_no_difference "@user.blockings.count" do
+      assert_no_difference "@user.blockers.count" do
+        @user.add_blocking @user
       end
     end
   end
@@ -30,6 +39,14 @@ class UserTest < ActiveSupport::TestCase
     assert_difference "@user.followers.count", -1 do
       assert_difference "user_two.followings.count", -1 do
         @user.remove_follower user_two
+      end
+    end
+  end
+
+  test "should not follow self" do
+    assert_no_difference "@user.followers.count" do
+      assert_no_difference "@user.followings.count" do
+        @user.add_follower @user
       end
     end
   end

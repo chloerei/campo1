@@ -18,6 +18,8 @@ class User
   field :access_token
   field :follower_ids, :type => Array
   field :following_ids, :type => Array
+  field :blocking_ids, :type => Array
+  field :blocker_ids, :type => Array
 
   embeds_one :profile
   embeds_many :notifications, :class_name => 'Notification::Base'
@@ -72,6 +74,30 @@ class User
       collection.update({:_id => id}, {'$pull' => {:follower_ids => user.id}})
       collection.update({:_id => user.id}, {'$pull' => {:following_ids => id}})
       user.stream.rebuild_later
+    end
+  end
+
+  def blockers
+    User.where(:blocking_ids => id)
+  end
+
+  def blockings
+    User.where(:blocker_ids => id)
+  end
+
+  def add_blocking(user)
+    if user.id != id
+      collection.update({:_id => user.id}, {'$addToSet' => {:blocker_ids => id}})
+      collection.update({:_id => id}, {'$addToSet' => {:blocking_ids => user.id}})
+      stream.rebuild_later
+    end
+  end
+
+  def remove_blocking(user)
+    if user.id != id
+      collection.update({:_id => user.id}, {'$pull' => {:blocker_ids => id}})
+      collection.update({:_id => id}, {'$pull' => {:blocking_ids => user.id}})
+      stream.rebuild_later
     end
   end
 
