@@ -38,12 +38,12 @@ class PeopleController < ApplicationController
   end
 
   def follow
-    @person.add_follower current_user
+    current_user.follow @person
     redirect_to person_url(:username => @person.username)
   end
 
   def unfollow
-    @person.remove_follower current_user
+    current_user.unfollow @person
     redirect_to person_url(:username => @person.username)
   end
 

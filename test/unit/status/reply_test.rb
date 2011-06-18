@@ -19,7 +19,7 @@ class Status::ReplyTest < ActiveSupport::TestCase
     assert !status_reply.target_user_ids.include?(replier.id)
 
     follower = Factory :user
-    status_reply.user.add_follower follower
+    follower.follow status_reply.user
     status_reply.user.reload
     assert status_reply.target_user_ids.include?(follower.id)
   end
@@ -41,7 +41,7 @@ class Status::ReplyTest < ActiveSupport::TestCase
     status_reply.topic.mark_by Factory(:user)
     status_reply.topic.reply_by Factory(:user)
     status_reply.topic.reload
-    status_reply.user.add_follower Factory(:user)
+    Factory(:user).follow status_reply.user
     status_reply.user.reload
     assert status_reply.target_user_ids.empty?
   end

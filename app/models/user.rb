@@ -61,19 +61,19 @@ class User
     User.where(:follower_ids => id)
   end
 
-  def add_follower(user)
+  def follow(user)
     if user.id != id
-      collection.update({:_id => id}, {'$addToSet' => {:follower_ids => user.id}})
-      collection.update({:_id => user.id}, {'$addToSet' => {:following_ids => id}})
-      user.stream.rebuild_later
+      collection.update({:_id => id}, {'$addToSet' => {:following_ids => user.id}})
+      collection.update({:_id => user.id}, {'$addToSet' => {:follower_ids => id}})
+      stream.rebuild_later
     end
   end
 
-  def remove_follower(user)
+  def unfollow(user)
     if user.id != id
-      collection.update({:_id => id}, {'$pull' => {:follower_ids => user.id}})
-      collection.update({:_id => user.id}, {'$pull' => {:following_ids => id}})
-      user.stream.rebuild_later
+      collection.update({:_id => id}, {'$pull' => {:following_ids => user.id}})
+      collection.update({:_id => user.id}, {'$pull' => {:follower_ids => id}})
+      stream.rebuild_later
     end
   end
 
@@ -85,7 +85,7 @@ class User
     User.where(:blocker_ids => id)
   end
 
-  def add_blocking(user)
+  def block(user)
     if user.id != id
       collection.update({:_id => user.id}, {'$addToSet' => {:blocker_ids => id}})
       collection.update({:_id => id}, {'$addToSet' => {:blocking_ids => user.id}})
@@ -93,7 +93,7 @@ class User
     end
   end
 
-  def remove_blocking(user)
+  def unblock(user)
     if user.id != id
       collection.update({:_id => user.id}, {'$pull' => {:blocker_ids => id}})
       collection.update({:_id => id}, {'$pull' => {:blocking_ids => user.id}})

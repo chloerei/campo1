@@ -11,12 +11,12 @@ class UserTest < ActiveSupport::TestCase
     user_two = Factory :user
     assert_difference "@user.blockings.count" do
       assert_difference "user_two.blockers.count" do
-        @user.add_blocking user_two
+        @user.block user_two
       end
     end
     assert_difference "@user.blockings.count", -1 do
       assert_difference "user_two.blockers.count", -1 do
-        @user.remove_blocking user_two
+        @user.unblock user_two
       end
     end
   end
@@ -24,29 +24,29 @@ class UserTest < ActiveSupport::TestCase
   test "should not block self" do
     assert_no_difference "@user.blockings.count" do
       assert_no_difference "@user.blockers.count" do
-        @user.add_blocking @user
+        @user.block @user
       end
     end
   end
 
   test "should follow user" do
     user_two = Factory :user
-    assert_difference "@user.followers.count" do
-      assert_difference "user_two.followings.count" do
-        @user.add_follower user_two
+    assert_difference "@user.followings.count" do
+      assert_difference "user_two.followers.count" do
+        @user.follow user_two
       end
     end
-    assert_difference "@user.followers.count", -1 do
-      assert_difference "user_two.followings.count", -1 do
-        @user.remove_follower user_two
+    assert_difference "@user.followings.count", -1 do
+      assert_difference "user_two.followers.count", -1 do
+        @user.unfollow user_two
       end
     end
   end
 
   test "should not follow self" do
-    assert_no_difference "@user.followers.count" do
-      assert_no_difference "@user.followings.count" do
-        @user.add_follower @user
+    assert_no_difference "@user.followings.count" do
+      assert_no_difference "@user.followers.count" do
+        @user.follow @user
       end
     end
   end

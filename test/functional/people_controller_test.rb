@@ -39,7 +39,7 @@ class PeopleControllerTest < ActionController::TestCase
     assert_redirected_to login_url
 
     user_two = Factory :user
-    @user.add_follower user_two
+    user_two.follow @user
     login_as user_two
     assert_difference "@user.followers.count", -1 do
       assert_difference "user_two.followings.count", -1 do

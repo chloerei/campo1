@@ -6,7 +6,7 @@ class Status::TopicTest < ActiveSupport::TestCase
 
     assert status_topic.target_user_ids.empty?
     user = Factory :user
-    status_topic.user.add_follower user
+    user.follow status_topic.user
     status_topic.user.reload
     assert status_topic.target_user_ids.include? user.id
 
@@ -26,7 +26,7 @@ class Status::TopicTest < ActiveSupport::TestCase
   test "should send stream to whom follow user who create topic" do
     user = Factory :user
     user_two = Factory :user
-    user.add_follower user_two
+    user_two.follow user
     user.reload
     assert_difference "user_two.stream.status_ids.count" do
       Factory :status_topic, :user => user
