@@ -29,6 +29,14 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "block shoud take unfollow" do
+    user_two = Factory :user
+    @user.follow user_two
+    assert @user.followings.include?(user_two)
+    @user.block user_two
+    assert !@user.followings.include?(user_two)
+  end
+
   test "should follow user" do
     user_two = Factory :user
     assert_difference "@user.followings.count" do

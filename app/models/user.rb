@@ -89,7 +89,7 @@ class User
     if user.id != id
       collection.update({:_id => user.id}, {'$addToSet' => {:blocker_ids => id}})
       collection.update({:_id => id}, {'$addToSet' => {:blocking_ids => user.id}})
-      stream.rebuild_later
+      unfollow(user) # stream rebuild by unfollow
     end
   end
 
