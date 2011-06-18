@@ -1,5 +1,6 @@
 class StatusesController < ApplicationController
   before_filter :require_logined, :only => [:own]
+  before_filter :layout_config
   def index
     @statuses = if current_logined?
                   @tab = filter_tab(params[:tab]) || filter_tab(session[:statuses_tab])
@@ -30,6 +31,11 @@ class StatusesController < ApplicationController
   
   def filter_tab(tab)
     %w( feed own all ).include?(tab) ? tab : nil
+  end
+
+  def layout_config
+    self.show_head_html = true
+    self.show_sidebar_bottom_html = true
   end
 
   def prepare_index
