@@ -46,10 +46,12 @@ class Reply
 
   def send_menetion_notifications
     mention_users.each do |user|
-      user.send_notification({:reply_user_id  => self.user_id,
-                              :topic_id => self.topic_id,
-                              :reply_id => self.id,
-                              :text     => self.content.slice(0..99)}, Notification::Mention)
+      unless user.blocking_ids.to_a.include?(user_id)
+        user.send_notification({:reply_user_id  => self.user_id,
+                                :topic_id => self.topic_id,
+                                :reply_id => self.id,
+                                :text     => self.content.slice(0..99)}, Notification::Mention)
+      end
     end
   end
 

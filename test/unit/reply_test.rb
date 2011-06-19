@@ -49,6 +49,17 @@ class ReplyTest < ActiveSupport::TestCase
     end
   end
 
+  test "should no send mention if user block" do
+    block_user = Factory :user
+    @user.block block_user
+    @user.reload
+    assert_no_difference "@user.reload.notifications.count" do
+      assert_difference "@admin.reload.notifications.count" do
+        reply = Factory :reply, :content => "@#{@user.username} @#{@admin.username}", :user => block_user
+      end
+    end
+  end
+
   def test_update_topic_replies_cache_field
     reply = Reply.new :content => 'content'
     reply.user = @user
