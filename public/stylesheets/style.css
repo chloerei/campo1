@@ -82,16 +82,23 @@ input.button {
     font-weight: bold;
 }
 
-input.button:hover {
-    background-color: #0079CE;
-}
-
+input.button:hover,
 input.button.reverse {
     background-color: #0079CE;
 }
 
 input.button.reverse:hover {
     background-color: #CC2A2A;
+}
+
+input.block.button.reverse:hover,
+input.block.button {
+    background-color: #AAA;
+}
+
+input.block.button:hover,
+input.block.button.reverse {
+    background-color: #444;
 }
 
 input.button::-moz-focus-inner {
