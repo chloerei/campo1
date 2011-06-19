@@ -47,6 +47,16 @@ class PeopleController < ApplicationController
     redirect_to person_url(:username => @person.username)
   end
 
+  def block
+    current_user.block @person
+    redirect_to person_url(:username => @person.username)
+  end
+
+  def unblock
+    current_user.unblock @person
+    redirect_to person_url(:username => @person.username)
+  end
+
   protected
   def layout_config
     self.show_head_html = true

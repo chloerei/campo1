@@ -13,6 +13,10 @@ class Status::ReplyTest < ActiveSupport::TestCase
     status_reply.topic.reload
     assert status_reply.target_user_ids.include?(marker.id)
 
+    marker.block status_reply.user
+    status_reply.user.reload
+    assert !status_reply.target_user_ids.include?(marker.id)
+
     replier = Factory :user
     status_reply.topic.reply_by replier
     status_reply.topic.reload

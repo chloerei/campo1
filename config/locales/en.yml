@@ -192,6 +192,8 @@ en:
     profile_head:
       follow: "Follow"
       unfollow: "Unfollow"
+      block: "Block"
+      unblock: "Unblock"
     statuses:
       page_title: "%{name}'s status"
       page_count: "page %{page}"

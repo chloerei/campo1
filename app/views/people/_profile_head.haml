@@ -7,8 +7,12 @@
   - if @person.profile.name != @person.username
     = "(#{@person.profile.name})"
   - if current_logined? and current_user != @person
-    .right
-      - if @person.follower_ids.to_a.include? current_user.id
-        = button_to t('.unfollow'), follow_person_url(:username => @person.username), :class => 'button reverse', :method => :delete
+    .right.buttons
+      - if @person.blocker_ids.to_a.include? current_user.id
+        = button_to t('.unblock'), block_person_url(:username => @person.username), :class => 'button reverse', :method => :delete
       - else
-        = button_to t('.follow'), follow_person_url(:username => @person.username), :class => 'button'
+        - if @person.follower_ids.to_a.include? current_user.id
+          = button_to t('.unfollow'), follow_person_url(:username => @person.username), :class => 'button reverse', :method => :delete
+        - else
+          = button_to t('.follow'), follow_person_url(:username => @person.username), :class => 'button'
+        = button_to t('.block'), block_person_url(:username => @person.username), :class => 'button'

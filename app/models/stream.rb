@@ -47,7 +47,7 @@ class Stream
     mark_topic_ids = Topic.where(:marker_ids => @user.id).only(:_id).map(&:_id) 
     self_topic_ids = @user.topics.only(:_id).map(&:_id)
     topic_ids = (mark_topic_ids + self_topic_ids).uniq
-    status_ids = Status::Base.where(:targeted.ne => true, :user_id.ne => @user.id).any_of({:user_id.in => @user.following_ids.to_a}, {:tags.in => @user.favorite_tags.to_a}, {:topic_id.in => topic_ids}).asc(:created_at).limit(Stream.status_limit).only(:_id).map(&:id)
+    status_ids = Status::Base.where(:targeted.ne => true, :user_id.ne => @user.id, :user_id.nin => @user.blocking_ids.to_a).any_of({:user_id.in => @user.following_ids.to_a}, {:tags.in => @user.favorite_tags.to_a}, {:topic_id.in => topic_ids}).asc(:created_at).limit(Stream.status_limit).only(:_id).map(&:id)
     $redis.multi do
       $redis.del store_key
       status_ids.each {|id| $redis.lpush store_key, id }

@@ -20,6 +20,35 @@ class PeopleControllerTest < ActionController::TestCase
     assert_response :success, @response.body
   end
 
+  test"should block user" do
+    post :block, :username => @user.username
+    assert_redirected_to login_url
+
+    user_two = Factory :user
+    login_as user_two
+    assert_difference "@user.blockers.count" do
+      assert_difference "user_two.blockings.count" do
+        post :block, :username => @user.username
+        assert_redirected_to person_url(:username => @user.username)
+      end
+    end
+  end
+
+  test "should unblock user" do
+    delete :unblock, :username => @user.username
+    assert_redirected_to login_url
+
+    user_two = Factory :user
+    user_two.block @user
+    login_as user_two
+    assert_difference "@user.blockers.count", -1 do
+      assert_difference "user_two.blockings.count", -1 do
+        delete :unblock, :username => @user.username
+        assert_redirected_to person_url(:username => @user.username)
+      end
+    end
+  end
+
   test "should follow user" do
     post :follow, :username => @user.username
     assert_redirected_to login_url

@@ -14,6 +14,10 @@ class Status::TopicTest < ActiveSupport::TestCase
     status_topic.topic.tags = ['tag']
     status_topic.topic.save
     assert status_topic.target_user_ids.include? tag_user.id
+
+    tag_user.block status_topic.user
+    status_topic.user.reload
+    assert !status_topic.target_user_ids.include?(tag_user.id)
   end
 
   test "should no send stream to whom create topic" do

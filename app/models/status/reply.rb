@@ -8,7 +8,7 @@ class Status::Reply < Status::Base
 
   def target_user_ids
     unless targeted?
-      [topic.marker_ids.to_a, topic.user_id, user.follower_ids].flatten.uniq - [user_id]
+      [topic.marker_ids.to_a, topic.user_id, user.follower_ids].flatten.uniq - [user_id] - user.blocker_ids.to_a
     else
       []
     end

@@ -218,6 +218,10 @@ span.green {
     text-decoration: none;
 }
 
+.buttons form, .buttons div {
+    display: inline-block;
+}
+
 .flash {
     position: fixed;
     top: 50px;

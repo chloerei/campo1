@@ -33,8 +33,20 @@ class UserTest < ActiveSupport::TestCase
     user_two = Factory :user
     @user.follow user_two
     assert @user.followings.include?(user_two)
+    @user.reload
     @user.block user_two
     assert !@user.followings.include?(user_two)
+  end
+
+  test "if blocked, ignore follow request" do
+    user_two = Factory :user
+    @user.block user_two
+    @user.reload
+    assert_no_difference "@user.followings.count" do
+      assert_no_difference "user_two.followers.count" do
+        @user.follow user_two
+      end
+    end
   end
 
   test "should follow user" do

@@ -62,7 +62,7 @@ class User
   end
 
   def follow(user)
-    if user.id != id
+    if user.id != id and !blocking_ids.to_a.include?(user.id)
       collection.update({:_id => id}, {'$addToSet' => {:following_ids => user.id}})
       collection.update({:_id => user.id}, {'$addToSet' => {:follower_ids => id}})
       stream.rebuild_later
@@ -89,7 +89,11 @@ class User
     if user.id != id
       collection.update({:_id => user.id}, {'$addToSet' => {:blocker_ids => id}})
       collection.update({:_id => id}, {'$addToSet' => {:blocking_ids => user.id}})
-      unfollow(user) # stream rebuild by unfollow
+      if following_ids.to_a.include?(user.id)
+        unfollow(user) # stream rebuild by unfollow
+      else
+        stream.rebuild
+      end
     end
   end
 

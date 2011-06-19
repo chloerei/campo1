@@ -192,6 +192,8 @@ zh-CN:
     profile_head:
       follow: "关注"
       unfollow: "取消关注"
+      block: "屏蔽"
+      unblock: "取消屏蔽"
     statuses:
       page_title: "%{name} 的动态列表"
       page_count: "第%{page}页"
