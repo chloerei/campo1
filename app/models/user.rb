@@ -92,7 +92,7 @@ class User
       if following_ids.to_a.include?(user.id)
         unfollow(user) # stream rebuild by unfollow
       else
-        stream.rebuild
+        stream.rebuild_later
       end
     end
   end
