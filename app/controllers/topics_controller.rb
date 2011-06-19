@@ -16,9 +16,9 @@ class TopicsController < ApplicationController
               when 'interesting'
                 @rss_path = interesting_topics_url(:format => :rss, :token => current_user.access_token)
                 if params[:format] == 'rss'
-                  Topic.where(:tags.in => current_user.favorite_tags.to_a).desc(:created_at).paginate :per_page => 20, :page => params[:page]
+                  Topic.interesting_by(current_user).desc(:created_at).paginate :per_page => 20, :page => params[:page]
                 else
-                  Topic.where(:tags.in => current_user.favorite_tags.to_a).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
+                  Topic.interesting_by(current_user).desc(:actived_at).paginate :per_page => 20, :page => params[:page]
                 end
               when 'own'
                 current_user.topics.desc(:actived_at).paginate :per_page => 20, :page => params[:page]

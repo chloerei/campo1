@@ -13,6 +13,9 @@ class Topic
 
   scope :marked_by, lambda { |user| where(:marker_ids => user.id) }
   scope :replied_by, lambda { |user| where(:replier_ids => user.id) }
+  scope :interesting_by, lambda {|user|
+    where(:muter_ids.ne => user.id, :user_id.nin => user.blocking_ids.to_a).any_of({:tags.in => user.favorite_tags.to_a}, {:user_id.in => user.following_ids.to_a})
+  }
 
   has_many :replies, :validate => false, :dependent => :destroy
   has_many :statuses, :validate => false, :class_name => 'Status::Base', :dependent => :delete
