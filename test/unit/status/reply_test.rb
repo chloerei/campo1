@@ -26,6 +26,10 @@ class Status::ReplyTest < ActiveSupport::TestCase
     follower.follow status_reply.user
     status_reply.user.reload
     assert status_reply.target_user_ids.include?(follower.id)
+
+    status_reply.topic.mute_by follower
+    status_reply.topic.reload
+    assert !status_reply.target_user_ids.include?(follower.id)
   end
 
   test "should no send if reply is targeted" do

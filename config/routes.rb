@@ -30,6 +30,8 @@ Campo::Application.routes.draw do
     member do
       post :mark
       delete :mark, :action => 'unmark'
+      post :mute
+      delete :mute, :action => 'unmute'
     end
   end
   resources :replies, :only => [:new, :create, :edit, :update]

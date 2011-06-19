@@ -84,6 +84,12 @@
         - if @topic.marker_ids.to_a.include? current_user.id
           = button_to t('.unmark'), mark_topic_path(@topic), :method => :delete, :class => 'button reverse'
         - else
-          = button_to t('.mark'), mark_topic_path(@topic), :method => :post, :class => 'button'
+          = button_to t('.mark'), mark_topic_path(@topic), :class => 'button'
         .meta
           = t '.marker_count', :count => @topic.marker_ids.to_a.count
+    .section
+      .section-content
+        - if @topic.muter_ids.to_a.include? current_user.id
+          = button_to t('.unmute'), mute_topic_path(@topic), :method => :delete, :class => 'block button reverse'
+        - else
+          = button_to t('.mute'), mute_topic_path(@topic), :class => 'block button'

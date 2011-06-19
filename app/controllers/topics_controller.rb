@@ -134,6 +134,18 @@ class TopicsController < ApplicationController
     redirect_to @topic
   end
 
+  def mute
+    @topic = Topic.find params[:id]
+    @topic.mute_by current_user
+    redirect_to @topic
+  end
+
+  def unmute
+    @topic = Topic.find params[:id]
+    @topic.unmute_by current_user
+    redirect_to @topic
+  end
+
   private
 
   def login_by_token

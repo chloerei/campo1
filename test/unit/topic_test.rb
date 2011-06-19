@@ -63,6 +63,16 @@ class TopicTest < ActiveSupport::TestCase
     assert_not_nil t.actived_at
   end
 
+  test "should mute topic" do
+    topic = Factory :topic
+    topic.mute_by @user
+    topic.reload
+    assert topic.muter_ids.to_a.include? @user.id
+    topic.unmute_by @user
+    topic.reload
+    assert !topic.muter_ids.to_a.include?(@user.id)
+  end
+
   def test_marker
     t = Topic.create :title => 'title', :content => 'content'
     assert_nil t.marker_ids

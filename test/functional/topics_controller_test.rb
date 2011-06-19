@@ -130,6 +130,26 @@ class TopicsControllerTest < ActionController::TestCase
     assert_equal [], @topic.reload.marker_ids
   end
 
+  test "should mute topic" do
+    post :mute, :id => @topic.id
+    assert_redirected_to login_url
+
+    login_as @user
+    post :mute, :id => @topic.id
+    assert @topic.reload.muter_ids.include?(@user.id)
+  end
+
+  test "should unmute topic" do
+    @topic.mute_by @user
+    assert @topic.reload.muter_ids.include?(@user.id)
+    delete :unmute, :id => @topic.id
+    assert_redirected_to login_url
+    
+    login_as @user
+    delete :unmute, :id => @topic.id
+    assert !@topic.reload.muter_ids.include?(@user.id)
+  end
+
   def test_require_user_not_banned?
     @user.ban!
     login_as @user
