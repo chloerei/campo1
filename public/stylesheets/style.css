@@ -200,6 +200,16 @@ span.orange {
     border-radius: 5px;
 }
 
+span.mute {
+    font-weight: bold;
+    background: #AAA;
+    color: #FFF;
+    border-color: #444;
+    padding: 0 6px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
 span.green {
     font-weight: bold;
     background: #E6EFC2;

@@ -21,6 +21,8 @@
         = link_to_person @user_hash[topic.last_replied_by_id]
 
       = smart_time_string topic.actived_at
+      - if current_logined? and topic.muter_ids.to_a.include?(current_user.id)
+        %span.mute= t '.muted'
       - if topic.marker_ids and topic.marker_ids.any?
         %span.orange= "+ #{topic.marker_ids.count} #{t '.marker'}"
       - if topic.closed?

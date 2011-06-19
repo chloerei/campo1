@@ -133,6 +133,7 @@ en:
       last_replyer: "Last Replyer"
       closed: "Closed"
       marker: "Marker"
+      muted: "Muted"
     search:
       page_title: "Search"
       loading: "Loading ..."

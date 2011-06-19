@@ -133,6 +133,7 @@ zh-CN:
       last_replyer: "最后回复"
       closed: "已关闭"
       marker: "马克"
+      muted: "已静音"
     search:
       page_title: "搜索"
       loading: "载入中..."
