@@ -7,7 +7,7 @@ class StatusesController < ApplicationController
                   session[:statuses_tab] = @tab
                   case @tab
                   when 'all'
-                    Status::Base.desc(:created_at).paginate :page => params[:page], :per_page => 20
+                    Status::Base.where(:targeted.ne => true).desc(:created_at).paginate :page => params[:page], :per_page => 20
                   when 'own'
                     current_user.statuses.desc(:created_at).paginate :per_page => 20, :page => params[:page]
                   else
