@@ -14,7 +14,7 @@ class StatusesController < ApplicationController
                     current_user.stream.fetch_statuses :page => params[:page]
                   end
                 else
-                  Status::Base.desc(:created_at).paginate :page => params[:page], :per_page => 20
+                  Status::Base.where(:targeted.ne => true).desc(:created_at).paginate :page => params[:page], :per_page => 20
                 end
     prepare_index
   end
