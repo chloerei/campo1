@@ -7,12 +7,15 @@ Author: Rei(chloerei@gmail.com)
 ## Dependencies
 
 - Ruby 1.9.2
-- mongodb 1.6.5+
-- Ruby on Rails 3.0.5
+- mongodb 1.8.2+
+- redis 2.0+
+- Ruby on Rails 3.0.7
 
 Gems Dependencies see Gemfile.
 
 ## Getting Started
+
+Assume you have installed mongodb and redis.
 
 ### 1. Download the sources:
 
