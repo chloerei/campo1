@@ -239,22 +239,22 @@ en:
       profile: "Profile"
       favorite_tags: "Favorite Tags"
     accounts:
-      title: "Setting Account"
       show:
+        page_title: "Setting Account"
         current_password_tips: "If modified Username or Email"
         save: "Save"
       update:
         flash_success: "Update success."
     passwords:
-      title: "Setting Password"
       show:
+        page_title: "Setting Password"
         current_password_tips: "Change need current password."
         save: "Save"
       update:
         flash_success: "Update success."
     profiles:
-      title: "Setting Profile"
       show:
+        page_title: "Setting Profile"
         avatar: "Avatar"
         gravatar_tips: "Using Gravatar service."
         what_is_gravatar: "What is Gravatar?"
