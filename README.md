@@ -44,6 +44,10 @@ Make sure mongodb is running.
 
     rails s
 
+### 6. Run resque worker
+
+    QUEUE=* rake environment resque:work
+
 ## For Production Environment
 
 This project is low degree of completion, db schema is changing and not well migration support. not suggest used in production environment. But if you want, there are some notes.
